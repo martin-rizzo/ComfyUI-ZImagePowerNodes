@@ -32,68 +32,88 @@ License : MIT
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 """
 import os
-_PROJECT_EMOJI = "⚡"
-_PROJECT_MENU  = "Z-Image"
-_PROJECT_ID    = "//ZImageNodes"
+from comfy_api.latest import ComfyExtension, io
+__PROJECT_EMOJI = "⚡"             #< emoji that identifies the project
+__PROJECT_MENU  = "Z-Image"        #< name of the menu where all the nodes will be
+__PROJECT_ID    = "//ZImageNodes"  #< used to identify the project in the ComfyUI node registry.
+
+
+#================================= LOGGER ==================================#
 
 # initialize the project logger
 from comfy.cli_args     import args
 from .nodes.core.system import setup_logger
 if os.getenv('ZIMAGE_NODES_DEBUG'):
-    setup_logger(log_level="DEBUG", emoji=_PROJECT_EMOJI, name="ZI_NODES", use_stdout=args.log_stdout)
+    setup_logger(log_level="DEBUG", emoji=__PROJECT_EMOJI, name="ZI_NODES", use_stdout=args.log_stdout)
 else:
-    setup_logger(log_level=args.verbose, emoji=_PROJECT_EMOJI, name="ZI_NODES", use_stdout=args.log_stdout)
+    setup_logger(log_level=args.verbose, emoji=__PROJECT_EMOJI, name="ZI_NODES", use_stdout=args.log_stdout)
 
-# import the newly initialized Z-Image Nodes logger
+# import the newly initialized project logger
 from .nodes.core.system import logger
 
-# initialize variables used by ComfyUI to import the custom nodes
-NODE_CLASS_MAPPINGS        = {}
-NODE_DISPLAY_NAME_MAPPINGS = {}
-__all__ = ["NODE_CLASS_MAPPINGS", "NODE_DISPLAY_NAME_MAPPINGS", "WEB_DIRECTORY"]
+
+#============================ HELPER FUNCTIONS =============================#
+
+def _register_node(node_class, node_subcategory, node_list, deprecated: bool = False):
+    """
+    Registers a node in the given `node_class_list` with appropriate title based on its category and status.
+
+    After registering all the nodes, the `node_class_list` can be sent to comfy
+    in the function `get_node_list(self)` of a ComfyExtension.
+
+    Args:
+        node_class       : The class of the node to be registered.
+        node_subcategory : The subcategory for the node (used for the menu grouping)
+        node_list        : List where the node will be appended after registration.
+        deprecated (optional): Indicates whether the node is deprecated. Defaults to False.
+    """
+    # add a '/' to the beginning of node_subcategory if it doesn't already start with one
+    if node_subcategory and not node_subcategory.startswith("/"):
+        node_subcategory = "/" + node_subcategory
+
+    class_name     = node_class.__name__
+    title          = node_class.xTITLE
+    category       = f"{__PROJECT_EMOJI}{__PROJECT_MENU}{node_subcategory}"
+    comfy_node_id  = f"{class_name} {__PROJECT_ID}"
+
+    if deprecated:
+        title = f"❌{title} [Deprecated]"
+    else:
+        title = f"{__PROJECT_EMOJI}| {title}"
+
+    node_class.xTITLE         = title
+    node_class.xCATEGORY      = category
+    node_class.xCOMFY_NODE_ID = comfy_node_id
+    node_class.xDEPRECATED    = deprecated
+    node_list.append( node_class )
 
 
-#====================== Z-IMAGE NODES IMPORT PROCESS =======================#
-_DEPRECATED = False
+#======================= COMFY EXTENSION (V3 schema) =======================#
 
-def _comfy_import_node(cls):
-    global NODE_CLASS_MAPPINGS
-    global NODE_DISPLAY_NAME_MAPPINGS
+class ZImagePowerExtension(ComfyExtension):
 
-    class_name         = cls.__name__
-    class_display_name = cls.TITLE
-    class_category     = f"{_PROJECT_EMOJI}{_CATEGORY}"
-    comfy_class_name   = f"{class_name} {_PROJECT_ID}"
+    # must be declared as async
+    async def get_node_list(self) -> list[type[io.ComfyNode]]:
+        _PROJECT_MENU= "ZiNodes"
+        nodes = []
 
-    if class_name in NODE_CLASS_MAPPINGS:
-        logger.warning(f"Node class {class_name} already exists, skipping import.")
-        return
+        subcategory = ""
 
-    if _DEPRECATED:
-        cls.DEPRECATED = True
-        class_display_name = class_display_name.replace("💪TB","")
-        class_display_name = class_display_name.replace("| ","")
-        class_display_name = f"❌{class_display_name} [Deprecated]"
+        from .nodes.zsampler import ZSampler
+        _register_node( ZSampler, subcategory, nodes )
 
-    cls.CATEGORY = class_category
-    NODE_CLASS_MAPPINGS[comfy_class_name]        = cls
-    NODE_DISPLAY_NAME_MAPPINGS[comfy_class_name] = class_display_name
+        #nodes.append( ZSampler )
+        #_comfy_import_node(ZSampler)
 
+        # [Z-Image/__deprecated]
+        # here are the deprecated nodes that have been kept for compatibility
+        subcategory = "__deprecated"
+        # _register_node( DeprecatedNode, subcategory, nodes, deprecated=True )
 
-# [Z-Image]
-_CATEGORY = f"{_PROJECT_MENU}"
-
-#from .nodes.zsampler                                import ZSampler
-#_comfy_import_node(ZSampler)
+        logger.info(f"Imported {len(nodes)} nodes")
+        return nodes
 
 
-
-# [Z-Image/__deprecated]
-# here are the deprecated nodes that have been kept for compatibility.
-_CATEGORY   = f"{_PROJECT_MENU}/__deprecated"
-_DEPRECATED = True
-
-
-
-logger.info(f"Imported {len(NODE_CLASS_MAPPINGS)} nodes")
+async def comfy_entrypoint() -> ZImagePowerExtension:
+    return ZImagePowerExtension()
 
