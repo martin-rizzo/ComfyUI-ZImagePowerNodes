@@ -107,6 +107,9 @@ class ZImageNodesExtension(ComfyExtension):
         from .nodes.photo_style_prompt_encoder import PhotoStylePromptEncoder
         _register_node( PhotoStylePromptEncoder, subcategory, nodes )
 
+        from .nodes.illustration_style_prompt_encoder import IllustrationStylePromptEncoder
+        _register_node( IllustrationStylePromptEncoder, subcategory, nodes )
+
 
         #--[ __deprecated ]----------------------
         subcategory = "__deprecated"
