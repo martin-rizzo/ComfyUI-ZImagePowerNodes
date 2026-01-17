@@ -1,6 +1,6 @@
 <div align="center">
 
-# Z-Image Power Nodes
+# Z-Image Power Nodes <br><sub><sup><i>Pushing the best image generation model to its limits!</i></sup></sub>
 [![Platform](https://img.shields.io/badge/platform%3A-ComfyUI-007BFF)](#)
 [![License](https://img.shields.io/github/license/martin-rizzo/ComfyUI-ZImagePowerNodes?label=license%3A&color=28A745)](#)
 [![Version](https://img.shields.io/github/v/tag/martin-rizzo/ComfyUI-ZImagePowerNodes?label=version%3A&color=D07250)](#)
@@ -12,7 +12,7 @@
 
 </div>
 
-**ComfyUI-ZImagePowerNodes** is a collection of custom nodes designed and refined specifically for the Z-Image model. They are based on some ideas and discoveries I made while developing the [Amazing Z-Image Workflow](https://github.com/martin-rizzo/AmazingZImageWorkflow).
+**ComfyUI-ZImagePowerNodes** is a collection of custom nodes designed and refined specifically for the [Z-Image model](https://github.com/Tongyi-MAI/Z-Image). They are based on some ideas and discoveries I made while developing the [Amazing Z-Image Workflow](https://github.com/martin-rizzo/AmazingZImageWorkflow).
 
 
 ## Table of Contents
