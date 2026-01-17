@@ -35,6 +35,12 @@ class PhotoStylePromptEncoder(io.ComfyNode):
             category      = cls.xCATEGORY,
             node_id       = cls.xCOMFY_NODE_ID,
             is_deprecated = cls.xDEPRECATED,
+            description   = (
+                "Transforms a text prompt into an embedding, adapted to the selected photographic style. "
+                "This node takes a prompt, adjusts its visual style according to the chosen option, and "
+                "then encodes it using the provided text encoder to generate an embedding that will guide "
+                "image generation."
+            ),
             inputs=[
                 io.Clip.Input  ("clip"      , tooltip="The CLIP model used for encoding the text."),
                 io.Combo.Input ("style_name", options=cls.style_names(), tooltip="The style you want for your image."),

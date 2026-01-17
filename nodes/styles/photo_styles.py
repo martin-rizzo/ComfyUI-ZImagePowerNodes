@@ -1,4 +1,15 @@
-
+"""
+File    : styles/photo_styles.py
+Purpose : The list of photographic styles to be used in the Z-Image model.
+Author  : Martin Rizzo | <martinrizzo@gmail.com>
+Date    : Jan 17, 2026
+Repo    : https://github.com/martin-rizzo/ComfyUI-ZImageNodes
+License : MIT
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+                              ComfyUI-ZImageNodes
+             Experimental ComfyUI nodes for the Z-Image model.
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+"""
 from .base import Styles
 
 
@@ -150,3 +161,4 @@ YOUR PHOTO:
 """
 
 PHOTO_STYLES = Styles.from_config( _PhotoStylesConfig )
+

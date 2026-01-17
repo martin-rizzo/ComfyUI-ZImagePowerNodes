@@ -39,6 +39,11 @@ class ZSamplerTurbo(io.ComfyNode):
             category      = cls.xCATEGORY,
             node_id       = cls.xCOMFY_NODE_ID,
             is_deprecated = cls.xDEPRECATED,
+            description   = (
+                'Efficiently denoises the latent image, specifically tuned for the "Z-Image Turbo" model. '
+                'This node takes a Z-Image Turbo model, an initial latent image, and conditioning parameters, '
+                'and produces a denoised output ready for further processing or decoding.'
+            ),
             inputs=[
                 io.Model.Input       ("model"       , tooltip="The model used for generating the latent images."),
                 io.Conditioning.Input("positive"    , tooltip="The conditioning used to guide the generation process toward the desired content."),
