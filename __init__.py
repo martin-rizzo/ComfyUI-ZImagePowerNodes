@@ -104,6 +104,9 @@ class ZImageNodesExtension(ComfyExtension):
         from .nodes.zsampler_turbo import ZSamplerTurbo
         _register_node( ZSamplerTurbo, subcategory, nodes )
 
+        from .nodes.photo_style_prompt_encoder import PhotoStylePromptEncoder
+        _register_node( PhotoStylePromptEncoder, subcategory, nodes )
+
 
         #--[ __deprecated ]----------------------
         subcategory = "__deprecated"
