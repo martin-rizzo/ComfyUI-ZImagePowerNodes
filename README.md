@@ -21,6 +21,20 @@
 2. [License](#license)
 
 
+## Nodes
+
+### ZSampler Turbo
+
+ZSampler Turbo is a specialized sampler designed to divide the denoising process into three stages: composition, details, and refinement. It maintains image stability between 4 to 9 steps and achieves sufficient quality for most cases between 7 to 9 steps, often eliminating the need for further refining or post-processing. This sampler shows improved prompt adherence, especially with the GGUF Q5_K_S checkpoint.
+**[ZSampler Turbo documentation](docs/zsampler_turbo.md)**.
+
+### Photo-Style Prompt Encoder
+
+### Illustration-Style Prompt Encoder
+
+### Empty Z-Image Latent Image
+
+
 ## Installation
 _Ensure you have the latest version of [ComfyUi](https://github.com/comfyanonymous/ComfyUI)._
 
