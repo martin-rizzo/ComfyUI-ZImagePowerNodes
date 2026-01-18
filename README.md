@@ -67,6 +67,31 @@ The easiest way to install the nodes is through [ComfyUI-Manager](https://github
    ```
 </details>
 
+## Recommended Checkpoints
+
+### GGUF Format
+
+<sub>GGUF checkpoints tend to run slightly slower in ComfyUI. However, if you are building a complex workflow that involves other models or using heavy LLMs with ollama, GGUF files can help prevent system freezes and OOM errors during generation, especially when VRAM is limited. For simple image generation workflows, a safetensors file (though heavier) might be preferable. When working with GGUF in Z-Image, from my experience, using the Q5_K_S quantization typically offers the best balance between file size and prompt response. </sub>
+
+ - __[z_image_turbo-Q5_K_S.gguf](https://huggingface.co/jayn7/Z-Image-Turbo-GGUF/blob/main/z_image_turbo-Q5_K_S.gguf)__ <sub>[5.19 GB]</sub>\
+   Local Directory: __`ComfyUI/models/diffusion_models/`__
+ - __[Qwen3-4B.i1-Q5_K_S.gguf](https://huggingface.co/mradermacher/Qwen3-4B-i1-GGUF/blob/main/Qwen3-4B.i1-Q5_K_S.gguf)__ <sub>[2.82 GB]</sub>\
+   Local Directory: __`ComfyUI/models/text_encoders/`__
+ - __[ae.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/vae/ae.safetensors)__ <sub>[335 MB]</sub>\
+   Local Directory: __`ComfyUI/models/vae/`__
+
+### Safetensors Format
+
+<sub>Safetensors files are generally larger, but ComfyUI includes several built-in optimizations to speed up generation even with limited VRAM. It's always a good idea to test the original safetensors checkpoints on your system to see how they perform. However, using safetensors in fp8 format is strongly discouraged as it can significantly reduce quality. If you have an RTX 50 series GPU based on Blackwell architecture, NVFP4 quantized safetensors could be a better choice.</sub>
+
+ - __[z_image_turbo_bf16.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/diffusion_models/z_image_turbo_bf16.safetensors)__ <sub>(12.3 GB)</sub>\
+   Local Directory: __`ComfyUI/models/diffusion_models/`__
+ - __[qwen_3_4b.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/text_encoders/qwen_3_4b.safetensors)__ <sub>(8.04 GB)</sub>\
+   Local Directory: __`ComfyUI/models/text_encoders/`__
+ - __[ae.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/vae/ae.safetensors)__ <sub>(335 MB)</sub>\
+   Local Directory: __`ComfyUI/models/vae/`__
+
+
 
 ## Example Workflow
 
