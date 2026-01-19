@@ -89,6 +89,7 @@ The easiest way to install the nodes is through [ComfyUI-Manager](https://github
    ```
 </details>
 
+
 ## Recommended Checkpoints
 
 ### GGUF Format
@@ -114,23 +115,9 @@ The easiest way to install the nodes is through [ComfyUI-Manager](https://github
    Local Directory: __`ComfyUI/models/vae/`__
 
 
+## Examples
 
-## Example Workflow
-
-<!--
-<table>
-  <tr>
-    <td width="190px">
-      <img src="workflows/ximg/zimage-nodes-workflow.png" alt="Z-Image Nodes Workflow" width="171" height="256">
-    </td>
-    <td>
-      The image contains a reference workflow for using and testing the Z-Image model with these nodes.<br/>
-      <i>- to load this workflow, simply drag and drop the image into ComfyUI.</i><br/>
-      <i>- other workflows are available in the <b><a href="workflows">workflows directory</a></b>.</i> 
-    </td>
-  </tr>
-</table>
--->
+A few example workflows demonstrating basic usage of these nodes can be found in the **[/workflows](/workflows)** directory.
 
 ## License
 
