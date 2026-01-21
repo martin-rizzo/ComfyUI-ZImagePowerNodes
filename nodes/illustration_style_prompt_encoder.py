@@ -18,7 +18,8 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 from comfy_api.latest            import io
 from .core.system                import logger
 from .styles.base                import Styles, apply_style_to_prompt
-from .styles.illustration_styles import ILLUSTRATION_STYLES
+from .styles.styles_by_category  import STYLES_BY_CATEGORY
+ILLUSTRATION_STYLES = STYLES_BY_CATEGORY["illustration"]
 
 
 class IllustrationStylePromptEncoder(io.ComfyNode):

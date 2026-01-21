@@ -15,10 +15,11 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
     - https://docs.comfy.org/custom-nodes/v3_migration
 
 """
-from comfy_api.latest     import io
-from .core.system         import logger
-from .styles.base         import Styles, apply_style_to_prompt
-from .styles.photo_styles import PHOTO_STYLES
+from comfy_api.latest           import io
+from .core.system               import logger
+from .styles.base               import Styles, apply_style_to_prompt
+from .styles.styles_by_category import STYLES_BY_CATEGORY
+PHOTO_STYLES = STYLES_BY_CATEGORY["photo"]
 
 
 class PhotoStylePromptEncoder(io.ComfyNode):
