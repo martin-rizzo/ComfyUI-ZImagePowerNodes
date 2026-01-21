@@ -44,9 +44,9 @@ __PROJECT_ID    = "//ZImagePowerNodes" #< used to identify the project in the Co
 from comfy.cli_args     import args
 from .nodes.core.system import setup_logger
 if os.getenv('ZIMAGE_NODES_DEBUG'):
-    setup_logger(log_level="DEBUG", emoji=__PROJECT_EMOJI, name="ZI_NODES", use_stdout=args.log_stdout)
+    setup_logger(log_level="DEBUG", emoji=__PROJECT_EMOJI, name="ZI_POWER", use_stdout=args.log_stdout)
 else:
-    setup_logger(log_level=args.verbose, emoji=__PROJECT_EMOJI, name="ZI_NODES", use_stdout=args.log_stdout)
+    setup_logger(log_level=args.verbose, emoji=__PROJECT_EMOJI, name="ZI_POWER", use_stdout=args.log_stdout)
 
 # import the newly initialized project logger
 from .nodes.core.system import logger
