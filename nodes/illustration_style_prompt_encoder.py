@@ -1,7 +1,7 @@
 """
 File    : illustration_style_prompt_encoder.py
-Purpose : Node that converts a text prompt into an embedding, automatically
-          adaptando el prompt to the selected illustrative style.
+Purpose : This node converts a text prompt into an embedding, automatically
+          adapting the prompt to match the selected illustrative style.
 Author  : Martin Rizzo | <martinrizzo@gmail.com>
 Date    : Jan 16, 2026
 Repo    : https://github.com/martin-rizzo/ComfyUI-ZImagePowerNodes

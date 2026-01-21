@@ -1,7 +1,7 @@
 """
 File    : photo_style_prompt_encoder.py
 Purpose : Node that converts a text prompt into an embedding, automatically
-          adapting the prompt to the selected photographic style before encoding.
+          adapting the prompt to match the selected photographic style.
 Author  : Martin Rizzo | <martinrizzo@gmail.com>
 Date    : Jan 16, 2026
 Repo    : https://github.com/martin-rizzo/ComfyUI-ZImagePowerNodes
