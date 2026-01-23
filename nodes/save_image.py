@@ -279,35 +279,24 @@ class SaveImage(io.ComfyNode):
 
     #__ nodes related functions ___________________________
 
-    CIVITAI_NODES="""
-{
+    CIVITAI_NODES="""{
 
   "$1": {
     "inputs": {
-      "text": "Astronaut.",
-      "clip": [
-        "$5",
-        1
-      ]
+      "text": "",
+      "clip": [ "$5", 1 ]
     },
     "class_type": "CLIPTextEncode",
-    "_meta": {
-      "title": "CLIP Text Encode (Positive Prompt)"
-    }
+    "_meta": { "title": "CLIP Text Encode (Positive Prompt)" }
   },
 
   "$2": {
     "inputs": {
       "text": "",
-      "clip": [
-        "$5",
-        1
-      ]
+      "clip": [ "$5", 1 ]
     },
     "class_type": "CLIPTextEncode",
-    "_meta": {
-      "title": "CLIP Text Encode (Negative Prompt)"
-    }
+    "_meta": { "title": "CLIP Text Encode (Negative Prompt)" }
   },
 
   "$3": {
@@ -317,9 +306,7 @@ class SaveImage(io.ComfyNode):
       "batch_size": 1
     },
     "class_type": "EmptySD3LatentImage",
-    "_meta": {
-      "title": "EmptySD3LatentImage"
-    }
+    "_meta": { "title": "EmptySD3LatentImage" }
   },
 
   "$4": {
@@ -330,60 +317,91 @@ class SaveImage(io.ComfyNode):
       "sampler_name": "euler",
       "scheduler": "simple",
       "denoise": 1.0,
-      "model": [
-        "$5",
-        0
-      ],
-      "positive": [
-        "$6",
-        0
-      ],
-      "negative": [
-        "$2",
-        0
-      ],
-      "latent_image": [
-        "$3",
-        0
-      ]
+      "model": [ "$5", 0 ],
+      "positive": [ "$6", 0 ],
+      "negative": [ "$2", 0 ],
+      "latent_image": [ "$3", 0 ]
     },
     "class_type": "KSampler",
-    "_meta": {
-      "title": "KSampler"
-    }
+    "_meta": { "title": "KSampler"  }
   },
 
 
   "$5": {
     "inputs": {
-      "ckpt_name": "flux1-dev-fp8.safetensors"
+      "ckpt_name": "z-image_turbo_.safetensors"
     },
     "class_type": "CheckpointLoaderSimple",
-    "_meta": {
-      "title": "Load Checkpoint"
-    }
+    "_meta": { "title": "Load Checkpoint"  }
   },
 
   "$6": {
     "inputs": {
-      "guidance": 3.5,
-      "conditioning": [
-        "$1",
-        0
-      ]
+      "guidance": 8.15,
+      "conditioning": [ "$1", 0 ]
     },
     "class_type": "FluxGuidance",
-    "_meta": {
-      "title": "FluxGuidance"
-    }
+    "_meta": { "title": "FluxGuidance" }
   }
 }
 """
+    @classmethod
+    def find_civitai_nodes(cls,
+                           nodes : dict[ str, dict ],
+                           ) -> int:
+        """
+        Searches for existing CivitAI-injected nodes in the given node dictionary.
+
+        This method looks through the provided nodes to check if it have been
+        previously injected with a specific pattern of nodes required by CivitAI.
+        It returns an index indicating where these nodes start, or 0 if no such
+        injection is found.
+
+        Args:
+            nodes (dict): The dictionary containing existing nodes.
+
+        Returns:
+            int: The base index where the CivitAI-injected nodes start, or 0 if not found.
+        """
+        for id, node in nodes.items():
+
+            # get the integer value of 'id' which should always be greater than 5
+            if isinstance(id, str) and id.isdigit():
+                id = int(id)
+            if not isinstance(id, int):
+                continue
+            if id <= 5:
+                continue
+
+            # check only CheckpointLoaderSimple nodes
+            if not isinstance(node,dict) or node.get('class_type', '') != 'CheckpointLoaderSimple':
+                continue
+
+            # verify that it is a CheckpointLoaderSimple node that was injected
+            ckpt_name = node.get('inputs',{}).get('ckpt_name','')
+            if ckpt_name != "z-image_turbo_.safetensors":
+                continue
+
+            # to be sure we have the right injected node,
+            # the next one should be a FluxGuidance with a guidance value between 8.1 and 8.2
+            next_node = nodes.get( str(id+1), {} )
+            if not isinstance(next_node,dict) or next_node.get("class_type", "") != "FluxGuidance":
+                continue
+            guidance = next_node.get("inputs", {}).get("guidance", None)
+            if not isinstance(guidance, (float,int)) or guidance <= 8.1 or guidance >= 8.2:
+                continue
+
+            base_index = (id - 5)
+            first_node = nodes.get( str(base_index+1), None )
+            if isinstance(first_node,dict) and first_node.get("class_type", "") == "CLIPTextEncode":
+                return base_index
+
+        return 0
 
 
     @classmethod
     def inject_civitai_nodes(cls,
-                             nodes : dict,
+                             nodes : dict[ str, dict ],
                              /,*,
                              positive     : str,
                              negative     : str,
@@ -391,7 +409,9 @@ class SaveImage(io.ComfyNode):
                              steps        : int,
                              cfg          : float,
                              sampler_name : str = "euler",
-                             scheduler    : str = "simple"
+                             scheduler    : str = "simple",
+                             width        : int = 1024,
+                             height       : int = 1024,
                              ) -> dict:
         """
         Injects generation parameters into a node format that Civitai can read.
@@ -409,42 +429,60 @@ class SaveImage(io.ComfyNode):
             cfg          (float): CFG scale, controlling how much the negative prompt affects the output.
             sampler_name   (str): Name of the sampler to be used in generation.
             scheduler (optional): Scheduler name. Defaults to "simple".
+            width     (optional): Image width in pixels. Defaults to 1024.
+            height    (optional): Image height in pixels. Defaults to 1024.
 
         Returns:
             Updated node dictionary with Civitai nodes included.
         """
-        # get the maximum index of any node
-        max_index = 0
-        for index in nodes.keys():
-            if isinstance(index, str):
-                index = int(index)
-            if isinstance(index, int) and index > max_index:
-                max_index = index
 
-        # reenumerate the nodes compatible with Civitai
-        # this way they don't collide with the nodes in the current workflow
-        civitai_nodes = cls.CIVITAI_NODES
-        for i in range(1, 9):
-            civitai_nodes = civitai_nodes.replace(f'"${i}"', f'"{max_index+i}"')
-        civitai_nodes = json.loads(civitai_nodes)
+        # check if `nodes` already has Civitai nodes injected
+        base_index   = cls.find_civitai_nodes(nodes)
+        not_injected = (base_index==0)
 
-        # modify the nodes "1", "2" and "4" assigning them the parameters
+        # if there are no Civitai nodes injected,
+        # get the maximum index of any node,
+        # that will be the base for inject CivitAI nodes
+        if not_injected:
+            base_index = 0
+            for index in nodes.keys():
+                if isinstance(index, str):
+                    index = int(index)
+                if isinstance(index, int) and index > base_index:
+                    base_index = index
+            base_index += 100
+
+            # reenumerate the CivitAI nodes from `base_index`
+            # this way they don't collide with the nodes in the actual workflow
+            civitai_nodes = cls.CIVITAI_NODES
+            for i in range(1, 9):
+                civitai_nodes = civitai_nodes.replace(f'"${i}"', f'"{base_index+i}"')
+            civitai_nodes = json.loads(civitai_nodes)
+
+            # inject CivitAI nodes into `nodes`
+            # these nodes are still "templates", they need to be configured with values
+            nodes = {**nodes, **civitai_nodes}
+
+        # modify the CivitAI nodes "1", "2" and "4" assigning them the parameters
         # prompt-positve, prompt-negative, seed, steps, etc...
-        positive_node = civitai_nodes[ str(max_index+1) ]
+        positive_node = nodes[ str(base_index+1) ]
         positive_node["inputs"]["text"] = positive
 
-        negative_node = civitai_nodes[ str(max_index+2) ]
+        negative_node = nodes[ str(base_index+2) ]
         negative_node["inputs"]["text"] = negative
 
-        ksampler_node = civitai_nodes[ str(max_index+4) ]
-        ksampler_node["inputs"]["seed"]         = seed
-        ksampler_node["inputs"]["steps"]        = steps
+        latent_image_node = nodes[ str(base_index+3) ]
+        latent_image_node["inputs"]["width" ] = int(width)
+        latent_image_node["inputs"]["height"] = int(height)
+
+        ksampler_node = nodes[ str(base_index+4) ]
+        ksampler_node["inputs"]["seed"]         = int(seed)
+        ksampler_node["inputs"]["steps"]        = int(steps)
         ksampler_node["inputs"]["cfg"]          = cfg
         ksampler_node["inputs"]["sampler_name"] = sampler_name
         ksampler_node["inputs"]["scheduler"]    = scheduler
 
-        # return the original prompt with Civitai nodes added
-        return {**nodes, **civitai_nodes}
+        return nodes
 
 
     @classmethod
