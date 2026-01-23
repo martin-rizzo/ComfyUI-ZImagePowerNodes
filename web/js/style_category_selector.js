@@ -13,8 +13,6 @@
 import { app } from "../../../scripts/app.js";
 import { api } from "../../../scripts/api.js";
 const ENABLED = true;
-
-
 /**
  * Object encapsulating the style category selection functionality.
  * @typedef {Object} StyleCategorySelector
@@ -27,19 +25,22 @@ const ENABLED = true;
 
 
 /**
- * Initializes the StyleCategorySelector node with specific widgets and functionality.
+ * Initializes the StyleCategorySelector object with specific widgets.
  * @param {StyleCategorySelector} self           - The StyleCategorySelector object to initialize.
  * @param {Object}                categoryWidget - The combobox that manages categories.
  * @param {Object}                styleWidget    - The combobox that manages styles.
  * @param {Object.<string, Array<string>>} stylesByCategory - An object mapping each category to a list of styles.
  */
-function onInit(self, categoryWidget, styleWidget, stylesByCategory) {
+function init(self, categoryWidget, styleWidget, stylesByCategory) {
 
     self.categoryWidget     = categoryWidget;
     self.styleWidget        = styleWidget;
     self.stylesByCategory   = stylesByCategory;
     self.oldCategory        = self.categoryWidget.value;
     self.selectedByCategory = {};
+
+    // fill the style combo widget with all the styles from the current category
+    fillStyleWidget(self, self.categoryWidget.value);
 
     // save the existing callback function
     const originalCallback = self.categoryWidget.callback;
@@ -52,9 +53,41 @@ function onInit(self, categoryWidget, styleWidget, stylesByCategory) {
 
 
 /**
+ * Fills the style combo widget with styles corresponding to the given category.
+ *
+ * @param {StyleCategorySelector} self - The StyleCategorySelector object.
+ * @param {string}            category - The name of the category whose styles should be displayed.
+ * @returns {string}
+ *     The name of the default style for the given category,
+ *     which is either "none" or the first style available.
+ */
+function fillStyleWidget(self, category) {
+
+    // if the category is not valid -> styles = ["none"]
+    if( category in self.stylesByCategory === false ) {
+        self.styleWidget.options.values = ["none"];
+        return "none"
+    }
+
+    // fill the style combo widget with the option "none"
+    // followed by all the styles from the category
+    let styles = ["none"];
+    const catStyles = self.stylesByCategory[category];
+    for (let i = 0; i < catStyles.length; i++) {
+        styles.push( catStyles[i] );
+    }
+    self.styleWidget.options.values = styles;
+
+    // by default try to select the second style
+    // (because the first always is "none")
+    return styles[ styles.length>=2 ? 1 : 0 ]
+}
+
+
+/**
  * Handles the change in category by updating available styles.
  * @param {StyleCategorySelector} self - The StyleCategorySelector object whose category has changed.
- * @param {string} newCategory      - The name of the new selected category.
+ * @param {string}         newCategory - The name of the new selected category.
  */
 function onCategoryChange(self, newCategory) {
 
@@ -62,31 +95,15 @@ function onCategoryChange(self, newCategory) {
     self.selectedByCategory[ self.oldCategory ] = self.styleWidget.value;
     self.oldCategory = newCategory;
 
-    // if the selected category is not valid -> styles = ["none"]
-    if( newCategory in self.stylesByCategory === false ) {
-        self.styleWidget.options.values = ["none"];
-        self.styleWidget.value          =  "none";
-        return;
-    }
+    // fill the style combo widget with all the styles for the new category
+    // and get the default style for that category
+    let defaultStyle = fillStyleWidget(self, newCategory);
 
-    // create the list of styles starting with "none" and including all from category
-    let styles = ["none"];
-    const catStyles = self.stylesByCategory[newCategory];
-    for (let i = 0; i < catStyles.length; i++) {
-        styles.push( catStyles[i] );
-    }
-
-    // by default try to select the second style (because the first always is "none")
-    let selectedStyle = styles.length >= 2 ? styles[1] : "none";
-
-    // if this category already had a previously selected style, use it
+    // if the category already had a previously selected style, use it as the default
     if( newCategory in self.selectedByCategory ) {
-        selectedStyle = self.selectedByCategory[newCategory];
+        defaultStyle = self.selectedByCategory[newCategory];
     }
-
-    // apply changes
-    self.styleWidget.options.values = styles;
-    self.styleWidget.value          = selectedStyle;
+    self.styleWidget.value = defaultStyle;
 }
 
 
@@ -143,7 +160,7 @@ app.registerExtension({
         { return; }
 
         node.styleCategorySelectorZ = {};
-        onInit(node.styleCategorySelectorZ, categoryWidget, styleWidget, stylesByCategory);
+        init(node.styleCategorySelectorZ, categoryWidget, styleWidget, stylesByCategory);
 	},
 
 })
