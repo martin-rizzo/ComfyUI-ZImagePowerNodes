@@ -109,6 +109,10 @@ class StyleGroup:
 
     def get_style(self, name: str, default: str = "") -> str:
         """Return the style content for a given name. If it doesn't exist, returns `default` or empty string."""
+        # the name can be quoted with single or double quotes
+        if(  ( name.startswith("'") and name.endswith("'") )  or
+             ( name.startswith('"') and name.endswith('"') )  ):
+            name = name[1:-1]
         return self._styles.get(name, default)
 
 
@@ -126,14 +130,21 @@ class StyleGroup:
             self._ordered_keys.remove(name)
 
 
-    def get_names(self) -> list[str]:
-        """Return all keys in the order they were added."""
-        return self._ordered_keys
+    def get_names(self, /,*, quoted: bool | str = False) -> list[str]:
+        """Return all keys in the order they were added.
+        Args:
+            quoted (optional):
+                if True then each key is returned as a text with double quotes around it.
+                if a string is passed then it's used as the quote char. Defaults to False.
+        """
+        if not quoted:
+            return self._ordered_keys
 
-
-    def get(self, name, default=None):
-        """Return the style content for a given name. If it doesn't exist, returns default."""
-        return self._styles.get(name, default)
+        quote_char = quoted if isinstance(quoted, str) else '"'
+        result = []
+        for name in self.get_names():
+            result.append(f'{quote_char}{name}{quote_char}')
+        return result
 
 
     def __getitem__(self, key):

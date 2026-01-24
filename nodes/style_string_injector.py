@@ -1,8 +1,8 @@
 """
-File    : style_prompt_encoder.py
-Purpose : Node to get conditioning embeddings from a given style + prompt.
+File    : style_string_injector.py
+Purpose : 
 Author  : Martin Rizzo | <martinrizzo@gmail.com>
-Date    : Jan 16, 2026
+Date    : Jan 22, 2026
 Repo    : https://github.com/martin-rizzo/ComfyUI-ZImagePowerNodes
 License : MIT
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -19,8 +19,8 @@ from .styles.style_group        import StyleGroup, apply_style_to_prompt
 from .styles.predefined_styles  import PREDEFINED_STYLE_GROUPS
 
 
-class StylePromptEncoder(io.ComfyNode):
-    xTITLE         = "Style & Prompt Encoder"
+class StyleStringInjector(io.ComfyNode):
+    xTITLE         = "Style String Injector"
     xCATEGORY      = ""
     xCOMFY_NODE_ID = ""
     xDEPRECATED    = False
@@ -34,72 +34,50 @@ class StylePromptEncoder(io.ComfyNode):
             node_id       = cls.xCOMFY_NODE_ID,
             is_deprecated = cls.xDEPRECATED,
             description   = (
-                "Transforms a text prompt into embeddings, automatically adapting the prompt to match "
-                "the selected style. This node takes a prompt, adjusts its visual style according to "
-                "the chosen option, and then encodes it using the provided text encoder (clip) to "
-                "generate an embedding that will guide image generation."
+                "Injects a style to your prompt. This node takes a text prompt and modifies it "
+                "according to the selected style"
             ),
             inputs=[
-                io.Clip.Input  ("clip",
-                                tooltip="The CLIP model used for encoding the text."
-                               ),
-                io.String.Input("customization", optional=True, multiline=True, force_input=True,
-                                tooltip=(
-                                  'An optional multi-line string to customize existing styles. '
-                                  'Each style definition must start with ">>>" followed by the style name, and then include '
-                                  'its description on the next lines. The description should incorporate "{$@}" where the '
-                                  'main text prompt will be inserted.'),
-                               ),
                 io.Combo.Input ("category", options=cls.category_names(), default=cls.default_category_name(),
                                 tooltip="The category of styles you want to select from.",
                                ),
                 io.Combo.Input ("style", options=cls.style_names(), default=cls.default_style_name(),
                                 tooltip="The style you want for your image.",
                                ),
-                io.String.Input("text", multiline=True, dynamic_prompts=True,
-                                tooltip="The prompt to encode.",
+                io.String.Input("string", multiline=True, dynamic_prompts=True, force_input=True,
+                                tooltip="The prompt to modify.",
                                ),
             ],
             outputs=[
-                io.Conditioning.Output(tooltip="The encoded text used to guide the image generation."),
-                io.String.Output(tooltip="The prompt after applying the selected visual style."),
+                io.String.Output(tooltip="The prompt after applying the selected style."),
             ]
         )
 
     #__ FUNCTION __________________________________________
     @classmethod
     def execute(cls,
-                clip,
                 category      : str,
-                style: str,
-                text          : str,
-                customization : str = ""
+                style         : str,
+                string        : str,
                 ) -> io.NodeOutput:
         style_to_apply = None
-        prompt         = text
-        custom_styles  = StyleGroup.from_string(customization)
+        prompt         = string
 
         if isinstance(style, str) and style != "none":
-            # first search inside the custom styles that the user has defined,
-            # if not found, search inside the predefined styles
-            style_to_apply = custom_styles.get_style(style)
-            if not style_to_apply:
-                style_to_apply = cls.get_predefined_style(style)
+            style_to_apply = cls.get_predefined_style(style)
 
         # if the style was found, apply it to the prompt
         if style_to_apply:
             prompt = apply_style_to_prompt(prompt, style_to_apply, spicy_impact_booster=False)
 
-        if clip is None:
-            raise RuntimeError("ERROR: clip input is invalid: None\n\nIf the clip is from a checkpoint loader node your checkpoint does not contain a valid clip or text encoder model.")
-        tokens = clip.tokenize(prompt)
-        return io.NodeOutput( clip.encode_from_tokens_scheduled(tokens), prompt )
+        return io.NodeOutput( prompt )
+
 
     #__ VALIDATION ________________________________________
     @classmethod
     def validate_inputs(cls, **kwargs) -> bool | str:
         if kwargs["category"] not in cls.category_names():
-            return f"The category name '{kwargs['category']}' is invalid. May be the node is from an older version."
+            return f"The category name '{kwargs['style_type']}' is invalid. May be the node is from an older version."
         return True
 
 

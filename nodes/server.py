@@ -22,7 +22,7 @@ routes = PromptServer.instance.routes
 
 
 @cache
-def _style_names_by_category() -> dict[ str, list[str] ]:
+def _style_names_by_category(quoted: bool | str = False) -> dict[ str, list[str] ]:
     """
     Generates a dictionary mapping categories to all the style names in that category.
 
@@ -33,8 +33,7 @@ def _style_names_by_category() -> dict[ str, list[str] ]:
     names_by_category = {}
     for style_group in PREDEFINED_STYLE_GROUPS:
         names = names_by_category.setdefault( style_group.category, [] )
-        for name in style_group.get_names():
-            names.append( name )
+        names.extend( style_group.get_names(quoted=quoted) )
 
     return names_by_category
 
@@ -56,6 +55,15 @@ async def get_styles_by_category(_):
     This route returns style names grouped by their respective categories.
     """
     return web.json_response( _style_names_by_category() )
+
+@routes.get("/zi_power/quoted_styles/by_category")
+async def get_quoted_styles_by_category(_):
+    """
+    Handles GET requests to '/zi_power/quoted_styles/by_category'.
+    This route returns quoted style names grouped by their respective categories.
+    """
+    return web.json_response( _style_names_by_category(quoted=True) )
+
 
 
 @routes.get("/zi_power/styles/by_version")
