@@ -28,9 +28,9 @@ def get_class_type(node: dict) -> str:
     return class_type
 
 
-def get_input_number(node: dict, input_name: str, /,*, default: float | int = 0) -> float | int:
+def get_input_int(node: dict, input_name: str, /, *, default: int = 0) -> int:
     """
-    Retrieves the numeric value of an input from a given node.
+    Retrieves the integer value of an input from a given node.
 
     If `input_name` does not exist in the node or is a connection to
     another node, this function returns the specified `default` value.
@@ -38,19 +38,50 @@ def get_input_number(node: dict, input_name: str, /,*, default: float | int = 0)
     Args:
         node        (dict): The node from which to retrieve the input value.
         input_name   (str): The name of the input to look up.
-        default (optional): The default value to return if the input is not found or is a connection.
-                            Defaults to 0.
+        default (optional): The default integer value to return if the input
+                            is not found or is a connection. Defaults to 0.
 
     Returns:
-        float | int: The numeric value of the input or the provided default value.
+        The integer representation of the input value
+        or the provided default integer value if it cannot be converted.
     """
-    inputs = node  .get("inputs"  ) if isinstance(node  ,dict) else None
-    value  = inputs.get(input_name) if isinstance(inputs,dict) else None
-    if isinstance(value, (float,int)):
-        return value
-    if isinstance(value, (str)) and value.isdigit():
+    inputs = node.get("inputs")     if isinstance(node  , dict) else None
+    value  = inputs.get(input_name) if isinstance(inputs, dict) else None
+
+    if isinstance(value, (int,float)):
         return int(value)
-    return default
+    elif isinstance(value, str):
+        try   : return int(value)
+        except: pass
+    return int(default) if isinstance(default,(int,float)) else 0
+
+
+def get_input_float(node: dict, input_name: str, /, *, default: float = 0.0) -> float:
+    """
+    Retrieves the floating-point value of an input from a given node.
+
+    If `input_name` does not exist in the node or is a connection to
+    another node, this function returns the specified `default` value.
+
+    Args:
+        node        (dict): The node from which to retrieve the input value.
+        input_name   (str): The name of the input to look up.
+        default (optional): The default float value to return if the input
+                            is not found or is a connection. Defaults to 0.0.
+
+    Returns:
+        The floating-point representation of the input value
+        or the provided default float value if it cannot be converted.
+    """
+    inputs = node.get("inputs")     if isinstance(node  , dict) else None
+    value  = inputs.get(input_name) if isinstance(inputs, dict) else None
+
+    if isinstance(value, (float, int)):
+        return float(value)
+    elif isinstance(value, str):
+        try   : return float(value)
+        except: pass
+    return float(default) if isinstance(default,(float,int)) else 0.0
 
 
 def get_input_string(node: dict, input_name: str, *, default: str = "") -> str:

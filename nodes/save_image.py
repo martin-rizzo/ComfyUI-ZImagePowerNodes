@@ -28,8 +28,8 @@ from PIL.PngImagePlugin  import PngInfo
 from comfy_api.latest    import io
 from typing              import Any
 from .core.system        import logger
-from .core.node_helpers  import get_input_number, get_input_string, get_input_node, \
-                                get_class_type, find_prompt
+from .core.node_helpers  import get_input_int, get_input_float, get_input_string, \
+                                get_input_node, get_class_type, find_prompt
 
 
 class SaveImage(io.ComfyNode):
@@ -87,7 +87,7 @@ class SaveImage(io.ComfyNode):
         prompt_nodes   = cls.hidden.prompt
         workflow_nodes = extra_pnginfo.get("workflow") if extra_pnginfo else None
 
-        # solve the `filename_prefix`` entered by the user and get the full path
+        # solve the `filename_prefix` entered by the user and get the full path
         filename_prefix = \
             cls.solve_filename_variables( f"{filename_prefix}{cls.xEXTRA_PREFIX}" )
         full_output_folder, name, counter, subfolder, filename_prefix \
@@ -544,11 +544,11 @@ class SaveImage(io.ComfyNode):
                     initial_sampler_node = node
                     params["positive"]     = find_prompt(node, type="positive", nodes=nodes)
                     params["negative"]     = find_prompt(node, type="negative", nodes=nodes)
-                    params["seed"]         = int  ( get_input_number(node, "seed"        , default=0   ))
-                    params["steps"]        = int  ( get_input_number(node, "steps"       , default=8   ))
-                    params["cfg"]          = float( get_input_number(node, "cfg"         , default=3.5 ))
-                    params["sampler_name"] = str  ( get_input_string(node, "sampler_name", default=""  ))
-                    params["scheduler"]    = str  ( get_input_string(node, "scheduler"   , default=""  ))
+                    params["seed"]         = get_input_int   (node, "seed"        , default=-1  )
+                    params["steps"]        = get_input_int   (node, "steps"       , default=-1  )
+                    params["cfg"]          = get_input_float (node, "cfg"         , default=-1.0)
+                    params["sampler_name"] = get_input_string(node, "sampler_name", default=""  )
+                    params["scheduler"]    = get_input_string(node, "scheduler"   , default=""  )
                     break
 
             if class_type.startswith("ZSamplerTurbo "):
@@ -556,8 +556,8 @@ class SaveImage(io.ComfyNode):
                 if cls.is_empty_latent_node(latent_node):
                     initial_sampler_node = node
                     params["positive"]     = find_prompt(node, type="positive", nodes=nodes)
-                    params["seed"]         = int( get_input_number(node, "seed" , default=0) )
-                    params["steps"]        = int( get_input_number(node, "steps", default=8) )
+                    params["seed"]         = get_input_int(node, "seed" , default=-1)
+                    params["steps"]        = get_input_int(node, "steps", default=-1)
                     params["cfg"]          = 1.0      # this node always uses cfg = 1.0
                     params["sampler_name"] = "euler"  # internally, this node always uses "euler"
                     # no scheduler, this node uses a fixed custom scheduler
@@ -593,16 +593,16 @@ class SaveImage(io.ComfyNode):
 
             params = {}
 
-            width = get_input_number(node, "width", default=0)
+            width = get_input_int(node, "width", default=-1)
             if width>0: params["width"] = int(width)
 
-            height = get_input_number(node, "height", default=0)
+            height = get_input_int(node, "height", default=-1)
             if height>0: params["height"] = int(height)
 
-            seed = get_input_number(node, "seed", default=-1)
-            if seed>=0:  params["seed"] = int(seed)
+            seed = get_input_int(node, "seed", default=-1)
+            if seed>=0: params["seed"] = int(seed)
 
-            cfg = get_input_number(node, "cfg", default=-1.0)
+            cfg = get_input_float(node, "cfg", default=-1.0)
             if cfg>=0: params["cfg"] = float(cfg)
 
             prompt = get_input_string(node, "text", default="")
