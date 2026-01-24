@@ -23,7 +23,7 @@ In general, the functions in this file operate on the "prompt" structure.
 
 def get_class_type(node: dict) -> str:
     """Returns the class name of a node."""
-    class_type = node.get("class", "") if isinstance(node ,dict) else ""
+    class_type = node.get("class_type", "") if isinstance(node ,dict) else ""
     class_type = class_type.partition(" //")[0]  #< Z-Image Power Nodes has a special format for class names.
     return class_type
 
