@@ -1,0 +1,877 @@
+{
+  "id": "f14c6566-993e-4413-bd11-9c7f2ca07fd1",
+  "revision": 0,
+  "last_node_id": 50,
+  "last_link_id": 66,
+  "nodes": [
+    {
+      "id": 20,
+      "type": "Reroute",
+      "pos": [
+        970,
+        790
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 24
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "VAE",
+          "links": [
+            62
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 31,
+      "type": "SaveImage //ZImagePowerNodes",
+      "pos": [
+        1360,
+        150
+      ],
+      "size": [
+        540,
+        760
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 66
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "SaveImage //ZImagePowerNodes"
+      },
+      "widgets_values": [
+        "ZImage/%date:yyyy_MM_dd%/ZI",
+        true
+      ]
+    },
+    {
+      "id": 35,
+      "type": "UnetLoaderGGUF",
+      "pos": [
+        -340,
+        150
+      ],
+      "size": [
+        380,
+        100
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            55
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UnetLoaderGGUF",
+        "cnr_id": "comfyui-gguf",
+        "aux_id": "city96/ComfyUI-GGUF",
+        "ver": "1.1.8"
+      },
+      "widgets_values": [
+        "z_image_turbo-Q5_K_S.gguf"
+      ],
+      "color": "#322",
+      "bgcolor": "#533",
+      "shape": 1
+    },
+    {
+      "id": 36,
+      "type": "CLIPLoaderGGUF",
+      "pos": [
+        -340,
+        290
+      ],
+      "size": [
+        380,
+        110
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            54
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPLoaderGGUF",
+        "cnr_id": "comfyui-gguf",
+        "aux_id": "city96/ComfyUI-GGUF",
+        "ver": "1.1.8"
+      },
+      "widgets_values": [
+        "Qwen3-4B.i1-Q5_K_S.gguf",
+        "lumina2"
+      ],
+      "color": "#322",
+      "bgcolor": "#533",
+      "shape": 1
+    },
+    {
+      "id": 37,
+      "type": "VAELoader",
+      "pos": [
+        -340,
+        440
+      ],
+      "size": [
+        380,
+        90
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            56
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.75"
+      },
+      "widgets_values": [
+        "ae.safetensors"
+      ],
+      "color": "#322",
+      "bgcolor": "#533",
+      "shape": 1
+    },
+    {
+      "id": 41,
+      "type": "Note",
+      "pos": [
+        -1230,
+        110
+      ],
+      "size": [
+        870,
+        550
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "README",
+      "properties": {},
+      "widgets_values": [
+        "Z-Image Power Nodes\n\n## Workflow Prerequisites ##\n\nThis workflow requires the following custom nodes, which can be obtained via ComfyUI-Manager:\n\n  * Z-Image Power Nodes: https://github.com/martin-rizzo/ComfyUI-ZImagePowerNodes\n  * ComfyUI-GGUF       : https://github.com/city96/ComfyUI-GGUF\n\n Additionally, ensure you have the following 3 models downloaded and placed in their respective\n directories within your ComfyUI installation:\n\n  z_image_turbo-Q5_K_S.gguf\n    * Download: https://huggingface.co/jayn7/Z-Image-Turbo-GGUF/blob/main/z_image_turbo-Q5_K_S.gguf\n    * Local Directory: `ComfyUI/models/diffusion_models/`\n\n  Qwen3-4B.i1-Q5_K_S.gguf\n    * Download: https://huggingface.co/mradermacher/Qwen3-4B-i1-GGUF/blob/main/Qwen3-4B.i1-Q5_K_S.gguf\n    * Local Directory: `ComfyUI/models/text_encoders/`\n\n  ae.safetensors\n    * Download: https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/vae/ae.safetensors\n    * Local Directory: `Comfyui/models/vae/`\n\n## More Info ##\n\n- https://github.com/martin-rizzo/ComfyUI-ZImagePowerNodes\n- https://civitai.com/models/2322533/z-image-power-nodes\n\nCreated by Martin Rizzo\n  GitHub : https://github.com/martin-rizzo\n  CivitAI: https://civitai.com/user/Photographer\n  Reddit : https://www.reddit.com/user/FotografoVirtual\n"
+      ],
+      "color": "#223",
+      "bgcolor": "#335",
+      "shape": 1
+    },
+    {
+      "id": 39,
+      "type": "Reroute",
+      "pos": [
+        70,
+        150
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 55
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "MODEL",
+          "links": [
+            63
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 40,
+      "type": "Reroute",
+      "pos": [
+        70,
+        440
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 56
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "VAE",
+          "links": [
+            59
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 19,
+      "type": "Reroute",
+      "pos": [
+        200,
+        790
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 59
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "VAE",
+          "links": [
+            24
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 38,
+      "type": "Reroute",
+      "pos": [
+        70,
+        290
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 54
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CLIP",
+          "links": [
+            60
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 42,
+      "type": "StylePromptEncoder //ZImagePowerNodes",
+      "pos": [
+        200,
+        210
+      ],
+      "size": [
+        660,
+        570
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 60
+        },
+        {
+          "name": "customization",
+          "shape": 7,
+          "type": "STRING",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            64
+          ]
+        },
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "StylePromptEncoder //ZImagePowerNodes"
+      },
+      "widgets_values": [
+        "photo",
+        "\"Custom 2\"",
+        "The interior of a retro-futuristic 1960s bar features sleek chrome architecture and rounded, modular forms. A chrome bar extends horizontally along the frame, showcasing a strip of bright turquoise acrylic. In the center-right, a man in his mid-thirties stands at the bar, resting one hand on the glossy surface while holding a tall glass in the other. He turns his head to look directly at the camera, a playful, knowing smile spreading across his face. The glass contains a bright orange drink with small floating spheres that reflect the pastel light. He wears a form-fitting, silver, retro-futuristic 1960s uniform with a short, high collar and a single vertical pastel blue stripe on the jacket. His hair is neatly styled with a clean, mid-century part. Behind the bar stands the bartender, a colossal and terrifying humanoid figure resembling an octopus. It is a mass of shimmering, bioluminescent tissue in shades of deep violet and emerald green, from whose torso emerges a network of thick tentacles. On its head, a set of multifaceted insectoid eyes constantly moves, scanning the room. The tentacles, with delicate pads at their tips, manipulate the glassware with unsettling grace. Behind the bartender, a mirrored wall reflects rows of liquor bottles with geometric labels from the 1960s. Above the bar floats a retro neon sign made of curved glass tubes that reads \"COSMIC LOUNGE\" in tall, rounded 1960s letters, emitting a pale pink and blue light with a soft, glowing halo. A chrome-framed illuminated menu board reads \"SIGNATURE DRINKS\" with three items: \"ORBITAL HIGHBALL,\" \"NEBULA SOUR,\" and \"ROCKET MARTINI,\" each displayed on horizontal bars that glow in either pastel blue or pastel orange. To the right, a chrome-plated cylindrical column features a vertical neon panel that reads \"OPEN 24 HOURS\" in condensed, bright orange letters within a translucent strip. To the left, a curved, mint-green booth sits beneath a domed ceiling light. An illuminated sign reading \"GALAXY BAR SERVICE\" encircles the inner rim of the dome in white capitals and dominates the left side of the frame. Soft pastel lighting in shades of lavender, aquamarine, mint, and pale amber reflects off the chrome, glass, and acrylic surfaces, enhancing the distinctly retro-futuristic 1960s design."
+      ],
+      "color": "#232",
+      "bgcolor": "#353",
+      "shape": 1
+    },
+    {
+      "id": 32,
+      "type": "EmptyZImageLatentImage //ZImagePowerNodes",
+      "pos": [
+        530,
+        20
+      ],
+      "size": [
+        316.9362396240234,
+        130
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            65
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyZImageLatentImage //ZImagePowerNodes"
+      },
+      "widgets_values": [
+        false,
+        "3:2  (photo)",
+        "small",
+        1
+      ]
+    },
+    {
+      "id": 50,
+      "type": "164e1054-0355-4537-a615-b70134ab1bd7",
+      "pos": [
+        1110,
+        -140
+      ],
+      "size": [
+        210,
+        330
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 62
+        },
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 63
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 64
+        },
+        {
+          "name": "latent_input",
+          "type": "LATENT",
+          "link": 65
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            66
+          ]
+        }
+      ],
+      "title": "Test Subgraph",
+      "properties": {
+        "proxyWidgets": [
+          [
+            "18",
+            "seed"
+          ],
+          [
+            "-1",
+            "$$canvas-image-preview"
+          ]
+        ]
+      },
+      "widgets_values": []
+    }
+  ],
+  "links": [
+    [
+      24,
+      19,
+      0,
+      20,
+      0,
+      "VAE"
+    ],
+    [
+      54,
+      36,
+      0,
+      38,
+      0,
+      "CLIP"
+    ],
+    [
+      55,
+      35,
+      0,
+      39,
+      0,
+      "MODEL"
+    ],
+    [
+      56,
+      37,
+      0,
+      40,
+      0,
+      "VAE"
+    ],
+    [
+      59,
+      40,
+      0,
+      19,
+      0,
+      "VAE"
+    ],
+    [
+      60,
+      38,
+      0,
+      42,
+      0,
+      "CLIP"
+    ],
+    [
+      62,
+      20,
+      0,
+      50,
+      0,
+      "VAE"
+    ],
+    [
+      63,
+      39,
+      0,
+      50,
+      1,
+      "MODEL"
+    ],
+    [
+      64,
+      42,
+      0,
+      50,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      65,
+      32,
+      0,
+      50,
+      3,
+      "LATENT"
+    ],
+    [
+      66,
+      50,
+      0,
+      31,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 2,
+      "title": "GGUF MODELS",
+      "bounding": [
+        -350,
+        80,
+        400,
+        580
+      ],
+      "color": "#A88",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "definitions": {
+    "subgraphs": [
+      {
+        "id": "164e1054-0355-4537-a615-b70134ab1bd7",
+        "version": 1,
+        "state": {
+          "lastGroupId": 2,
+          "lastNodeId": 49,
+          "lastLinkId": 61,
+          "lastRerouteId": 0
+        },
+        "revision": 0,
+        "config": {},
+        "name": "New Subgraph",
+        "inputNode": {
+          "id": -10,
+          "bounding": [
+            750,
+            -175,
+            120,
+            120
+          ]
+        },
+        "outputNode": {
+          "id": -20,
+          "bounding": [
+            1500,
+            -145,
+            120,
+            60
+          ]
+        },
+        "inputs": [
+          {
+            "id": "a7d6a899-a9f0-4014-ac15-b9e47655aef6",
+            "name": "vae",
+            "type": "VAE",
+            "linkIds": [
+              25
+            ],
+            "localized_name": "vae",
+            "pos": [
+              55,
+              20
+            ]
+          },
+          {
+            "id": "51d123c0-bdda-421b-bb11-ee04c1954db9",
+            "name": "model",
+            "type": "MODEL",
+            "linkIds": [
+              57
+            ],
+            "localized_name": "model",
+            "pos": [
+              55,
+              40
+            ]
+          },
+          {
+            "id": "09dccac8-dcd2-4d1d-83c1-7850894a0b6b",
+            "name": "positive",
+            "type": "CONDITIONING",
+            "linkIds": [
+              61
+            ],
+            "localized_name": "positive",
+            "pos": [
+              55,
+              60
+            ]
+          },
+          {
+            "id": "40c99bf5-16af-4244-a411-6f943103946a",
+            "name": "latent_input",
+            "type": "LATENT",
+            "linkIds": [
+              48
+            ],
+            "localized_name": "latent_input",
+            "pos": [
+              55,
+              80
+            ]
+          }
+        ],
+        "outputs": [
+          {
+            "id": "38dcb813-9c21-47cd-9a5b-ec43687c28a9",
+            "name": "IMAGE",
+            "type": "IMAGE",
+            "linkIds": [
+              47
+            ],
+            "localized_name": "IMAGE",
+            "pos": [
+              20,
+              20
+            ]
+          }
+        ],
+        "widgets": [],
+        "nodes": [
+          {
+            "id": 8,
+            "type": "VAEDecode",
+            "pos": [
+              1280,
+              -330
+            ],
+            "size": [
+              160,
+              50
+            ],
+            "flags": {},
+            "order": 0,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "samples",
+                "name": "samples",
+                "type": "LATENT",
+                "link": 22
+              },
+              {
+                "localized_name": "vae",
+                "name": "vae",
+                "type": "VAE",
+                "link": 25
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "IMAGE",
+                "name": "IMAGE",
+                "type": "IMAGE",
+                "slot_index": 0,
+                "links": [
+                  47
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "VAEDecode",
+              "cnr_id": "comfy-core",
+              "ver": "0.7.0"
+            },
+            "widgets_values": []
+          },
+          {
+            "id": 18,
+            "type": "ZSamplerTurbo //ZImagePowerNodes",
+            "pos": [
+              930,
+              -340
+            ],
+            "size": [
+              250,
+              480
+            ],
+            "flags": {},
+            "order": 1,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "model",
+                "name": "model",
+                "type": "MODEL",
+                "link": 57
+              },
+              {
+                "localized_name": "positive",
+                "name": "positive",
+                "type": "CONDITIONING",
+                "link": 61
+              },
+              {
+                "localized_name": "latent_input",
+                "name": "latent_input",
+                "type": "LATENT",
+                "link": 48
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "latent_output",
+                "name": "latent_output",
+                "type": "LATENT",
+                "links": [
+                  22
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "ZSamplerTurbo //ZImagePowerNodes",
+              "aux_id": "martin-rizzo/ComfyUI-ZImagePowerNodes",
+              "ver": "7cb3b03f95eeae260ebbc2facdf6ba6c1e16e639"
+            },
+            "widgets_values": [
+              1,
+              "fixed",
+              4,
+              1
+            ]
+          }
+        ],
+        "groups": [],
+        "links": [
+          {
+            "id": 22,
+            "origin_id": 18,
+            "origin_slot": 0,
+            "target_id": 8,
+            "target_slot": 0,
+            "type": "LATENT"
+          },
+          {
+            "id": 25,
+            "origin_id": -10,
+            "origin_slot": 0,
+            "target_id": 8,
+            "target_slot": 1,
+            "type": "VAE"
+          },
+          {
+            "id": 57,
+            "origin_id": -10,
+            "origin_slot": 1,
+            "target_id": 18,
+            "target_slot": 0,
+            "type": "MODEL"
+          },
+          {
+            "id": 61,
+            "origin_id": -10,
+            "origin_slot": 2,
+            "target_id": 18,
+            "target_slot": 1,
+            "type": "CONDITIONING"
+          },
+          {
+            "id": 48,
+            "origin_id": -10,
+            "origin_slot": 3,
+            "target_id": 18,
+            "target_slot": 2,
+            "type": "LATENT"
+          },
+          {
+            "id": 47,
+            "origin_id": 8,
+            "origin_slot": 0,
+            "target_id": -20,
+            "target_slot": 0,
+            "type": "IMAGE"
+          }
+        ],
+        "extra": {
+          "workflowRendererVersion": "LG"
+        }
+      }
+    ]
+  },
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.7513148009015783,
+      "offset": [
+        337.47531842709907,
+        317.5355501679264
+      ]
+    },
+    "frontendVersion": "1.35.9",
+    "workflowRendererVersion": "LG"
+  },
+  "version": 0.4
+}
