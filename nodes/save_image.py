@@ -18,16 +18,15 @@ Code for the metadata extraction process used by CivitAI:
 
 """
 import os
-import time
 import json
 import numpy as np
-import torch
 import folder_paths
 from PIL                 import Image
 from PIL.PngImagePlugin  import PngInfo
 from comfy_api.latest    import io
 from typing              import Any
 from .core.system        import logger
+from .core.helpers       import expand_date_and_vars, normalize_images
 from .core.node_helpers  import get_input_int, get_input_float, get_input_string, \
                                 get_input_node, get_class_type, find_prompt
 
@@ -79,7 +78,7 @@ class SaveImage(io.ComfyNode):
     def execute(cls, images, filename_prefix: str, civitai_compatible_metadata: bool):
 
         output_dir     = cls.xOUTPUT_DIR if cls.xOUTPUT_DIR else folder_paths.get_output_directory()
-        images         = cls.normalize_images(images)
+        images         = normalize_images(images)
         image_width    = images[0].shape[1]
         image_height   = images[0].shape[0]
         extra_pnginfo  = cls.hidden.extra_pnginfo
@@ -87,9 +86,8 @@ class SaveImage(io.ComfyNode):
         prompt_nodes   = cls.hidden.prompt
         workflow_nodes = extra_pnginfo.get("workflow") if extra_pnginfo else None
 
-        # solve the `filename_prefix` entered by the user and get the full path
-        filename_prefix = \
-            cls.solve_filename_variables( f"{filename_prefix}{cls.xEXTRA_PREFIX}" )
+        # expand `filename_prefix` variables entered by the user and get the full path
+        filename_prefix = expand_date_and_vars( f"{filename_prefix}{cls.xEXTRA_PREFIX}", vars = {} )
         full_output_folder, name, counter, subfolder, filename_prefix \
             = folder_paths.get_save_image_path(filename_prefix,
                                                output_dir,
@@ -180,133 +178,6 @@ class SaveImage(io.ComfyNode):
 
     #__ internal functions ________________________________
 
-    @classmethod
-    def solve_filename_variables(cls,
-                                 filename : str,
-                                 ) -> str:
-        """
-        Solve the filename variables and return a string containing the solved filename.
-        Args:
-            filename    : The filename to solve.
-            genparams   : A GenParams dictionary containing all the generation parameters.
-        """
-        now: time.struct_time = time.localtime()
-
-        def get_var_value(name: str) -> str | None:
-                """Returns the value for a given variable name or None if the variable name is not defined."""
-                case_name = name
-                name      = case_name.lower()
-                if name == "":
-                    return "%"
-                # try to resolve time variables
-                elif name == "year"  : return str(now.tm_year)
-                elif name == "month" : return str(now.tm_mon ).zfill(2)
-                elif name == "day"   : return str(now.tm_mday).zfill(2)
-                elif name == "hour"  : return str(now.tm_hour).zfill(2)
-                elif name == "minute": return str(now.tm_min ).zfill(2)
-                elif name == "second": return str(now.tm_sec ).zfill(2)
-                # try to resolve full date variable
-                elif name.startswith("date:"):
-                    value = case_name[5:]
-                    value = cls.ireplace(value, "yyyy", str(now.tm_year))
-                    value = cls.ireplace(value, "yy"  , str(now.tm_year)[-2:])
-                    value = value.replace(  "MM"  , str(now.tm_mon ).zfill(2))
-                    value = cls.ireplace(value, "dd"  , str(now.tm_mday).zfill(2))
-                    value = cls.ireplace(value, "hh"  , str(now.tm_hour).zfill(2))
-                    value = value.replace(  "mm"  , str(now.tm_min ).zfill(2))
-                    value = cls.ireplace(value, "ss"  , str(now.tm_sec ).zfill(2))
-                    return value
-                #elif name in extra_vars:
-                #    value = str(extra_vars[name])[:16]
-                return None
-
-        output = ""
-        next_token_is_var = False
-        for token in filename.split("%"):
-            current_token_is_var = next_token_is_var
-            last_token_was_text  = current_token_is_var
-
-            # if the token contains spaces then it's not a variable name
-            if ' ' in token:
-                current_token_is_var = False
-
-            var_value = get_var_value(token) if current_token_is_var else None
-            if var_value is not None:
-                # current token is a variable and the next token is text
-                output += var_value
-                next_token_is_var = False
-            else:
-                # current token is text, and the next token could be a variable
-                output += ("%" if last_token_was_text else "") + token
-                next_token_is_var = True
-
-        return output
-
-
-
-    @staticmethod
-    def normalize_images(images: torch.Tensor,
-                        /,*,
-                        max_channels  : int        = 3,
-                        max_batch_size: int | None = None,
-                        ) -> torch.Tensor:
-        """
-        Normalizes a batch of images to default ComfyUI format.
-
-        This function ensures that the input image tensor has a consistent shape
-        of [batch_size, height, width, channels].
-
-        Args:
-            images           (Tensor): A tensor representing a batch of images.
-            max_channels   (optional): The maximum number of color channels allowed. Defaults to 3.
-            max_batch_size (optional): The maximum batch size allowed. Defaults to None (no limit).
-        Returns:
-            A normalized image tensor with shape [batch_size, height, width, channels].
-        """
-        images_dimension = len(images.shape)
-
-        # if 'images' is a single image, add a batch_size dimension to it
-        if images_dimension == 3:
-            images = images.unsqueeze(0)
-
-        # if 'images' has more than 4 dimensions,
-        # colapse the extra dimensions into the batch_size dimension
-        if images_dimension > 4:
-            images = images.reshape(-1, *images.shape[-3:])
-
-        if (max_channels is not None) and images.shape[-1] > max_channels:
-            images = images[ : , : , : , 0:max_channels ]
-
-        if (max_batch_size is not None) and images.shape[0] > max_batch_size:
-            images = images[ 0:max_batch_size , : , : , : ]
-
-        return images
-
-
-
-    @staticmethod
-    def ireplace(text: str, old: str, new: str, count: int = -1) -> str:
-        """
-        Replaces all occurrences of `old` in `text` with `new`, case-insensitive.
-        If count is given, only the first `count` occurrences are replaced.
-        """
-        lower_text , lower_old = text.lower(), old.lower()
-        index_start, index_end = 0, lower_text.find(lower_old, 0)
-        if index_end == -1 or len(lower_text) != len(text):
-            return text
-
-        output = ""
-        lower_old_length = len(lower_old)
-        while index_end != -1 and count != 0:
-            output += text[index_start:index_end] + new
-            index_start = index_end + lower_old_length
-            index_end   = lower_text.find(lower_old, index_start)
-            if count > 0:
-                count -= 1
-        return output + text[index_start:]
-
-
-    #__ nodes related functions ___________________________
 
     CIVITAI_NODES="""{
 
@@ -493,21 +364,21 @@ class SaveImage(io.ComfyNode):
         # modify the CivitAI nodes "1", "2" and "4" assigning them the parameters
         # prompt-positve, prompt-negative, seed, steps, etc...
         positive_node = nodes[ str(base_index+1) ]
-        positive_node["inputs"]["text"] = positive
+        positive_node["inputs"]["text"] = str(positive) if positive is not None else ""
 
         negative_node = nodes[ str(base_index+2) ]
-        negative_node["inputs"]["text"] = negative
+        negative_node["inputs"]["text"] = str(negative) if negative is not None else ""
 
         latent_image_node = nodes[ str(base_index+3) ]
-        latent_image_node["inputs"]["width" ] = int(width)
-        latent_image_node["inputs"]["height"] = int(height)
+        latent_image_node["inputs"]["width" ] = int(width ) if isinstance(width ,(int,float)) else 1024
+        latent_image_node["inputs"]["height"] = int(height) if isinstance(height,(int,float)) else 1024
 
         ksampler_node = nodes[ str(base_index+4) ]
-        ksampler_node["inputs"]["seed"]         = int(seed)
-        ksampler_node["inputs"]["steps"]        = int(steps)
-        ksampler_node["inputs"]["cfg"]          = cfg
-        ksampler_node["inputs"]["sampler_name"] = sampler_name
-        ksampler_node["inputs"]["scheduler"]    = scheduler
+        ksampler_node["inputs"]["seed"]         = int(seed        ) if isinstance(seed ,(int,float)) else 1
+        ksampler_node["inputs"]["steps"]        = int(steps       ) if isinstance(steps,(int,float)) else 25
+        ksampler_node["inputs"]["cfg"]          = float(cfg       ) if isinstance(cfg  ,(int,float)) else 1.0
+        ksampler_node["inputs"]["sampler_name"] = str(sampler_name) if sampler_name is not None else "euler"
+        ksampler_node["inputs"]["scheduler"]    = str(scheduler   ) if scheduler    is not None else "simple"
 
         return nodes
 
