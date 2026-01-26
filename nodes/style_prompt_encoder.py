@@ -122,7 +122,8 @@ class StylePromptEncoder(io.ComfyNode):
         names = ["none"]
         for style_group in PREDEFINED_STYLE_GROUPS:
             names.extend( style_group.get_names(quoted=True) )
-        logger.info(f'"Style & Prompt Encoder" includes support for {len(names)-1} different styles.')
+        number_of_custom_styles=4
+        logger.info(f'"Style & Prompt Encoder" includes support for {len(names)-number_of_custom_styles-1} different styles.')
         return names
 
 
