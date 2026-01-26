@@ -16,7 +16,7 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 """
 from comfy_api.latest                 import io
-from ..core.system                    import logger
+from ..lib.system                     import logger
 from ..styles.style_group             import StyleGroup
 from ..styles.predefined_styles_v080  import PREDEFINED_STYLE_GROUPS
 PHOTO_STYLES = next((style_group for style_group in PREDEFINED_STYLE_GROUPS if style_group.category == "photo"))
