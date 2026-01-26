@@ -27,19 +27,26 @@
  * A specialized sampler designed to divide the denoising process into three stages: composition, details, and refinement. It maintains image stability between 4 and 9 steps and achieves sufficient quality and detail starting from step 7, eliminating the need for further refining or post-processing. \
    **["ZSampler Turbo" node documentation](docs/zsampler_turbo.md)**.
 
-### ⚡ Photo-Style Prompt Encoder
- * Applies a selected photographic styles to the prompt and encodes them using a text-encoder model (clip). Enables generating images that follow the desired aesthetic while guiding the diffusion process. \
-   **["Photo-Style Prompt Encoder" node documentation](docs/illustration_style_prompt_encoder.md)**
+### ⚡ Style & Prompt Encoder
+ * Applies a selected visual styles to the prompt and encodes them using a text-encoder model (clip). Enables generating images that follow the desired aesthetic while guiding the diffusion process. \
+   **["Style Prompt Encoder" node documentation](docs/style_prompt_encoder.md)**
 
-### ⚡ Illustration-Style Prompt Encoder
- * Applies a selected illustration styles to the prompt and encodes them using a text-encoder model (clip). Enables generating images that follow the desired aesthetic while guiding the diffusion process. \
-   **["Illustration-Style Prompt Encoder" node documentation](docs/illustration_style_prompt_encoder.md)**
+### ⚡ Style String Injector
+ * Applies ...
 
 ### ⚡ Save Image
  * This node saves generated images with an option to include CivitAI-compatible metadata. \
    **["Save Image" node documentation](docs/save_image.md)**.
 
 ### ⚡ Empty Z-Image Latent Image
+ * Applies ...
+
+### 💀 Photo-Style Prompt Encoder
+ * Deprecated, use "Style & Prompt Encoder" node.
+
+### 💀 Illustration-Style Prompt Encoder
+ * Deprecated, use "Style & Prompt Encoder" node.
+
 
 
 ## Examples
