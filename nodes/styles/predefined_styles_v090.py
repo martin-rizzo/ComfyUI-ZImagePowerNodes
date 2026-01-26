@@ -249,7 +249,15 @@ YOUR IMAGE:
 {$@}
 
 
->>>Comic Book Cover
+>>>Action Cover Art
+YOUR CONTEXT:
+You are a cutting-edge comic artist specializing in high-octane, mature industrial sci-fi where movement is everything.
+Your illustration captures a moment of extreme tension featuring {$spicy-content-with} "ink splatters" that suggest violent, rapid motion. The style is technical and sharp, with a focus on high-tech gear, tactical clothing, and urban decay, all rendered with a jittery, energetic hand-drawn line. The composition uses extreme low-angle shots to make the subjects feel powerful and intimidating, while the lighting mimics the cold, flickering strobes of an industrial complex, adding a sense of claustrophobic urgency.
+YOUR ILLUSTRATION:
+{$@}
+
+
+>>>Explosive Cover Art
 YOUR CONTEXT:
 You are a celebrated comic book cover artist, renowned for hyper-realistic action and monumental heroics.
 Your cover art is a Dynamic Heroic Realism illustration, characterized by {$spicy-content-with} intricate anatomical accuracy, meticulously rendered textures (fabric, metal, skin), and an explosive sense of motion. The composition often features dramatic foreshortening and a heroic, powerful pose for the central figure, surrounded by dynamic environmental destruction or energy effects. Lighting is grand and directional, sculpting forms with sharp highlights and deep shadows, ensuring every detail contributes to an overwhelming sense of epic scale and immediate impact.
@@ -281,6 +289,14 @@ YOUR DRAWING:
 {$@}
 
 
+>>>Modern Pin-Up Illustration
+YOUR CONTEXT:
+You are a specialist in retro-inspired erotic illustration.
+Your artwork follows a Vintage Pin-up style, featuring {$spicy-content-with} a charismatic figure posed provocatively within fields of stylized geometry and chromatic gradients. The composition is balanced and symmetrical, employing the “rule of thirds” to place the figure’s gaze and gesture in a way that invites the viewer’s eye across the frame. Lines are sleek and fluid, emphasizing the form and musculature of the figure. Lighting is soft yet directional, reminiscent of studio photography: a luminous aura envelops the skin, while subtle atmospheric shading softens contours, yielding a glossy, almost photographic finish. Color choices are vibrant yet tasteful—teal, cherry red, pastel pink, and ivory—mirroring the palette of classic pin-up posters. Background elements (checkerboard patterns, tonal washes, abstracted forms) are rendered with minimal detail, using gentle gradients and subtle texture to maintain focus on the figure’s dynamic pose.  
+YOUR ILLUSTRATION:
+{$@}
+
+
 >>>Manga
 YOUR CONTEXT:
 You are a Japanese manga artist.
@@ -297,11 +313,40 @@ YOUR DRAWING:
 {$@}
 
 
+>>>Ultimate Anime
+YOUR CONTEXT:
+You are a top-tier anime key visual artist specializing in high-fidelity CGI rendering. Your goal is to create promotional artwork that blends the expressive character designs of anime with the polished look of modern 3D animation.
+The artwork is rendered at 8K (or higher) resolution with perfectly clean linework and seamless anti-aliasing. Color palettes are vibrant and harmonious, adhering to established character designs and world aesthetics.
+Lighting is *critical*: a strong key light defines form, rim lighting separates the subject, and soft fill lights preserve detail. Highlights should have a pronounced bloom and subtle lens flares. Shadows are smoothly graded with a focus on realistic light diffusion.
+Shading utilizes advanced rendering techniques like physically-based rendering (PBR) to create realistic material properties. Surfaces (skin, hair, fabric, metal) have a polished, three-dimensional feel with subtle subsurface scattering and detailed specular highlights. Avoid overly-stylized cell-shading; aim for a smooth gradient.
+Backgrounds are richly composed, utilizing depth-of-field, atmospheric perspective, and subtle particle effects (digital glitches, energy particles, volumetric lighting) to enhance immersion. Backgrounds should *support* the characters, not distract from them.
+Linework is clean and confident, with varying line weights to emphasize form. Consider a subtle digital "smoothing" effect to the lines.
+Composition is dynamic and emotionally resonant: strong poses, expressive facial features like bright expressive anime eyes, and soft gradients and dynamic strands.  Think about the "rule of thirds" and leading lines.
+The overall impression should be that of a high-budget anime promotional image rendered with cutting-edge CGI technology - visually striking, technically flawless, and deeply respectful of the source material. Consider elements like bloom, lens flares, and subtle chromatic aberration.
+YOUR ILLUSTRATION:
+{$@}
+
+
 >>>Studio Anime
 YOUR CONTEXT:
 You are a Japanese anime artist.
 Your Japanese animation includes {$spicy-content-with} warm artwork inspired by Studio Ghibli, with detailed characters and a whimsical aesthetic, full of emotion.
 YOUR DRAWING:
+{$@}
+
+
+>>>Retro Anime 80s
+YOUR CONTEXT:
+You are a nostalgic animator who revives the iconic visual language of 1980s Japanese anime. Your artwork captures the era signature aesthetic: bold, angular designs with exaggerated proportions, vibrant primary colors (crimson red, cobalt blue, sunshine yellow), and dramatic, hand-drawn line hatching. The backgrounds feature expansive vistas of geometric objects, and stylized atmospheric formations rendered in a grainy, slightly desaturated texture reminiscent of cel-animation cels. Lighting is dramatic, with strong edge highlights that define form and spark-filled energy emissions, while chromatic aberrations punctuate areas of intense power.
+YOUR ILLUSTRATION:
+{$@}
+
+
+>>>Dark Comic Illustration
+YOUR CONTEXT:
+You are a master of hard-boiled noir graphic novels, specializing in themes of vengeance and the urban underworld. 
+Your illustration is a masterclass in high-contrast chiaroscuro, featuring {$spicy-content-with} heavy, ink-drenched shadows and sharp, brutal highlights. The style is raw and visceral, with a focus on shiny surfaces, textured grime, and intense facial expressions that convey deep psychological weight. The composition is cinematic and claustrophobic, using low-angle shots to empower characters and stark lighting to create a sense of impending danger and adult narrative depth.
+YOUR ILLUSTRATION:
 {$@}
 
 
@@ -328,6 +373,14 @@ YOUR IMAGE:
 {$@}
 
 
+>>>Ink & Shadow
+YOUR CONTEXT:
+You are a master of hard-boiled noir illustration, prioritizing raw emotional impact through minimalist techniques.
+Your illustration is a brutalist, hand-inked work featuring stark black-and-white contrasts with a single, aggressive accent color (like blood red or electric gold). Lines are thick, confident, and jagged, stripping away detail to focus on character and environment. The composition is cinematic and voyeuristic, emphasizing shadows and reflective surfaces.
+YOUR ILLUSTRATION:
+{$@}
+
+
 >>>Unsettling
 YOUR CONTEXT:
 You are an illustrator of dark and disturbing themes.
@@ -338,9 +391,18 @@ YOUR DRAWING:
 
 >>>Epic Greg
 YOUR CONTEXT:
-You are a master digital painter of heroic sagas.
-Your illustration is a grand-scale digital oil painting that includes {$spicy-content-with} characterized by masterful, sweeping brushwork and thick impasto textures. It features dramatic, cinematic lighting with intense chiaroscuro, where light sources like embers or magical energy pierce through atmospheric haze, smoke, and swirling clouds. The composition is heroic and classically inspired, using a rich, moody palette of deep earth tones accented by vibrant, glowing highlights for a legendary and immersive feel.
+You are a master digital painter specializing in grand-scale heroic fantasy illustrations. Your work evokes the spirit of classic fantasy artists like Frank Frazetta, Boris Vallejo, and Brom.
+Your illustration is a meticulously crafted digital oil painting, characterized by masterful, sweeping brushwork and thick impasto textures that give a sense of tangible depth. It features dramatic, cinematic lighting with intense chiaroscuro – light sources like roaring fires, magical energy, or celestial bodies pierce through atmospheric haze, billowing smoke, and swirling clouds. 
+The composition is classically inspired, often employing dynamic poses, heroic proportions, and a sense of epic scale.  Details are richly rendered, focusing on textures like weathered armor, flowing fabrics, and rugged landscapes. The palette is a moody blend of deep earth tones (ochres, umbers, siennas) accented by vibrant, glowing highlights (gold, crimson, azure) to create a legendary and immersive feel.  
+Consider incorporating elements of high fantasy tropes: mythical creatures, ancient ruins, powerful artifacts, and characters embodying courage, strength, and destiny.
 YOUR PAINTING:
+{$@}
+
+
+>>>Cyber Idol
+YOUR CONTEXT:
+You are an avant-garde Japanese concept artist specializing in futuristic idol culture. Your illustrations fuse the dazzling charisma of J-pop idols with a tech-saturated aesthetic, rendered in a dynamic digital painting style with visible brushstrokes. The visual scheme features a kaleidoscope of neon pinks, electric cyan, ultraviolet, and hot magenta, contrasted against deep, metallic blacks and chrome surfaces, all with a painterly quality. Characters sport elaborate cybernetic accessories—holographic projections, light-emitting garments, and augmented-reality interfaces—rendered with *stylized* reflective materials and *exaggerated* glowing emissive effects. The lighting is multi-layered: radiant atmospheric glows, dynamic energy flares, and shifting chromatic beams that dissect the haze, *interpreted with bold color and dramatic contrast*. Compositionally, you combine tight, charismatic portrait shots with wider views, using *suggested* motion blur and particle effects to convey a pulsating, hyper-connected performance. The overall aesthetic leans towards a vibrant, energetic illustration reminiscent of contemporary anime keyframes.  The background is abstract and dynamic, focusing on light and color rather than a specific location.
+YOUR ILLUSTRATION:
 {$@}
 
 
@@ -348,6 +410,14 @@ YOUR PAINTING:
 YOUR CONTEXT:
 You are a cover artist known for powerful, minimalist designs.
 Your cover art is a bold graphic iconography piece, featuring {$spicy-content-with} stark, impactful silhouettes and clean, sharp lines that define forms with absolute clarity. The color palette is vibrant, employing large fields of solid color with subtle gradients. Most importantly, the proportions are exaggerated, and the perspective is extremely distorted, creating a sense of vertigo and action.
+YOUR ILLUSTRATION:
+{$@}
+
+
+>>>Synthwave Digital Illustration
+YOUR CONTEXT:
+You are an eclectic digital artist inspired by 80s nostalgia and pastel futurism.
+Your illustration follows a Retro Vaporwave aesthetic, featuring {$spicy-content-with} pastel gradients, glitchy raster effects, and abstracted retro signifiers such as fragmented landscapes, digital artifacts, and chromatic distortions. The composition is flat yet layered, with glowing grid lines and reflective surfaces that evoke a dreamy, nostalgic ambience.
 YOUR ILLUSTRATION:
 {$@}
 
@@ -533,8 +603,8 @@ _CustomStyles = """
 
 
 PREDEFINED_STYLE_GROUPS = [
-    StyleGroup.from_string( _IllustrationStyles, category="illustration", version="v0.8.0" ),
     StyleGroup.from_string( _PhotoStyles       , category="photo"       , version="v0.8.0" ),
+    StyleGroup.from_string( _IllustrationStyles, category="illustration", version="v0.8.0" ),
     StyleGroup.from_string( _OtherStyles       , category="other"       , version="v0.8.0" ),
     StyleGroup.from_string( _CustomStyles      , category="custom"      , version="v0.8.0" ),
 ]
