@@ -105,12 +105,6 @@ class ZImagePowerNodesExtension(ComfyExtension):
         from .nodes.empty_zimage_latent_image import EmptyZImageLatentImage
         _register_node( EmptyZImageLatentImage, subcategory, nodes )
 
-        from .nodes.illustration_style_prompt_encoder import IllustrationStylePromptEncoder
-        _register_node( IllustrationStylePromptEncoder, subcategory, nodes )
-
-        from .nodes.photo_style_prompt_encoder import PhotoStylePromptEncoder
-        _register_node( PhotoStylePromptEncoder, subcategory, nodes )
-
         from .nodes.save_image import SaveImage
         _register_node( SaveImage, subcategory, nodes )
 
@@ -130,8 +124,11 @@ class ZImagePowerNodesExtension(ComfyExtension):
         # this is where nodes that were deprecated and
         # maintained only for compatibility go
 
-        # from .nodes.example_node import ExampleNode
-        # _register_node( ExampleNode, subcategory, nodes, deprecated=True )
+        from .nodes.photo_style_prompt_encoder import PhotoStylePromptEncoder
+        _register_node( PhotoStylePromptEncoder, subcategory, nodes, deprecated=True )
+
+        from .nodes.illustration_style_prompt_encoder import IllustrationStylePromptEncoder
+        _register_node( IllustrationStylePromptEncoder, subcategory, nodes, deprecated=True )
 
         logger.info(f"Imported {len(nodes)} nodes")
         return nodes

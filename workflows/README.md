@@ -1,5 +1,6 @@
 # Z-Image Power Nodes Example Workflows
 
+ * `/deprecated` : Folder containing workflows using deprecated nodes that are no longer supported.
  * `/development`: Folder containing draft or experimental workflows used during development.
  * `/safetensors_versions`: Folder containing versions of workflows that use .safetensors checkpoint files.
 
