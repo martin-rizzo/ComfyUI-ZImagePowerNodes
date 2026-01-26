@@ -130,7 +130,14 @@ class ZImagePowerNodesExtension(ComfyExtension):
         from .nodes.deprecated_nodes.illustration_style_prompt_encoder import IllustrationStylePromptEncoder
         _register_node( IllustrationStylePromptEncoder, subcategory, nodes, deprecated=True )
 
-        logger.info(f"Imported {len(nodes)} nodes")
+
+        # report the number of nodes added by this extension
+        num_of_deprecated = sum(node_class.xDEPRECATED for node_class in nodes)
+        num_of_nodes      = len(nodes) - num_of_deprecated
+        if num_of_deprecated>0:
+            logger.info(f"Imported {num_of_nodes} nodes + {num_of_deprecated} deprecated ones.")
+        else:
+            logger.info(f"Imported {num_of_nodes} nodes.")
         return nodes
 
 
