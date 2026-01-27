@@ -1,11 +1,13 @@
 # Save Image
 ![Node](/docs/save_image.jpg)
 
-This node works similarly to the native ComfyUI "Save Image" but includes an option to save metadata compatible with CivitAI. Internally, it injects nodes that CivitAI can easily recognize, facilitating seamless sharing of generation parameters through this platform.
+This node works similarly to the native ComfyUI "Save Image" but includes an option to save metadata compatible with CivitAI.  It streamlines the process of sharing your generation parameters on the CivitAI platform by structuring the image metadata in a format that CivitAI readily recognizes.
 
-The process automatically detects relevant parameters such as prompt, seed, CFG scale, sampler name, and others to include them in the image's metadata for CivitAI. This automatic detection works best with simple ComfyUI workflows or custom nodes specific to this project. For more complex workflows or third-party nodes, you can manually specify which parameters to export by appending ">>C" to the node titles.
+### CivitAI Metadata Export Process
+The process automatically identifies key generation parameters such as prompt, seed, CFG scale, sampler name, and other relevant details. These parameters are then embedded within the image's metadata, making them accessible to CivitAI. The automatic detection mechanism works best with standard ComfyUI workflows or nodes associated with this project. For more complex workflows or third-party nodes that may not be automatically recognized, you can manually tag nodes with ">>C".
 
-By adding ">>C" to a node's title, you tag it as a CivitAI parameter exporter. Common parameters will be automatically searched within each tagged node and exported in the image's metadata.
+### Manual Parameter Extraction with ">>C"
+You can append ">>C" to the title of any node you wish to explicitly include in the metadata export. By tagging a node with ">>C", you instruct the process to specifically examine that particular node for common generation parameters (e.g., prompt, seed, sampler name, etc.). Any identifiable parameters found within these tagged nodes will be extracted and included in the CivitAI-compatible metadata, ensuring comprehensive parameter capture even from unrecognized sources.
 
 ## Inputs
 
