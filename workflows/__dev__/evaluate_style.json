@@ -2,7 +2,7 @@
   "id": "f14c6566-993e-4413-bd11-9c7f2ca07fd1",
   "revision": 0,
   "last_node_id": 70,
-  "last_link_id": 111,
+  "last_link_id": 112,
   "nodes": [
     {
       "id": 8,
@@ -81,36 +81,6 @@
         "showOutputText": false,
         "horizontal": false
       }
-    },
-    {
-      "id": 31,
-      "type": "SaveImage //ZImagePowerNodes",
-      "pos": [
-        1780,
-        150
-      ],
-      "size": [
-        540,
-        760
-      ],
-      "flags": {},
-      "order": 36,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 47
-        }
-      ],
-      "outputs": [],
-      "properties": {
-        "Node name for S&R": "SaveImage //ZImagePowerNodes"
-      },
-      "widgets_values": [
-        "ZImage/%date:yyyy_MM_dd%/ZI",
-        true
-      ]
     },
     {
       "id": 35,
@@ -538,36 +508,6 @@
         "showOutputText": false,
         "horizontal": false
       }
-    },
-    {
-      "id": 53,
-      "type": "SaveImage //ZImagePowerNodes",
-      "pos": [
-        1770,
-        -1490
-      ],
-      "size": [
-        540,
-        760
-      ],
-      "flags": {},
-      "order": 38,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 71
-        }
-      ],
-      "outputs": [],
-      "properties": {
-        "Node name for S&R": "SaveImage //ZImagePowerNodes"
-      },
-      "widgets_values": [
-        "ZImage/%date:yyyy_MM_dd%/ZI",
-        true
-      ]
     },
     {
       "id": 57,
@@ -1035,56 +975,6 @@
       "shape": 1
     },
     {
-      "id": 50,
-      "type": "StylePromptEncoder //ZImagePowerNodes",
-      "pos": [
-        620,
-        -610
-      ],
-      "size": [
-        660,
-        570
-      ],
-      "flags": {},
-      "order": 14,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 82
-        },
-        {
-          "name": "customization",
-          "shape": 7,
-          "type": "STRING",
-          "link": 74
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "links": [
-            67
-          ]
-        },
-        {
-          "name": "STRING",
-          "type": "STRING",
-          "links": null
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "StylePromptEncoder //ZImagePowerNodes"
-      },
-      "widgets_values": [
-        "custom",
-        "\"Custom 1\"",
-        "A woman with short, spiky blonde hair is depicted from the chest up, aiming a large, dark gray firearm. Her hair is tousled and appears to be catching the light. She has blue eyes and shadow on her cheeks. She is wearing a white tank top with one strap visibly off her right shoulder. The firearm she holds is dark gray and appears to be a heavy weapon. A dark ancient castle is visible in the background on the right side. Her attire includes dark, torn shorts and ripped, dark stockings or tights on her legs."
-      ]
-    },
-    {
       "id": 42,
       "type": "StylePromptEncoder //ZImagePowerNodes",
       "pos": [
@@ -1207,74 +1097,6 @@
       }
     },
     {
-      "id": 70,
-      "type": "Reroute",
-      "pos": [
-        1080,
-        1290
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {},
-      "order": 30,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 110
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "CONDITIONING",
-          "links": null
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      }
-    },
-    {
-      "id": 69,
-      "type": "Reroute",
-      "pos": [
-        1080,
-        1340
-      ],
-      "size": [
-        75,
-        26
-      ],
-      "flags": {},
-      "order": 31,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "",
-          "type": "*",
-          "link": 109
-        }
-      ],
-      "outputs": [
-        {
-          "name": "",
-          "type": "CONDITIONING",
-          "links": [
-            111
-          ]
-        }
-      ],
-      "properties": {
-        "showOutputText": false,
-        "horizontal": false
-      }
-    },
-    {
       "id": 68,
       "type": "Reroute",
       "pos": [
@@ -1292,7 +1114,7 @@
         {
           "name": "",
           "type": "*",
-          "link": 111
+          "link": 112
         }
       ],
       "outputs": [
@@ -1375,56 +1197,6 @@
         "fixed",
         9,
         1
-      ]
-    },
-    {
-      "id": 62,
-      "type": "StylePromptEncoder //ZImagePowerNodes",
-      "pos": [
-        380,
-        1120
-      ],
-      "size": [
-        660,
-        440
-      ],
-      "flags": {},
-      "order": 24,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 103
-        },
-        {
-          "name": "customization",
-          "shape": 7,
-          "type": "STRING",
-          "link": 104
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "links": [
-            110
-          ]
-        },
-        {
-          "name": "STRING",
-          "type": "STRING",
-          "links": null
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "StylePromptEncoder //ZImagePowerNodes"
-      },
-      "widgets_values": [
-        "custom",
-        "\"Custom 1\"",
-        "The interior of a retro-futuristic 1960s bar features sleek chrome architecture and rounded, modular forms. A chrome bar extends horizontally along the frame, showcasing a strip of bright turquoise acrylic. In the center-right, a man in his mid-thirties stands at the bar, resting one hand on the glossy surface while holding a tall glass in the other. He turns his head to look directly at the camera, a playful, knowing smile spreading across his face. The glass contains a bright orange drink with small floating spheres that reflect the pastel light. He wears a form-fitting, silver, retro-futuristic 1960s uniform with a short, high collar and a single vertical pastel blue stripe on the jacket. His hair is neatly styled with a clean, mid-century part. Behind the bar stands the bartender, a colossal and terrifying humanoid figure resembling an octopus. It is a mass of shimmering, bioluminescent tissue in shades of deep violet and emerald green, from whose torso emerges a network of thick tentacles. On its head, a set of multifaceted insectoid eyes constantly moves, scanning the room. The tentacles, with delicate pads at their tips, manipulate the glassware with unsettling grace. Behind the bartender, a mirrored wall reflects rows of liquor bottles with geometric labels from the 1960s. Above the bar floats a retro neon sign made of curved glass tubes that reads \"COSMIC LOUNGE\" in tall, rounded 1960s letters, emitting a pale pink and blue light with a soft, glowing halo. A chrome-framed illuminated menu board reads \"SIGNATURE DRINKS\" with three items: \"ORBITAL HIGHBALL,\" \"NEBULA SOUR,\" and \"ROCKET MARTINI,\" each displayed on horizontal bars that glow in either pastel blue or pastel orange. To the right, a chrome-plated cylindrical column features a vertical neon panel that reads \"OPEN 24 HOURS\" in condensed, bright orange letters within a translucent strip. To the left, a curved, mint-green booth sits beneath a domed ceiling light. An illuminated sign reading \"GALAXY BAR SERVICE\" encircles the inner rim of the dome in white capitals and dominates the left side of the frame. Soft pastel lighting in shades of lavender, aquamarine, mint, and pale amber reflects off the chrome, glass, and acrylic surfaces, enhancing the distinctly retro-futuristic 1960s design."
       ]
     },
     {
@@ -1587,6 +1359,272 @@
       "shape": 1
     },
     {
+      "id": 69,
+      "type": "Reroute",
+      "pos": [
+        1080,
+        1340
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 31,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 109
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 70,
+      "type": "Reroute",
+      "pos": [
+        1080,
+        1290
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 30,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 110
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            112
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 31,
+      "type": "SaveImage //ZImagePowerNodes",
+      "pos": [
+        1780,
+        150
+      ],
+      "size": [
+        540,
+        760
+      ],
+      "flags": {},
+      "order": 36,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 47
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "SaveImage //ZImagePowerNodes"
+      },
+      "widgets_values": [
+        "ZImage/%date:yyyy_MM_dd%/ZI",
+        true
+      ]
+    },
+    {
+      "id": 53,
+      "type": "SaveImage //ZImagePowerNodes",
+      "pos": [
+        1770,
+        -1490
+      ],
+      "size": [
+        540,
+        760
+      ],
+      "flags": {},
+      "order": 38,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 71
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "SaveImage //ZImagePowerNodes"
+      },
+      "widgets_values": [
+        "ZImage/%date:yyyy_MM_dd%/ZI",
+        true
+      ]
+    },
+    {
+      "id": 50,
+      "type": "StylePromptEncoder //ZImagePowerNodes",
+      "pos": [
+        620,
+        -610
+      ],
+      "size": [
+        660,
+        570
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 82
+        },
+        {
+          "name": "customization",
+          "shape": 7,
+          "type": "STRING",
+          "link": 74
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            67
+          ]
+        },
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "StylePromptEncoder //ZImagePowerNodes"
+      },
+      "widgets_values": [
+        "custom",
+        "\"Custom 1\"",
+        "A woman with short, spiky blonde hair is depicted from the chest up, aiming a large, dark gray firearm. Her hair is tousled and appears to be catching the light. She has blue eyes and shadow on her cheeks. She is wearing a white tank top with one strap visibly off her right shoulder. The firearm she holds is dark gray and appears to be a heavy weapon. A dark ancient castle is visible in the background on the right side. Her attire includes dark, torn shorts and ripped, dark stockings or tights on her legs."
+      ]
+    },
+    {
+      "id": 62,
+      "type": "StylePromptEncoder //ZImagePowerNodes",
+      "pos": [
+        380,
+        1120
+      ],
+      "size": [
+        660,
+        440
+      ],
+      "flags": {},
+      "order": 24,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 103
+        },
+        {
+          "name": "customization",
+          "shape": 7,
+          "type": "STRING",
+          "link": 104
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            110
+          ]
+        },
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "StylePromptEncoder //ZImagePowerNodes"
+      },
+      "widgets_values": [
+        "custom",
+        "\"Custom 1\"",
+        "The interior of a bar features architecture with rounded, modular forms. A bar counter extends horizontally along the frame, showcasing a strip of acrylic. In the center-right, a man in his mid-thirties stands at the bar, resting one hand on the surface while holding a tall glass in the other. He turns his head to look directly at the camera, a playful, knowing smile spreading across his face. The glass contains a drink with small floating spheres that reflect the light. He wears a form-fitting uniform with a short, high collar and a single vertical stripe on the jacket. His brown hair is neatly styled with a clean, mid-century part. In the center, tending the bar, is a rather peculiar alien bartender, a colossal and terrifying humanoid figure resembling an octopus. He is a mass of tissue from whose torso emerges a network of thick tentacles. He is wearing black dress pants. And on its head, a set of multifaceted insectoid eyes constantly moves, scanning the room. The tentacles, with delicate pads at their tips, manipulate the glassware with unsettling grace. Behind the bartender, a mirrored wall reflects rows of liquor bottles with geometric labels. Above the bar floats a neon sign made of curved glass tubes that reads 'COSMIC LOUNGE' in tall, rounded letters, emitting light with a soft, glowing halo. An illuminated menu board reads 'SIGNATURE DRINKS' with three items: 'ORBITAL HIGHBALL,' 'NEBULA SOUR,' and 'ROCKET MARTINI,' each displayed on glowing horizontal bars. To the right, a cylindrical column features a vertical neon panel that reads 'OPEN 24 HOURS' in condensed letters within a translucent strip. To the left, a curved booth sits beneath a domed ceiling light. An illuminated sign reading 'GALAXY BAR SERVICE' encircles the inner rim of the dome in capitals and dominates the left side of the frame. Soft lighting reflects off the glass and acrylic surfaces, highlighting the structural design."
+      ]
+    },
+    {
+      "id": 43,
+      "type": "PrimitiveStringMultiline",
+      "pos": [
+        -870,
+        860
+      ],
+      "size": [
+        600,
+        560
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            62,
+            73,
+            74,
+            102
+          ]
+        }
+      ],
+      "title": "Custom Style to Test",
+      "properties": {
+        "Node name for S&R": "PrimitiveStringMultiline"
+      },
+      "widgets_values": [
+        "\n>>>Custom 1\nYOUR CONTEXT:\nYou are a contemporary photographer whose work is crafted for a modern, social‑media‑savvy audience.  \nThe images are clean, sharply focused, and highly polished, with a crisp resolution that highlights fine detail.  \nLighting is bright and evenly diffused, often using natural daylight or soft artificial key‑light that produces a luminous, airy feel.  \nColors are vivid yet harmonious: pastel‑toned highlights (peach, mint, blush) sit alongside saturated mids tones (turquoise, coral, mustard) that pop without looking oversaturated.  \nA subtle, soft vignette gently darkens the edges, drawing the eye toward the centre and emphasizing the main subject.  \nContrast is moderate‑high, giving the picture depth while preserving details in both shadows and highlights.  \nA faint, almost imperceptible grain (similar to fine 200 ISO film) adds a touch of texture, keeping the image from feeling too clinical.  \nOccasional light‑leak flares or bokeh circles appear in the background, providing a playful, spontaneous element.  \nComposition follows the “rule of thirds” or centered framing, with plenty of negative space to create a balanced, Instagram‑ready aesthetic that feels both aspirational and approachable.  \nOverall, the photograph feels fresh, stylish, and emotionally uplifting, ready to capture attention at a glance.\nYOUR PHOTO:\n{$@}"
+      ],
+      "color": "#232",
+      "bgcolor": "#353",
+      "shape": 1
+    },
+    {
       "id": 63,
       "type": "PrimitiveInt",
       "pos": [
@@ -1598,7 +1636,7 @@
         82
       ],
       "flags": {},
-      "order": 6,
+      "order": 7,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -1633,11 +1671,11 @@
         690
       ],
       "size": [
-        316.9362396240234,
+        310,
         130
       ],
       "flags": {},
-      "order": 7,
+      "order": 8,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -1663,44 +1701,6 @@
       ],
       "color": "#332922",
       "bgcolor": "#593930",
-      "shape": 1
-    },
-    {
-      "id": 43,
-      "type": "PrimitiveStringMultiline",
-      "pos": [
-        -870,
-        860
-      ],
-      "size": [
-        600,
-        560
-      ],
-      "flags": {},
-      "order": 8,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "STRING",
-          "type": "STRING",
-          "links": [
-            62,
-            73,
-            74,
-            102
-          ]
-        }
-      ],
-      "title": "Custom Style to Test",
-      "properties": {
-        "Node name for S&R": "PrimitiveStringMultiline"
-      },
-      "widgets_values": [
-        "\n>>>Custom 1\nYOUR CONTEXT:\nYour image showcases {$spicy-content-with} a digital cyberpunk draw, characterized by vibrant and saturated colors with solid backgrounds and blue outlines.\nYOUR IMAGE:\n{$@}"
-      ],
-      "color": "#232",
-      "bgcolor": "#353",
       "shape": 1
     }
   ],
@@ -2162,8 +2162,8 @@
       "CONDITIONING"
     ],
     [
-      111,
-      69,
+      112,
+      70,
       0,
       68,
       0,
@@ -2188,10 +2188,10 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.9090909090909091,
+      "scale": 0.7513148009015777,
       "offset": [
-        1304.1037408385757,
-        -451.5708319318039
+        1738.499725707115,
+        -312.42000107941385
       ]
     },
     "frontendVersion": "1.35.9",
