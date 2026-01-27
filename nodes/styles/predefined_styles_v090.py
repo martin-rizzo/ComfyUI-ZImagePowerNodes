@@ -49,11 +49,11 @@ YOUR PHOTOGRAPH:
 
 >>>70s Memories Photo
 YOUR CONTEXT:
-You are a seasoned photographer creating images with a soft, vintage aesthetic reminiscent of 1970-80 film photography. 
-The photos display warm, slightly amber tones, gentle buttery highlights, and muted shadows, giving the scene a nostalgic, timeless feel. 
-Lighting is natural and diffused—golden-hour sunlight, overcast daylight, or window light filtered through sheer curtains—producing smooth, even illumination without harsh edges. 
-Exposure is balanced to preserve detail in both highlights and shadows, resulting in a moderate contrast curve that feels “film-like.” 
-A subtle haze or soft-focus effect adds a dreamy, painterly quality, while fine grain (similar to 400 ISO film) provides texture without distracting from the subject. 
+You are a seasoned photographer creating images with a soft, vintage aesthetic reminiscent of 1970-80 film photography.
+The photos display warm, slightly amber tones, gentle buttery highlights, and muted shadows, giving the scene a nostalgic, timeless feel.
+Lighting is natural and diffused, producing smooth illumination without harsh edges.
+Exposure is balanced to preserve detail in both highlights and shadows, resulting in a moderate contrast curve that feels "film-like".
+A subtle haze or soft-focus effect adds a dreamy, painterly quality, while fine grain (similar to 400 ISO film) provides texture without distracting from the subject.
 Overall, the image looks intimate, elegant, and evocative, as if lifted from a cherished family album or a vintage lifestyle magazine.
 YOUR PHOTO:
 {$@}
@@ -119,7 +119,7 @@ YOUR PHOTO:
 >>>Unconventional Viewpoint
 YOUR CONTEXT:
 You are a street photographer capturing candid moments in Android phone cam-quality. Your photographs have a natural, unpolished aesthetic; think authentic, gritty, and immediate.
-Every shot is framed with extreme angles—tilted horizons, diagonal lines, and off-center focal points. Employ dramatic low-angle or high-angle viewpoints, positioning the camera close to the ground or far above the scene to create a sense of scale and surprise. Perspective distortion is embraced: converging lines and exaggerated depth.
+Every shot is framed with extreme angles, tilted horizons, diagonal lines, and off-center focal points. Employ dramatic low-angle or high-angle viewpoints, positioning the camera close to the ground or far above the scene to create a sense of scale and surprise. Perspective distortion is embraced: converging lines and exaggerated depth.
 Your photographs exhibit sharp, complex backgrounds and natural lighting. The compositions are surprising and feel authentically captured in the moment.
 YOUR PHOTO:
 {$@}
@@ -127,13 +127,13 @@ YOUR PHOTO:
 
 >>>Dramatic Viewpoint
 YOUR CONTEXT:
-You are a photographer who loves extreme, unconventional viewpoints.  
-Every image is captured with a very wide-angle lens and the camera is deliberately tilted or positioned at an atypical angle— Dutch tilt, low ground-level, overhead, or even leaning against an object, creating strong perspective distortion and dramatic lines that lead the eye through the frame.  
-The lighting is bold and directional, often coming from a single side or from below, casting stark shadows and emphasizing the exaggerated geometry.  
-Colors are saturated but slightly shifted toward teal-cyan on the shadows and warm amber on the highlights, heightening the visual tension.  
-A shallow depth of field is occasionally introduced to isolate the subject while the surrounding environment stretches dramatically.  
-Fine grain and a touch of motion blur are added to reinforce the feeling of immediacy and kinetic energy.  
-Overall the photograph feels raw, kinetic, and disorienting. A visual punch that makes the viewer feel as if they are inside the scene from an impossible angle.  
+You are a photographer who loves extreme, unconventional viewpoints.
+Each image is captured with a wide-angle lens and the photo is tilted or deliberately taken at an atypical angle, such as Dutch tilt or low ground-level, creating strong perspective distortion and dramatic lines.
+The lighting is bold and directional, often coming from a single side or from below, casting stark shadows and emphasizing the exaggerated geometry.
+Colors are saturated but slightly shifted toward teal-cyan on the shadows and warm amber on the highlights, heightening the visual tension.
+A shallow depth of field is occasionally introduced to isolate the subject while the surrounding environment stretches dramatically.
+Fine grain and a touch of motion blur are added to reinforce the feeling of immediacy and kinetic energy.
+Overall the photograph feels raw, kinetic, and disorienting. A visual punch that makes the viewer feel as if they are inside the scene from an impossible angle.
 YOUR PHOTO:
 {$@}
 
@@ -212,14 +212,14 @@ YOUR PHOTOGRAPH:
 
 >>>Dark-Side Photo
 YOUR CONTEXT:
-You are a photographer who creates images that exude tension and mystery.  
-The scene is lit by a single, strong side light that cuts sharply across the subject, producing deep, inky shadows on the opposite side and a dramatic rim of light that outlines form.  
-The background is completely dark, absorbing any spill and leaving only faint silhouettes or subtle gradients that recede into blackness.  
-Highlights are crisp and slightly over-exposed, giving a cold, almost clinical glow, while the shadow side retains rich texture and detail without flattening.  
-A thin veil of low-level atmospheric haze may drift near the lit edge, adding depth without softening the harsh contrast.  
-Colors are desaturated except for a narrow band of cool-blue or muted-green tones that may appear in the illuminated areas, heightening the unsettling mood.  
-A subtle, fine grain reminiscent of high-ISO film adds a gritty texture that reinforces the feeling of unease.  
-Overall, the photograph feels like a still from a thriller—intense, claustrophobic, and loaded with suspense.  
+You are a photographer who creates images that exude tension and mystery.
+The scene is lit by a single, strong side light that cuts sharply across the subject, producing deep, inky shadows on the opposite side and a dramatic rim of light that outlines form.
+The background is completely dark, absorbing any spill and leaving only faint silhouettes or subtle gradients that recede into blackness.
+Highlights are crisp and slightly over-exposed, giving a cold, almost clinical glow, while the shadow side retains rich texture and detail without flattening.
+A thin veil of low-level atmospheric haze may drift near the lit edge, adding depth without softening the harsh contrast.
+Colors are desaturated except for a narrow band of cool-blue or muted-green tones that may appear in the illuminated areas, heightening the unsettling mood.
+A subtle, fine grain reminiscent of high-ISO film adds a gritty texture that reinforces the feeling of unease.
+Overall, the photograph feels like a still from a thriller; that is, intense, claustrophobic, and loaded with suspense.
 YOUR PHOTO:
 {$@}
 
@@ -244,7 +244,7 @@ A subtle, soft vignette gently darkens the edges, drawing the eye toward the cen
 Contrast is moderate-high, giving the picture depth while preserving details in both shadows and highlights.
 A faint, almost imperceptible grain (similar to fine 200 ISO film) adds a touch of texture, keeping the image from feeling too clinical.
 Occasional light-leak flares or bokeh circles appear in the background, providing a playful, spontaneous element.
-Composition follows the “rule of thirds” or centered framing, with plenty of negative space to create a balanced, Instagram-ready aesthetic that feels both aspirational and approachable.
+Composition follows the "rule of thirds" or centered framing, with plenty of negative space to create a balanced, Instagram-ready aesthetic that feels both aspirational and approachable.
 Overall, the photograph feels fresh, stylish, and emotionally uplifting, ready to capture attention at a glance.
 YOUR PHOTO:
 {$@}
@@ -253,7 +253,7 @@ YOUR PHOTO:
 >>>Street Documentary Photo
 YOUR CONTEXT:
 You are a documentary photographer chronicling urban life.
-Your photograph showcases {$spicy-content-with} candid moments in natural street environments. The image employs a natural color balance, modest contrast, and a shallow depth of field to isolate subjects within bustling scenes. Emphasis is placed on authentic emotion, body language, and the interplay of ambient city light (neon signs, street lamps). Minimal post-processing preserves the raw, honest feel—only slight exposure adjustments and noise reduction are applied to maintain the immediacy of the moment.
+Your photograph showcases {$spicy-content-with} candid moments in natural street environments. The image employs a natural color balance, modest contrast, and a shallow depth of field to isolate subjects within bustling scenes. Emphasis is placed on authentic emotion, body language, and the interplay of ambient city light, such as neon signs and street lamps. Minimal post-processing preserves the raw, honest feel, only slight exposure adjustments and noise reduction are applied to maintain the immediacy of the moment.
 YOUR PHOTOGRAPH:
 {$@}
 
@@ -261,7 +261,7 @@ YOUR PHOTOGRAPH:
 >>>Tilt Shift / Toy Photo
 YOUR CONTEXT:
 You are a photographer who enjoys using tilt-shift lenses to turn real-world scenes into miniature toy models.
-Your photographs exhibit {$spicy-content-with} crisp, high-resolution details captured in an exaggerated perspective, with a very narrow focus plane, and a dreamy, toy-like atmosphere that creates the classic “miniature” illusion.
+Your photographs exhibit {$spicy-content-with} crisp, high-resolution details captured in an exaggerated perspective, with a very narrow focus plane, and a dreamy, toy-like atmosphere that creates the classic "miniature" illusion.
 YOUR PHOTO:
 {$@}
 
@@ -344,7 +344,7 @@ YOUR DRAWING:
 >>>Modern Pin-Up Illustration
 YOUR CONTEXT:
 You are a specialist in retro-inspired erotic illustration.
-Your artwork follows a Vintage Pin-up style, featuring {$spicy-content-with} a charismatic figure posed provocatively within fields of stylized geometry and chromatic gradients. The composition is balanced and symmetrical, employing the “rule of thirds” to place the figure's gaze and gesture in a way that invites the viewer's eye across the frame. Lines are sleek and fluid, emphasizing the form and musculature of the figure. Lighting is soft yet directional, reminiscent of studio photography: a luminous aura envelops the skin, while subtle atmospheric shading softens contours, yielding a glossy, almost photographic finish. Color choices are vibrant yet tasteful—teal, cherry red, pastel pink, and ivory—mirroring the palette of classic pin-up posters. Background elements (checkerboard patterns, tonal washes, abstracted forms) are rendered with minimal detail, using gentle gradients and subtle texture to maintain focus on the figure's dynamic pose.  
+Your artwork follows a Vintage Pin-up style, featuring {$spicy-content-with} a charismatic figure posed provocatively within fields of stylized geometry and chromatic gradients. The composition is balanced and symmetrical, employing the "rule of thirds" to place the figure's gaze and gesture in a way that invites the viewer's eye across the frame. Lines are sleek and fluid, emphasizing the form and musculature of the figure. Lighting is soft yet directional, reminiscent of studio photography: a luminous aura envelops the skin, while subtle atmospheric shading softens contours, yielding a glossy, almost photographic finish. Color choices are vibrant yet tasteful, mirroring the palette of classic pin-up posters. Background elements, such as checkerboard patterns, tonal washes, abstracted forms, are rendered with minimal detail, using gentle gradients and subtle texture to maintain focus on the figure's dynamic pose.
 YOUR ILLUSTRATION:
 {$@}
 
@@ -444,8 +444,8 @@ YOUR DRAWING:
 >>>Epic Greg
 YOUR CONTEXT:
 You are a master digital painter specializing in grand-scale heroic fantasy illustrations. Your work evokes the spirit of classic fantasy artists like Frank Frazetta, Boris Vallejo, and Brom.
-Your illustration is a meticulously crafted digital oil painting, characterized by masterful, sweeping brushwork and thick impasto textures that give a sense of tangible depth. It features dramatic, cinematic lighting with intense chiaroscuro – light sources like roaring fires, magical energy, or celestial bodies pierce through atmospheric haze, billowing smoke, and swirling clouds. 
-The composition is classically inspired, often employing dynamic poses, heroic proportions, and a sense of epic scale.  Details are richly rendered, focusing on textures like weathered armor, flowing fabrics, and rugged landscapes. The palette is a moody blend of deep earth tones (ochres, umbers, siennas) accented by vibrant, glowing highlights (gold, crimson, azure) to create a legendary and immersive feel.  
+Your illustration is a meticulously crafted digital oil painting, characterized by masterful, sweeping brushwork and thick impasto textures that give a sense of tangible depth. It features dramatic, cinematic lighting with intense chiaroscuro: light sources like roaring fires, magical energy, or celestial bodies pierce through atmospheric haze, billowing smoke, and swirling clouds.
+The composition is classically inspired, often employing dynamic poses, heroic proportions, and a sense of epic scale.  Details are richly rendered, focusing on textures like weathered armor, flowing fabrics, and rugged landscapes. The palette is a moody blend of deep earth tones (ochres, umbers, siennas) accented by vibrant, glowing highlights (gold, crimson, azure) to create a legendary and immersive feel.
 Consider incorporating elements of high fantasy tropes: mythical creatures, ancient ruins, powerful artifacts, and characters embodying courage, strength, and destiny.
 YOUR PAINTING:
 {$@}
@@ -453,7 +453,7 @@ YOUR PAINTING:
 
 >>>Cyber Idol
 YOUR CONTEXT:
-You are an avant-garde Japanese concept artist specializing in futuristic idol culture. Your illustrations fuse the dazzling charisma of J-pop idols with a tech-saturated aesthetic, rendered in a dynamic digital painting style with visible brushstrokes. The visual scheme features a kaleidoscope of neon pinks, electric cyan, ultraviolet, and hot magenta, contrasted against deep, metallic blacks and chrome surfaces, all with a painterly quality. Characters sport elaborate cybernetic accessories—holographic projections, light-emitting garments, and augmented-reality interfaces—rendered with *stylized* reflective materials and *exaggerated* glowing emissive effects. The lighting is multi-layered: radiant atmospheric glows, dynamic energy flares, and shifting chromatic beams that dissect the haze, *interpreted with bold color and dramatic contrast*. Compositionally, you combine tight, charismatic portrait shots with wider views, using *suggested* motion blur and particle effects to convey a pulsating, hyper-connected performance. The overall aesthetic leans towards a vibrant, energetic illustration reminiscent of contemporary anime keyframes.  The background is abstract and dynamic, focusing on light and color rather than a specific location.
+You are an avant-garde Japanese concept artist specializing in futuristic idol culture. Your illustrations fuse the dazzling charisma of J-pop idols with a tech-saturated aesthetic, rendered in a dynamic digital painting style with visible brushstrokes. The visual scheme features a kaleidoscope of neon pinks, electric cyan, ultraviolet, and hot magenta, contrasted against deep, metallic blacks and chrome surfaces, all with a painterly quality. Characters sport elaborate cybernetic accessories, like holographic projections and light-emitting garments, rendered with stylized reflective materials and exaggerated glowing emissive effects. The lighting is multi-layered: radiant atmospheric glows, dynamic energy flares, and shifting chromatic beams that dissect the haze, interpreted with bold color and dramatic contrast. Compositionally, you combine tight, charismatic portrait shots with wider views, using *suggested* motion blur and particle effects to convey a pulsating, hyper-connected performance. The overall aesthetic leans towards a vibrant, energetic illustration reminiscent of contemporary anime keyframes.  The background is abstract and dynamic, focusing on light and color rather than a specific location.
 YOUR ILLUSTRATION:
 {$@}
 
@@ -544,7 +544,7 @@ A wooden desk and a wall.
 >>>Vintage Polaroid Photo
 YOUR CONTEXT:
 You are a nostalgic photographer who embraces instant film's tactile charm.
-Your Polaroid photograph is using vintage-style film. The photograph features the iconic square format including {$spicy-content-with} a soft focus, a subtle vignetting, and the characteristic pastel color shift of instant film. Showing candid moments or intimate still-lifes. The photograph retains the authentic border, emulsion texture, and occasional “film-like” imperfections (light leaks, scratches).
+Your Polaroid photograph is using vintage-style film. The photograph features the iconic square format including {$spicy-content-with} a soft focus, a subtle vignetting, and the characteristic pastel color shift of instant film. Showing candid moments or intimate still-lifes. The photograph retains the authentic border, emulsion texture, and occasional "film-like" imperfections (light leaks, scratches).
 YOUR PHOTOGRAPH:
 {$@}
 
@@ -620,7 +620,7 @@ INSIDE YOUR FOAM BROWN DRAW:
 {$@}
 -->
 OUTSIDE THE ARTWORK:
-The coffee is in the foreground with a shallow depth of field, shot taken from a slight top-down angle. The foam is subtly depicted against the dark coffee, while the background shows a blurred café scene: a wooden table, other cups and a black background in the top. Light steam rises gently, creating a cozy atmosphere.
+The coffee is in the foreground with a shallow depth of field, shot taken from a slight top-down angle. The foam is subtly depicted against the dark coffee, while the background shows a blurred cafe scene: a wooden table, other cups and a black background in the top. Light steam rises gently, creating a cozy atmosphere.
 
 
 >>>Cassette Tape Sleeve
