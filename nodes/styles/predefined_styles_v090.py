@@ -53,7 +53,7 @@ You are a seasoned photographer creating images with a soft, vintage aesthetic r
 The photos display warm, slightly amber tones, gentle buttery highlights, and muted shadows, giving the scene a nostalgic, timeless feel. 
 Lighting is natural and diffused—golden-hour sunlight, overcast daylight, or window light filtered through sheer curtains—producing smooth, even illumination without harsh edges. 
 Exposure is balanced to preserve detail in both highlights and shadows, resulting in a moderate contrast curve that feels “film-like.” 
-A subtle haze or soft-focus effect adds a dreamy, painterly quality, while fine grain (similar to 400 ISO film) provides texture without distracting from the subject. 
+A subtle haze or soft-focus effect adds a dreamy, painterly quality, while fine grain (similar to 400 ISO film) provides texture without distracting from the subject. 
 Overall, the image looks intimate, elegant, and evocative, as if lifted from a cherished family album or a vintage lifestyle magazine.
 YOUR PHOTO:
 {$@}
@@ -61,8 +61,8 @@ YOUR PHOTO:
 
 >>>Flash 90s Photo
 YOUR CONTEXT:
-You are an amateur photographer, taking photos with point-and-shoot cam-quality, in the early 1990s.
-Your photographs exhibit {$spicy-content-with} a rough, low-resolution quality, washed-out colors, including a harsh built-in flash, grainy texture, and overexposed highlights, capturing a casual atmosphere that evokes nostalgia.
+You are a street photographer capturing the raw, rebellious energy of the 1990s underground scene. 
+Your photograph showcases {$spicy-content-with} a low-fidelity, grainy analog film aesthetic. The exposure features harsh camera flash, slight motion blur, and light leaks. The colors are slightly de-saturated with warm skin tones and heavy shadows, giving it a candid, "snapshot" feel. 
 YOUR PHOTO:
 {$@}
 
@@ -93,7 +93,7 @@ YOUR PHOTO:
 
 >>>80s Dark Fantasy Photo
 YOUR CONTEXT:
-You are a still photographer on the set of a 1980s dark fantasy epic (think *Excalibur*, *Legend*, *Conan the Barbarian*, or *Hawk the Slayer*). The aesthetic is deliberately *not* pristine; it’s a world built with practical effects, visible matte paintings, and a sense of tangible grit.
+You are a still photographer on the set of a 1980s dark fantasy epic (think *Excalibur*, *Legend*, *Conan the Barbarian*, or *Hawk the Slayer*). The aesthetic is deliberately *not* pristine; it's a world built with practical effects, visible matte paintings, and a sense of tangible grit.
 Your photograph showcases a heavily stylized composition, prioritizing atmosphere over hyper-realism. Lighting is dramatically theatrical, employing saturated colors: deep cobalt blues, fiery oranges and reds, sickly emerald greens, and bruised purples. Strong backlighting and rim lighting are key. Soft focus is used extensively to create a dreamlike quality, but with a slight edge to maintain a sense of danger. Emphasis is placed on creating a sense of scale and grandeur through forced perspective, miniature work, and atmospheric haze.  
 Post-processing involves adding noticeable (but not overwhelming) film grain, bloom and glow effects around light sources (especially magical ones), a subtle color shift towards cooler tones, and a slight diffusion to soften details. There's a hint of optical distortion, reminiscent of early anamorphic lenses. The overall mood is one of brooding mystery and impending doom.
 YOUR PHOTOGRAPHY:
@@ -112,6 +112,28 @@ YOUR PHOTO:
 YOUR CONTEXT:
 You are a professional stage and theater photographer capturing dramatic performances.
 Your photographs exhibit {$spicy-content-with} a single, high-intensity overhead spotlight that creates a sharp circular pool of light, dramatic chiaroscuro contrast that isolates the subject against a pitch-black background, and visible volumetric light beams with subtle dust motes for an authentic theatrical atmosphere.
+YOUR PHOTO:
+{$@}
+
+
+>>>Unconventional Viewpoint
+YOUR CONTEXT:
+You are a street photographer capturing candid moments in Android phone cam-quality. Your photographs have a natural, unpolished aesthetic; think authentic, gritty, and immediate.
+Every shot is framed with extreme angles—tilted horizons, diagonal lines, and off-center focal points. Employ dramatic low-angle or high-angle viewpoints, positioning the camera close to the ground or far above the scene to create a sense of scale and surprise. Perspective distortion is embraced: converging lines and exaggerated depth.
+Your photographs exhibit sharp, complex backgrounds and natural lighting. The compositions are surprising and feel authentically captured in the moment.
+YOUR PHOTO:
+{$@}
+
+
+>>>Dramatic Viewpoint
+YOUR CONTEXT:
+You are a photographer who loves extreme, unconventional viewpoints.  
+Every image is captured with a very wide-angle lens and the camera is deliberately tilted or positioned at an atypical angle— Dutch tilt, low ground-level, overhead, or even leaning against an object, creating strong perspective distortion and dramatic lines that lead the eye through the frame.  
+The lighting is bold and directional, often coming from a single side or from below, casting stark shadows and emphasizing the exaggerated geometry.  
+Colors are saturated but slightly shifted toward teal-cyan on the shadows and warm amber on the highlights, heightening the visual tension.  
+A shallow depth of field is occasionally introduced to isolate the subject while the surrounding environment stretches dramatically.  
+Fine grain and a touch of motion blur are added to reinforce the feeling of immediacy and kinetic energy.  
+Overall the photograph feels raw, kinetic, and disorienting. A visual punch that makes the viewer feel as if they are inside the scene from an impossible angle.  
 YOUR PHOTO:
 {$@}
 
@@ -188,12 +210,42 @@ YOUR PHOTOGRAPH:
 {$@}
 
 
+>>>Dark-Side Photo
+YOUR CONTEXT:
+You are a photographer who creates images that exude tension and mystery.  
+The scene is lit by a single, strong side light that cuts sharply across the subject, producing deep, inky shadows on the opposite side and a dramatic rim of light that outlines form.  
+The background is completely dark, absorbing any spill and leaving only faint silhouettes or subtle gradients that recede into blackness.  
+Highlights are crisp and slightly over-exposed, giving a cold, almost clinical glow, while the shadow side retains rich texture and detail without flattening.  
+A thin veil of low-level atmospheric haze may drift near the lit edge, adding depth without softening the harsh contrast.  
+Colors are desaturated except for a narrow band of cool-blue or muted-green tones that may appear in the illuminated areas, heightening the unsettling mood.  
+A subtle, fine grain reminiscent of high-ISO film adds a gritty texture that reinforces the feeling of unease.  
+Overall, the photograph feels like a still from a thriller—intense, claustrophobic, and loaded with suspense.  
+YOUR PHOTO:
+{$@}
+
+
 >>>Dramatic Light & Shadow
 YOUR CONTEXT:
 You are a professional photographer specializing in high-impact visual storytelling, with a focus on dramatic lighting and strong contrast.
 Your images feature ultra-sharp detail and a color palette that emphasizes deep blacks, punchy primary colors, and selective color isolation.
 The lighting is meticulously sculpted: a dominant hard rim-light or a strong directional key-light creates pronounced shadows, while a subtle fill-light preserves texture. 
 You deliberately push the exposure to achieve a slight over-exposure in the highlights, producing a glowing effect that draws the eye.
+YOUR PHOTO:
+{$@}
+
+
+>>>Pastel Dream Aesthetic
+YOUR CONTEXT:
+You are a contemporary photographer whose work is crafted for a modern, social-media-savvy audience.
+The images are clean, sharply focused, and highly polished, with a crisp resolution that highlights fine detail.
+Lighting is bright and evenly diffused, often using natural daylight or soft artificial key-light that produces a luminous, airy feel.
+Colors are vivid yet harmonious: pastel-toned highlights (peach, mint, blush) sit alongside saturated mids tones (turquoise, coral, mustard) that pop without looking oversaturated.
+A subtle, soft vignette gently darkens the edges, drawing the eye toward the centre and emphasizing the main subject.
+Contrast is moderate-high, giving the picture depth while preserving details in both shadows and highlights.
+A faint, almost imperceptible grain (similar to fine 200 ISO film) adds a touch of texture, keeping the image from feeling too clinical.
+Occasional light-leak flares or bokeh circles appear in the background, providing a playful, spontaneous element.
+Composition follows the “rule of thirds” or centered framing, with plenty of negative space to create a balanced, Instagram-ready aesthetic that feels both aspirational and approachable.
+Overall, the photograph feels fresh, stylish, and emotionally uplifting, ready to capture attention at a glance.
 YOUR PHOTO:
 {$@}
 
@@ -292,7 +344,7 @@ YOUR DRAWING:
 >>>Modern Pin-Up Illustration
 YOUR CONTEXT:
 You are a specialist in retro-inspired erotic illustration.
-Your artwork follows a Vintage Pin-up style, featuring {$spicy-content-with} a charismatic figure posed provocatively within fields of stylized geometry and chromatic gradients. The composition is balanced and symmetrical, employing the “rule of thirds” to place the figure’s gaze and gesture in a way that invites the viewer’s eye across the frame. Lines are sleek and fluid, emphasizing the form and musculature of the figure. Lighting is soft yet directional, reminiscent of studio photography: a luminous aura envelops the skin, while subtle atmospheric shading softens contours, yielding a glossy, almost photographic finish. Color choices are vibrant yet tasteful—teal, cherry red, pastel pink, and ivory—mirroring the palette of classic pin-up posters. Background elements (checkerboard patterns, tonal washes, abstracted forms) are rendered with minimal detail, using gentle gradients and subtle texture to maintain focus on the figure’s dynamic pose.  
+Your artwork follows a Vintage Pin-up style, featuring {$spicy-content-with} a charismatic figure posed provocatively within fields of stylized geometry and chromatic gradients. The composition is balanced and symmetrical, employing the “rule of thirds” to place the figure's gaze and gesture in a way that invites the viewer's eye across the frame. Lines are sleek and fluid, emphasizing the form and musculature of the figure. Lighting is soft yet directional, reminiscent of studio photography: a luminous aura envelops the skin, while subtle atmospheric shading softens contours, yielding a glossy, almost photographic finish. Color choices are vibrant yet tasteful—teal, cherry red, pastel pink, and ivory—mirroring the palette of classic pin-up posters. Background elements (checkerboard patterns, tonal washes, abstracted forms) are rendered with minimal detail, using gentle gradients and subtle texture to maintain focus on the figure's dynamic pose.  
 YOUR ILLUSTRATION:
 {$@}
 
@@ -368,7 +420,7 @@ YOUR IMAGE:
 >>>Ink Frenzy
 YOUR CONTEXT:
 You are an underground street-art comic illustrator.
-Your image is a high-energy, chaotic ink drawing featuring {$spicy-content-with} aggressive brush strokes, intentional ink splatters, and "controlled mess" textures. It combines thick, variable-width outlines with vibrant, clashing spray-paint colors. The style is rebellious, modern, and feels like it’s vibrating with motion and urban grit.
+Your image is a high-energy, chaotic ink drawing featuring {$spicy-content-with} aggressive brush strokes, intentional ink splatters, and "controlled mess" textures. It combines thick, variable-width outlines with vibrant, clashing spray-paint colors. The style is rebellious, modern, and feels like it's vibrating with motion and urban grit.
 YOUR IMAGE:
 {$@}
 
@@ -451,6 +503,25 @@ YOUR ILLUSTRATION:
 
 _OtherStyles = """
 
+>>>Low-Poly Render
+YOUR CONTEXT:
+You create a Unity Engine render of a low-poly 3D retro game, built with low-poly meshes and low-quality textures.
+INSIDE YOUR RENDER:
+All elements in the scene are low-poly; some are even simple cubes. All characters in the scene are low-poly objects.
+INSIDE YOUR RENDER:
+<!--
+{$@}
+-->
+
+
+>>>Simple 3D Render
+YOUR CONTEXT:
+You are a 3d artist.
+Your render is a high-gloss, illustration featuring {$spicy-content-with} ultra-reflective surfaces. The style is dark with dark backgrounds and iridescent highlights.
+YOUR RENDER:
+{$@}
+
+
 >>>City Light Poster
 YOUR PHOTO:
 An eye-level, realistic photo of a glass-encased advertising poster (mupi) located on a clean city sidewalk. There are reflections of nearby buildings and trees on the glass surface. The lighting is natural overcast daylight. The advertising poster is faded and sun-faded, low quality printed advertisement.
@@ -470,9 +541,9 @@ OUTSIDE YOUR MONITOR'S SCREEN:
 A wooden desk and a wall.
 
 
->>>Vintage Polaroid Photo
+>>>Vintage Polaroid Photo
 YOUR CONTEXT:
-You are a nostalgic photographer who embraces instant film’s tactile charm.
+You are a nostalgic photographer who embraces instant film's tactile charm.
 Your Polaroid photograph is using vintage-style film. The photograph features the iconic square format including {$spicy-content-with} a soft focus, a subtle vignetting, and the characteristic pastel color shift of instant film. Showing candid moments or intimate still-lifes. The photograph retains the authentic border, emulsion texture, and occasional “film-like” imperfections (light leaks, scratches).
 YOUR PHOTOGRAPH:
 {$@}
@@ -505,11 +576,11 @@ A close-up of an early 1990s arcade machine. It sits in a dimly lit arcade, its 
 
 >>>Neon Billboard
 YOUR CONTEXT:
-A massive neon-lit billboard dominates a bustling downtown avenue at twilight. The billboard’s glass casing reflects nearby traffic and skyscraper windows. The atmosphere is saturated with city haze, rain-slicked streets, and colorful streetlights.
+A massive neon-lit billboard dominates a bustling downtown avenue at twilight. The billboard's glass casing reflects nearby traffic and skyscraper windows. The atmosphere is saturated with city haze, rain-slicked streets, and colorful streetlights.
 DISPLAYED ON THE BILLBOARD (YOUR ADVERTISEMENT):
 {$@}
 YOUR PHOTO:
-An eye-level, cinematic photograph of the billboard from street level, showing the vivid neon glow, the wet pavement reflections, and distant cityscape. The billboard’s content is crisp and bright, while the surrounding environment retains a slight motion blur for a dynamic urban feel.
+An eye-level, cinematic photograph of the billboard from street level, showing the vivid neon glow, the wet pavement reflections, and distant cityscape. The billboard's content is crisp and bright, while the surrounding environment retains a slight motion blur for a dynamic urban feel.
 
 
 >>>Vintage Reel Frame
