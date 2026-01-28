@@ -25,9 +25,9 @@ from PIL                 import Image
 from PIL.PngImagePlugin  import PngInfo
 from comfy_api.latest    import io
 from typing              import Any
-from .core.system        import logger
-from .core.helpers       import expand_date_and_vars, normalize_images
-from .core.node_helpers  import get_input_int, get_input_float, get_input_string, \
+from .lib.system         import logger
+from .lib.helpers        import expand_date_and_vars, normalize_images
+from .lib.node_helpers   import get_input_int, get_input_float, get_input_string, \
                                 get_input_node, get_class_type, find_prompt
 
 

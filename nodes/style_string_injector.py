@@ -15,7 +15,7 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 
 """
 from comfy_api.latest           import io
-from .styles.style_group        import StyleGroup, apply_style_to_prompt
+from .lib.style_group           import StyleGroup
 from .styles.predefined_styles  import PREDEFINED_STYLE_GROUPS
 
 
@@ -68,7 +68,7 @@ class StyleStringInjector(io.ComfyNode):
 
         # if the style was found, apply it to the prompt
         if style_to_apply:
-            prompt = apply_style_to_prompt(prompt, style_to_apply, spicy_impact_booster=False)
+            prompt = StyleGroup.apply_style_template(prompt, style_to_apply, spicy_impact_booster=False)
 
         return io.NodeOutput( prompt )
 
@@ -113,7 +113,7 @@ class StyleStringInjector(io.ComfyNode):
     def get_predefined_style(cls, style_name: str) -> str:
         """Returns a predefined style content by its name, searching inside all category groups."""
         for style_group in PREDEFINED_STYLE_GROUPS:
-            style = style_group.get_style(style_name)
+            style = style_group.get_style_template(style_name)
             if style:
                 return style
         return ""

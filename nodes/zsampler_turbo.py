@@ -22,8 +22,8 @@ import comfy.sample
 import comfy.samplers
 from typing             import Any
 from comfy_api.latest   import io
-from .core.system       import logger
-from .core.progress_bar import ProgressPreview
+from .lib.system        import logger
+from .lib.progress_bar  import ProgressPreview
 
 
 class ZSamplerTurbo(io.ComfyNode):

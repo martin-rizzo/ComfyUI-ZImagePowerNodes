@@ -1,0 +1,2201 @@
+{
+  "id": "f14c6566-993e-4413-bd11-9c7f2ca07fd1",
+  "revision": 0,
+  "last_node_id": 70,
+  "last_link_id": 112,
+  "nodes": [
+    {
+      "id": 8,
+      "type": "VAEDecode",
+      "pos": [
+        1580,
+        150
+      ],
+      "size": [
+        160,
+        50
+      ],
+      "flags": {},
+      "order": 32,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 22
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 25
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            47
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode",
+        "cnr_id": "comfy-core",
+        "ver": "0.7.0"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 20,
+      "type": "Reroute",
+      "pos": [
+        1390,
+        790
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 26,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 24
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "VAE",
+          "links": [
+            25
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 35,
+      "type": "UnetLoaderGGUF",
+      "pos": [
+        -980,
+        -40
+      ],
+      "size": [
+        380,
+        100
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            55
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UnetLoaderGGUF",
+        "cnr_id": "comfyui-gguf",
+        "aux_id": "city96/ComfyUI-GGUF",
+        "ver": "1.1.8"
+      },
+      "widgets_values": [
+        "z_image_turbo-Q5_K_S.gguf"
+      ],
+      "color": "#322",
+      "bgcolor": "#533",
+      "shape": 1
+    },
+    {
+      "id": 36,
+      "type": "CLIPLoaderGGUF",
+      "pos": [
+        -980,
+        100
+      ],
+      "size": [
+        380,
+        110
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            54
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPLoaderGGUF",
+        "cnr_id": "comfyui-gguf",
+        "aux_id": "city96/ComfyUI-GGUF",
+        "ver": "1.1.8"
+      },
+      "widgets_values": [
+        "Qwen3-4B.i1-Q5_K_S.gguf",
+        "lumina2"
+      ],
+      "color": "#322",
+      "bgcolor": "#533",
+      "shape": 1
+    },
+    {
+      "id": 37,
+      "type": "VAELoader",
+      "pos": [
+        -980,
+        250
+      ],
+      "size": [
+        380,
+        90
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            56
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.75"
+      },
+      "widgets_values": [
+        "ae.safetensors"
+      ],
+      "color": "#322",
+      "bgcolor": "#533",
+      "shape": 1
+    },
+    {
+      "id": 19,
+      "type": "Reroute",
+      "pos": [
+        620,
+        790
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 59
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "VAE",
+          "links": [
+            24
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 41,
+      "type": "Note",
+      "pos": [
+        -1870,
+        -80
+      ],
+      "size": [
+        870,
+        550
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "README",
+      "properties": {},
+      "widgets_values": [
+        "Z-Image Power Nodes\n\n## Workflow Prerequisites ##\n\nThis workflow requires the following custom nodes, which can be obtained via ComfyUI-Manager:\n\n  * Z-Image Power Nodes: https://github.com/martin-rizzo/ComfyUI-ZImagePowerNodes\n  * ComfyUI-GGUF       : https://github.com/city96/ComfyUI-GGUF\n\n Additionally, ensure you have the following 3 models downloaded and placed in their respective\n directories within your ComfyUI installation:\n\n  z_image_turbo-Q5_K_S.gguf\n    * Download: https://huggingface.co/jayn7/Z-Image-Turbo-GGUF/blob/main/z_image_turbo-Q5_K_S.gguf\n    * Local Directory: `ComfyUI/models/diffusion_models/`\n\n  Qwen3-4B.i1-Q5_K_S.gguf\n    * Download: https://huggingface.co/mradermacher/Qwen3-4B-i1-GGUF/blob/main/Qwen3-4B.i1-Q5_K_S.gguf\n    * Local Directory: `ComfyUI/models/text_encoders/`\n\n  ae.safetensors\n    * Download: https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/vae/ae.safetensors\n    * Local Directory: `Comfyui/models/vae/`\n\n## More Info ##\n\n- https://github.com/martin-rizzo/ComfyUI-ZImagePowerNodes\n- https://civitai.com/models/2322533/z-image-power-nodes\n\nCreated by Martin Rizzo\n  GitHub : https://github.com/martin-rizzo\n  CivitAI: https://civitai.com/user/Photographer\n  Reddit : https://www.reddit.com/user/FotografoVirtual\n"
+      ],
+      "color": "#223",
+      "bgcolor": "#335",
+      "shape": 1
+    },
+    {
+      "id": 45,
+      "type": "VAEDecode",
+      "pos": [
+        1580,
+        -670
+      ],
+      "size": [
+        160,
+        50
+      ],
+      "flags": {},
+      "order": 33,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 63
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 64
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            66
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode",
+        "cnr_id": "comfy-core",
+        "ver": "0.7.0"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 46,
+      "type": "Reroute",
+      "pos": [
+        1390,
+        -30
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 27,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 65
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "VAE",
+          "links": [
+            64
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 48,
+      "type": "Reroute",
+      "pos": [
+        620,
+        -30
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 84
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "VAE",
+          "links": [
+            65
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 47,
+      "type": "SaveImage //ZImagePowerNodes",
+      "pos": [
+        1780,
+        -670
+      ],
+      "size": [
+        540,
+        760
+      ],
+      "flags": {},
+      "order": 37,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 66
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "SaveImage //ZImagePowerNodes"
+      },
+      "widgets_values": [
+        "ZImage/%date:yyyy_MM_dd%/ZI",
+        true
+      ]
+    },
+    {
+      "id": 51,
+      "type": "VAEDecode",
+      "pos": [
+        1570,
+        -1490
+      ],
+      "size": [
+        160,
+        50
+      ],
+      "flags": {},
+      "order": 34,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 68
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 69
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            71
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode",
+        "cnr_id": "comfy-core",
+        "ver": "0.7.0"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 52,
+      "type": "Reroute",
+      "pos": [
+        1380,
+        -850
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 28,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 70
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "VAE",
+          "links": [
+            69
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 54,
+      "type": "Reroute",
+      "pos": [
+        610,
+        -850
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 85
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "VAE",
+          "links": [
+            70
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 57,
+      "type": "VAEDecode",
+      "pos": [
+        1580,
+        970
+      ],
+      "size": [
+        160,
+        50
+      ],
+      "flags": {},
+      "order": 40,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 75
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 76
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            78
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode",
+        "cnr_id": "comfy-core",
+        "ver": "0.7.0"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 59,
+      "type": "SaveImage //ZImagePowerNodes",
+      "pos": [
+        1780,
+        970
+      ],
+      "size": [
+        540,
+        760
+      ],
+      "flags": {},
+      "order": 41,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 78
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "SaveImage //ZImagePowerNodes"
+      },
+      "widgets_values": [
+        "ZImage/%date:yyyy_MM_dd%/ZI",
+        true
+      ]
+    },
+    {
+      "id": 38,
+      "type": "Reroute",
+      "pos": [
+        490,
+        210
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 54
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CLIP",
+          "links": [
+            60,
+            82,
+            83,
+            101
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 40,
+      "type": "Reroute",
+      "pos": [
+        490,
+        250
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 56
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "VAE",
+          "links": [
+            59,
+            84,
+            85,
+            86
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 56,
+      "type": "StylePromptEncoder //ZImagePowerNodes",
+      "pos": [
+        610,
+        -1430
+      ],
+      "size": [
+        660,
+        570
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 83
+        },
+        {
+          "name": "customization",
+          "shape": 7,
+          "type": "STRING",
+          "link": 73
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            72
+          ]
+        },
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "StylePromptEncoder //ZImagePowerNodes"
+      },
+      "widgets_values": [
+        "custom",
+        "\"Custom 1\"",
+        "Elon Musk meets an xenomorph alien in a shopping mall, jocking, funny faces, very happy."
+      ]
+    },
+    {
+      "id": 39,
+      "type": "Reroute",
+      "pos": [
+        490,
+        150
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 55
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "MODEL",
+          "links": [
+            57,
+            90,
+            91,
+            92
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 61,
+      "type": "ZSamplerTurbo //ZImagePowerNodes",
+      "pos": [
+        1290,
+        970
+      ],
+      "size": [
+        250,
+        480
+      ],
+      "flags": {},
+      "order": 39,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 92
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 108
+        },
+        {
+          "name": "latent_input",
+          "type": "LATENT",
+          "link": 89
+        },
+        {
+          "name": "seed",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          },
+          "link": 100
+        },
+        {
+          "name": "steps",
+          "type": "INT",
+          "widget": {
+            "name": "steps"
+          },
+          "link": 96
+        }
+      ],
+      "outputs": [
+        {
+          "name": "latent_output",
+          "type": "LATENT",
+          "links": [
+            75
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ZSamplerTurbo //ZImagePowerNodes",
+        "aux_id": "martin-rizzo/ComfyUI-ZImagePowerNodes",
+        "ver": "7cb3b03f95eeae260ebbc2facdf6ba6c1e16e639"
+      },
+      "widgets_values": [
+        1,
+        "fixed",
+        9,
+        1
+      ]
+    },
+    {
+      "id": 18,
+      "type": "ZSamplerTurbo //ZImagePowerNodes",
+      "pos": [
+        1290,
+        150
+      ],
+      "size": [
+        250,
+        480
+      ],
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 57
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 61
+        },
+        {
+          "name": "latent_input",
+          "type": "LATENT",
+          "link": 48
+        },
+        {
+          "name": "seed",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          },
+          "link": 99
+        },
+        {
+          "name": "steps",
+          "type": "INT",
+          "widget": {
+            "name": "steps"
+          },
+          "link": 95
+        }
+      ],
+      "outputs": [
+        {
+          "name": "latent_output",
+          "type": "LATENT",
+          "links": [
+            22
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ZSamplerTurbo //ZImagePowerNodes",
+        "aux_id": "martin-rizzo/ComfyUI-ZImagePowerNodes",
+        "ver": "7cb3b03f95eeae260ebbc2facdf6ba6c1e16e639"
+      },
+      "widgets_values": [
+        1,
+        "fixed",
+        9,
+        1
+      ]
+    },
+    {
+      "id": 49,
+      "type": "ZSamplerTurbo //ZImagePowerNodes",
+      "pos": [
+        1290,
+        -670
+      ],
+      "size": [
+        250,
+        480
+      ],
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 91
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 67
+        },
+        {
+          "name": "latent_input",
+          "type": "LATENT",
+          "link": 87
+        },
+        {
+          "name": "seed",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          },
+          "link": 98
+        },
+        {
+          "name": "steps",
+          "type": "INT",
+          "widget": {
+            "name": "steps"
+          },
+          "link": 94
+        }
+      ],
+      "outputs": [
+        {
+          "name": "latent_output",
+          "type": "LATENT",
+          "links": [
+            63
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ZSamplerTurbo //ZImagePowerNodes",
+        "aux_id": "martin-rizzo/ComfyUI-ZImagePowerNodes",
+        "ver": "7cb3b03f95eeae260ebbc2facdf6ba6c1e16e639"
+      },
+      "widgets_values": [
+        1,
+        "fixed",
+        9,
+        1
+      ]
+    },
+    {
+      "id": 44,
+      "type": "Note",
+      "pos": [
+        -1320,
+        770
+      ],
+      "size": [
+        440,
+        200
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "This workflow enables testing a custom style with four different prompts simultaneously. It also allows configuring the number of steps and image size for all at once.\n\nI use it internally to assess style quality more efficiently using prompts from various categories."
+      ],
+      "color": "#223",
+      "bgcolor": "#335",
+      "shape": 1
+    },
+    {
+      "id": 42,
+      "type": "StylePromptEncoder //ZImagePowerNodes",
+      "pos": [
+        620,
+        210
+      ],
+      "size": [
+        660,
+        570
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 60
+        },
+        {
+          "name": "customization",
+          "shape": 7,
+          "type": "STRING",
+          "link": 62
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            61
+          ]
+        },
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "StylePromptEncoder //ZImagePowerNodes"
+      },
+      "widgets_values": [
+        "custom",
+        "\"Custom 1\"",
+        "Three people and a creature stand in front of shelves laden with various items. On the left, a brown-haired woman smiles, wearing a light brown tank top. Next to her is a humanoid figure with a body made of dark, rocky material and pronounced musculature, resembling onyx. This figure has a large head with sharp features. To the right of this figure is a muscular man with a light skin tone, wearing a necklace and with shoulder-length green hair; he wears a white crop top with a pink unicorn painted on it. The last individual, on the far right of the image, is a dark-haired woman wearing a black T-shirt. In the foreground are several plates of food: a white bowl with a creamy dish covered in red seasoning, a rectangular container filled with what appear to be strips of meat, a white bowl with fried and breaded pieces, and a white plate with several round, light brown cookies. Also in the foreground is a light blue object resembling a human head.\n"
+      ]
+    },
+    {
+      "id": 66,
+      "type": "Reroute",
+      "pos": [
+        250,
+        1280
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 101
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CLIP",
+          "links": [
+            103,
+            105
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 67,
+      "type": "Reroute",
+      "pos": [
+        230,
+        1360
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 102
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "STRING",
+          "links": [
+            104,
+            106
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 68,
+      "type": "Reroute",
+      "pos": [
+        1170,
+        1320
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 35,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 112
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            108
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 55,
+      "type": "ZSamplerTurbo //ZImagePowerNodes",
+      "pos": [
+        1280,
+        -1490
+      ],
+      "size": [
+        250,
+        480
+      ],
+      "flags": {},
+      "order": 23,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 90
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 72
+        },
+        {
+          "name": "latent_input",
+          "type": "LATENT",
+          "link": 88
+        },
+        {
+          "name": "seed",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          },
+          "link": 97
+        },
+        {
+          "name": "steps",
+          "type": "INT",
+          "widget": {
+            "name": "steps"
+          },
+          "link": 93
+        }
+      ],
+      "outputs": [
+        {
+          "name": "latent_output",
+          "type": "LATENT",
+          "links": [
+            68
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ZSamplerTurbo //ZImagePowerNodes",
+        "aux_id": "martin-rizzo/ComfyUI-ZImagePowerNodes",
+        "ver": "7cb3b03f95eeae260ebbc2facdf6ba6c1e16e639"
+      },
+      "widgets_values": [
+        1,
+        "fixed",
+        9,
+        1
+      ]
+    },
+    {
+      "id": 65,
+      "type": "StylePromptEncoder //ZImagePowerNodes",
+      "pos": [
+        380,
+        1600
+      ],
+      "size": [
+        660,
+        220
+      ],
+      "flags": {},
+      "order": 25,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 105
+        },
+        {
+          "name": "customization",
+          "shape": 7,
+          "type": "STRING",
+          "link": 106
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            109
+          ]
+        },
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "StylePromptEncoder //ZImagePowerNodes"
+      },
+      "widgets_values": [
+        "custom",
+        "\"Custom 1\"",
+        "A fairy warrior, a confident and magical female character with long flowing pink hair, smiling with calm confidence and inner strength, holding an elegant magical staff topped with a glowing crystal, wearing a detailed fantasy outfit that blends light armor with flowing fabric, subtle magical runes and ornaments, delicate fairy wings shimmering softly behind her, heroic yet graceful pose."
+      ]
+    },
+    {
+      "id": 58,
+      "type": "Reroute",
+      "pos": [
+        1390,
+        1840
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 29,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 77
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "VAE",
+          "links": [
+            76
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 60,
+      "type": "Reroute",
+      "pos": [
+        390,
+        1840
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 86
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "VAE",
+          "links": [
+            77
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 64,
+      "type": "PrimitiveInt",
+      "pos": [
+        -870,
+        620
+      ],
+      "size": [
+        280,
+        82
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            97,
+            98,
+            99,
+            100
+          ]
+        }
+      ],
+      "title": "seed",
+      "properties": {
+        "Node name for S&R": "PrimitiveInt"
+      },
+      "widgets_values": [
+        1,
+        "fixed"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159",
+      "shape": 1
+    },
+    {
+      "id": 69,
+      "type": "Reroute",
+      "pos": [
+        1080,
+        1340
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 31,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 109
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 70,
+      "type": "Reroute",
+      "pos": [
+        1080,
+        1290
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 30,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 110
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "CONDITIONING",
+          "links": [
+            112
+          ]
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false
+      }
+    },
+    {
+      "id": 31,
+      "type": "SaveImage //ZImagePowerNodes",
+      "pos": [
+        1780,
+        150
+      ],
+      "size": [
+        540,
+        760
+      ],
+      "flags": {},
+      "order": 36,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 47
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "SaveImage //ZImagePowerNodes"
+      },
+      "widgets_values": [
+        "ZImage/%date:yyyy_MM_dd%/ZI",
+        true
+      ]
+    },
+    {
+      "id": 53,
+      "type": "SaveImage //ZImagePowerNodes",
+      "pos": [
+        1770,
+        -1490
+      ],
+      "size": [
+        540,
+        760
+      ],
+      "flags": {},
+      "order": 38,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 71
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "SaveImage //ZImagePowerNodes"
+      },
+      "widgets_values": [
+        "ZImage/%date:yyyy_MM_dd%/ZI",
+        true
+      ]
+    },
+    {
+      "id": 50,
+      "type": "StylePromptEncoder //ZImagePowerNodes",
+      "pos": [
+        620,
+        -610
+      ],
+      "size": [
+        660,
+        570
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 82
+        },
+        {
+          "name": "customization",
+          "shape": 7,
+          "type": "STRING",
+          "link": 74
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            67
+          ]
+        },
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "StylePromptEncoder //ZImagePowerNodes"
+      },
+      "widgets_values": [
+        "custom",
+        "\"Custom 1\"",
+        "A woman with short, spiky blonde hair is depicted from the chest up, aiming a large, dark gray firearm. Her hair is tousled and appears to be catching the light. She has blue eyes and shadow on her cheeks. She is wearing a white tank top with one strap visibly off her right shoulder. The firearm she holds is dark gray and appears to be a heavy weapon. A dark ancient castle is visible in the background on the right side. Her attire includes dark, torn shorts and ripped, dark stockings or tights on her legs."
+      ]
+    },
+    {
+      "id": 62,
+      "type": "StylePromptEncoder //ZImagePowerNodes",
+      "pos": [
+        380,
+        1120
+      ],
+      "size": [
+        660,
+        440
+      ],
+      "flags": {},
+      "order": 24,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 103
+        },
+        {
+          "name": "customization",
+          "shape": 7,
+          "type": "STRING",
+          "link": 104
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            110
+          ]
+        },
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "StylePromptEncoder //ZImagePowerNodes"
+      },
+      "widgets_values": [
+        "custom",
+        "\"Custom 1\"",
+        "The interior of a bar features architecture with rounded, modular forms. A bar counter extends horizontally along the frame, showcasing a strip of acrylic. In the center-right, a man in his mid-thirties stands at the bar, resting one hand on the surface while holding a tall glass in the other. He turns his head to look directly at the camera, a playful, knowing smile spreading across his face. The glass contains a drink with small floating spheres that reflect the light. He wears a form-fitting uniform with a short, high collar and a single vertical stripe on the jacket. His brown hair is neatly styled with a clean, mid-century part. In the center, tending the bar, is a rather peculiar alien bartender, a colossal and terrifying humanoid figure resembling an octopus. He is a mass of tissue from whose torso emerges a network of thick tentacles. He is wearing black dress pants. And on its head, a set of multifaceted insectoid eyes constantly moves, scanning the room. The tentacles, with delicate pads at their tips, manipulate the glassware with unsettling grace. Behind the bartender, a mirrored wall reflects rows of liquor bottles with geometric labels. Above the bar floats a neon sign made of curved glass tubes that reads 'COSMIC LOUNGE' in tall, rounded letters, emitting light with a soft, glowing halo. An illuminated menu board reads 'SIGNATURE DRINKS' with three items: 'ORBITAL HIGHBALL,' 'NEBULA SOUR,' and 'ROCKET MARTINI,' each displayed on glowing horizontal bars. To the right, a cylindrical column features a vertical neon panel that reads 'OPEN 24 HOURS' in condensed letters within a translucent strip. To the left, a curved booth sits beneath a domed ceiling light. An illuminated sign reading 'GALAXY BAR SERVICE' encircles the inner rim of the dome in capitals and dominates the left side of the frame. Soft lighting reflects off the glass and acrylic surfaces, highlighting the structural design."
+      ]
+    },
+    {
+      "id": 43,
+      "type": "PrimitiveStringMultiline",
+      "pos": [
+        -870,
+        860
+      ],
+      "size": [
+        600,
+        560
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            62,
+            73,
+            74,
+            102
+          ]
+        }
+      ],
+      "title": "Custom Style to Test",
+      "properties": {
+        "Node name for S&R": "PrimitiveStringMultiline"
+      },
+      "widgets_values": [
+        "\n>>>Custom 1\nYOUR CONTEXT:\nYou are a contemporary photographer whose work is crafted for a modern, social‑media‑savvy audience.  \nThe images are clean, sharply focused, and highly polished, with a crisp resolution that highlights fine detail.  \nLighting is bright and evenly diffused, often using natural daylight or soft artificial key‑light that produces a luminous, airy feel.  \nColors are vivid yet harmonious: pastel‑toned highlights (peach, mint, blush) sit alongside saturated mids tones (turquoise, coral, mustard) that pop without looking oversaturated.  \nA subtle, soft vignette gently darkens the edges, drawing the eye toward the centre and emphasizing the main subject.  \nContrast is moderate‑high, giving the picture depth while preserving details in both shadows and highlights.  \nA faint, almost imperceptible grain (similar to fine 200 ISO film) adds a touch of texture, keeping the image from feeling too clinical.  \nOccasional light‑leak flares or bokeh circles appear in the background, providing a playful, spontaneous element.  \nComposition follows the “rule of thirds” or centered framing, with plenty of negative space to create a balanced, Instagram‑ready aesthetic that feels both aspirational and approachable.  \nOverall, the photograph feels fresh, stylish, and emotionally uplifting, ready to capture attention at a glance.\nYOUR PHOTO:\n{$@}"
+      ],
+      "color": "#232",
+      "bgcolor": "#353",
+      "shape": 1
+    },
+    {
+      "id": 63,
+      "type": "PrimitiveInt",
+      "pos": [
+        -870,
+        740
+      ],
+      "size": [
+        280,
+        82
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            93,
+            94,
+            95,
+            96
+          ]
+        }
+      ],
+      "title": "STEPS",
+      "properties": {
+        "Node name for S&R": "PrimitiveInt"
+      },
+      "widgets_values": [
+        4,
+        "fixed"
+      ],
+      "color": "#432",
+      "bgcolor": "#653",
+      "shape": 1
+    },
+    {
+      "id": 32,
+      "type": "EmptyZImageLatentImage //ZImagePowerNodes",
+      "pos": [
+        -580,
+        690
+      ],
+      "size": [
+        310,
+        130
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            48,
+            87,
+            88,
+            89
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyZImageLatentImage //ZImagePowerNodes"
+      },
+      "widgets_values": [
+        false,
+        "3:2  (photo)",
+        "small",
+        1
+      ],
+      "color": "#332922",
+      "bgcolor": "#593930",
+      "shape": 1
+    }
+  ],
+  "links": [
+    [
+      22,
+      18,
+      0,
+      8,
+      0,
+      "LATENT"
+    ],
+    [
+      24,
+      19,
+      0,
+      20,
+      0,
+      "VAE"
+    ],
+    [
+      25,
+      20,
+      0,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      47,
+      8,
+      0,
+      31,
+      0,
+      "IMAGE"
+    ],
+    [
+      48,
+      32,
+      0,
+      18,
+      2,
+      "LATENT"
+    ],
+    [
+      54,
+      36,
+      0,
+      38,
+      0,
+      "CLIP"
+    ],
+    [
+      55,
+      35,
+      0,
+      39,
+      0,
+      "MODEL"
+    ],
+    [
+      56,
+      37,
+      0,
+      40,
+      0,
+      "VAE"
+    ],
+    [
+      57,
+      39,
+      0,
+      18,
+      0,
+      "MODEL"
+    ],
+    [
+      59,
+      40,
+      0,
+      19,
+      0,
+      "VAE"
+    ],
+    [
+      60,
+      38,
+      0,
+      42,
+      0,
+      "CLIP"
+    ],
+    [
+      61,
+      42,
+      0,
+      18,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      62,
+      43,
+      0,
+      42,
+      1,
+      "STRING"
+    ],
+    [
+      63,
+      49,
+      0,
+      45,
+      0,
+      "LATENT"
+    ],
+    [
+      64,
+      46,
+      0,
+      45,
+      1,
+      "VAE"
+    ],
+    [
+      65,
+      48,
+      0,
+      46,
+      0,
+      "*"
+    ],
+    [
+      66,
+      45,
+      0,
+      47,
+      0,
+      "IMAGE"
+    ],
+    [
+      67,
+      50,
+      0,
+      49,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      68,
+      55,
+      0,
+      51,
+      0,
+      "LATENT"
+    ],
+    [
+      69,
+      52,
+      0,
+      51,
+      1,
+      "VAE"
+    ],
+    [
+      70,
+      54,
+      0,
+      52,
+      0,
+      "*"
+    ],
+    [
+      71,
+      51,
+      0,
+      53,
+      0,
+      "IMAGE"
+    ],
+    [
+      72,
+      56,
+      0,
+      55,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      73,
+      43,
+      0,
+      56,
+      1,
+      "STRING"
+    ],
+    [
+      74,
+      43,
+      0,
+      50,
+      1,
+      "STRING"
+    ],
+    [
+      75,
+      61,
+      0,
+      57,
+      0,
+      "LATENT"
+    ],
+    [
+      76,
+      58,
+      0,
+      57,
+      1,
+      "VAE"
+    ],
+    [
+      77,
+      60,
+      0,
+      58,
+      0,
+      "*"
+    ],
+    [
+      78,
+      57,
+      0,
+      59,
+      0,
+      "IMAGE"
+    ],
+    [
+      82,
+      38,
+      0,
+      50,
+      0,
+      "CLIP"
+    ],
+    [
+      83,
+      38,
+      0,
+      56,
+      0,
+      "CLIP"
+    ],
+    [
+      84,
+      40,
+      0,
+      48,
+      0,
+      "VAE"
+    ],
+    [
+      85,
+      40,
+      0,
+      54,
+      0,
+      "VAE"
+    ],
+    [
+      86,
+      40,
+      0,
+      60,
+      0,
+      "VAE"
+    ],
+    [
+      87,
+      32,
+      0,
+      49,
+      2,
+      "LATENT"
+    ],
+    [
+      88,
+      32,
+      0,
+      55,
+      2,
+      "LATENT"
+    ],
+    [
+      89,
+      32,
+      0,
+      61,
+      2,
+      "LATENT"
+    ],
+    [
+      90,
+      39,
+      0,
+      55,
+      0,
+      "MODEL"
+    ],
+    [
+      91,
+      39,
+      0,
+      49,
+      0,
+      "MODEL"
+    ],
+    [
+      92,
+      39,
+      0,
+      61,
+      0,
+      "MODEL"
+    ],
+    [
+      93,
+      63,
+      0,
+      55,
+      4,
+      "INT"
+    ],
+    [
+      94,
+      63,
+      0,
+      49,
+      4,
+      "INT"
+    ],
+    [
+      95,
+      63,
+      0,
+      18,
+      4,
+      "INT"
+    ],
+    [
+      96,
+      63,
+      0,
+      61,
+      4,
+      "INT"
+    ],
+    [
+      97,
+      64,
+      0,
+      55,
+      3,
+      "INT"
+    ],
+    [
+      98,
+      64,
+      0,
+      49,
+      3,
+      "INT"
+    ],
+    [
+      99,
+      64,
+      0,
+      18,
+      3,
+      "INT"
+    ],
+    [
+      100,
+      64,
+      0,
+      61,
+      3,
+      "INT"
+    ],
+    [
+      101,
+      38,
+      0,
+      66,
+      0,
+      "CLIP"
+    ],
+    [
+      102,
+      43,
+      0,
+      67,
+      0,
+      "STRING"
+    ],
+    [
+      103,
+      66,
+      0,
+      62,
+      0,
+      "CLIP"
+    ],
+    [
+      104,
+      67,
+      0,
+      62,
+      1,
+      "STRING"
+    ],
+    [
+      105,
+      66,
+      0,
+      65,
+      0,
+      "CLIP"
+    ],
+    [
+      106,
+      67,
+      0,
+      65,
+      1,
+      "STRING"
+    ],
+    [
+      108,
+      68,
+      0,
+      61,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      109,
+      65,
+      0,
+      69,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      110,
+      62,
+      0,
+      70,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      112,
+      70,
+      0,
+      68,
+      0,
+      "CONDITIONING"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 2,
+      "title": "GGUF MODELS",
+      "bounding": [
+        -990,
+        -110,
+        400,
+        580
+      ],
+      "color": "#A88",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.7513148009015777,
+      "offset": [
+        1738.499725707115,
+        -312.42000107941385
+      ]
+    },
+    "frontendVersion": "1.35.9",
+    "workflowRendererVersion": "LG"
+  },
+  "version": 0.4
+}

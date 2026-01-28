@@ -32,8 +32,8 @@ License : MIT
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 """
 import os
-from comfy_api.latest import ComfyExtension, io
-from .nodes.server    import *
+from comfy_api.latest  import ComfyExtension, io
+from .nodes.server     import *
 __PROJECT_EMOJI = "⚡"                 #< emoji that identifies the project
 __PROJECT_MENU  = "Z-Image"            #< name of the menu where all the nodes will be
 __PROJECT_ID    = "//ZImagePowerNodes" #< used to identify the project in the ComfyUI node registry.
@@ -43,14 +43,14 @@ __PROJECT_ID    = "//ZImagePowerNodes" #< used to identify the project in the Co
 
 # initialize the project logger
 from comfy.cli_args     import args
-from .nodes.core.system import setup_logger
+from .nodes.lib.system  import setup_logger
 if os.getenv('ZIMAGE_NODES_DEBUG'):
     setup_logger(log_level="DEBUG", emoji=__PROJECT_EMOJI, name="ZI_POWER", use_stdout=args.log_stdout)
 else:
     setup_logger(log_level=args.verbose, emoji=__PROJECT_EMOJI, name="ZI_POWER", use_stdout=args.log_stdout)
 
 # import the newly initialized project logger
-from .nodes.core.system import logger
+from .nodes.lib.system  import logger
 
 
 #============================ HELPER FUNCTIONS =============================#
@@ -105,12 +105,6 @@ class ZImagePowerNodesExtension(ComfyExtension):
         from .nodes.empty_zimage_latent_image import EmptyZImageLatentImage
         _register_node( EmptyZImageLatentImage, subcategory, nodes )
 
-        from .nodes.illustration_style_prompt_encoder import IllustrationStylePromptEncoder
-        _register_node( IllustrationStylePromptEncoder, subcategory, nodes )
-
-        from .nodes.photo_style_prompt_encoder import PhotoStylePromptEncoder
-        _register_node( PhotoStylePromptEncoder, subcategory, nodes )
-
         from .nodes.save_image import SaveImage
         _register_node( SaveImage, subcategory, nodes )
 
@@ -131,10 +125,20 @@ class ZImagePowerNodesExtension(ComfyExtension):
         # this is where nodes that were deprecated and
         # maintained only for compatibility go
 
-        # from .nodes.example_node import ExampleNode
-        # _register_node( ExampleNode, subcategory, nodes, deprecated=True )
+        from .nodes.deprecated_nodes.photo_style_prompt_encoder import PhotoStylePromptEncoder
+        _register_node( PhotoStylePromptEncoder, subcategory, nodes, deprecated=True )
 
-        logger.info(f"Imported {len(nodes)} nodes")
+        from .nodes.deprecated_nodes.illustration_style_prompt_encoder import IllustrationStylePromptEncoder
+        _register_node( IllustrationStylePromptEncoder, subcategory, nodes, deprecated=True )
+
+
+        # report the number of nodes added by this extension
+        num_of_deprecated = sum(node_class.xDEPRECATED for node_class in nodes)
+        num_of_nodes      = len(nodes) - num_of_deprecated
+        if num_of_deprecated>0:
+            logger.info(f"Imported {num_of_nodes} nodes + {num_of_deprecated} deprecated ones.")
+        else:
+            logger.info(f"Imported {num_of_nodes} nodes.")
         return nodes
 
 

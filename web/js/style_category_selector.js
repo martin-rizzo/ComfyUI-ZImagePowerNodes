@@ -147,8 +147,8 @@ app.registerExtension({
         const comfyClass = node?.comfyClass ?? "";
 
         // only applies to "Style & Prompt Encoder" and "Style String Injector"
-		if( !comfyClass.startsWith("StylePromptEncoder " ) &&
-            !comfyClass.startsWith("StyleStringInjector ")  )
+		if( !comfyClass.startsWith("StylePromptEncoder //ZImage" ) &&
+            !comfyClass.startsWith("StyleStringInjector //ZImage")  )
         { return; }
 
         const categoryWidget   = node.widgets.find(w => w.name === "category");

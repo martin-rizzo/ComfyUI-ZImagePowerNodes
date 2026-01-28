@@ -1,7 +1,7 @@
 {
   "id": "9a14adb3-81b3-426c-822c-735347a473ff",
   "revision": 0,
-  "last_node_id": 15,
+  "last_node_id": 16,
   "last_link_id": 8,
   "nodes": [
     {
@@ -16,7 +16,7 @@
         380
       ],
       "flags": {},
-      "order": 2,
+      "order": 3,
       "mode": 0,
       "inputs": [
         {
@@ -78,7 +78,7 @@
         90
       ],
       "flags": {},
-      "order": 1,
+      "order": 2,
       "mode": 0,
       "inputs": [
         {
@@ -103,6 +103,30 @@
         "illustration",
         "\"Anime\""
       ]
+    },
+    {
+      "id": 16,
+      "type": "Note",
+      "pos": [
+        310,
+        -20
+      ],
+      "size": [
+        350,
+        200
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "This workflow illustrates how to inject style directly into a prompt text.\n\nIt is straightforward, the 'Style String Injector' node receives the input prompt as a string and outputs the final text, which combines the original prompt with the selected style."
+      ],
+      "color": "#223",
+      "bgcolor": "#335",
+      "shape": 1
     }
   ],
   "links": [
@@ -127,14 +151,14 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 1,
+      "scale": 0.75,
       "offset": [
-        44.32291666666666,
-        18.861979166666615
+        120.2965307317385,
+        267.9383060048679
       ]
     },
-    "workflowRendererVersion": "LG",
-    "frontendVersion": "1.35.9"
+    "frontendVersion": "1.35.9",
+    "workflowRendererVersion": "LG"
   },
   "version": 0.4
 }

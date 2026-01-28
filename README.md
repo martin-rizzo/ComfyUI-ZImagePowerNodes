@@ -6,7 +6,7 @@
 [![Version](https://img.shields.io/github/v/tag/martin-rizzo/ComfyUI-ZImagePowerNodes?label=version%3A&color=D07250)](#)
 [![Last](https://img.shields.io/github/last-commit/martin-rizzo/ComfyUI-ZImagePowerNodes?label=last%20commit%3A)](#)
 
-<img src="banner.jpg" width="66%"></img>
+<img src="banner_readme.jpg" width="66%"></img>
 
 </div>
 
@@ -23,29 +23,38 @@
 ## Nodes
 
 ### ⚡ ZSampler Turbo
-
  * A specialized sampler designed to divide the denoising process into three stages: composition, details, and refinement. It maintains image stability between 4 and 9 steps and achieves sufficient quality and detail starting from step 7, eliminating the need for further refining or post-processing. \
    **["ZSampler Turbo" node documentation](docs/zsampler_turbo.md)**.
 
-### ⚡ Photo-Style Prompt Encoder
- * Applies a selected photographic styles to the prompt and encodes them using a text-encoder model (clip). Enables generating images that follow the desired aesthetic while guiding the diffusion process. \
-   **["Photo-Style Prompt Encoder" node documentation](docs/illustration_style_prompt_encoder.md)**
+### ⚡ Style & Prompt Encoder
+ * Applies a selected visual styles to the prompt and encodes them using a text-encoder model (clip). Enables generating images that follow the desired aesthetic while guiding the diffusion process. \
+   **["Style Prompt Encoder" node documentation](docs/style_prompt_encoder.md)**
 
-### ⚡ Illustration-Style Prompt Encoder
- * Applies a selected illustration styles to the prompt and encodes them using a text-encoder model (clip). Enables generating images that follow the desired aesthetic while guiding the diffusion process. \
-   **["Illustration-Style Prompt Encoder" node documentation](docs/illustration_style_prompt_encoder.md)**
+### ⚡ Style String Injector
+ * Seamlessly integrates a chosen style into your prompt text. It accepts a string as input and modifies it based on the selected style. \
+   **["Style String Injector" node documentation](docs/style_string_injector.md)**
 
 ### ⚡ Save Image
- * This node saves generated images with an option to include CivitAI-compatible metadata. \
+ * Saves generated images with the option to embed CivitAI-compatible metadata, making it easy to share generation parameters through that platform. \
    **["Save Image" node documentation](docs/save_image.md)**.
 
 ### ⚡ Empty Z-Image Latent Image
+ * Creates an empty latent image of the appropriate size for Z-Image, selecting aspect ratio, scale, and orientation.  \
+   **["Empty Z-Image Latent Image" node documentation](docs/empty_zimage_latent_image.md)**.
+
+### 💀 ~~Photo-Style Prompt Encoder~~
+ * Deprecated, use "Style & Prompt Encoder" node.
+
+### 💀 ~~Illustration-Style Prompt Encoder~~
+ * Deprecated, use "Style & Prompt Encoder" node.
+
 
 
 ## Examples
 
 A few example workflows demonstrating basic usage of these nodes can be found in the **[/workflows](/workflows)** directory.
 
+And hundreds of images generated with Z-Image model and the Power Nodes are available on the **[Z-Image Power Nodes page on CivitAI](https://civitai.com/models/2322533)**. The images posted by me include their prompts and complete generation workflows and you can use them freely as a basis for your own images. Additionally, there are also many users sharing their amazing creations there.
 
 ## Installation
 _Ensure you have the latest version of [ComfyUi](https://github.com/comfyanonymous/ComfyUI)._

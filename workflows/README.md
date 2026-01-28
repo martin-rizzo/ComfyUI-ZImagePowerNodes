@@ -1,7 +1,9 @@
 # Z-Image Power Nodes Example Workflows
 
- * `/development`: Folder containing draft or experimental workflows used during development.
+ * `/_dev_`               : Folder containing draft or experimental workflows used during development.
+ * `/deprecated`          : Folder containing workflows using deprecated nodes that are no longer supported.
  * `/safetensors_versions`: Folder containing versions of workflows that use .safetensors checkpoint files.
+ * `z-image_turbo_main_workflow.json`: Main example workflow for using Z-Image Power Nodes in text-to-image generation.
 
 ## Requirements
 
