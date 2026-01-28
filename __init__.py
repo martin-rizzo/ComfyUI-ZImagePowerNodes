@@ -116,6 +116,7 @@ class ZImagePowerNodesExtension(ComfyExtension):
 
         from .nodes.zsampler_turbo import ZSamplerTurbo
         _register_node( ZSamplerTurbo, subcategory, nodes )
+        _register_node( ZSamplerTurboCurve, subcategory, nodes )
 
 
         #--[ __deprecated ]----------------------
