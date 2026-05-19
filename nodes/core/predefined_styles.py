@@ -69,7 +69,7 @@ class StyleLibrary:
             category = name_parts[2].strip()
             if version and category:
                 num_loaded_files  += 1
-                num_loaded_styles += self.load_from_string(file_path.read_text(),
+                num_loaded_styles += self.load_from_string(file_path.read_text(encoding='utf-8'),
                                                            category = category,
                                                            version  = version)
         return num_loaded_files, num_loaded_styles
