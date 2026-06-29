@@ -119,6 +119,12 @@ class ZSamplerTurbo2Simple(io.ComfyNode):
                                  tooltip="The resulting denoised latent image, ready for decoding "
                                          "by a VAE or passed to another node for further processing. "
                                 ),
+                                            io.Float.Output(display_name="pid_sigma",
+                            tooltip="The input sigma of the final denoising step. "
+                                    "Connect to Merserk PiD Decode's sigma socket for a "
+                                    "direct latent-to-image PiD decode. Also embedded in "
+                                    "the latent dict as 'pid_sigma' for auto-passthrough. "
+                           ),
             ]
         )
 
@@ -207,4 +213,5 @@ class ZSamplerTurbo2Simple(io.ComfyNode):
             progress_preview = ProgressPreview.from_model(model),
         )
 
-        return io.NodeOutput(latent_output)
+        pid_sigma = latent_output.get("pid_sigma", 0.0)
+        return io.NodeOutput(latent_output, pid_sigma)
