@@ -55,7 +55,7 @@ def _styles_as_list(styles: StyleSet, add_none=False):
             style.category,              # 1: category
             style.description,           # 2: description
             style.comma_separated_tags,  # 3: tags (comma-separated)
-            style.slug,                  # 4: url-friendly slug (used for thumbnail filenames)
+            style.slug + ".jpg",   # 4: thumbnail filename (slug + extension, e.g. "casual_photo.jpg")
         ]
         result.append(style_data)
     return result

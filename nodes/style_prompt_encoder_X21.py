@@ -62,7 +62,7 @@ class StylePromptEncoderX21(io.ComfyNode):
                                      ),
                 StyleSelector.Input  ("style",
                                       version=_STL_VERSION, allow_variants=True, dialog_title="Visual Styles | ⚗️experimental",
-                                      images_url="/zi_power/styles/samples?file={slug}.jpg&size={size}&cb={cachebuster}",
+                                      images_url="/zi_power/styles/samples?file={slug}&size={size}&cb={cachebuster}",
                                       tooltip="The visual style to apply to the prompt. "
                                      ),
                 PaletteSelector.Input("palette",

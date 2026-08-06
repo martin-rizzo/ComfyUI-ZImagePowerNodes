@@ -180,11 +180,13 @@ class StyleDialogDelegate extends GalleryDialogDelegate {
         if( !item?.slug ) { return ""; }
         const data = {
             slug       : item.slug,
-            file       : `${item.slug}.jpg`,
+            file       : item.slug, //< backend already includes the extension (e.g. "casual_photo.jpg")
             size       : htmlClass.includes('thumb') ? "small" : "big",
             cachebuster: options.cache_buster
         };
+        console.log("[HTML]", data);
         const imageURL = this.imagesURLTemplate.replace(/{(\w+)}/g, (match, key) => data[key] ?? match);
+        console.log("[IMAGE URL]", imageURL);
         return `<img class="${htmlClass}" src="${imageURL}" loading="lazy" alt="${value | ""}"/>`;
     }
 
@@ -261,17 +263,21 @@ class StyleWidgetDelegate extends GalleryWidgetDelegate {
      */
     drawItemThumbnail(ctx, rect, item, value, options, requestImage) {
         if( !item?.slug ) { return 0; }
+        console.log("imagesURLTemplate =", this.imagesURLTemplate);
 
         const data       = {
             slug       : item.slug,
-            file       : `${item.slug}.jpg`,
+            file       : item.slug, //< backend already includes the extension (e.g. "casual_photo.jpg")
             size       : "small",
             cachebuster: options.cache_buster
         };
+        console.log("[Thumbnail]", data);
         const thumbSize  = 32;
         const rect_right = rect.left + rect.width;
         const imageURL   = this.imagesURLTemplate.replace(/{(\w+)}/g, (match, key) => data[key] ?? match);
+        console.log("[IMAGE URL]", imageURL);
         const image      = requestImage(imageURL);
+        console.log("[IMAGE]", image);
 
         // if the image is fully loaded, draw it!!
         if( image.complete && image.naturalWidth > 0 ) {

@@ -374,7 +374,7 @@ class StyleGalleryButton:
             extra_dict: dict[str,Any] = {
                 "title"     : "Select Style",
                 "dialog"    : {},
-                "images_url": "/zi_power/styles/samples?file={slug}.jpg&cb={cachebuster}"
+                "images_url": "/zi_power/styles/samples?file={slug}&cb={cachebuster}"
             }
 
             if version is not None:
