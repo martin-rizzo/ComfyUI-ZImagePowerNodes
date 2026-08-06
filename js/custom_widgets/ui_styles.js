@@ -180,7 +180,7 @@ class StyleDialogDelegate extends GalleryDialogDelegate {
         if( !item?.slug ) { return ""; }
         const data = {
             slug       : item.slug,
-            file       : `${item.slug}.jpg`,
+            file       : item.slug, //< backend already includes the extension (e.g. "casual_photo.jpg")
             size       : htmlClass.includes('thumb') ? "small" : "big",
             cachebuster: options.cache_buster
         };
@@ -264,7 +264,7 @@ class StyleWidgetDelegate extends GalleryWidgetDelegate {
 
         const data       = {
             slug       : item.slug,
-            file       : `${item.slug}.jpg`,
+            file       : item.slug, //< backend already includes the extension (e.g. "casual_photo.jpg")
             size       : "small",
             cachebuster: options.cache_buster
         };
