@@ -20,7 +20,7 @@ from comfy_api.latest          import io
 from .core.style               import StyleSet
 from .data.predefined_styles   import PREDEFINED_STYLES
 from .data.predefined_palettes import PREDEFINED_PALETTES
-from .custom_widgets           import Separator, StyleSelector, PaletteSelector
+from .custom_widgets           import CustomStyleSelector, PaletteSelector
 _STL_VERSION: Final[str] = "2.0.0" #< the version of style definitions this node uses
 _PAL_VERSION: Final[str] = "2.0.0" #< the version of palette definitions this node uses
 
@@ -49,30 +49,30 @@ class CustomStylePromptEncoderX21(io.ComfyNode):
                 "may change or be removed entirely without prior notice. "
             ),
             inputs=[
-                io.Clip.Input        ("clip",
-                                      tooltip="The CLIP model used for encoding the text."
-                                     ),
-                io.String.Input      ("custom_styles",
-                                      optional=False, multiline=True, force_input=True,
-                                      tooltip="An optional multi-line string to customize existing styles. "
-                                              "Each style definition must start with '>>>' followed by the "
-                                              "style name, and then include its description on the next lines. "
-                                              "The description should incorporate '{$@}' where the main text "
-                                              "prompt will be inserted.",
-                                     ),
-                io.Combo.Input       ("custom_style",
-                                      options=['"Custom 1"', '"Custom 2"', '"Custom 3"', '"Custom 4"', '"Custom 5"'],
-                                      tooltip="The customized visual style to apply to the prompt. "
-                ),
-                PaletteSelector.Input("palette",
-                                      version=_PAL_VERSION, allow_variants=False, dialog_title="Color Palettes | ⚗️ experimental",
-                                      dialog_size="small", dialog_view_mode="list", dialog_icon="mdi.mdi-palette-outline",
-                                      tooltip="The color palette to use for enhancing the prompt. "
-                                     ),
-                io.String.Input      ("prompt",
-                                      multiline=True, dynamic_prompts=True,
-                                      tooltip="The base text prompt to be encoded and styled. "
-                                     ),
+                io.Clip.Input            ("clip",
+                                          tooltip="The CLIP model used for encoding the text."
+                                         ),
+                io.String.Input          ("custom_styles",
+                                          optional=False, multiline=True, force_input=True,
+                                          tooltip="An optional multi-line string to customize existing styles. "
+                                                  "Each style definition must start with '>>>' followed by the "
+                                                  "style name, and then include its description on the next lines. "
+                                                  "The description should incorporate '{$@}' where the main text "
+                                                  "prompt will be inserted.",
+                                         ),
+                CustomStyleSelector.Input("custom_style",
+                                          options=['Custom 1', 'Custom 2', 'Custom 3', 'Custom 4', 'Custom 5'],
+                                          tooltip="The customized visual style to apply to the prompt. "
+                                         ),
+                PaletteSelector.Input    ("palette",
+                                          version=_PAL_VERSION, allow_variants=False, dialog_title="Color Palettes | ⚗️ experimental",
+                                          dialog_size="small", dialog_view_mode="list", dialog_icon="mdi.mdi-palette-outline",
+                                          tooltip="The color palette to use for enhancing the prompt. "
+                                         ),
+                io.String.Input          ("prompt",
+                                          multiline=True, dynamic_prompts=True,
+                                          tooltip="The base text prompt to be encoded and styled. "
+                                         ),
             ],
             outputs=[
                 io.Conditioning.Output(tooltip="Final encoded text that will guide the image generation process."),

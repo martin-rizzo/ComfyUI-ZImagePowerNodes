@@ -15,6 +15,34 @@ import kornia
 from typing import Final
 
 
+def convert_to_rgb(images            : torch.Tensor,
+                   input_color_space : str,
+                   ) -> torch.Tensor:
+    """
+    Convert an input tensor from a specified color space to RGB.
+    Args:
+        images            : A tensor of shape (B, C, H, W) representing the input images.
+        input_color_space : A string indicating the source color space.
+                            Supported: 'rgb', 'bgr', 'hsv', 'lab', 'ycbcr'
+    Returns:
+        A tensor of shape (B, 3, H, W) in RGB color space.
+    """
+    input_color_space = input_color_space.lower().strip()
+
+    if input_color_space == "rgb":
+        return images
+    elif input_color_space == "bgr":
+        return kornia.color.bgr_to_rgb(images)
+    elif input_color_space == "hsv":
+        return kornia.color.hsv_to_rgb(images)
+    elif input_color_space == "lab":
+        return kornia.color.lab_to_rgb(images)
+    elif input_color_space == "ycbcr":
+        return kornia.color.ycbcr_to_rgb(images)
+    else:
+        raise ValueError(f"Color space '{input_color_space}' is not supported by convert_to_rgb.")
+
+
 def adjust_hsv_components(images: torch.Tensor,
                           *,
                           saturation_scurve_factor: float = 0.0,
@@ -22,36 +50,42 @@ def adjust_hsv_components(images: torch.Tensor,
                           saturation_target       : float = -1.0,
                           brightness_target       : float = -1.0,
                           hue_shift_factor        : float = 0.0,
-                          images_color_space      : str = "rgb",
+                          input_color_space       : str   = "rgb",
+                          output_color_space      : str   = "hsv"
                           ) -> torch.Tensor:
     """
-    Adjust HSV color space properties of RGB images using S-curve mapping and target normalization.
+    Adjust HSV color space properties using S-curve mapping and target normalization.
 
     Args:
-        images                  : Input tensor of RGB images with shape [B, 3, H, W] and range [0, 1].
+        images                  : Input tensor with shape [B, 3, H, W] and range.
         saturation_scurve_factor: Power factor to apply an S-curve adjustment to saturation.
         contrast_scurve_factor  : Power factor to apply an S-curve adjustment to value/contrast.
-        saturation_target       : Target mean saturation value (if < 0, the parameter is ignored.)
-        brightness_target       : Target mean brightness value (if < 0, the parameter is ignored.)
+        saturation_target       : Target mean saturation value (if < 0, the parameter is ignored).
+        brightness_target       : Target mean brightness value (if < 0, the parameter is ignored).
         hue_shift_factor        : Factor to shift the hue based on the value component.
-        images_color_space      : The color space that `image` is in. Can be either "rgb" or "hsv".
+        input_color_space       : The color space of the input images ('rgb' or 'hsv').
+        output_color_space      : The desired color space for the returned images ('rgb' or 'hsv').
 
     Returns:
-        A tensor of RGB images with the applied HSV adjustments, in the range.
+        A tensor of processed images converted to the requested output_color_space.
     """
-    if images_color_space.lower() == "rgb":
-        transform_color_space = True
-    elif images_color_space.lower() == "hsv":
-        transform_color_space = False
+    input_color_space  = input_color_space.lower().strip()
+    output_color_space = output_color_space.lower().strip()
+
+    # convert to HSV for internal processing
+    if input_color_space == "rgb":
+        hsv = kornia.color.rgb_to_hsv(images)
+    elif input_color_space == "hsv":
+        hsv = images
     else:
-        raise ValueError(f"Invalid color space. Must be either 'rgb' or 'hsv'. Got \"{images_color_space}\".")
+        raise ValueError(f"Unsupported input_color_space: {input_color_space}")
 
-
-    # transform from RGB to HSV
-    hsv = kornia.color.rgb_to_hsv(images) if transform_color_space else images
+    # splitting the HSV channels
     h = hsv[:, 0:1, :, :]
-    s = torch.clamp(hsv[:, 1:2, :, :], 0.0, 1.0)
-    v = torch.clamp(hsv[:, 2:3, :, :], 0.0, 1.0)
+    s = hsv[:, 1:2, :, :]
+    v = hsv[:, 2:3, :, :]
+    #s = torch.clamp(hsv[:, 1:2, :, :], 0.0, 1.0)
+    #v = torch.clamp(hsv[:, 2:3, :, :], 0.0, 1.0)
 
     # apply s-curve adjustment to saturation
     if saturation_scurve_factor > 0.0 and saturation_scurve_factor != 1.0:
@@ -82,9 +116,14 @@ def adjust_hsv_components(images: torch.Tensor,
 
     # reconstruct HSV and convert back to RGB
     hsv = torch.cat([h, s, v], dim=1)
-    images = kornia.color.hsv_to_rgb(hsv) if transform_color_space else hsv
-    return images
 
+    # convert back to requested output space
+    if output_color_space == "rgb":
+        return kornia.color.hsv_to_rgb(hsv)
+    elif output_color_space == "hsv":
+        return hsv
+    else:
+        raise ValueError(f"Unsupported output_color_space: {output_color_space}")
 
 
 def stretch_histogram(images: torch.Tensor,

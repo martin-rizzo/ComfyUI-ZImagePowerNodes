@@ -36,104 +36,137 @@
 >##                   - This 5th element will be used in specific cases.
 >##
 
+>## PRIMARY & SECONDARY COLOR PALETTES
 
->>>Ocean Breeze
-#00FFFF : azure            : clear crystal water : tropical wave
-#87CEEB : sky blue         : misty fog           : puffy cloud
-#008080 : teal             : smooth sea glass    :
-#000080 : navy             :                     : deep sea trench
+>>>Ember Sunrise
+#FF8C00 : Dark Orange     : brushed copper      :
+#FF4500 : Orange Red      : molten lava         : abundant embers
+#DC143C : Crimson         : crushed velvet      : intense and burning bonfire
+#8B0000 : Dark Red        : charred oak         :
+#FFD700 : Gold            : polished bullion    :
 
->>>Sunset Glow
-#FFDAB9 : peach            : soft velvet      : ripe fruit
-#FFD700 : gold             : metallic glitter : golden crown
-#FF7F50 : coral            : rough coral reef :
-#DC143C : crimson          :                  : burning ember
+>>>Desert Dusk
+#FFB347 : Pastel Orange   :                     :
+#FF8C00 : Dark Orange     : terracotta clay     : ancient clay element
+#CD5C5C : Indian Red      : eroded sandstone    : weathered rock wall
+#8B4513 : Saddle Brown    : weathered leather   :
+#20B2AA : Light Sea Green : oxidized turquoise  :
 
->>>Forest Trek
-#228B22 : forest green     : dense foliage : mossy pine tree
-#556B2F : dark olive green : rough bark    : military jacket
-#8B4513 : saddle brown     : muddy soil    : hiking boots
-#A0522D : sienna           :               : autumn leaf
+>>>Golden Hour
+#FFFACD : Lemon Chiffon   :                     : long silk veil
+#FFD700 : Gold            : hammered foil       : shiny gold coins
+#FF8C00 : Dark Orange     : amber resin         : spherical pearls
+#D2691E : Chocolate       : aged mahogany       :
+#48D1CC : Medium Turquoise:                     :
 
->>>Cyberpunk Neon
-#FF00FF : magenta          : glowing neon tube : cyberpunk visor
-#00FFFF : cyan             : digital glitch    : holographic projection
-#7000FF : matrix purple    :                   : synthetic leather
-#00FF00 : lime green       : laser beam        : radioactive isotope
+>>>Forest Canopy
+#ADFF2F : Green Yellow    :                     :
+#7CFC00 : Lawn Green      :                     : green grass leaves
+#2E8B57 : Sea Green       : pine needle mat     :
+#006400 : Dark Green      : waxy evergreen leaf :
+#FFFF00 : Yellow          :                     :
 
->>>Vintage Desert
-#EDC9AF : desert sand      : fine powder  : sand dune
-#C19A6B : camel            : woven burlap : old burlap sack
-#E2725B : terracotta       : baked clay   : ceramic pottery pot
-#800020 : burgundy         :              : antique rug
+>>>Arctic Shift
+#E0FFFF : Light Cyan      : frosted glass       : ice frost
+#87CEEB : Sky Blue        :                     :
+#1E90FF : Dodger Blue     : glacial ice         :
+#000080 : Navy            :                     :
+#FF00FF : Magenta         :                     :
 
->>>Midnight Aurora
-#E0FFFF : pale cyan    : shimmering silk   : northern lights
-#9370DB : medium purple: ionized gas       : nebula cloud
-#483D8B : dark slate   : velvet night sky  : deep space
-#191970 : midnight blue: obsidian mirror   : void
-#7FFF00 : neon chartreuse : electric flicker : aurora flare
+>>>Twilight Myst
+#E6E6FA : Lavender        :                     : flower petals
+#9370DB : Medium Purple   : brushed wool        :
+#4B0082 : Indigo          : heavy drape velvet  : indigo and gold curtains
+#2E0854 : Midnight Purple : polished obsidian   : heavy obsidian stone
+#FFD700 : Gold            :                     :
 
->>>Royal Chamber
-#FFFACD : lemon chiffon: satin drapery    : antique lace
-#DAA520 : golden rod   : polished brass   : regal crown
-#A52A2A : brown        : worn leather     : library book
-#4B0082 : indigo       : heavy velvet     : royal cloak
-#FF4500 : orange red   : candle flame     : wax seal
 
->>>Artic Frost
-#FFFFFF : snow white   : fresh powder     : mountain peak
-#B0C4DE : light steel  : frost crystal    : ice shard
-#708090 : slate grey   : wet stone        : mountain rock
-#2F4F4F : dark slate   : frozen lake      : deep crevasse
-#00CED1 : dark turquoise : cold spark     : glacial refraction
+>## CHROMATIC SHIFT PALETTES
 
->>>Industrial Grime
-#D3D3D3 : light grey   : cold concrete    : dusty surface
-#808080 : grey         : weathered metal  : steel beam
-#696969 : dim grey     : oil slick        : rusted pipe
-#2F2F2F : charcoal     : soot layer       : coal lump
-#FFD700 : vivid gold   : fresh spark      : welding arc
+>>>Volcanic Mirage
+#FFD700 : Gold           :
+#FF4500 : Orange Red     :
+#8B0000 : Dark Red       :
+#2b3e3e : Dark Slate Gray:
+#00FFFF : Cyan           :
 
->>>Pastel Dreams
-#FFC0CB : pink         : cotton candy     : cherry blossom
-#FFEFD5 : papaya whip  : soft marshmallow : silk ribbon
-#ADD8E6 : light blue   : clear morning sky: porcelain vase
-#98FB98 : pale green   : spring leaf      : garden fern
-#FFB6C1 : light pink   : chalk pastel     : ballet slipper
+>>>Muted Concrete
+#D8BFD8 : Thistle        :
+#87CEFA : Light Sky Blue :
+#708090 : Slate Gray     :
+#2F4F4F : Dark Slate Gray:
+#FF007F : Rose Pink      :
 
->>>Volcanic Core
-#FFF44F : sulphur      : toxic steam      : bubbling vent
-#FF8C00 : dark orange  : molten rock      : cooling magma
-#B22222 : fire brick   : charred wood     : embers
-#4A0404 : dark maroon  : obsidian glass   : volcanic crater
-#FF0000 : intense red  : laser heat       : plasma arc
+>>>Midnight Neon
+#ADFF2F : Green Yellow   :
+#20B2AA : Light Sea Green:
+#4B0082 : Indigo         :
+#000000 : Black          :
+#FF00FF : Magenta        :
 
->>>Deep Forest Moss
-#9ACD32 : yellow green : morning dew      : fresh sprout
-#6B8E23 : olive drab   : damp moss        : river stone
-#556B2F : dark olive   : dense canopy     : tree trunk
-#1A2421 : near black   : wet soil         : cave entrance
-#40E0D0 : turquoise    : bioluminescent   : glowing fungi
+>>>Solar Aurora
+#E0FFFF : Light Cyan     :
+#87CEEB : Sky Blue       :
+#FF8C00 : Dark Orange    :
+#8B0000 : Dark Red       :
+#FFD700 : Gold           :
 
->>>Antique Parchment
-#F5F5DC : beige        : old paper        : scroll
-#DEB887 : burly wood   : dried ink        : calligraphy pen
-#A0522D : sienna       : worn leather     : book binding
-#3E2723 : chocolate    : faded pigment    : wax seal
-#8B0000 : dark red     : blood stain      : ancient stamp
+>>>Earthbound Aura
+#E6E6FA : Lavender       :
+#7B68EE : Slate Blue     :
+#D2691E : Chocolate      :
+#5D4037 : Cocoa          :
+#00FFFF : Cyan           :
 
->>>Midnight Garden
-#D8BFD8 : thistle      : moonlight mist   : night flower
-#9370DB : medium purple: deep petal       : lavender field
-#4B0082 : indigo       : dense shadow     : ivy vine
-#191970 : midnight blue: stillness        : garden gate
-#FFD700 : bright gold  : firefly light    : moonbeam
+>>>Verdant Horizon
+#FFE5B4 : Peach Puff     :
+#FFD700 : Gold           :
+#2E8B57 : Sea Green      :
+#013220 : Dark Green     :
+#FF4500 : Orange Red     :
 
->>>Industrial Copper
-#F4A460 : sandy brown  : oxidized copper  : old coin
-#CD853F : peru         : weathered patina : copper wire
-#8B4513 : saddle brown : vintage bronze   : clockwork gear
-#3E2723 : dark brown   : tarnished metal  : heavy machinery
-#00FF7F : spring green : chemical drip    : radioactive fluid
+
+>## AESTHETIC CHAOS PALETTES
+
+>>>Chromatic Clash
+#FFC0CB : Pink           :
+#FF4500 : Orange Red     :
+#1E90FF : Dodger Blue    :
+#000080 : Navy           :
+#7FFF00 : Chartreuse     :
+
+>>>Electric Acid
+#6fff64 : Lime Green     :
+#FF007F : Rose           :
+#7F00FF : Violet         :
+#2E004F : Deep Purple    :
+#FF4500 : Orange Red     :
+
+>>>Vaporwave Sunset
+#FFEA00 : High‑Saturated Yellow   :
+#00CFFF : High‑Saturated Sky Blue :
+#FF00C8 : High‑Saturated Pink     :
+#0000FF : High‑Saturated Dark Blue:
+#C100FF : High‑Saturated Purple   :
+
+>>>Candy Gore
+#FFB6C1 : Light Pink     :
+#32CD32 : Lime Green     :
+#FF4500 : Orange Red     :
+#000000 : Black          :
+#FFFFFF : White          :
+
+>>>Interstellar Gas
+#00ffff : Cyan           :
+#FF00FF : Magenta        :
+#0051a2 : Cobalt Blue    :
+#0B0E14 : Eerie Black    :
+#7CFC00 : Lawn Green     :
+
+>>>Glitch City
+#FFFF00 : Yellow         :
+#00FF00 : Lime           :
+#0000FF : Blue           :
+#1A1A1A : Charcoal       :
+#FF0000 : Red            :
 

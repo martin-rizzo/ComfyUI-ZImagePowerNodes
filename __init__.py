@@ -50,7 +50,8 @@ from .nodes.core.system  import setup_logger
 if os.getenv('ZIMAGE_NODES_DEBUG'):
     setup_logger(log_level="DEBUG", emoji=__PROJECT_EMOJI, name="ZI_POWER", use_stdout=args.log_stdout)
 else:
-    setup_logger(log_level=args.verbose, emoji=__PROJECT_EMOJI, name="ZI_POWER", use_stdout=args.log_stdout)
+    #console_log_level = get_console_log_level(args.verbose)
+    setup_logger(log_level='INFO', emoji=__PROJECT_EMOJI, name="ZI_POWER", use_stdout=args.log_stdout)
 
 # import the newly initialized project logger
 from .nodes.core.system  import logger

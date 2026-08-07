@@ -11,7 +11,82 @@
  *_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 */
 export { executeLowPriorityTasks, scheduleIntervalCalls };
+export { schedulePeriodicCallback };
 
+//#=============================== NEW TIMER ===============================#
+
+/**
+ * Global store to hold references to nodes and their associated periodic callbacks.
+ * Using a Map allows for efficient lookup and removal of node-related data.
+ * @type {Map<ComfyNode, Set<Function>>}
+ */
+const nodeCallbacksMap = new Map();
+
+/**
+ * Handles the cleanup process when a node is removed from the ComfyUI.
+ * It removes all associated callbacks and restores the original node behavior.
+ *
+ * @param {ComfyNode} node - The node that is being removed.
+ */
+function _onNodeRemoved(node) {
+    if( nodeCallbacksMap.has(node) ) {
+        nodeCallbacksMap.delete(node);
+    }
+}
+
+/**
+ * Registers a periodic callback associated with a specific ComfyUI node.
+ * El periodic callback dejara de ser llamado automaticamente cuando el
+ * nodo suministrado sea removido/eliminado.
+ *
+ * @param {ComfyNode} node             - The node to which the callback is linked.
+ * @param {Function}  callbackFunction - The function to be executed periodically.
+ * @example
+ * schedulePeriodicCallback(myNode, () => console.log('Tick'));
+ */
+function schedulePeriodicCallback(node, callbackFunction) {
+
+    // check if this is the first time we are associating a callback with this node
+    const isFreshNode = !nodeCallbacksMap.has(node);
+
+    // initialize the set if the node is not in the map
+    if( !nodeCallbacksMap.has(node) ) {
+        nodeCallbacksMap.set(node, new Set());
+    }
+
+    // add the callback to the set
+    nodeCallbacksMap.get(node).add(callbackFunction);
+
+    // intercept the `onRemoved` method to trigger the _onNodeRemoved event;
+    // (only wrap the original onRemoved function once when the node is fresh)
+    if( isFreshNode ) {
+        const originalOnRemoved = node.onRemoved;
+        node.onRemoved = function() {
+            _onNodeRemoved(node);
+            if( typeof originalOnRemoved === 'function' ) {
+                return originalOnRemoved.apply(this, arguments);
+            }
+        };
+    }
+}
+
+/**
+ * Executes all registered periodic callbacks across all tracked nodes.
+ * Iterates through the map and invokes every function in the sets.
+ */
+function executePeriodicCallback() {
+    for( const [node, callbacks] of nodeCallbacksMap.entries() ) {
+        callbacks.forEach((callback) => {
+            try { callback(node); }
+            catch (error) {
+                console.error('Error executing periodic callback:', error);
+            }
+        });
+    }
+}
+
+
+//#=============================== Old Timer ===============================#
 
 let nodes = new Set();
 
@@ -63,4 +138,5 @@ function executeLowPriorityTasks() {
     for( const node of nodes ) {
         node.zzController?.onInterval?.();
     }
+    executePeriodicCallback();
 }

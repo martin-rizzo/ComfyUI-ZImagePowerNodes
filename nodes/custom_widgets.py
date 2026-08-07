@@ -14,8 +14,10 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
    - https://docs.comfy.org/custom-nodes/v3_migration#custom-types
 
 """
-from typing           import cast, Any
-from comfy_api.latest import io
+from enum               import Enum
+from typing             import cast, Any
+from comfy_api.latest   import io
+
 _ALLOWED_DIALOG_SIZES      = ("small", "default")
 _ALLOWED_DIALOG_VIEW_MODES = ("grid", "list")
 
@@ -24,6 +26,9 @@ def _get_styles_endpoint(version: str) -> str:
 
 def _get_palettes_endpoint(version: str) -> str:
     return f"/zi_power/palettes/by_version?v={version}"
+
+def _prune_dict(d: dict):
+    return {k: v for k,v in d.items() if v is not None}
 
 
 #========================= PALETTE SELECTOR WIDGET =========================#
@@ -213,6 +218,57 @@ class StyleSelector:
             super().__init__(**kwargs)
 
 
+#========================== CUSTOM STYLE SELECTOR ==========================#
+
+@io.comfytype(io_type="ZIPN_CUSTOM_STYLE_SELECTOR")
+class CustomStyleSelector:
+    Type = str
+    class Input(io.WidgetInput):
+        """Combo input (dropdown) with auto syncronization of Custom Styles"""
+        def __init__(self,
+                     id          : str,
+                     *,
+                     options     : list[str] | list[int] | type[Enum] | None = None,
+                     display_name: str  | None              = None,
+                     optional    : bool                     = False,
+                     tooltip     : str  | None              = None,
+                     lazy        : bool | None              = None,
+                     default     : str  | int | Enum | None = None,
+                    #  control_after_generate: bool | ControlAfterGenerate=None,
+                     socketless: bool | None = None,
+                     raw_link  : bool | None = None,
+                     advanced  : bool | None = None,
+                     extra_dict = None,
+                    ):
+
+            # extract enum values from `options` and `default`
+            if isinstance(options, type) and issubclass(options, Enum):
+                options = [v.value for v in options]
+            if isinstance(default, Enum):
+                default = default.value
+
+            super().__init__(id,
+                             display_name = cast(str,display_name),
+                             optional     = optional,
+                             tooltip      = cast(str,tooltip),
+                             lazy         = cast(bool,lazy),
+                             default      = default,
+                             socketless   = cast(bool,socketless),
+                             raw_link     = cast(bool,raw_link),
+                             advanced     = cast(bool,advanced),
+                             extra_dict   = extra_dict,
+                             )
+            self.multiselect            = False
+            self.options                = options
+            self.control_after_generate = None # control_after_generate
+
+
+        def as_dict(self) -> dict:
+            return super().as_dict() | _prune_dict({
+                "multiselect"           : self.multiselect,
+                "options"               : self.options,
+                "control_after_generate": self.control_after_generate,
+            })
 
 
 #============================ SEPARATOR WIDGET =============================#
