@@ -509,6 +509,12 @@ def execute_3_stage_denoising(comfy_latent: ComfyLatent,
                         progress_preview = ProgressPreview( 100,
                             parent=(progress_preview, 100*prog3//total, 100*total//total)),
                         )
+    _pid_sigmas = (sigmas3 if sigmas3 is not None else
+                   sigmas2 if sigmas2 is not None else
+                   sigmas1)
+    if _pid_sigmas is not None and _pid_sigmas.numel() >= 2:
+        comfy_latent["pid_sigma"] = float(_pid_sigmas[-2].item())
+
     return comfy_latent
 
 

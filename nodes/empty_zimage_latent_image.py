@@ -83,6 +83,10 @@ class EmptyZImageLatentImage(io.ComfyNode):
             ],
             outputs=[
                 io.Latent.Output(tooltip="An empty latent image generated according to the given parameters."),
+                io.Int.Output(display_name="width",
+                              tooltip="Actual pixel width after snapping to the 32-pixel grid."),
+                io.Int.Output(display_name="height",
+                              tooltip="Actual pixel height after snapping to the 32-pixel grid."),
             ]
         )
 
@@ -103,7 +107,7 @@ class EmptyZImageLatentImage(io.ComfyNode):
 
         # create the latent image as a tensor of zeros
         latent = torch.zeros( (batch_size, LATENT_CHANNELS, latent_height, latent_width), device=latent_device )
-        return io.NodeOutput({"samples":latent})
+        return io.NodeOutput({"samples": latent}, image_width, image_height)
 
 
     #__ internal functions ________________________________
