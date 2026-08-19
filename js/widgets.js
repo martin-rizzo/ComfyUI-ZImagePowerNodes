@@ -50,44 +50,6 @@ function _addSeparator(node, name, data, _app) {
 
 
 /**
- * Adds a "Style Selector" widget that utilizes a gallery dialog to select the style.
- *
- * @param {object} node - The node instance where the widget will be attached.
- * @param {string} name - The name identifier for the widget.
- * @param {Array}  data - Configuration array where:
- *                        - [0] = widget type name
- *                        - [1] = object containing the optional configurations.
- * @param {object} _app - The ComfyApp instance.
- *
- * @returns {{ widget: object }}
- *     An object containing the added style selector widget.
- */
-function _addStyleSelector(node, name, data, _app) {
-    const type          = data[0];
-    const options       = data[1] || {};
-    const endpoint      = options.endpoint   || "";
-    const imagesURL     = options.images_url || "";
-    const widgetOptions = {
-        ...(options || {})
-    };
-    const dialogOptions = {
-        ...(options?.dialog || {})
-    };
-    let widget = new GalleryWidget(type, node, name, widgetOptions, new StyleWidgetDelegate(endpoint,imagesURL), (widget) =>
-    {
-        // launch dialog and update widget value
-        const styleDialog  = requireVisualStyleGalleryDialog(endpoint, imagesURL);
-        const currentStyle = widget.value;
-        styleDialog.launch( dialogOptions, currentStyle, (selectedStyle) => {
-            widget.forceUpdate( selectedStyle );
-        });
-    });
-    widget = node.addCustomWidget( widget );
-    return { widget: widget };
-}
-
-
-/**
  * Adds a "Palette Selector" widget that utilizes a gallery dialog to select a palette.
  *
  * @param {object} node - The node instance where the widget will be attached.
@@ -123,6 +85,50 @@ function _addPaletteSelector(node, name, data, _app) {
         const currentPalette = widget.value;
         paletteDialog.launch( dialogOptions, currentPalette, (selectedPalette) => {
             widget.forceUpdate( selectedPalette );
+        });
+    });
+    widget = node.addCustomWidget( widget );
+    return { widget: widget };
+}
+
+
+/**
+ * Adds a "Style Selector" widget that utilizes a gallery dialog to select the style.
+ *
+ * @param {object} node - The node instance where the widget will be attached.
+ * @param {string} name - The name identifier for the widget.
+ * @param {Array}  data - Configuration array where:
+ *                        - [0] = widget type name
+ *                        - [1] = object containing the optional configurations.
+ * @param {object} _app - The ComfyApp instance.
+ *
+ * @returns {{ widget: object }}
+ *     An object containing the added style selector widget.
+ */
+function _addStyleSelector(node, name, data, _app) {
+    const type          = data[0];
+    const options       = data[1] || {};
+    const endpoint      = options.endpoint   || "";
+    const imagesURL     = options.images_url || "";
+    const widgetOptions = {
+        height        : 40,
+        allow_variants: false,
+        ...(options || {})
+    };
+    const dialogOptions = {
+        title    : "Visual Styles",
+        size     : "default",
+        view_mode: "grid",
+        icon     : "mdi.mdi-image-multiple-outline",
+        ...(options?.dialog || {})
+    };
+    let widget = new GalleryWidget(type, node, name, widgetOptions, new StyleWidgetDelegate(endpoint,imagesURL), (widget) =>
+    {
+        // launch dialog and update widget value
+        const styleDialog  = requireVisualStyleGalleryDialog(endpoint, imagesURL);
+        const currentStyle = widget.value;
+        styleDialog.launch( dialogOptions, currentStyle, (selectedStyle) => {
+            widget.forceUpdate( selectedStyle );
         });
     });
     widget = node.addCustomWidget( widget );

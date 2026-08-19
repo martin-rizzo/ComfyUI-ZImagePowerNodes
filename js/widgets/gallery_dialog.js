@@ -238,7 +238,7 @@ class GalleryDialog {
      *                                     * For PrimeIcons   : Use "pi.[icon name]" e.g., "pi.pi-image"; (see https://primevue.org/icons/#list)
      *                                     * For Pictogrammers: Use "mdi.[icon name]" e.g., "mdi.mdi-image"; (see https://pictogrammers.com/library/mdi)
      *                                     * Or empty string to hide the icon
-     * @param {string}  [options.size]           - Force a diferent size for the dialog window. Supported values: "small"
+     * @param {string}  [options.size]           - Force a diferent size for the dialog window. Supported values: "small", "default"
      * @param {string}  [options.view_mode]      - Force the view-mode of the dialog. Supported values: "list", or "grid"
      * @param {boolean} [options.allow_variants] - If True, enables grouping all the variants of the same item
      * @param {boolean} [options.cache_buster]   - Override the default cache-buster value
