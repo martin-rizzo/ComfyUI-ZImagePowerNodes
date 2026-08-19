@@ -33,7 +33,7 @@ def _prune_dict(d: dict):
 
 #========================= PALETTE SELECTOR WIDGET =========================#
 
-@io.comfytype(io_type="ZIPN_PALETTE_SELECTOR")
+@io.comfytype(io_type="ZIPN_PALETTE")
 class Palette(io.ComfyTypeIO):
     Type = str
     class Input(io.WidgetInput):
@@ -131,7 +131,7 @@ class Palette(io.ComfyTypeIO):
 
 #========================== STYLE SELECTOR WIDGET ==========================#
 
-@io.comfytype(io_type="ZIPN_STYLE_SELECTOR")
+@io.comfytype(io_type="ZIPN_STYLE")
 class Style(io.ComfyTypeIO):
     Type = str
     class Input(io.Input):
@@ -223,9 +223,9 @@ class Style(io.ComfyTypeIO):
             super().__init__(**kwargs)
 
 
-#========================== CUSTOM STYLE SELECTOR ==========================#
+#====================== CUSTOM STYLE SELECTOR WIDGET =======================#
 
-@io.comfytype(io_type="ZIPN_CUSTOM_STYLE_SELECTOR")
+@io.comfytype(io_type="ZIPN_CUSTOM_STYLE")
 class CustomStyle:
     Type = str
     class Input(io.WidgetInput):

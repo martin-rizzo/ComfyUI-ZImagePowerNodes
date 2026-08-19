@@ -180,10 +180,10 @@ app.registerExtension({
     getCustomWidgets() {
         if( !ENABLED ) return {};
         return {
-            "ZIPN_SEPARATOR"            : _addSeparator,
-            "ZIPN_PALETTE_SELECTOR"     : _addPaletteSelector,
-            "ZIPN_STYLE_SELECTOR"       : _addStyleSelector,
-            "ZIPN_CUSTOM_STYLE_SELECTOR": _addCustomStyleSelector,
+            "ZIPN_SEPARATOR"   : _addSeparator,
+            "ZIPN_PALETTE"     : _addPaletteSelector,
+            "ZIPN_STYLE"       : _addStyleSelector,
+            "ZIPN_CUSTOM_STYLE": _addCustomStyleSelector,
 
             // [DEPRECATED]
             "ZIPN_STYLE_GALLERY_BUTTON": addStyleGalleryButton,
