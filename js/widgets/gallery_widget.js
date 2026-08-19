@@ -331,15 +331,22 @@ class GalleryWidget {
      *     Returns true if processing was successful
      */
     onPointerDown(pointerOrEvent, node, _canvas) {
-
-        // this function looks like it is executed in different ways for compatibility,
-        // por eso descartar cuando los parametros no son los esperados
+        // this function may be invoked with different parameters;
+        // therefore, any calls lacking the required event or node position are discarded
         if( !pointerOrEvent?.eDown || !node?.pos ) { return; }
+        const event           = pointerOrEvent.eDown;
+        const useLegacyRender = !isNodes20() && !event.target?.closest('[data-testid="properties-panel"]');
 
-        const event       = pointerOrEvent.eDown;
-        const localX      = event.canvasX - (node.pos[0] || 0);
-        const widgetWidth = node.size[0] || 0;
+        const htmlElement = event.target;
+        let   localX      = event.offsetX;
+        let   widgetWidth = htmlElement?.offsetWidth || 0;
+        if( useLegacyRender ) {
+            // legacy coordinate calculation for older versions prior to Nodes 2.0;
+            localX      = event.canvasX - (node.pos[0] || 0);
+            widgetWidth = node?.size?.[0] || this.width || 256;
+        }
 
+        // defer the action execution until the click is completed (button released)
         pointerOrEvent.onClick = () => {
             if( localX < this.widgetMargin[0] + this.arrowButtonWidth ) {
                 this.selectedIndex -= 1;
@@ -359,21 +366,24 @@ class GalleryWidget {
      * @param {Object} node          - The parent ComfyNode object where the widget is located.
      * @param {number} widgetWidth   - The width allocated to this widget.
      * @param {number} y             - The vertical offset of the widget.
+     * @param {number} widgetHeight  - The height allocated to this widget.
      */
-    draw(ctx, node, widgetWidth, y) {
-        const padding       = 4;
-        const spacing       = 6;
-        const lastIndex     = this.itemArray.length - 1;
-        const selectedIndex = this.selectedIndex;
-        const parentWidth   = this.node?.width || 0;
-        const item = this.itemArray[selectedIndex];
+    draw(ctx, node, widgetWidth, y, _widgetHeight) {
+        const padding         = 4;
+        const spacing         = 6;
+        const lastIndex       = this.itemArray.length - 1;
+        const selectedIndex   = this.selectedIndex;
+        const item            = this.itemArray[selectedIndex];
+        const useLegacyRender = ctx.canvas?.classList?.contains("lgraphcanvas");
 
-        // adjust the widget width to fix a small bug that occasionally occurs in ComfyUI
-        // the framework maintains a 'width' property in the widget, which we adjust here
-        // if any issue is detected... KIDS, DON'T TRY THIS AT HOME!!
-        if( parentWidth && Math.abs(widgetWidth-parentWidth)>2 ) {
-            widgetWidth = parentWidth;
-            this.width  = widgetWidth;
+        // apply width correction for legacy ComfyUI versions where `widgetWidth`
+        // was inconsistently reported or failed to sync with the node width
+        if( useLegacyRender ) {
+            const parentWidth   = this.node?.width || 0;
+            if( parentWidth && Math.abs(widgetWidth-parentWidth)>2 ) {
+                widgetWidth = parentWidth;
+                this.width  = widgetWidth;
+            }
         }
 
         ctx.save();
@@ -384,12 +394,12 @@ class GalleryWidget {
             width : widgetWidth         - 2*this.widgetMargin[0],
             height: this.options.height - 2*this.widgetMargin[1] };
 
-        // hack to modify the widget appearance in Nodes 2.0
-        let borderLineSize = 1;
-        let widgetBgColor  = LiteGraph.WIDGET_BGCOLOR;
-        if( isNodes20() ) {
-            borderLineSize = 0;
-            widgetBgColor  = getWidgetBgColor20();
+        // hack to differ the widget appearance in Legacy and Nodes 2.0
+        let borderLineSize = 0;
+        let widgetBgColor  = getWidgetBgColor20();
+        if( useLegacyRender ) {
+            borderLineSize = 1;
+            widgetBgColor  = LiteGraph.WIDGET_BGCOLOR;
         }
 
         // draw the widget container
@@ -442,7 +452,7 @@ class GalleryWidget {
      * @returns {Array} The computed size [width, height]
      */
     computeSize(widgetWidth) {
-        return [widgetWidth, this.options.height];
+        return [widgetWidth || 0, this.options.height];
     }
 
 
