@@ -20,7 +20,7 @@ from math                import pi
 from typing              import Any
 from functools           import cache
 from comfy_api.latest    import io
-from .                   import widgets as zp
+from .                   import widgets as zi
 from .core.helpers_image import adjust_hsv_components, stretch_histogram, apply_dithering, convert_to_rgb
 class Effect(Enum):
     """Enum representing available image processing filter effects.
@@ -80,7 +80,7 @@ class ImageFilter(io.ComfyNode):
                                            "If disabled, all effect selections and adjustments are bypassed."
                                   ),
 
-                zp.Separator.Input("divider1", mode="divider"),#===================================
+                zi.Separator.Input("divider1", mode="divider"),#===================================
 
                 io.Combo.Input    ("effect_1",
                                    options=cls.effects(),
@@ -92,7 +92,7 @@ class ImageFilter(io.ComfyNode):
                                            "Range is -0.5 to 0.5, with 0.0 as the ideal baseline balance. "
                                   ),
 
-                zp.Separator.Input("divider2", mode="spacer"),#====================================
+                zi.Separator.Input("divider2", mode="spacer"),#====================================
 
                 io.Combo.Input    ("effect_2",
                                    options=cls.effects(),
@@ -104,7 +104,7 @@ class ImageFilter(io.ComfyNode):
                                            "Range is -0.5 to 0.5, with 0.0 as the ideal baseline balance. "
                                   ),
 
-                zp.Separator.Input("divider3", mode="spacer"),#====================================
+                zi.Separator.Input("divider3", mode="spacer"),#====================================
 
                 io.Combo.Input    ("effect_3",
                                    options=cls.effects(),

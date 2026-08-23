@@ -18,7 +18,7 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 """
 from typing                     import Any
 from comfy_api.latest           import io
-from .                          import widgets as zp
+from .                          import widgets as zi
 from .core.progress_bar         import ProgressPreview
 from .core.zsampler_turbo_core  import zsampler_turbo_core
 TURBO_CREATIVITY = {
@@ -109,7 +109,7 @@ class ZSamplerTurbo2Advanced(io.ComfyNode):
                                               "process in a sampler chain. ",
                                      ),
 
-                zp.Separator.Input("divider", mode="divider"),#====================================
+                zi.Separator.Input("divider", mode="divider"),#====================================
 
                 io.Combo.Input       ("initial_sample_size",
                                       default="full_size",
@@ -119,7 +119,7 @@ class ZSamplerTurbo2Advanced(io.ComfyNode):
                                               "step, they can lead to a less accurate correction",
                                      ),
 
-                zp.Separator.Input("divider2", mode="divider"),#===================================
+                zi.Separator.Input("divider2", mode="divider"),#===================================
 
                 io.Float.Input       ("intensity",
                                       default=0.0, min=-1.0, max=1.0, step=0.1,

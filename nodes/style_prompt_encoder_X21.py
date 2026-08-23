@@ -20,7 +20,7 @@ from comfy_api.latest          import io
 from .core.style               import StyleSet
 from .data.predefined_styles   import PREDEFINED_STYLES
 from .data.predefined_palettes import PREDEFINED_PALETTES
-from .                         import widgets as zp
+from .                         import widgets as zi
 _STL_VERSION: Final[str] = "1.0.0" #< the version of style definitions this node uses
 _PAL_VERSION: Final[str] = "2.0.0" #< the version of palette definitions this node uses
 
@@ -59,12 +59,12 @@ class StylePromptEncoderX21(io.ComfyNode):
                                          "The description should incorporate '{$@}' where the main text "
                                          "prompt will be inserted.",
                                 ),
-                zp.Style.Input  ("style",
+                zi.Style.Input  ("style",
                                  version=_STL_VERSION, dialog_title="Visual Styles | ⚗️experimental",
                                  allow_variants=False, images_url="/zi_power/styles/samples?file={slug}.jpg&size={size}&cb={cachebuster}",
                                  tooltip="The visual style to apply to the prompt. "
                                 ),
-                zp.Palette.Input("palette",
+                zi.Palette.Input("palette",
                                  version=_PAL_VERSION, dialog_title="Color Palettes | ⚗️experimental",
                                  tooltip="The color palette to use to enhance the prompt's visual description. ",
                                 ),

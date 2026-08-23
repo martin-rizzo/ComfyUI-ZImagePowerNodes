@@ -17,7 +17,7 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 """
 from typing                        import Any
 from comfy_api.latest              import io
-from .                             import widgets as zp
+from .                             import widgets as zi
 from .core.progress_bar            import ProgressPreview
 from .core.zsampler_turbo_core     import zsampler_turbo_core
 from .core.zsampler_turbo_corehelp import EulerAss, DPMPP_SDEss
@@ -85,7 +85,7 @@ class ZSamplerTurboX21(io.ComfyNode):
                                               "result is produced with the same value. ",
                                      ),
 
-                zp.Separator.Input("divider1", mode="divider"),#===================================
+                zi.Separator.Input("divider1", mode="divider"),#===================================
 
                 io.Int.Input         ("steps",
                                       default=8, min=2, max=14, step=1,

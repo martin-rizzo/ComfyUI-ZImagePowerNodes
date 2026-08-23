@@ -18,7 +18,7 @@ from typing                   import Final
 from functools                import cache
 from comfy_api.latest         import io
 from .data.predefined_styles  import PREDEFINED_STYLES
-from .                        import widgets as zp
+from .                        import widgets as zi
 _STL_VERSION: Final[str] = "1.0.0" #< the version of style definitions this node uses
 
 
@@ -45,43 +45,43 @@ class MyTop10StylesEditor(io.ComfyNode):
             is_deprecated = cls.xDEPRECATED,
             inputs=[
                 io.Combo.Input( "style_1" , options=cls.style_names(), ),
-                zp.StyleGalleryButton.Input("gallery_1", version="1.0", dialog_title="Select Style 1"),
-                zp.Separator.Input("spacer_1", mode="spacer"),#====================================
+                zi.StyleGalleryButton.Input("gallery_1", version="1.0", dialog_title="Select Style 1"),
+                zi.Separator.Input("spacer_1", mode="spacer"),#====================================
 
                 io.Combo.Input( "style_2" , options=cls.style_names(), ),
-                zp.StyleGalleryButton.Input("gallery_2", version="1.0", dialog_title="Select Style 2"),
-                zp.Separator.Input("spacer_2", mode="spacer"),#====================================
+                zi.StyleGalleryButton.Input("gallery_2", version="1.0", dialog_title="Select Style 2"),
+                zi.Separator.Input("spacer_2", mode="spacer"),#====================================
 
                 io.Combo.Input( "style_3" , options=cls.style_names(), ),
-                zp.StyleGalleryButton.Input("gallery_3", version="1.0", dialog_title="Select Style 3"),
-                zp.Separator.Input("spacer_3", mode="spacer"),#====================================
+                zi.StyleGalleryButton.Input("gallery_3", version="1.0", dialog_title="Select Style 3"),
+                zi.Separator.Input("spacer_3", mode="spacer"),#====================================
 
                 io.Combo.Input( "style_4" , options=cls.style_names(), ),
-                zp.StyleGalleryButton.Input("gallery_4", version="1.0", dialog_title="Select Style 4"),
-                zp.Separator.Input("spacer_4", mode="spacer"),#====================================
+                zi.StyleGalleryButton.Input("gallery_4", version="1.0", dialog_title="Select Style 4"),
+                zi.Separator.Input("spacer_4", mode="spacer"),#====================================
 
                 io.Combo.Input( "style_5" , options=cls.style_names(), ),
-                zp.StyleGalleryButton.Input("gallery_5", version="1.0", dialog_title="Select Style 5"),
-                zp.Separator.Input("spacer_5", mode="spacer"),#====================================
+                zi.StyleGalleryButton.Input("gallery_5", version="1.0", dialog_title="Select Style 5"),
+                zi.Separator.Input("spacer_5", mode="spacer"),#====================================
 
                 io.Combo.Input( "style_6" , options=cls.style_names(), ),
-                zp.StyleGalleryButton.Input("gallery_6", version="1.0", dialog_title="Select Style 6"),
-                zp.Separator.Input("spacer_6", mode="spacer"),#====================================
+                zi.StyleGalleryButton.Input("gallery_6", version="1.0", dialog_title="Select Style 6"),
+                zi.Separator.Input("spacer_6", mode="spacer"),#====================================
 
                 io.Combo.Input( "style_7" , options=cls.style_names(), ),
-                zp.StyleGalleryButton.Input("gallery_7", version="1.0", dialog_title="Select Style 7"),
-                zp.Separator.Input("spacer_7", mode="spacer"),#====================================
+                zi.StyleGalleryButton.Input("gallery_7", version="1.0", dialog_title="Select Style 7"),
+                zi.Separator.Input("spacer_7", mode="spacer"),#====================================
 
                 io.Combo.Input( "style_8" , options=cls.style_names(), ),
-                zp.StyleGalleryButton.Input("gallery_8", version="1.0", dialog_title="Select Style 8"),
-                zp.Separator.Input("spacer_8", mode="spacer"),#====================================
+                zi.StyleGalleryButton.Input("gallery_8", version="1.0", dialog_title="Select Style 8"),
+                zi.Separator.Input("spacer_8", mode="spacer"),#====================================
 
                 io.Combo.Input( "style_9" , options=cls.style_names(), ),
-                zp.StyleGalleryButton.Input("gallery_9", version="1.0", dialog_title="Select Style 9"),
-                zp.Separator.Input("spacer_9", mode="spacer"),#====================================
+                zi.StyleGalleryButton.Input("gallery_9", version="1.0", dialog_title="Select Style 9"),
+                zi.Separator.Input("spacer_9", mode="spacer"),#====================================
 
                 io.Combo.Input( "style_10", options=cls.style_names(), ),
-                zp.StyleGalleryButton.Input("gallery_10", version="1.0", dialog_title="Select Style 10"),
+                zi.StyleGalleryButton.Input("gallery_10", version="1.0", dialog_title="Select Style 10"),
             ],
             outputs=[
                 io.Custom("TOP_STYLES").Output("TOP_STYLES",

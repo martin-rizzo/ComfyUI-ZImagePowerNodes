@@ -20,7 +20,7 @@ import numpy as np
 from PIL                 import Image, ImageDraw, ImageFont
 from comfy_api.latest    import io
 from .core.helpers_text  import TextBox, load_font
-from .                   import widgets as zp
+from .                   import widgets as zi
 
 
 class ImageLabeler2(io.ComfyNode):
@@ -47,7 +47,7 @@ class ImageLabeler2(io.ComfyNode):
                                          "If disabled, the image will be displayed without label.",
                                 ),
 
-                zp.Separator.Input("divider1", mode="divider"),#===================================
+                zi.Separator.Input("divider1", mode="divider"),#===================================
 
                 io.String.Input ("text",
                                  placeholder="label text", multiline=False,
