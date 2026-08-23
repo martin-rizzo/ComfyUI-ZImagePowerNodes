@@ -194,6 +194,12 @@ class ZImagePowerNodesExtension(ComfyExtension):
         from .nodes.deprecated_nodes.image_labeler_1 import ImageLabeler
         _register_node( ImageLabeler, nodes, subcategory )
 
+        from .nodes.deprecated_nodes.style_prompt_encoder_X21 import StylePromptEncoderX21
+        _register_node( StylePromptEncoderX21, nodes, subcategory )
+
+        from .nodes.deprecated_nodes.custom_style_prompt_encoder_X21 import CustomStylePromptEncoderX21
+        _register_node( CustomStylePromptEncoderX21, nodes, subcategory )
+
 
         #--[ __experimental ]--------------------
         subcategory = "__experimental"
@@ -209,12 +215,6 @@ class ZImagePowerNodesExtension(ComfyExtension):
 
         from .nodes.style_prompt_encoder_X22_advanced import StylePromptEncoderX22Advanced
         _register_node( StylePromptEncoderX22Advanced, nodes, subcategory )
-
-        from .nodes.style_prompt_encoder_X21 import StylePromptEncoderX21
-        _register_node( StylePromptEncoderX21, nodes, subcategory )
-
-        from .nodes.custom_style_prompt_encoder_X21 import CustomStylePromptEncoderX21
-        _register_node( CustomStylePromptEncoderX21, nodes, subcategory )
 
         from .nodes.advanced_vae_decoder_X21 import AdvancedVAEDecoderX21
         _register_node( AdvancedVAEDecoderX21, nodes, subcategory )

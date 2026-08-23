@@ -14,13 +14,13 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
  - https://docs.comfy.org/custom-nodes/v3_migration
 
 """
-from typing                    import Final
-from functools                 import cache
-from comfy_api.latest          import io
-from .core.style               import StyleSet
-from .data.predefined_styles   import PREDEFINED_STYLES
-from .data.predefined_palettes import PREDEFINED_PALETTES
-from .                         import widgets as zi
+from typing                     import Final
+from functools                  import cache
+from comfy_api.latest           import io
+from ..core.style               import StyleSet
+from ..data.predefined_styles   import PREDEFINED_STYLES
+from ..data.predefined_palettes import PREDEFINED_PALETTES
+from ..                         import widgets as zi
 _STL_VERSION: Final[str] = "1.0.0" #< the version of style definitions this node uses
 _PAL_VERSION: Final[str] = "2.0.0" #< the version of palette definitions this node uses
 
