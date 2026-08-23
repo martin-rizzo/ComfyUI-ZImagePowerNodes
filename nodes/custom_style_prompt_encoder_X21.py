@@ -59,7 +59,7 @@ class CustomStylePromptEncoderX21(io.ComfyNode):
                                              "where the base prompt should be inserted.",
                                     ),
                 zp.CustomStyle.Input("custom_style",
-                                     options=['Custom 1', 'Custom 2', 'Custom 3', 'Custom 4', 'Custom 5', 'Custom 6'],
+                                     user_input="custom_styles",
                                      tooltip="The visual style to be applied to the input prompt. "
                                     ),
                 zp.Palette.Input    ("palette",

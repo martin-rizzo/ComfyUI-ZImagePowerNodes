@@ -163,8 +163,11 @@ class ZImagePowerNodesExtension(ComfyExtension):
         from .nodes.vae_encode_soft_inpainting import VAEEncodeSoftInpainting
         _register_node( VAEEncodeSoftInpainting, nodes, subcategory )
 
-        from .nodes.palette_selector import PaletteSelector
-        _register_node( PaletteSelector, nodes, subcategory )
+        from .nodes.predefined_style_selector import PredefinedStyleSelector
+        _register_node( PredefinedStyleSelector, nodes, subcategory )
+
+        from .nodes.predefined_palette_selector import PredefinedPaletteSelector
+        _register_node( PredefinedPaletteSelector, nodes, subcategory )
 
 
         #--[ __deprecated ]----------------------
@@ -209,6 +212,9 @@ class ZImagePowerNodesExtension(ComfyExtension):
 
         from .nodes.zsampler_turbo_X21 import ZSamplerTurboX21
         _register_node( ZSamplerTurboX21, nodes, subcategory )
+
+        from .nodes.style_palette_prompt_encoder_X21 import StylePalettePromptEncoderX21
+        _register_node( StylePalettePromptEncoderX21, nodes, subcategory )
 
         from .nodes.style_prompt_encoder_X21 import StylePromptEncoderX21
         _register_node( StylePromptEncoderX21, nodes, subcategory )

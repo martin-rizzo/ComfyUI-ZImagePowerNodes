@@ -10,13 +10,13 @@
  *       ComfyUI nodes designed specifically for the "Z-Image" model.
  *_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 */
-import { app }                          from "../../../scripts/app.js";
-import { GalleryWidget }                from "./widgets/gallery_widget.js";
-import { SeparatorWidget }              from "./widgets/separator_widget.js";
-import { addStyleGalleryButton }        from "./widgets/style_gallery_button.js";
-import { CustomStylesComboController }  from "./widgets/custom_styles_combo.js";
-import { StyleWidgetDelegate  , requireVisualStyleGalleryDialog  } from "./widgets/ui_styles.js";
-import { PaletteWidgetDelegate, requireColorPaletteGalleryDialog } from "./widgets/ui_palettes.js";
+import { app }                      from '../../../scripts/app.js';
+import { GalleryWidget }            from './widgets/gallery_widget.js';
+import { SeparatorWidget }          from './widgets/separator_widget.js';
+import { addStyleGalleryButton }    from './widgets/style_gallery_button.js';
+import { UserInputComboController } from './widgets/user_input_combo_controller.js';
+import { StyleWidgetDelegate  , requireVisualStyleGalleryDialog  } from './widgets/ui_styles.js';
+import { PaletteWidgetDelegate, requireColorPaletteGalleryDialog } from './widgets/ui_palettes.js';
 const ENABLED = true;
 
 
@@ -31,103 +31,64 @@ const ENABLED = true;
  *  - `height`    {number}: The total vertical space allocated for the widget in pixels.
  *  - `thickness` {number}: The line weight in pixels.
  *
- * @param {object} node - The node instance where the widget will be attached.
+ * @param {Object} node - The node instance where the widget will be attached.
  * @param {string} name - The name identifier for the widget.
  * @param {Array}  data - Configuration array where:
  *                        - [0] = widget type name
  *                        - [1] = object containing the optional configurations.
- * @param {object} _app - The ComfyApp instance.
+ * @param {Object} _app - The ComfyApp instance.
  *
- * @returns {{ widget: object }}
+ * @returns {{ widget: Object }}
  *     An object containing the added separator widget instance.
  */
 function _addSeparator(node, name, data, _app) {
-    const type    = data[0];
-    const options = data[1] || {};
-    const widget  = node.addCustomWidget( new SeparatorWidget(type, name, options) );
+    const type   = data[0];
+    const kwargs = data[1] || {};
+    const widget = node.addCustomWidget( new SeparatorWidget(type, name, kwargs) );
     return { widget: widget };
 }
 
 
 /**
- * Adds a "Palette Selector" widget that utilizes a gallery dialog to select a palette.
+ * Adds a `Style Selector` widget that utilizes a gallery dialog to select the style.
  *
- * @param {object} node - The node instance where the widget will be attached.
+ * @param {Object} node - The node instance where the widget will be added.
  * @param {string} name - The name identifier for the widget.
  * @param {Array}  data - Configuration array where:
  *                        - [0] = widget type name
  *                        - [1] = object containing the optional configurations.
- * @param {object} _app - The ComfyApp instance.
+ * @param {Object} _app - The ComfyApp instance.
  *
- * @returns {{ widget: object }}
- *     An object containing the added palette selector widget.
- */
-function _addPaletteSelector(node, name, data, _app) {
-    const type          = data[0];
-    const options       = data[1] || {};
-    const endpoint      = options.endpoint || "";
-    const widgetOptions = {
-        height        : 40,
-        allow_variants: false,
-        ...(options || {})
-    };
-    const dialogOptions = {
-        title    : "Color Palettes",
-        size     : "small",
-        view_mode: "list",
-        icon     : "mdi.mdi-palette-outline",
-        ...(options?.dialog || {})
-    };
-    let widget = new GalleryWidget(type, node, name, widgetOptions, new PaletteWidgetDelegate(endpoint), (widget) =>
-    {
-        // launch dialog and update widget value
-        const paletteDialog  = requireColorPaletteGalleryDialog(endpoint);
-        const currentPalette = widget.value;
-        paletteDialog.launch( dialogOptions, currentPalette, (selectedPalette) => {
-            widget.forceUpdate( selectedPalette );
-        });
-    });
-    widget = node.addCustomWidget( widget );
-    return { widget: widget };
-}
-
-
-/**
- * Adds a "Style Selector" widget that utilizes a gallery dialog to select the style.
- *
- * @param {object} node - The node instance where the widget will be attached.
- * @param {string} name - The name identifier for the widget.
- * @param {Array}  data - Configuration array where:
- *                        - [0] = widget type name
- *                        - [1] = object containing the optional configurations.
- * @param {object} _app - The ComfyApp instance.
- *
- * @returns {{ widget: object }}
+ * @returns {{ widget: Object }}
  *     An object containing the added style selector widget.
  */
 function _addStyleSelector(node, name, data, _app) {
     const type          = data[0];
-    const options       = data[1] || {};
-    const endpoint      = options.endpoint   || "";
-    const imagesURL     = options.images_url || "";
-    const widgetOptions = {
+    const kwargs        = data[1] || {};
+    const widgetConfig = {
         height        : 40,
         allow_variants: false,
-        ...(options || {})
+        endpoint      : '',
+        images_url    : '',
+        dialog        : {},
+        ...kwargs
     };
-    const dialogOptions = {
-        title    : "Visual Styles",
-        size     : "default",
-        view_mode: "grid",
-        icon     : "mdi.mdi-image-multiple-outline",
-        ...(options?.dialog || {})
+    const dialogConfig = {
+        title     : 'Visual Styles',
+        size      : 'default',
+        view_mode : 'grid',
+        icon      : 'mdi.mdi-image-multiple-outline',
+        endpoint  : widgetConfig.endpoint,
+        images_url: widgetConfig.images_url,
+        ...widgetConfig.dialog
     };
-    let widget = new GalleryWidget(type, node, name, widgetOptions, new StyleWidgetDelegate(endpoint,imagesURL), (widget) =>
+    const widgetDelegate = new StyleWidgetDelegate(widgetConfig.endpoint, widgetConfig.images_url);
+    let widget = new GalleryWidget(type, node, name, widgetConfig, widgetDelegate, (widget) =>
     {
         // launch dialog and update widget value
-        const styleDialog  = requireVisualStyleGalleryDialog(endpoint, imagesURL);
+        const styleDialog  = requireVisualStyleGalleryDialog(dialogConfig.endpoint, dialogConfig.images_url);
         const currentStyle = widget.value;
-        styleDialog.launch( dialogOptions, currentStyle, (selectedStyle) => {
+        styleDialog.launch( dialogConfig, currentStyle, (selectedStyle) => {
             widget.forceUpdate( selectedStyle );
         });
     });
@@ -137,28 +98,79 @@ function _addStyleSelector(node, name, data, _app) {
 
 
 /**
- * Adds a Combo widget that automatically synchronizes custom styles from
- * the user's style definitions.
+ * Adds a `Palette Selector` widget that utilizes a gallery dialog to select a palette.
  *
- * @param {object} node - The node instance where the widget will be attached.
+ * @param {Object} node - The node instance where the widget will be added.
  * @param {string} name - The name identifier for the widget.
  * @param {Array}  data - Configuration array where:
  *                        - [0] = widget type name
  *                        - [1] = object containing the optional configurations.
- * @param {object} _app - The ComfyApp instance.
+ * @param {Object} _app - The ComfyApp instance.
  *
- * @returns {{ widget: object }}
+ * @returns {{ widget: Object }}
+ *     An object containing the added palette selector widget.
+ */
+function _addPaletteSelector(node, name, data, _app) {
+    const type   = data[0];
+    const kwargs = data[1] || {};
+    const widgetConfig = {
+        height        : 40,
+        allow_variants: false,
+        endpoint      : '',
+        dialog        : {},
+        ...kwargs
+    };
+    const dialogConfig = {
+        title    : 'Color Palettes',
+        size     : 'small',
+        view_mode: 'list',
+        icon     : 'mdi.mdi-palette-outline',
+        endpoint : widgetConfig.endpoint,
+        ...widgetConfig.dialog
+    };
+    const widgetDelegate = new PaletteWidgetDelegate(widgetConfig.endpoint);
+    let widget = new GalleryWidget(type, node, name, widgetConfig, widgetDelegate, (widget) =>
+    {
+        // launch dialog and update widget value
+        const paletteDialog  = requireColorPaletteGalleryDialog(dialogConfig.endpoint);
+        const currentPalette = widget.value;
+        paletteDialog.launch( dialogConfig, currentPalette, (selectedPalette) => {
+            widget.forceUpdate( selectedPalette );
+        });
+    });
+    widget = node.addCustomWidget( widget );
+    return { widget: widget };
+}
+
+
+/**
+ * Adds a COMBO widget that automatically synchronizes items from user input text.
+ *
+ * @param {Object} node - The node instance where the widget will be added.
+ * @param {string} name - The name identifier for the widget.
+ * @param {Array}  data - Configuration array where:
+ *                        - [0] = string with the widget type
+ *                        - [1] = object containing the optional configurations.
+ * @param {Object} _app - The ComfyApp instance. (no usado actualmente)
+ *
+ * @returns {{ widget: Object }}
  *     An object containing the added combo box widget.
  */
-function _addCustomStyleSelector(node, name, data, _app) {
-    const _type         = data[0];
-    const widgetOptions = data[1] || {};
-    const defaultValue  = widgetOptions.default;
-
-    // create the widget and apply the controller to it
-    widgetOptions.values = [];
-    const widget = node.addWidget('combo', name, defaultValue, function () {}, widgetOptions);
-    node.zipnCustStylesController = new CustomStylesComboController(widget, node, widgetOptions.options);
+function _addUserInputComboBox(node, name, data, _app) {
+    const _type  = data[0];
+    const kwargs = data[1] || {};
+    const widgetConfig = {
+        user_input : 'user_input',
+        item_marker: '>>>',
+        values     : [],
+        ...kwargs
+    };
+    // create the `COMBO` widget and attach the controller to it
+    const widget = node.addWidget('combo', name, kwargs.default, function () {}, widgetConfig);
+    widget.zipnController = new UserInputComboController(widget, node,
+                                                         widgetConfig.user_input,
+                                                         widgetConfig.options,
+                                                         widgetConfig.item_marker);
     return { widget: widget };
 }
 
@@ -168,7 +180,7 @@ function _addCustomStyleSelector(node, name, data, _app) {
 //#=========================================================================#
 
 app.registerExtension({
-    name: "ZImagePowerNodes.CustomWidgets",
+    name: 'ZImagePowerNodes.CustomWidgets',
 
     /** Called when the extension is loaded. */
     init() {
@@ -180,13 +192,14 @@ app.registerExtension({
     getCustomWidgets() {
         if( !ENABLED ) return {};
         return {
-            "ZIPN_SEPARATOR"   : _addSeparator,
-            "ZIPN_PALETTE"     : _addPaletteSelector,
-            "ZIPN_STYLE"       : _addStyleSelector,
-            "ZIPN_CUSTOM_STYLE": _addCustomStyleSelector,
+            'ZIPN_SEPARATOR'     : _addSeparator,
+            'ZIPN_STYLE'         : _addStyleSelector,
+            'ZIPN_PALETTE'       : _addPaletteSelector,
+            'ZIPN_CUSTOM_STYLE'  : _addUserInputComboBox,
+            'ZIPN_CUSTOM_PALETTE': _addUserInputComboBox,
 
             // [DEPRECATED]
-            "ZIPN_STYLE_GALLERY_BUTTON": addStyleGalleryButton,
+            'ZIPN_STYLE_GALLERY_BUTTON': addStyleGalleryButton,
         };
     },
 

@@ -1,5 +1,5 @@
 """
-File    : palette_selector.py
+File    : predefined_palette_selector.py
 Purpose : Node to select one of the predefined palettes of colors
 Author  : Martin Rizzo | <martinrizzo@gmail.com>
 Date    : Aug 8, 2026
@@ -22,8 +22,8 @@ from .                         import widgets as zp
 _PAL_VERSION: Final[str] = "2.0.0" #< the version of palette definitions this node uses
 
 
-class PaletteSelector(io.ComfyNode):
-    xTITLE         = "Palette Selector"
+class PredefinedPaletteSelector(io.ComfyNode):
+    xTITLE         = "Predefined Palette Selector"
     xDESCRIPTION   = (
         "Provides a selection interface to choose from a collection of predefined color palettes."
         )
@@ -48,7 +48,7 @@ class PaletteSelector(io.ComfyNode):
                                 ),
             ],
             outputs=[
-                zp.Palette.Output(tooltip="The selected color palette."),
+                zp.CustomPalette.Output(tooltip="The selected color palette."),
             ]
         )
 
@@ -60,9 +60,17 @@ class PaletteSelector(io.ComfyNode):
 
         # if palette is just a name, get the object from the predefined palettes
         if isinstance(palette, str):
-            palette = PREDEFINED_PALETTES.by_version(_PAL_VERSION).get(palette)
+            output = PREDEFINED_PALETTES.by_version(_PAL_VERSION).get(palette)
 
-        return io.NodeOutput( palette )
+        # if palette is already a Palette instance, use it directly
+        elif isinstance(palette, Palette):
+            output = palette
+
+        # anything else is invalid
+        else:
+            output = None
+
+        return io.NodeOutput( output )
 
 
     #__ VALIDATION ________________________________________
@@ -70,6 +78,4 @@ class PaletteSelector(io.ComfyNode):
     def validate_inputs(cls, **kwargs) -> bool | str:
         return True
 
-
-    #__ internal functions ________________________________
 

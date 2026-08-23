@@ -231,27 +231,22 @@ class CustomStyle:
     class Input(io.WidgetInput):
         """Combo input (dropdown) with auto syncronization of Custom Styles"""
         def __init__(self,
-                     id          : str,
+                     id: str,
                      *,
-                     options     : list[str] | list[int] | type[Enum] | None = None,
-                     display_name: str  | None              = None,
-                     optional    : bool                     = False,
-                     tooltip     : str  | None              = None,
-                     lazy        : bool | None              = None,
-                     default     : str  | int | Enum | None = None,
-                    #  control_after_generate: bool | ControlAfterGenerate=None,
-                     socketless: bool | None = None,
-                     raw_link  : bool | None = None,
-                     advanced  : bool | None = None,
+                     user_input  : str,
+                     style_marker: str       | None = None,
+                     options     : list[str] | None = None,
+                     display_name: str       | None = None,
+                     optional    : bool             = False,
+                     tooltip     : str       | None = None,
+                     lazy        : bool      | None = None,
+                     default     : str       | None = None,
+                     socketless  : bool      | None = None,
+                     raw_link    : bool      | None = None,
+                     advanced    : bool      | None = None,
+                     control_after_generate: bool | io.ControlAfterGenerate | None = None,
                      extra_dict = None,
                     ):
-
-            # extract enum values from `options` and `default`
-            if isinstance(options, type) and issubclass(options, Enum):
-                options = [v.value for v in options]
-            if isinstance(default, Enum):
-                default = default.value
-
             super().__init__(id,
                              display_name = cast(str,display_name),
                              optional     = optional,
@@ -263,17 +258,101 @@ class CustomStyle:
                              advanced     = cast(bool,advanced),
                              extra_dict   = extra_dict,
                              )
-            self.multiselect            = False
+            self.user_input             = user_input
+            self.style_marker           = style_marker
             self.options                = options
-            self.control_after_generate = None # control_after_generate
-
+            self.multiselect            = False
+            self.control_after_generate = control_after_generate
 
         def as_dict(self) -> dict:
             return super().as_dict() | _prune_dict({
-                "multiselect"           : self.multiselect,
+                "user_input"            : self.user_input,
+                "item_marker"           : self.style_marker,
                 "options"               : self.options,
+                "multiselect"           : self.multiselect,
                 "control_after_generate": self.control_after_generate,
             })
+
+
+    class Output(io.Output):
+        def __init__(self,
+                     id            : str         = "STYLE",
+                     display_name  : str  | None = None,
+                     tooltip       : str  | None = None,
+                     is_output_list: bool | None = None ):
+            kwargs = { k: v for k, v in [
+                ('id'            , id            ),
+                ('display_name'  , display_name  ),
+                ('tooltip'       , tooltip       ),
+                ('is_output_list', is_output_list),
+            ] if v is not None }
+            super().__init__(**kwargs)
+
+
+#===================== CUSTOM PALETTE SELECTOR WIDGET ======================#
+
+@io.comfytype(io_type="ZIPN_CUSTOM_PALETTE")
+class CustomPalette:
+    Type = str
+    class Input(io.WidgetInput):
+        """Combo input (dropdown) with support for automatic syncronization of User Palettes"""
+        def __init__(self,
+                     id: str,
+                     *,
+                     user_input    : str,
+                     palette_marker: str      | None = None,
+                     options       : list[str]| None = None,
+                     display_name  : str      | None = None,
+                     optional      : bool            = False,
+                     tooltip       : str      | None = None,
+                     lazy          : bool     | None = None,
+                     default       : str      | None = None,
+                     socketless    : bool     | None = None,
+                     raw_link      : bool     | None = None,
+                     advanced      : bool     | None = None,
+                     control_after_generate: bool | io.ControlAfterGenerate | None = None,
+                     extra_dict = None,
+                    ):
+            super().__init__(id,
+                             display_name = cast(str,display_name),
+                             optional     = optional,
+                             tooltip      = cast(str,tooltip),
+                             lazy         = cast(bool,lazy),
+                             default      = default,
+                             socketless   = cast(bool,socketless),
+                             raw_link     = cast(bool,raw_link),
+                             advanced     = cast(bool,advanced),
+                             extra_dict   = extra_dict,
+                             )
+            self.user_input             = user_input
+            self.palette_marker         = palette_marker
+            self.options                = options
+            self.multiselect            = False
+            self.control_after_generate = control_after_generate
+
+        def as_dict(self) -> dict:
+            return super().as_dict() | _prune_dict({
+                "user_input"            : self.user_input,
+                "item_marker"           : self.palette_marker,
+                "options"               : self.options,
+                "multiselect"           : self.multiselect,
+                "control_after_generate": self.control_after_generate,
+            })
+
+
+    class Output(io.Output):
+        def __init__(self,
+                     id            : str         = "PALETTE",
+                     display_name  : str  | None = None,
+                     tooltip       : str  | None = None,
+                     is_output_list: bool | None = None ):
+            kwargs = { k: v for k, v in [
+                ('id'            , id            ),
+                ('display_name'  , display_name  ),
+                ('tooltip'       , tooltip       ),
+                ('is_output_list', is_output_list),
+            ] if v is not None }
+            super().__init__(**kwargs)
 
 
 #============================ SEPARATOR WIDGET =============================#
