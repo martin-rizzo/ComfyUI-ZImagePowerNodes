@@ -1,4 +1,4 @@
-# ⚡| Z-Sampler Turbo ^G2 (Simple)
+# ⚡| Z-Sampler Turbo v2 (Simple)
 ![z-sampler turbo node](zsampler_turbo_2_simple.png)
 
 This is the simplified version of the second generation of Z-Sampler Turbo, offering a streamlined interface for quick and easy use while retaining all its features and capabilities. It is the node I most recommend within this pack's samplers as it presents parameters that have the greatest impact on the final image in an extremely user-friendly manner.

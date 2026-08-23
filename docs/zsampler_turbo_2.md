@@ -1,4 +1,4 @@
-# ⚡| Z-Sampler Turbo ^G2 (Extended)
+# ⚡| Z-Sampler Turbo v2 (Extended)
 ![z-sampler turbo node](zsampler_turbo_2.png)
 
 This second generation of Z-Sampler Turbo allows you to obtain high-quality images while giving you way more control over the sampling process, letting you get endless variations from the same prompt.

@@ -25,7 +25,7 @@ from .core.zsampler_turbo_core import zsampler_turbo_core
 
 
 class ZSamplerTurbo2Simple(io.ComfyNode):
-    xTITLE         = "Z-Sampler Turbo ^G2 (Simple)"
+    xTITLE         = "Z-Sampler Turbo v2 (Simple)"
     xDESCRIPTION   = (
         'Simplified version of Z-Sampler Turbo (second generation), offering a streamlined interface '
         'for quick and easy use while retaining all of its features and capabilities. It takes a '

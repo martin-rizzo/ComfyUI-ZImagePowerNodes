@@ -24,7 +24,7 @@ from ..core.zsampler_turbo_legacy_method import zsampler_turbo_legacy_method
 
 
 class ZSamplerTurbo(io.ComfyNode):
-    xTITLE         = "Z-Sampler Turbo ^g1"
+    xTITLE         = "Z-Sampler Turbo v1"
     xDESCRIPTION   = (
         'Efficiently denoises the latent image, specifically tuned for the "Z-Image Turbo" model. '
         'This node takes a Z-Image Turbo model, an initial latent image, and conditioning parameters, '

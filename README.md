@@ -76,9 +76,9 @@ I've also included some smaller utility nodes to make things easier. There's a V
 
 ## Power Nodes Documentation
 
-* __[⚡Z-Sampler Turbo ^G2 (Simple)](https://martin-rizzo.github.io/ComfyUI-ZImagePowerNodes/#/zsampler_turbo_2_simple)__  
+* __[⚡Z-Sampler Turbo v2 (Simple)](https://martin-rizzo.github.io/ComfyUI-ZImagePowerNodes/#/zsampler_turbo_2_simple)__  
 <sub>Simplified and recommended version of Z-Sampler Turbo, offering an easy-to-use interface with all its features.</sub>
-* __[⚡Z-Sampler Turbo ^G2 (Extended)](https://martin-rizzo.github.io/ComfyUI-ZImagePowerNodes/#/zsampler_turbo_2)__  
+* __[⚡Z-Sampler Turbo v2 (Extended)](https://martin-rizzo.github.io/ComfyUI-ZImagePowerNodes/#/zsampler_turbo_2)__  
 <sub>Original version of Z-Sampler Turbo, allowing you more control over the final result.</sub>
 * __[⚡Style Prompt Encoder](https://martin-rizzo.github.io/ComfyUI-ZImagePowerNodes/#/style_prompt_encoder)__  
 <sub>Applies a selected visual styles to your prompt and encodes both of them using a text-encoder model (clip).

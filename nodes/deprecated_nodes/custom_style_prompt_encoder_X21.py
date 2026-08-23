@@ -26,7 +26,7 @@ _PAL_VERSION: Final[str] = "2.0.0" #< the version of palette definitions this no
 
 
 class CustomStylePromptEncoderX21(io.ComfyNode):
-    xTITLE         = "Custom Style + Prompt Encoder ^G2.1"
+    xTITLE         = "Custom Style + Prompt Encoder ^X2.1"
     xDESCRIPTION   = (
         "Encodes a text prompt into embeddings by automatically adapting it to a selected "
         "custom style (and an optional colour palette), which are then processed by a "

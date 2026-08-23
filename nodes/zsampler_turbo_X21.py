@@ -36,7 +36,7 @@ _SAMPLING_SCALES_BY_NAME = {
 
 
 class ZSamplerTurboX21(io.ComfyNode):
-    xTITLE         = "Z-Sampler Turbo ^G2.1"
+    xTITLE         = "Z-Sampler Turbo ^X2.1"
     xDESCRIPTION   = (
         "Experimental new version of Z-Sampler Turbo. It takes a Z-Image Turbo model, "
         "an initial latent image, and prompt/conditioning to produce a denoised latent "

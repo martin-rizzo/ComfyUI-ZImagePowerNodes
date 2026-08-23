@@ -32,7 +32,7 @@ TURBO_CREATIVITY = {
 
 
 class ZSamplerTurbo2(io.ComfyNode):
-    xTITLE         = "Z-Sampler Turbo ^G2 (Extended)"
+    xTITLE         = "Z-Sampler Turbo v2 (Extended)"
     xDESCRIPTION   = (
         'Efficiently denoises the latent image using a process specifically tuned for the "Z-Image Turbo". '
         'This node takes a Z-Image Turbo model, an initial latent image, and conditioning parameters, and '

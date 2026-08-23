@@ -23,7 +23,7 @@ from ..core.zsampler_turbo_core  import zsampler_turbo_core
 
 
 class ZSamplerTurbo2Laboratory(io.ComfyNode):
-    xTITLE         = "Z-Sampler Turbo ^G2 (Laboratory)"
+    xTITLE         = "Z-Sampler Turbo v2 (Laboratory)"
     xDESCRIPTION   = (
         'Efficiently denoises the latent image, specifically tuned for the "Z-Image Turbo" model. '
         'This node allows direct modification of internal parameters in the zsample_turbo_core(...) '

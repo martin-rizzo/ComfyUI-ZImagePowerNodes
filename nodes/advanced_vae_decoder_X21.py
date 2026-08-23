@@ -22,7 +22,7 @@ from .core.helpers_node import execute_node
 
 
 class AdvancedVAEDecoderX21(io.ComfyNode):
-    xTITLE         = "Advanced VAE Decoder ^G2.1"
+    xTITLE         = "Advanced VAE Decoder ^X2.1"
     xDESCRIPTION   = (
         "An experimental alternative to the native ComfyUI VAEDecode node. "
         "It features options to bypass the standard output clamp so pixels "
