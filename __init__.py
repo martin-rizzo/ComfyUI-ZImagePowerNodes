@@ -163,12 +163,6 @@ class ZImagePowerNodesExtension(ComfyExtension):
         from .nodes.vae_encode_soft_inpainting import VAEEncodeSoftInpainting
         _register_node( VAEEncodeSoftInpainting, nodes, subcategory )
 
-        from .nodes.predefined_style_selector import PredefinedStyleSelector
-        _register_node( PredefinedStyleSelector, nodes, subcategory )
-
-        from .nodes.predefined_palette_selector import PredefinedPaletteSelector
-        _register_node( PredefinedPaletteSelector, nodes, subcategory )
-
 
         #--[ __deprecated ]----------------------
         subcategory = "__deprecated"
@@ -224,6 +218,12 @@ class ZImagePowerNodesExtension(ComfyExtension):
 
         from .nodes.advanced_vae_decoder_X21 import AdvancedVAEDecoderX21
         _register_node( AdvancedVAEDecoderX21, nodes, subcategory )
+
+        from .nodes.style_library_v10 import StyleLibraryV10
+        _register_node( StyleLibraryV10, nodes, subcategory )
+
+        from .nodes.palette_library_v20 import PaletteLibraryV20
+        _register_node( PaletteLibraryV20, nodes, subcategory )
 
 
         #--[ utils ]-----------------------------

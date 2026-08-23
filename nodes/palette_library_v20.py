@@ -1,6 +1,6 @@
 """
-File    : predefined_palette_selector.py
-Purpose : Node to select one of the predefined palettes of colors
+File    : palette_library_v20.py
+Purpose : Node to select one of the predefined palettes of colors (predefined library v2.0)
 Author  : Martin Rizzo | <martinrizzo@gmail.com>
 Date    : Aug 8, 2026
 Repo    : https://github.com/martin-rizzo/ComfyUI-ZImagePowerNodes
@@ -19,13 +19,13 @@ from comfy_api.latest          import io
 from .core.palette             import Palette
 from .data.predefined_palettes import PREDEFINED_PALETTES
 from .                         import widgets as zi
-_PAL_VERSION: Final[str] = "2.0.0" #< the version of palette definitions this node uses
+_PAL_VERSION: Final[str] = "2.0" #< The version of color palettes that this node provides to the user
 
 
-class PredefinedPaletteSelector(io.ComfyNode):
-    xTITLE         = "Predefined Palette Selector"
+class PaletteLibraryV20(io.ComfyNode):
+    xTITLE         = "Palette Library v2.0"
     xDESCRIPTION   = (
-        "Provides a selection interface to choose from a collection of predefined color palettes."
+        "Provides a selection interface to choose from a wide(?) library of predefined color palettes."
         )
     xCATEGORY      = ""
     xCOMFY_NODE_ID = ""
@@ -43,8 +43,9 @@ class PredefinedPaletteSelector(io.ComfyNode):
             search_aliases=["palettes", "colors", "predefined palette", "color palettes"],
             inputs=[
                 zi.Palette.Input("palette",
-                                 version=_PAL_VERSION,
-                                 tooltip="The color palette to use to enhance the prompt's visual description. ",
+                                 version=_PAL_VERSION, allow_variants=False,
+                                 dialog_title = "Palette Library v2.0 | ⚗️experimental",
+                                 tooltip      = "The color palette to use to enhance the prompt's visual description. ",
                                 ),
             ],
             outputs=[

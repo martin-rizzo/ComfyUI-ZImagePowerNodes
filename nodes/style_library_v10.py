@@ -1,6 +1,6 @@
 """
-File    : predefined_style_selector.py
-Purpose : Node to select one of the predefined visual styles
+File    : palette_library_v10.py
+Purpose : Node to select one of the predefined visual styles (predefined library v1.0)
 Author  : Martin Rizzo | <martinrizzo@gmail.com>
 Date    : Aug 8, 2026
 Repo    : https://github.com/martin-rizzo/ComfyUI-ZImagePowerNodes
@@ -19,13 +19,13 @@ from comfy_api.latest         import io
 from .core.style              import Style
 from .data.predefined_styles  import PREDEFINED_STYLES
 from .                        import widgets as zi
-_STL_VERSION: Final[str] = "1.0.0"  # < The version of visual styles that this node provides to the user
+_STL_VERSION: Final[str] = "1.0"  # < The version of visual styles that this node provides to the user
 
 
-class PredefinedStyleSelector(io.ComfyNode):
-    xTITLE         = "Predefined Style Selector"
+class StyleLibraryV10(io.ComfyNode):
+    xTITLE         = "Style Library v1.0"
     xDESCRIPTION   = (
-        "Provides a selection interface to choose from a collection of predefined visual styles."
+        "Provides a selection interface to choose from a wide library of predefined visual styles."
     )
     xCATEGORY      = ""
     xCOMFY_NODE_ID = ""
@@ -43,9 +43,10 @@ class PredefinedStyleSelector(io.ComfyNode):
             search_aliases=["styles", "visual styles", "predefined style"],
             inputs=[
                 zi.Style.Input("style",
-                               version=_STL_VERSION, dialog_title="Visual Styles | ⚗️experimental",
-                               allow_variants=False, images_url="/zi_power/styles/samples?file={slug}.jpg&size={size}&cb={cachebuster}",
-                               tooltip="The visual style to apply to the prompt. "
+                               version=_STL_VERSION, allow_variants=False,
+                               dialog_title = "Style Library v1.0 | ⚗️experimental",
+                               images_url   = "/zi_power/styles/samples?file={slug}.jpg&size={size}&cb={cachebuster}",
+                               tooltip      = "The visual style to apply to the prompt. "
                               ),
             ],
             outputs=[
