@@ -1,5 +1,5 @@
 """
-File    : style_palette_prompt_encoder_X21.py
+File    : style_prompt_encoder_X22_advanced.py
 Purpose : Experimental node to get conditioning embeddings from a given style + color + prompt (second/third Gen).
 Author  : Martin Rizzo | <martinrizzo@gmail.com>
 Date    : Aug 21, 2026
@@ -14,20 +14,14 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
  - https://docs.comfy.org/custom-nodes/v3_migration
 
 """
-from typing                    import Final
-from functools                 import cache
-from comfy_api.latest          import io
-from .core.style               import Style, StyleSet
-from .core.palette             import Palette, PaletteSet
-from .data.predefined_styles   import PREDEFINED_STYLES
-from .data.predefined_palettes import PREDEFINED_PALETTES
-from .                         import widgets as zi
-_STL_VERSION: Final[str] = "1.0.0" #< the version of style definitions this node uses
-_PAL_VERSION: Final[str] = "2.0.0" #< the version of palette definitions this node uses
+from comfy_api.latest  import io
+from .core.style       import Style, StyleSet
+from .core.palette     import Palette, PaletteSet
+from .                 import widgets as zi
 
 
-class StylePalettePromptEncoderX21(io.ComfyNode):
-    xTITLE         = "Style + Palette + Prompt Encoder ^G2.1"
+class StylePromptEncoderX22Advanced(io.ComfyNode):
+    xTITLE         = "Style + Prompt Encoder ^X2.2 (Advanced)"
     xDESCRIPTION   = (
         "Transforms a text prompt into embeddings, automatically adapting the "
         "prompt to match the selected style and chosen color palette. "
@@ -132,6 +126,4 @@ class StylePalettePromptEncoderX21(io.ComfyNode):
     def validate_inputs(cls, **kwargs) -> bool | str:
         return True
 
-
-    #__ internal functions ________________________________
 
