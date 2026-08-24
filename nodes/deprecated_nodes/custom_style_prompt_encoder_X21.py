@@ -58,7 +58,7 @@ class CustomStylePromptEncoderX21(io.ComfyNode):
                                                    "description on the next lines. Include '{$@}' in the description "
                                                    "where the base prompt should be inserted.",
                                           ),
-                zi.CustomStyle.Input      ("custom_style",
+                zi.Style.Input            ("custom_style",
                                            user_input="custom_styles",
                                            tooltip="The visual style to be applied to the input prompt. "
                                           ),

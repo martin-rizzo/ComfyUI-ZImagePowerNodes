@@ -50,7 +50,7 @@ class StyleLibraryV10(io.ComfyNode):
                                         ),
             ],
             outputs=[
-                zi.CustomStyle.Output(tooltip="The selected visual style."),
+                zi.Style.Output(tooltip="The selected visual style."),
             ]
         )
 

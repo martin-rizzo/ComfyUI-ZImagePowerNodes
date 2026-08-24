@@ -49,7 +49,7 @@ class PaletteLibraryV20(io.ComfyNode):
                                           ),
             ],
             outputs=[
-                zi.CustomPalette.Output(tooltip="The selected color palette."),
+                zi.Palette.Output(tooltip="The selected color palette."),
             ]
         )
 

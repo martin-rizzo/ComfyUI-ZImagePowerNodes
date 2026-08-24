@@ -193,8 +193,8 @@ app.registerExtension({
         if( !ENABLED ) return {};
         return {
             'ZIPN_SEPARATOR'         : _addSeparator,
-            'ZIPN_CUSTOM_STYLE'      : _addUserInputComboBox,
-            'ZIPN_CUSTOM_PALETTE'    : _addUserInputComboBox,
+            'ZIPN_STYLE'             : _addUserInputComboBox,
+            'ZIPN_PALETTE'           : _addUserInputComboBox,
             'ZIPN_PREDEFINED_STYLE'  : _addStyleSelector,
             'ZIPN_PREDEFINED_PALETTE': _addPaletteSelector,
 

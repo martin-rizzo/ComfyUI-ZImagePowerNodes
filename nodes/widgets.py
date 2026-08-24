@@ -31,7 +31,7 @@ def _prune_dict(d: dict):
     return {k: v for k,v in d.items() if v is not None}
 
 
-#========================= PALETTE SELECTOR WIDGET =========================#
+#======================= PREDEFINED PALETTE SELECTOR =======================#
 
 @io.comfytype(io_type="ZIPN_PREDEFINED_PALETTE")
 class PredefinedPalette(io.ComfyTypeIO):
@@ -53,7 +53,7 @@ class PredefinedPalette(io.ComfyTypeIO):
                      optional        : bool | None = None,
                      ):
             """
-            <hr>A color palette selector widget.
+            <hr>Widget to select color palettes from a predefined library.
 
             Args:
                 id (str):               A unique identifier for the input component.
@@ -129,7 +129,7 @@ class PredefinedPalette(io.ComfyTypeIO):
 
 
 
-#========================== STYLE SELECTOR WIDGET ==========================#
+#======================== PREDEFINED STYLE SELECTOR ========================#
 
 @io.comfytype(io_type="ZIPN_PREDEFINED_STYLE")
 class PredefinedStyle(io.ComfyTypeIO):
@@ -150,7 +150,7 @@ class PredefinedStyle(io.ComfyTypeIO):
                      tooltip         : str  | None = None,
                      ):
             """
-            <hr>A visual style selector widget.
+            <hr>Widget to select visual styles from a predefined library.
 
             Args:
                 id (str):               A unique identifier for the input component.
@@ -217,16 +217,16 @@ class PredefinedStyle(io.ComfyTypeIO):
             super().__init__(id, extra_dict=extra_dict, tooltip=cast(str, tooltip))
 
 
-
     class Output(io.Output):
         def __init__(self, **kwargs):
             super().__init__(**kwargs)
 
 
-#====================== CUSTOM STYLE SELECTOR WIDGET =======================#
 
-@io.comfytype(io_type="ZIPN_CUSTOM_STYLE")
-class CustomStyle:
+#============================= STYLE DATA TYPE =============================#
+
+@io.comfytype(io_type="ZIPN_STYLE")
+class Style(io.ComfyTypeIO):
     Type = str
     class Input(io.WidgetInput):
         """Combo input (dropdown) with auto syncronization of Custom Styles"""
@@ -289,10 +289,11 @@ class CustomStyle:
             super().__init__(**kwargs)
 
 
-#===================== CUSTOM PALETTE SELECTOR WIDGET ======================#
 
-@io.comfytype(io_type="ZIPN_CUSTOM_PALETTE")
-class CustomPalette:
+#============================ PALETTE DATA TYPE ============================#
+
+@io.comfytype(io_type="ZIPN_PALETTE")
+class Palette:
     Type = str
     class Input(io.WidgetInput):
         """Combo input (dropdown) with support for automatic syncronization of User Palettes"""
@@ -355,6 +356,7 @@ class CustomPalette:
             super().__init__(**kwargs)
 
 
+
 #============================ SEPARATOR WIDGET =============================#
 
 @io.comfytype(io_type="ZIPN_SEPARATOR")
@@ -401,7 +403,6 @@ class Separator:
                 extra_dict["thickness"] = thickness
 
             super().__init__(id, extra_dict=extra_dict, **kwargs)
-
 
 
     class Output(io.Output):

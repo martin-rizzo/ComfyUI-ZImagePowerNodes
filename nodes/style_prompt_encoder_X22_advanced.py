@@ -59,13 +59,13 @@ class StylePromptEncoderX22Advanced(io.ComfyNode):
                                          "The description should incorporate '{$@}' where the main text "
                                          "prompt will be inserted.",
                                 ),
-                zi.CustomStyle.Input("style",
-                                     user_input="user_styles", style_marker=">>>",
-                                     tooltip="The visual style to be applied to the input prompt. "
-                                    ),
-                zi.CustomPalette.Input("palette",
-                                       user_input="user_palettes", palette_marker=">>>",
-                                       tooltip="The visual style to be applied to the input prompt. "
+                zi.Style.Input  ("style",
+                                 user_input="user_styles", style_marker=">>>",
+                                 tooltip="The visual style to be applied to the input prompt. "
+                                ),
+                zi.Palette.Input("palette",
+                                 user_input="user_palettes", palette_marker=">>>",
+                                 tooltip="The visual style to be applied to the input prompt. "
                                 ),
                 io.String.Input ("prompt",
                                  multiline=True, dynamic_prompts=True,
