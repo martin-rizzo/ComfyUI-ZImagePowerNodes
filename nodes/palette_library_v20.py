@@ -42,11 +42,11 @@ class PaletteLibraryV20(io.ComfyNode):
             is_deprecated = cls.xDEPRECATED,
             search_aliases=["palettes", "colors", "predefined palette", "color palettes"],
             inputs=[
-                zi.Palette.Input("palette",
-                                 version=_PAL_VERSION, allow_variants=False,
-                                 dialog_title = "Palette Library v2.0 | ⚗️experimental",
-                                 tooltip      = "The color palette to use to enhance the prompt's visual description. ",
-                                ),
+                zi.PredefinedPalette.Input("palette",
+                                           version=_PAL_VERSION, allow_variants=False,
+                                           dialog_title = "Palette Library v2.0 | ⚗️experimental",
+                                           tooltip      = "The color palette to use to enhance the prompt's visual description. ",
+                                          ),
             ],
             outputs=[
                 zi.CustomPalette.Output(tooltip="The selected color palette."),

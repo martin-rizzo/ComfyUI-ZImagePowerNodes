@@ -42,12 +42,12 @@ class StyleLibraryV10(io.ComfyNode):
             is_deprecated = cls.xDEPRECATED,
             search_aliases=["styles", "visual styles", "predefined style"],
             inputs=[
-                zi.Style.Input("style",
-                               version=_STL_VERSION, allow_variants=False,
-                               dialog_title = "Style Library v1.0 | ⚗️experimental",
-                               images_url   = "/zi_power/styles/samples?file={slug}.jpg&size={size}&cb={cachebuster}",
-                               tooltip      = "The visual style to apply to the prompt. "
-                              ),
+                zi.PredefinedStyle.Input("style",
+                                         version=_STL_VERSION, allow_variants=False,
+                                         dialog_title = "Style Library v1.0 | ⚗️experimental",
+                                         images_url   = "/zi_power/styles/samples?file={slug}.jpg&size={size}&cb={cachebuster}",
+                                         tooltip      = "The visual style to apply to the prompt. "
+                                        ),
             ],
             outputs=[
                 zi.CustomStyle.Output(tooltip="The selected visual style."),

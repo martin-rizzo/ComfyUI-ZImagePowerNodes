@@ -48,30 +48,30 @@ class StylePromptEncoderX21(io.ComfyNode):
             node_id       = cls.xCOMFY_NODE_ID,
             is_deprecated = cls.xDEPRECATED,
             inputs=[
-                io.Clip.Input   ("clip",
-                                 tooltip="The CLIP model used for encoding the text."
-                                ),
-                io.String.Input ("customization",
-                                 optional=True, multiline=True, force_input=True,
-                                 tooltip="An optional multi-line string to customize existing styles. "
-                                         "Each style definition must start with '>>>' followed by the "
-                                         "style name, and then include its description on the next lines. "
-                                         "The description should incorporate '{$@}' where the main text "
-                                         "prompt will be inserted.",
-                                ),
-                zi.Style.Input  ("style",
-                                 version=_STL_VERSION, dialog_title="Visual Styles | ⚗️experimental",
-                                 allow_variants=False, images_url="/zi_power/styles/samples?file={slug}.jpg&size={size}&cb={cachebuster}",
-                                 tooltip="The visual style to apply to the prompt. "
-                                ),
-                zi.Palette.Input("palette",
-                                 version=_PAL_VERSION, dialog_title="Color Palettes | ⚗️experimental",
-                                 tooltip="The color palette to use to enhance the prompt's visual description. ",
-                                ),
-                io.String.Input ("text",
-                                 multiline=True, dynamic_prompts=True,
-                                 tooltip="The base text prompt to be encoded and styled. "
-                                ),
+                io.Clip.Input             ("clip",
+                                           tooltip="The CLIP model used for encoding the text."
+                                          ),
+                io.String.Input           ("customization",
+                                           optional=True, multiline=True, force_input=True,
+                                           tooltip="An optional multi-line string to customize existing styles. "
+                                                   "Each style definition must start with '>>>' followed by the "
+                                                   "style name, and then include its description on the next lines. "
+                                                   "The description should incorporate '{$@}' where the main text "
+                                                   "prompt will be inserted.",
+                                          ),
+                zi.PredefinedStyle.Input  ("style",
+                                           version=_STL_VERSION, dialog_title="Visual Styles | ⚗️experimental", allow_variants=False,
+                                           images_url = "/zi_power/styles/samples?file={slug}.jpg&size={size}&cb={cachebuster}",
+                                           tooltip    = "The visual style to apply to the prompt. "
+                                          ),
+                zi.PredefinedPalette.Input("palette",
+                                           version=_PAL_VERSION, dialog_title="Color Palettes | ⚗️experimental", allow_variants=False,
+                                           tooltip="The color palette to use to enhance the prompt's visual description. ",
+                                          ),
+                io.String.Input           ("text",
+                                           multiline=True, dynamic_prompts=True,
+                                           tooltip="The base text prompt to be encoded and styled. "
+                                          ),
             ],
             outputs=[
                 io.Conditioning.Output(tooltip="Final encoded text that will guide the image generation process."),

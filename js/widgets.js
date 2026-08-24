@@ -192,11 +192,11 @@ app.registerExtension({
     getCustomWidgets() {
         if( !ENABLED ) return {};
         return {
-            'ZIPN_SEPARATOR'     : _addSeparator,
-            'ZIPN_STYLE'         : _addStyleSelector,
-            'ZIPN_PALETTE'       : _addPaletteSelector,
-            'ZIPN_CUSTOM_STYLE'  : _addUserInputComboBox,
-            'ZIPN_CUSTOM_PALETTE': _addUserInputComboBox,
+            'ZIPN_SEPARATOR'         : _addSeparator,
+            'ZIPN_CUSTOM_STYLE'      : _addUserInputComboBox,
+            'ZIPN_CUSTOM_PALETTE'    : _addUserInputComboBox,
+            'ZIPN_PREDEFINED_STYLE'  : _addStyleSelector,
+            'ZIPN_PREDEFINED_PALETTE': _addPaletteSelector,
 
             // [DEPRECATED]
             'ZIPN_STYLE_GALLERY_BUTTON': addStyleGalleryButton,

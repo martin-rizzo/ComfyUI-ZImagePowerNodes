@@ -33,8 +33,8 @@ def _prune_dict(d: dict):
 
 #========================= PALETTE SELECTOR WIDGET =========================#
 
-@io.comfytype(io_type="ZIPN_PALETTE")
-class Palette(io.ComfyTypeIO):
+@io.comfytype(io_type="ZIPN_PREDEFINED_PALETTE")
+class PredefinedPalette(io.ComfyTypeIO):
     Type = str
     class Input(io.WidgetInput):
 
@@ -131,8 +131,8 @@ class Palette(io.ComfyTypeIO):
 
 #========================== STYLE SELECTOR WIDGET ==========================#
 
-@io.comfytype(io_type="ZIPN_STYLE")
-class Style(io.ComfyTypeIO):
+@io.comfytype(io_type="ZIPN_PREDEFINED_STYLE")
+class PredefinedStyle(io.ComfyTypeIO):
     Type = str
     class Input(io.Input):
 
