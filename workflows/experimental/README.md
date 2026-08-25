@@ -5,46 +5,44 @@ __Workflows__
  * `z-image-turbo__t2i_double_trouble.json`: Text-to-image workflow combining two different styles.
  * `z-image-turbo__text2image.json` : Text-to-image generation workflow.
 
+
 ## Experimental
 
 These workflows are experimental or utilize nodes in an experimental state, and
 they are likely to be integrated into the upcoming version. They are designed to
-leverage cutting-edge ComfyUI features such as Subgraphs, ConvRot, ComfyKitchen, etc.
+leverage the latest ComfyUI features such as Subgraphs, ConvRot, ComfyKitchen, etc.
+
 
 ## Requirements
 
-- ComfyUI v0.14 or higher
+- ComfyUI v0.14 or higher (or v0.27+ if using INT8-ConvRot)
 - Z-Image Power Nodes v2.1 or higher
 
 Additionally, ensure that the Z-Image Turbo related checkpoints (in GGUF or
 Safetensors format) are placed in the appropriate directories within your
 ComfyUI setup.
 
-If you choose to use GGUF-format checkpoints, it is necessary to have the
-"ComfyUI-GGUF" extension installed as well, since ComfyUI does not natively
-support GGUF files. Once the extension is installed, the Power Nodes will
-automatically detect checkpoints in GGUF format.  
-You can find more information about the GGUF extension at:
+If you choose to use GGUF-format checkpoints, you must also have the
+"ComfyUI-GGUF" extension installed, as ComfyUI does not natively support GGUF
+files. Once installed, the Power Nodes will automatically detect GGUF checkpoints.  
+More information about the GGUF extension can be found at:
     https://github.com/city96/ComfyUI-GGUF
+
 
 ## Checkpoint Files
 
-The loading nodes included in the Power Nodes support both `.safetensors` and
-GGUF files (provided that ComfyUI-GGUF is installed).
+The loading nodes included in Power Nodes support both .safetensors and GGUF
+files (provided that ComfyUI-GGUF is installed).
 
-The following list contains recommended checkpoints. I chose these specifically
-because they performed best during my testing phase. However, given the diversity
-of GPUs, VRAM capacities, and ComfyUI versions, it is very difficult to determine
-which one will work best on every system. Therefore, I recommend testing them all
-to find the combination that works best for you.
+The following list contains recommended checkpoints, selected because they
+performed best during testing. Given the diversity of GPUs, VRAM capacities,
+and ComfyUI setups, results may vary. I recommend testing different options
+to find the best configuration for your system.
 
-Please be aware that although I tested "Z-Image Power Nodes" using the recommended
-checkpoints below, it should also be compatible with other "Z-Image Turbo"
-checkpoints and LoRAs. However, I cannot guarantee full functionality for all
-custom combinations; you may need to tweak the workflows to optimize them for
-your specific setup.
-
-## Recommended
+While the Power Nodes were tested using the recommended checkpoints below, they
+should also be compatible with other "Z-Image Turbo" checkpoints and LoRAs.
+However, full functionality cannot be guaranteed for all custom combinations,
+and you may need to tweak workflows for your specific setup.
 
 ### Safetensors (INT8-ConvRot)
 
@@ -102,7 +100,7 @@ your specific setup.
   [ Download ]( https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/vae/ae.safetensors )  
   Local Directory: `ComfyUI/models/vae/`
 
-### Checkpoints Not Recommended (might be useful on certain systems)
+### Not Recommended (may be useful on certain systems)
 
 #### Safetensors (FP8)
 
@@ -118,22 +116,22 @@ your specific setup.
   [ Download ]( https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/vae/ae.safetensors )  
   Local Directory: `ComfyUI/models/vae/`
 
+
 ## Z-Image Power Nodes Installation
 
-Z-Image Power Nodes can be installed via ComfyUI Manager or downloaded directly
-from its respective repository. Please always ensure you have the latest version
-of these nodes installed.
+Z-Image Power Nodes can be installed via ComfyUI Manager or cloned directly
+from the repository. Always ensure you are running the latest version.
 
 __Installation via ComfyUI Manager (Recommended):__
 
- - Open ComfyUI and click on the "Manager" button to launch the "ComfyUI Manager Menu".
- - Within the ComfyUI Manager, locate and click on the "Custom Nodes Manager" button.
- - In the search bar, type "Z-Image Power Nodes".
- - Select the option from the search results and click the "Install" button.
- - Restart ComfyUI to ensure the changes take effect.
+ - Open ComfyUI and click **Manager** to open the menu.
+ - Click **Custom Nodes Manager**.
+ - Search for "Z-Image Power Nodes".
+ - Click **Install** on the matching result.
+ - Restart ComfyUI to apply changes.
 
 __Manual Installation:__
 
-For manual installation, please follow the instructions provided in the GitHub repository:
+Please follow the instructions provided in the GitHub repository:
  - https://github.com/martin-rizzo/ComfyUI-ZImagePowerNodes
 
