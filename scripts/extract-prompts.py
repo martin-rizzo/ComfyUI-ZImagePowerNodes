@@ -243,11 +243,13 @@ def extract_style_and_prompt(path: Path) -> tuple[str,str]:
         class_type = node.get("class_type", "")
         if class_type.startswith("StylePromptEncode"):
             inputs = node.get("inputs") or {}
-            style  = inputs.get("style", "").strip('"')
+            style  = inputs.get("style", "")
+            if not isinstance(style,str):
+                style = "???"
             prompt = inputs.get("text" , "")
             if not isinstance(prompt,str):
-                return style, "???"
-            return style, prompt.strip()
+                prompt = "???"
+            return style.strip(), prompt.strip()
 
     return ("", "")
 
