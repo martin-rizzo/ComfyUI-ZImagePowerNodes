@@ -663,8 +663,13 @@ class _GalleryDialog extends ComfyDialog {
         // handle dialog size configuration [options.size]
         dialogContentEl.classList.toggle('zipn-dialog--small', this.options.size === 'small');
 
+        // mark the dialog as open and enable its modal state
+        // (comfyui tracks open dialogs via the modal state, so we must enable/disable it)
+        this.isOpen = true;
+        const dialog = this.element.querySelector('[role="dialog"]');
+        dialog?.setAttribute('aria-modal', 'true'); 
+
         // initialize variables as if the dialog had just been created
-        this.isOpen              = true;
         this.initialItemName     = initialItemName;
         this.initialCardIDX      = null;
         this.resultItems         = [];
@@ -756,7 +761,11 @@ class _GalleryDialog extends ComfyDialog {
      * Called when the dialog is closed. Updates the open state flag.
      */
     onClose() {
+        // mark the dialog as closed and disable its modal state
+        // (comfyui tracks open dialogs via the modal state, so we must enable/disable it)
         this.isOpen = false;
+        const dialog = this.element.querySelector('[role="dialog"]');
+        dialog?.setAttribute('aria-modal', 'false');
     }
 
 
@@ -1089,7 +1098,7 @@ function _ensureCSSLoaded() {
  *
  * This implementation utilizes deprecated ComfyUI functions since there is
  * currently no documented method to create custom dialogs. Some ideas and
- * concepts for this implementation were inspired by the ComfYUI-Manager project.
+ * concepts for this implementation were inspired by the ComfyUI-Manager project.
  *
  * @param {string}               titleElClass    - CSS class for the dialog title element.
  * @param {string}               iconHolderClass - CSS class for the icon holder in the dialog header.
