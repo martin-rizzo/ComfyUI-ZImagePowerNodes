@@ -1,5 +1,5 @@
 
-# Z-Image Power Nodes: Example Workflows
+# Z-Image Power Nodes - Experimental Workflows
 
 __Workflows__
  * `z-image-turbo__t2i_double_trouble.json`: Text-to-image workflow combining two different styles.
@@ -10,7 +10,8 @@ __Workflows__
 
 These workflows are experimental or utilize nodes in an experimental state, and
 they are likely to be integrated into the upcoming version. They are designed to
-leverage the latest ComfyUI features such as Subgraphs, ConvRot, ComfyKitchen, etc.
+leverage the latest ComfyUI features such as Nodes 2.0, Subgraphs, ConvRot,
+ComfyKitchen-Attention, etc.
 
 
 ## Requirements
