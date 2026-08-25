@@ -13,7 +13,7 @@
 **Z-Image Power Nodes** is a collection of nodes designed specifically for the [Z-Image / Z-Image Turbo model](https://github.com/Tongyi-MAI/Z-Image), they are based on some discoveries I made while developing the [Amazing Z-Image Workflow](https://github.com/martin-rizzo/AmazingZImageWorkflow).
 
 ### Version 2.1 Updates
-Starting with v2.1, the nodes are optimized for the latest features in ComfyUI, ensuring compatibility with recent updates such as **Nodes 2.0**, **Int8-ConvRot**, and **ComfyKitchen-Attention**. However, backward compatibility is maintained with older versions (minimum: Python 3.10, PyTorch 2.5, and ComfyUI v0.11.0).
+Starting with v2.1, the nodes are optimized for the latest features in ComfyUI, ensuring compatibility with recent updates such as **Nodes 2.0**, **Int8-ConvRot**, and **ComfyKitchen-Attention**. However, backward compatibility is maintained with older versions (minimum: Python 3.10, PyTorch 2.5, and ComfyUI v0.14.0).
 
 Additionally, experimental nodes are included for testing new concepts or simplifying user interfaces. These nodes are subject to change or removal in future updates, use them at your own discretion.
 
