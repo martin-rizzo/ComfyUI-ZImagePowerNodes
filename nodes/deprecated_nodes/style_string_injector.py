@@ -68,7 +68,7 @@ class StyleStringInjector(io.ComfyNode):
 
         # apply the style template to the prompt
         if style_obj:
-            prompt = style_obj.apply_to_prompt(prompt, spicy_impact_booster=False)
+            prompt = style_obj.apply_to_prompt(prompt)
 
         return io.NodeOutput( prompt )
 

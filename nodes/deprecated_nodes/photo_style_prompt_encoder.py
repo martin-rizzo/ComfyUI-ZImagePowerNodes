@@ -84,7 +84,7 @@ class PhotoStylePromptEncoder(io.ComfyNode):
 
         # if the style was found, apply it to the prompt
         if style_obj:
-            prompt = style_obj.apply_to_prompt(prompt, spicy_impact_booster=False)
+            prompt = style_obj.apply_to_prompt(prompt)
 
         # generate the embeddings and output them
         tokens = clip.tokenize(prompt)

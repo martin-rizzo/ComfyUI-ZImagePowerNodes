@@ -108,7 +108,7 @@ class StylePromptEncoderX21(io.ComfyNode):
 
         # apply the style template to the prompt
         if style_obj:
-            prompt = style_obj.apply_to_prompt(prompt, palette=palette_obj, spicy_impact_booster=False)
+            prompt = style_obj.apply_to_prompt(prompt, palette=palette_obj)
 
         # encode the prompt using the provided text encoder (clip)
         tokens = clip.tokenize(prompt)

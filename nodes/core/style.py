@@ -40,35 +40,35 @@ _UNDEFINED_ORDER = (999_999, 999_999)
 #=============================== Style CLASS ===============================#
 
 class Style:
-    """Represents a visual style with its name, template, description and tags.
+    """
+    Represents a visual style with its name, template, description, and tags.
 
     Attributes:
         name        : The name of the style.
         template    : A string with the template to be injected into the prompt.
         description : A string with the description for the style.
-        tags        : A tuple with string tags associated with the style.
+        tags        : A string containing tags associated with the style.
         category    : A string with the category name to which this style belongs.
         version     : A string indicating the version to which this style belongs, e.g. "2.1.0"
         order       : An optional tuple used to determine the order of the styles;
                       This attribute is used internally by the `StyleSet` class
-                      when sorting the styles and should not be set by the user
+                      when sorting the styles and should not be set by the user.
 
     Properties:
-        comma_separated_tags: A string containing the style's tags separated by commas.
-        quoted_name         : A string containing the style's name but surrounded by double quotes.
-        slug                : A string with the slug version of the style's name for URL use.
+        version_tuple : Returns the version as a tuple of three integers.
+        quoted_name   : A string containing the style's name but surrounded by double quotes.
+        slug          : A string with the slug version of the style's name for URL use.
 
     Example:
-        >>> style = Style(
-        ...     "cinematic",
+        >>> style = Style( "cinematic",
         ...     template    = "{$@}, rendered in epic cinematic lighting",
         ...     description = "Ultra-realistic blockbuster look",
-        ...     tags        = ("photoreal", "movie", "8k"),
+        ...     tags        = "photoreal, movie, 8k",
         ...     category    = "photo",
         ...     version     = "1.0.0"
         ... )
-        >>> style.comma_separated_tags
-        'photoreal, movie, 8k'
+        >>> style.quoted_name
+        '"cinematic"'
     """
     def __init__(self,
                  name       : str,
@@ -80,27 +80,29 @@ class Style:
                  version    : str | VersionTuple         = (0, 0, 0),
                  order      : tuple[int, int]            = _UNDEFINED_ORDER,
                  ):
-        self.name       : str                  = name.strip()
-        self.template   : str                  = ""
-        self.description: str                  = description.strip()
-        self.tags       : str                  = tags.strip()
-        self.category   : str                  = category.strip()
-        self.order      : tuple[int, int]      = order
-        self._versiontup: VersionTuple         = (0,0,0)
+        self.name       : str             = name.strip()
+        self.template   : str             = ""
+        self.description: str             = description.strip()
+        self.tags       : str             = tags.strip()
+        self.category   : str             = category.strip()
+        self.order      : tuple[int, int] = order
+        self._versiontup: VersionTuple    = (0, 0, 0)
 
-        # convert template to string if necesary
+        # convert template to string if necessary
         if isinstance(template, str):
             self.template = template.strip()
         elif isinstance(template, (list,tuple)):
             self.template = "\n".join(template).strip()
-        else: raise ValueError("Invalid template format. Expected a string or a list/tuple of strings.")
+        else:
+            raise ValueError("Invalid template format. Expected a string or a list/tuple of strings.")
 
         # convert version to tuple if necessary
-        if isinstance(version,str):
+        if isinstance(version, str):
             self._versiontup = Style.make_version_tuple(version)
         elif isinstance(version, tuple) and len(version) == 3:
             self._versiontup = version
-        else: raise ValueError("Invalid version format. Expected a string or a tuple of 3 integers.")
+        else:
+            raise ValueError("Invalid version format. Expected a string or a tuple of 3 integers.")
 
         # transform the template into easy-to-process commands
         self._commands = self._parse_commands(self.template)
@@ -108,20 +110,20 @@ class Style:
 
 
     def apply_to_prompt(self,
-                        prompt : str,
-                        *,
+                        prompt : str, *,
                         palette: Palette | None = None,
-                        spicy_impact_booster: bool = False
                         ) -> str:
         """
-        Applies the style to a prompt with optional spicy content boost.
+        Applies the style to a given prompt, optionally resolving palette variables
+        and handling conditional cheat codes.
 
         Args:
-            prompt              : The input text prompt to be styled.
-            spicy_impact_booster: If True, adds spicy content to the output. Default is False.
+            prompt : The input text prompt to be styled.
+            palette: Optional `Palette` object used to resolve color-related variables
+                     within the style template. If not provided, fallback values are used.
 
         Returns:
-            A string containing the styled prompt.
+            A string containing the fully processed and styled prompt.
         """
         result    = []
         prompt    = prompt.strip()
@@ -138,32 +140,21 @@ class Style:
         for command in self._commands:
             command_name, command_extra, param1, param2 = command
 
-            if command_name=="STR":
+            if command_name == "STR":
                 result.append( param1 )
 
-            elif command_name=="IFPAL":
+            elif command_name == "IFPAL":
                 if palette: result.append( palette.resolve_variables( param1 ) )
                 else      : result.append( param2 )
 
-            elif command_name=="CHEAT":
+            elif command_name == "CHEAT":
                 if command_extra in cheatcode: result.append( param1 )
                 else                         : result.append( param2 )
 
-            elif command_name=="PROMPT" or command_name=="@":
+            elif command_name == "PROMPT" or command_name == "@":
                 result.append( param1 + prompt + param2 )
 
         return "".join(result)
-
-        # spicy_content = ""
-        # if spicy_impact_booster:
-        #     spicy_content = "attractive and spicy content, where any woman is sexy and provocative, with"
-
-        # result = self.template
-        # result = result.replace("{$spicy-content-with}", spicy_content) #< the secret spicy dressing
-        # result = result.replace("{$@}"                 , prompt       ) #< prompt to be styled
-        # result = result.replace("  ", " ")                              #< fix double spaces
-        # return result
-
 
     @property
     def version(self) -> str:
@@ -174,12 +165,6 @@ class Style:
     def version_tuple(self) -> VersionTuple:
         """Returns the version as a tuple of three integers."""
         return self._versiontup
-
-    @property
-    def comma_separated_tags(self) -> str:
-        """A string containing the style's tags separated by commas."""
-        return ", ".join(self.tags)
-
 
     @property
     def quoted_name(self) -> str:
@@ -196,7 +181,7 @@ class Style:
     @staticmethod
     def canonicalize_name(name: str) -> str:
         """
-        Normalize te style name
+        Normalize the style name.
 
         The transformation pipeline is:
           1. Return empty string immediately if the name is empty.
@@ -244,7 +229,7 @@ class Style:
         if name in ("", "-", "none", "null"):
             return ""
 
-        # step 4: any character not in [a‑z 0‑9 _] becomes "x".
+        # step 4: any character not in [a-z 0-9 _] becomes "x".
         return _CLEAN_PATTERN.sub("x", name)
 
 

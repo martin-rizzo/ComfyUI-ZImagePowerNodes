@@ -51,10 +51,10 @@ def _styles_as_list(styles: StyleSet, add_none=False):
 
     for style in styles:
         style_data : list[str] = [
-            style.name,                  # 0: name
+            style.name,                  # 0: style name
             style.category,              # 1: category
             style.description,           # 2: description
-            style.comma_separated_tags,  # 3: tags (comma-separated)
+            style.tags,                  # 3: comma-separated list of tags
             style.slug,                  # 4: url-friendly slug (used for thumbnail filenames)
         ]
         result.append(style_data)
