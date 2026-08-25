@@ -44,79 +44,81 @@ checkpoints and LoRAs. However, I cannot guarantee full functionality for all
 custom combinations; you may need to tweak the workflows to optimize them for
 your specific setup.
 
+## Recommended
+
 ### Safetensors (INT8-ConvRot)
 
- - "z_image_turbo_int8_convrot_bf16emixed.safetensors" | 6.17 GB |  
+ - "z_image_turbo_int8_convrot_bf16emixed.safetensors" | 6.17 GB |
    [ Download ]( https://huggingface.co/martin-rizzo/Z-Image-Turbo-INT8-ConvRot-ComfyUI/blob/main/z_image_turbo_int8_convrot_bf16emixed.safetensors )  
    Local Directory: `ComfyUI/models/diffusion_models/`
 
- - "qwen3-4b_int8_convrot_fp16emixed.safetensors" | 4.42 GB |  
+ - "qwen3-4b_int8_convrot_fp16emixed.safetensors" | 4.42 GB |
    [ Download ]( https://huggingface.co/martin-rizzo/Qwen3-4B-INT8-ConvRot-ComfyUI/blob/main/qwen3-4b_int8_convrot_fp16emixed.safetensors )  
    Local Directory: `ComfyUI/models/text_encoders/`
 
- - "Z-Image_half_natural_vae.safetensors" | 335 MB |  
+ - "Z-Image_half_natural_vae.safetensors" | 335 MB |
    [ Download ]( https://huggingface.co/easygoing0114/Z-Image_clear_vae/blob/main/Z-Image_half_natural_vae.safetensors )  
    Local Directory: `ComfyUI/models/vae/`
 
 ### GGUF (Q5/Q8)
 
-- "z_image_turbo-Q5_K_S.gguf" | 5.19 GB |  
+- "z_image_turbo-Q5_K_S.gguf" | 5.19 GB |
   [ Download ]( https://huggingface.co/jayn7/Z-Image-Turbo-GGUF/blob/main/z_image_turbo-Q5_K_S.gguf )  
   Local Directory: `ComfyUI/models/diffusion_models/`
 
-- "Qwen3-4B-Q8_0.gguf" | 4.28 GB |  
+- "Qwen3-4B-Q8_0.gguf" | 4.28 GB |
   [ Download ]( https://huggingface.co/Qwen/Qwen3-4B-GGUF/blob/main/Qwen3-4B-Q8_0.gguf )  
   Local Directory: `ComfyUI/models/text_encoders/`
 
- - "Z-Image_half_natural_vae.safetensors" | 335 MB |  
+ - "Z-Image_half_natural_vae.safetensors" | 335 MB |
    [ Download ]( https://huggingface.co/easygoing0114/Z-Image_clear_vae/blob/main/Z-Image_half_natural_vae.safetensors )  
    Local Directory: `ComfyUI/models/vae/`
 
 ### Comfy-Org Original Safetensors (BF16)
 
-- "z_image_turbo_bf16.safetensors" | 12.3 GB |  
+- "z_image_turbo_bf16.safetensors" | 12.3 GB |
   [ Download ]( https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/diffusion_models/z_image_turbo_bf16.safetensors )  
   Local Directory: `ComfyUI/models/diffusion_models/`
 
-- "qwen_3_4b.safetensors" | 8.04 GB |  
+- "qwen_3_4b.safetensors" | 8.04 GB |
   [ Download ]( https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/text_encoders/qwen_3_4b.safetensors )  
   Local Directory: `ComfyUI/models/text_encoders/`
 
-- "ae.safetensors" | 335 MB |  
+- "ae.safetensors" | 335 MB |
   [ Download ]( https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/vae/ae.safetensors )  
   Local Directory: `ComfyUI/models/vae/`
 
 ### Comfy-Org Original Safetensors (INT8-ConvRot / FP8)
 
-- "z_image_turbo_int8_convrot.safetensors" | 6.20 GB |  
+- "z_image_turbo_int8_convrot.safetensors" | 6.20 GB |
   [ Download ]( https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/diffusion_models/z_image_turbo_int8_convrot.safetensors )  
   Local Directory: `ComfyUI/models/diffusion_models/`
 
-- "qwen_3_4b_fp8_mixed.safetensors" | 5.63 GB |  
+- "qwen_3_4b_fp8_mixed.safetensors" | 5.63 GB |
   [ Download ]( https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/text_encoders/qwen_3_4b_fp8_mixed.safetensors )  
   Local Directory: `ComfyUI/models/text_encoders/`
 
-- "ae.safetensors" | 335 MB |  
+- "ae.safetensors" | 335 MB |
   [ Download ]( https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/vae/ae.safetensors )  
   Local Directory: `ComfyUI/models/vae/`
 
-## Checkpoints Not Recommended (might be useful on certain systems)
+### Checkpoints Not Recommended (might be useful on certain systems)
 
-### Safetensors (FP8)
+#### Safetensors (FP8)
 
-- "z-image-turbo_fp8_scaled_e4m3fn_KJ.safetensors" | 6.16 GB |  
+- "z-image-turbo_fp8_scaled_e4m3fn_KJ.safetensors" | 6.16 GB |
   [ Download ]( https://huggingface.co/Kijai/Z-Image_comfy_fp8_scaled/blob/main/z-image-turbo_fp8_scaled_e4m3fn_KJ.safetensors )  
   Local Directory: `ComfyUI/models/diffusion_models/`
 
-- "qwen3_4b_fp8_scaled.safetensors" | 4.41 GB |  
+- "qwen3_4b_fp8_scaled.safetensors" | 4.41 GB |
   [ Download ]( https://huggingface.co/hhsebsb/qwen3-4b-fp8-scaled/blob/main/qwen3_4b_fp8_scaled.safetensors )  
   Local Directory: `ComfyUI/models/text_encoders/`
 
-- "ae.safetensors" | 335 MB |  
+- "ae.safetensors" | 335 MB |
   [ Download ]( https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/vae/ae.safetensors )  
   Local Directory: `ComfyUI/models/vae/`
 
-## Z-Image Power Nodes
+## Z-Image Power Nodes Installation
 
 Z-Image Power Nodes can be installed via ComfyUI Manager or downloaded directly
 from its respective repository. Please always ensure you have the latest version
