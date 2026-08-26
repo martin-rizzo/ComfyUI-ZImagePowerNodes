@@ -41,6 +41,7 @@ class Effect(Enum):
     COLOR_POP        = "color_pop"
     COLOR_TWIST      = "color_twist"
     CONTRAST         = "contrast"
+    CONTRAST_LOW     = "contrast_low"
    #INTENSITY_1      = "intensity_1"
    #INTENSITY_2      = "intensity_2"
    #SATURATION_NOISE = "saturation_noise"
@@ -182,7 +183,7 @@ class ImageFilter(io.ComfyNode):
             if value>=0:
                 images = adjust_hsv_components(images,
                                                saturation_factor        = 0,
-                                               brightness_scurve_factor = 1-(value*1.33),
+                                               brightness_scurve_factor = 1-(1.33*value),
                                                input_color_space = color_space)
             else:
                 images = adjust_hsv_components(images,
@@ -193,26 +194,32 @@ class ImageFilter(io.ComfyNode):
 
         elif effect == Effect.COLOR:
             images = adjust_hsv_components(images,
-                                           saturation_factor = 1+(value*1.25),
+                                           saturation_factor = 1+(1.25*value + 0.25),
                                            input_color_space = color_space)
             return images, 'hsv'
 
         elif effect == Effect.COLOR_POP:
             images = adjust_hsv_components(images,
-                                           saturation_stretch = min(abs(value*3.33), 1.0),
+                                           saturation_stretch = min(abs(3.33*value), 1.0),
                                            saturation_gamma   = 1+(value*1.75),
                                            input_color_space = color_space)
             return images, 'hsv'
 
         elif effect == Effect.COLOR_TWIST:
             images = adjust_hsv_components(images,
-                                           hue_twist_factor = value*(0.75*pi),
+                                           hue_twist_factor = 0.75*pi*value,
                                            input_color_space = color_space)
             return images, 'hsv'
 
         elif effect == Effect.CONTRAST:
             images = adjust_hsv_components(images,
-                                           brightness_scurve_factor = 1+(value*0.66),
+                                           brightness_scurve_factor = 1+(0.66*value),
+                                           input_color_space = color_space)
+            return images, 'hsv'
+
+        elif effect == Effect.CONTRAST_LOW:
+            images = adjust_hsv_components(images,
+                                           brightness_scurve_factor = 1+(0.66*value - 0.264),
                                            input_color_space = color_space)
             return images, 'hsv'
 
