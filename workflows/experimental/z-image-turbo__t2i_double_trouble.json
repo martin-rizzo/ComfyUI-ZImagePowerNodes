@@ -1,0 +1,2001 @@
+{
+  "id": "dd42e644-1606-4bb4-b2df-ffae9ed4c8a9",
+  "revision": 0,
+  "last_node_id": 62,
+  "last_link_id": 121,
+  "nodes": [
+    {
+      "id": 22,
+      "type": "SaveImage //ZImagePowerNodes",
+      "pos": [
+        1670,
+        130
+      ],
+      "size": [
+        590,
+        820
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 42
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "SaveImage //ZImagePowerNodes"
+      },
+      "widgets_values": [
+        "ZIT/%date:yyyy_MM_dd%/ZIT",
+        true
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "ZIT/%date:yyyy_MM_dd%/ZIT",
+        "civitai_compatible_metadata": true
+      }
+    },
+    {
+      "id": 21,
+      "type": "22148af9-ea62-4d0e-8039-cfdf1081fa66",
+      "pos": [
+        1040,
+        130
+      ],
+      "size": [
+        600,
+        1010
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "main_style",
+          "name": "style_1",
+          "type": "ZIPN_STYLE",
+          "widget": {
+            "name": "style_1"
+          },
+          "link": 119
+        },
+        {
+          "label": "substyle",
+          "name": "style",
+          "type": "ZIPN_STYLE",
+          "widget": {
+            "name": "style"
+          },
+          "link": 118
+        },
+        {
+          "label": "imprint_style_label",
+          "name": "enable_label",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "enable_label"
+          },
+          "link": null
+        },
+        {
+          "label": "detailed_sampling",
+          "name": "detailed_refiner",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "detailed_refiner"
+          },
+          "link": null
+        },
+        {
+          "label": "contrast",
+          "name": "effect_1_tweak",
+          "type": "FLOAT",
+          "widget": {
+            "name": "effect_1_tweak"
+          },
+          "link": null
+        },
+        {
+          "label": "color",
+          "name": "effect_2_tweak",
+          "type": "FLOAT",
+          "widget": {
+            "name": "effect_2_tweak"
+          },
+          "link": null
+        },
+        {
+          "label": "huge",
+          "name": "effect_3_tweak",
+          "type": "FLOAT",
+          "widget": {
+            "name": "effect_3_tweak"
+          },
+          "link": null
+        },
+        {
+          "label": "ck_attention",
+          "name": "comfy_kitchen_attention",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "comfy_kitchen_attention"
+          },
+          "link": null
+        },
+        {
+          "label": "zimage_model",
+          "name": "checkpoint",
+          "type": "COMBO",
+          "widget": {
+            "name": "checkpoint"
+          },
+          "link": null
+        },
+        {
+          "label": "qwen3_model",
+          "name": "checkpoint_1",
+          "type": "COMBO",
+          "widget": {
+            "name": "checkpoint_1"
+          },
+          "link": null
+        },
+        {
+          "label": "vae",
+          "name": "vae_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "vae_name"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            42
+          ]
+        }
+      ],
+      "properties": {
+        "previewExposures": []
+      },
+      "widgets_values": [
+        7,
+        "",
+        "",
+        false,
+        "A young woman with short, curly black hair, positioned centrally in the foreground and viewed in three-quarters profile from behind, turning her head slightly toward the right. She has fair skin, light-colored eyes, and light pink lips, with a soft reddish tint on her cheeks. She wears a cream-colored, short-sleeved dress with a v-neckline and gathered, puffy sleeves, cinched at the waist. Her left arm hangs down by her side, with her hand visible near the bottom edge of the frame. \n\nThe background consists of a vast, flat grassy field stretching to a distant horizon line under a clear blue sky dominated by a massive, billowing white cumulus cloud formation directly behind the figure. The lighting illuminates the scene from the upper left, casting subtle shadows on the right side of the young woman's face and body, and on the lower portions of the cloud formations, which show light grey and muted pink undertones. A few sparse blades of grass and small wildflowers are visible in the immediate foreground at the bottom corners.",
+        8,
+        0,
+        true,
+        true,
+        -0.5,
+        0.30000000000000004,
+        -0.1,
+        false,
+        "3:2  (photo)",
+        true,
+        "z_image_turbo_int8_convrot_bf16emixed.safetensors",
+        "qwen3-4b_int8_convrot_fp16emixed.safetensors",
+        "Z-Image_half_natural_vae.safetensors"
+      ],
+      "widgets_values_named": {
+        "seed": 7,
+        "style_1": "",
+        "style": "",
+        "enable_label": false,
+        "prompt": "A young woman with short, curly black hair, positioned centrally in the foreground and viewed in three-quarters profile from behind, turning her head slightly toward the right. She has fair skin, light-colored eyes, and light pink lips, with a soft reddish tint on her cheeks. She wears a cream-colored, short-sleeved dress with a v-neckline and gathered, puffy sleeves, cinched at the waist. Her left arm hangs down by her side, with her hand visible near the bottom edge of the frame. \n\nThe background consists of a vast, flat grassy field stretching to a distant horizon line under a clear blue sky dominated by a massive, billowing white cumulus cloud formation directly behind the figure. The lighting illuminates the scene from the upper left, casting subtle shadows on the right side of the young woman's face and body, and on the lower portions of the cloud formations, which show light grey and muted pink undertones. A few sparse blades of grass and small wildflowers are visible in the immediate foreground at the bottom corners.",
+        "steps": 8,
+        "initial_bias": 0,
+        "turbo_creativity": true,
+        "detailed_refiner": true,
+        "effect_1_tweak": -0.5,
+        "effect_2_tweak": 0.30000000000000004,
+        "effect_3_tweak": -0.1,
+        "orientation": false,
+        "ratio": "3:2  (photo)",
+        "comfy_kitchen_attention": true,
+        "checkpoint": "z_image_turbo_int8_convrot_bf16emixed.safetensors",
+        "checkpoint_1": "qwen3-4b_int8_convrot_fp16emixed.safetensors",
+        "vae_name": "Z-Image_half_natural_vae.safetensors"
+      }
+    },
+    {
+      "id": 57,
+      "type": "StyleLibraryV10 //ZImagePowerNodes",
+      "pos": [
+        610,
+        270
+      ],
+      "size": [
+        400,
+        110
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STYLE",
+          "type": "ZIPN_STYLE",
+          "links": [
+            118
+          ]
+        }
+      ],
+      "title": "⚗️🔬| substyle",
+      "properties": {
+        "Node name for S&R": "StyleLibraryV10 //ZImagePowerNodes"
+      },
+      "widgets_values": [
+        "Low Quality Photo"
+      ],
+      "widgets_values_named": {
+        "style": "Low Quality Photo"
+      }
+    },
+    {
+      "id": 58,
+      "type": "StyleLibraryV10 //ZImagePowerNodes",
+      "pos": [
+        610,
+        120
+      ],
+      "size": [
+        400,
+        110
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STYLE",
+          "type": "ZIPN_STYLE",
+          "links": [
+            119
+          ]
+        }
+      ],
+      "title": "⚗️🔬| Main Style",
+      "properties": {
+        "Node name for S&R": "StyleLibraryV10 //ZImagePowerNodes"
+      },
+      "widgets_values": [
+        "Dark Comic Illustration"
+      ],
+      "widgets_values_named": {
+        "style": "Dark Comic Illustration"
+      }
+    }
+  ],
+  "links": [
+    [
+      42,
+      21,
+      0,
+      22,
+      0,
+      "IMAGE"
+    ],
+    [
+      118,
+      57,
+      0,
+      21,
+      1,
+      "ZIPN_STYLE"
+    ],
+    [
+      119,
+      58,
+      0,
+      21,
+      0,
+      "ZIPN_STYLE"
+    ]
+  ],
+  "groups": [],
+  "definitions": {
+    "subgraphs": [
+      {
+        "id": "22148af9-ea62-4d0e-8039-cfdf1081fa66",
+        "version": 1,
+        "state": {
+          "lastGroupId": 1,
+          "lastNodeId": 62,
+          "lastLinkId": 121,
+          "lastRerouteId": 0
+        },
+        "revision": 0,
+        "config": {},
+        "name": "Double Trouble",
+        "inputNode": {
+          "id": -10,
+          "bounding": [
+            -1050,
+            930,
+            152.765625,
+            408
+          ]
+        },
+        "outputNode": {
+          "id": -20,
+          "bounding": [
+            3200,
+            951,
+            128,
+            68
+          ]
+        },
+        "inputs": [
+          {
+            "id": "2e3f0467-e31d-4999-bc34-da31fd673795",
+            "name": "seed",
+            "type": "INT",
+            "linkIds": [
+              75
+            ],
+            "pos": [
+              -921.234375,
+              954
+            ]
+          },
+          {
+            "id": "74379390-cf6b-489b-b1a9-bc2c927e2281",
+            "name": "style_1",
+            "type": "ZIPN_STYLE",
+            "linkIds": [
+              111
+            ],
+            "label": "main_style",
+            "pos": [
+              -921.234375,
+              974
+            ]
+          },
+          {
+            "id": "98479283-f00c-45d2-8cc9-1f02a0780afe",
+            "name": "style",
+            "type": "ZIPN_STYLE",
+            "linkIds": [
+              110
+            ],
+            "label": "substyle",
+            "pos": [
+              -921.234375,
+              994
+            ]
+          },
+          {
+            "id": "29a97490-26df-4cdc-81b0-ed1bcd2bdd6d",
+            "name": "enable_label",
+            "type": "BOOLEAN",
+            "linkIds": [
+              121
+            ],
+            "label": "imprint_style_label",
+            "pos": [
+              -921.234375,
+              1014
+            ]
+          },
+          {
+            "id": "7e88976f-e6a4-466c-a838-e6243a49b5b5",
+            "name": "prompt",
+            "type": "STRING",
+            "linkIds": [
+              116,
+              117
+            ],
+            "pos": [
+              -921.234375,
+              1034
+            ]
+          },
+          {
+            "id": "f47693ec-f922-4dc6-8713-a62ef39de5ae",
+            "name": "steps",
+            "type": "INT",
+            "linkIds": [
+              76
+            ],
+            "pos": [
+              -921.234375,
+              1054
+            ]
+          },
+          {
+            "id": "d4a2dc6a-3a2e-41ad-981a-ec6700ba9454",
+            "name": "initial_bias",
+            "type": "FLOAT",
+            "linkIds": [
+              77
+            ],
+            "pos": [
+              -921.234375,
+              1074
+            ]
+          },
+          {
+            "id": "7ba12079-2614-488b-a2b3-9936027c75bb",
+            "name": "turbo_creativity",
+            "type": "BOOLEAN",
+            "linkIds": [
+              78
+            ],
+            "pos": [
+              -921.234375,
+              1094
+            ]
+          },
+          {
+            "id": "7dd7e4f9-3082-42bd-9c48-96450dbf93d9",
+            "name": "detailed_refiner",
+            "type": "BOOLEAN",
+            "linkIds": [
+              79
+            ],
+            "label": "detailed_sampling",
+            "pos": [
+              -921.234375,
+              1114
+            ]
+          },
+          {
+            "id": "109278ce-fa24-469c-bfd5-acd98ec17683",
+            "name": "effect_1_tweak",
+            "type": "FLOAT",
+            "linkIds": [
+              93
+            ],
+            "label": "contrast",
+            "pos": [
+              -921.234375,
+              1134
+            ]
+          },
+          {
+            "id": "4ead56e6-369c-42c7-8b54-b9bf657d7207",
+            "name": "effect_2_tweak",
+            "type": "FLOAT",
+            "linkIds": [
+              94
+            ],
+            "label": "color",
+            "pos": [
+              -921.234375,
+              1154
+            ]
+          },
+          {
+            "id": "85ccebb2-3021-44b6-881d-e2f03c1cd197",
+            "name": "effect_3_tweak",
+            "type": "FLOAT",
+            "linkIds": [
+              95
+            ],
+            "label": "huge",
+            "pos": [
+              -921.234375,
+              1174
+            ]
+          },
+          {
+            "id": "8901aaf5-f44e-416a-95f9-a5420112e193",
+            "name": "orientation",
+            "type": "BOOLEAN",
+            "linkIds": [
+              35
+            ],
+            "pos": [
+              -921.234375,
+              1194
+            ]
+          },
+          {
+            "id": "2793642f-54fe-433f-ba90-f0e79ba8bef7",
+            "name": "ratio",
+            "type": "COMBO",
+            "linkIds": [
+              36
+            ],
+            "pos": [
+              -921.234375,
+              1214
+            ]
+          },
+          {
+            "id": "fd3ae504-f166-4e17-9f2c-845fdfdb07b4",
+            "name": "comfy_kitchen_attention",
+            "type": "BOOLEAN",
+            "linkIds": [
+              55
+            ],
+            "label": "ck_attention",
+            "pos": [
+              -921.234375,
+              1234
+            ]
+          },
+          {
+            "id": "148981e4-ea4e-4526-aff8-773450ac8143",
+            "name": "checkpoint",
+            "type": "COMBO",
+            "linkIds": [
+              52
+            ],
+            "label": "zimage_model",
+            "pos": [
+              -921.234375,
+              1254
+            ]
+          },
+          {
+            "id": "cec509df-e0d7-40d6-a975-7427a1f8fbb9",
+            "name": "checkpoint_1",
+            "type": "COMBO",
+            "linkIds": [
+              53
+            ],
+            "label": "qwen3_model",
+            "pos": [
+              -921.234375,
+              1274
+            ]
+          },
+          {
+            "id": "083459e9-572f-4135-aa01-b48b548a6a94",
+            "name": "vae_name",
+            "type": "COMBO",
+            "linkIds": [
+              54
+            ],
+            "label": "vae",
+            "pos": [
+              -921.234375,
+              1294
+            ]
+          }
+        ],
+        "outputs": [
+          {
+            "id": "4b7bdb53-c06d-4b66-92a4-d88313bf52d2",
+            "name": "IMAGE",
+            "type": "IMAGE",
+            "linkIds": [
+              32
+            ],
+            "pos": [
+              3224,
+              975
+            ]
+          }
+        ],
+        "widgets": [],
+        "nodes": [
+          {
+            "id": 3,
+            "type": "VAELoader",
+            "pos": [
+              -640,
+              370
+            ],
+            "size": [
+              590,
+              140
+            ],
+            "flags": {
+              "pinned": true
+            },
+            "order": 4,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "vae_name",
+                "name": "vae_name",
+                "type": "COMBO",
+                "widget": {
+                  "name": "vae_name"
+                },
+                "link": 54
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "VAE",
+                "name": "VAE",
+                "type": "VAE",
+                "links": [
+                  49
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "VAELoader"
+            },
+            "widgets_values": [
+              "Z-Image_half_natural_vae.safetensors"
+            ],
+            "widgets_values_named": {
+              "vae_name": "Z-Image_half_natural_vae.safetensors"
+            },
+            "color": "#322",
+            "bgcolor": "#533",
+            "shape": 1
+          },
+          {
+            "id": 2,
+            "type": "LoadZImageModel //ZImagePowerNodes",
+            "pos": [
+              -640,
+              -60
+            ],
+            "size": [
+              590,
+              160
+            ],
+            "flags": {
+              "pinned": true
+            },
+            "order": 3,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "checkpoint",
+                "name": "checkpoint",
+                "type": "COMBO",
+                "widget": {
+                  "name": "checkpoint"
+                },
+                "link": 52
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "MODEL",
+                "name": "MODEL",
+                "type": "MODEL",
+                "links": [
+                  23
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "LoadZImageModel //ZImagePowerNodes"
+            },
+            "widgets_values": [
+              "z_image_turbo_int8_convrot_bf16emixed.safetensors",
+              false
+            ],
+            "widgets_values_named": {
+              "checkpoint": "z_image_turbo_int8_convrot_bf16emixed.safetensors",
+              "file_filter": false
+            },
+            "color": "#322",
+            "bgcolor": "#533",
+            "shape": 1
+          },
+          {
+            "id": 1,
+            "type": "LoadQwen34bModel //ZImagePowerNodes",
+            "pos": [
+              -640,
+              150
+            ],
+            "size": [
+              590,
+              170
+            ],
+            "flags": {
+              "pinned": true
+            },
+            "order": 2,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "checkpoint",
+                "name": "checkpoint",
+                "type": "COMBO",
+                "widget": {
+                  "name": "checkpoint"
+                },
+                "link": 53
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "CLIP",
+                "name": "CLIP",
+                "type": "CLIP",
+                "links": [
+                  66
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "LoadQwen34bModel //ZImagePowerNodes"
+            },
+            "widgets_values": [
+              "qwen3-4b_int8_convrot_fp16emixed.safetensors",
+              false,
+              true
+            ],
+            "widgets_values_named": {
+              "checkpoint": "qwen3-4b_int8_convrot_fp16emixed.safetensors",
+              "file_filter": false,
+              "run_on_gpu": true
+            },
+            "color": "#322",
+            "bgcolor": "#533",
+            "shape": 1
+          },
+          {
+            "id": 18,
+            "type": "ComfyKitchenAttentionEnabler //ZImagePowerNodes",
+            "pos": [
+              -10,
+              230
+            ],
+            "size": [
+              300,
+              100
+            ],
+            "flags": {
+              "pinned": true
+            },
+            "order": 7,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "model",
+                "name": "model",
+                "type": "MODEL",
+                "link": 23
+              },
+              {
+                "localized_name": "comfy_kitchen_attention",
+                "name": "comfy_kitchen_attention",
+                "type": "BOOLEAN",
+                "widget": {
+                  "name": "comfy_kitchen_attention"
+                },
+                "link": 55
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "MODEL",
+                "name": "MODEL",
+                "type": "MODEL",
+                "links": [
+                  74
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "ComfyKitchenAttentionEnabler //ZImagePowerNodes"
+            },
+            "widgets_values": [
+              true
+            ],
+            "widgets_values_named": {
+              "comfy_kitchen_attention": true
+            }
+          },
+          {
+            "id": 7,
+            "type": "EmptyZImageLatentImage //ZImagePowerNodes",
+            "pos": [
+              -10,
+              -750
+            ],
+            "size": [
+              340,
+              200
+            ],
+            "flags": {
+              "pinned": true
+            },
+            "order": 5,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "orientation",
+                "name": "orientation",
+                "type": "BOOLEAN",
+                "widget": {
+                  "name": "orientation"
+                },
+                "link": 35
+              },
+              {
+                "localized_name": "ratio",
+                "name": "ratio",
+                "type": "COMBO",
+                "widget": {
+                  "name": "ratio"
+                },
+                "link": 36
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "LATENT",
+                "name": "LATENT",
+                "type": "LATENT",
+                "links": [
+                  73
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "EmptyZImageLatentImage //ZImagePowerNodes"
+            },
+            "widgets_values": [
+              false,
+              "3:2  (photo)",
+              "medium (recommended)",
+              1
+            ],
+            "widgets_values_named": {
+              "orientation": false,
+              "ratio": "3:2  (photo)",
+              "size": "medium (recommended)",
+              "batch_size": 1
+            }
+          },
+          {
+            "id": 5,
+            "type": "PrimitiveStringMultiline",
+            "pos": [
+              -750,
+              570
+            ],
+            "size": [
+              850,
+              1510
+            ],
+            "flags": {
+              "collapsed": false,
+              "pinned": true
+            },
+            "order": 0,
+            "mode": 0,
+            "inputs": [],
+            "outputs": [
+              {
+                "localized_name": "STRING",
+                "name": "STRING",
+                "type": "STRING",
+                "links": []
+              }
+            ],
+            "title": "Input Text - Custom Styles",
+            "properties": {
+              "Node name for S&R": "PrimitiveStringMultiline"
+            },
+            "widgets_values": [
+              "\n\n>>> 90s Underground Flash\nYOUR CONTEXT\nYou are an experimental analog photographer capturing the raw, kinetic energy of the 1990s underground subculture. Your aesthetic is defined by low-fidelity, grainy analog film and a visceral, \"in-the-moment\" chaos. \nThe image is captured through an extreme wide-angle lens, creating aggressive perspective distortion where foreground elements loom over the viewer while the background recedes sharply. The composition is defined by the harsh, unflattering intensity of a direct camera flash, producing high-contrast illumination, slight motion blur, and unpredictable light leaks. The edges of the frame exhibit characteristic wide-angle warping that pulls the environment inward, reinforcing a sense of claustrophobic intensity and instant capture.\n{$**@@ The visual style is provocative and erotic. If women appear, they are always voluptuous and pose provocatively, with sexual innuendo. If men appear, they are muscular and brimming with testosterone. }\n{$IFPAL\nThe color palette reflects the gritty nature of 90s push-processed film: shadows are $4, midtones in $3 and $2, and highlights are $1, creating a raw and volatile tonal balance. |\nThe scene is defined by a chaotic, de-saturated aesthetic with warm, blown-out highlights and dense, crushing shadows, evoking the authentic, lo-fi grit of 35mm film stock pushed to its limits.\n}\nYOUR PHOTO:\n<!--\n{$@}\n-->\n\n\n>>> 90s Casual Photo // Standard Snapshot\nYOUR CONTEXT\nYou are an analog photographer focusing on the intimate, nostalgic reality of 1990s lifestyle photography. Your work captures the authentic texture of daily life, emphasizing raw, unfiltered emotions and candid humanity.\n\nThe image is rendered with the nostalgic charm of consumer-grade 35mm film stock, characterized by visible, organic grain and a slightly soft, naturalistic detail. The lighting relies on a direct on-camera flash that illuminates the scene with a flat, honest brilliance, creating sharp shadows directly behind the subjects that ground them in their environment. The composition is balanced and direct, favoring natural eye-level framing that prioritizes the interaction within the scene, resulting in an image that feels like a rescued memory from a shoebox of old prints.\n\n{$IFPAL\nThe color palette captures the classic warmth of vintage film prints: shadows are rendered in deep, natural $3, midtones in subtle, earthy $2, and highlights are finished with a delicate $1. |\nThe scene is defined by a slight color shift toward sepia and cyan undertones, typical of aged photographic paper, delivering a warm, candid, and profoundly human aesthetic.\n}\nYOUR PHOTO:\n<!--\n{$@}\n-->\n\n\n>>> 90s Casual Photo // Depth Focused\nYOUR CONTEXT\nYou are an analog photographer specializing in the evocative, mood-driven portraits of the 90s era. Your aesthetic prioritizes the emotional connection between the subject and the lens, utilizing high-speed prime lenses to isolate the foreground.\n\nThe images feature a shallow depth of field that renders the background as a soft, dreamlike wash of light and color, allowing the subject to emerge with striking clarity from the chaotic environment. The focus is pinpoint sharp on the main subject, while the surrounding atmosphere dissolves into a gentle, creamy blur. Captured on 35mm film, the image retains a fine, tactile grain that softens the transitions between light and shadow. The direct flash provides a distinct, professional-yet-raw luminosity, creating a gentle separation between the sharp subject and the ethereal, blurred background.\n\n{$IFPAL\nThe color palette is intimate and rich: shadows are rendered in moody $3, midtones in balanced $2, and highlights glow with a soft, punchy $1. |\nThe scene is defined by a warm, nostalgic film glow, where rich contrast and soft-focus backgrounds coalesce to create a polished, yet beautifully imperfect, 90s editorial atmosphere.\n}\nYOUR PHOTO:\n<!--\n{$@}\n-->\n\n\n>>> 90s Casual Photo // Night Club Flash\nYOUR CONTEXT\nYou are an nightlife photographer from the mid-90s underground scene. Your images are defined by the high-octane energy of dark, crowded environments and the strobe-like intensity of a powerful, direct-mounted speedlight.\n\nThe lighting is characterized by \"blacked-out\" backgrounds where the ambient light falls off rapidly into deep, underexposed shadows. The flash creates sharp, punchy illumination on the subject, freezing motion with slight ghosting trails. The image features a gritty, high-contrast look with visible film grain, capturing the sweat, smoke, and electric tension of an all-night rave.\n\n{$IFPAL\nThe color palette is neon-heavy and nocturnal: shadows are rendered in deep, crushing $3, midtones in cool, electronic $2, and highlights are illuminated by a sharp, clinical $1. |\nThe scene is defined by high-contrast saturation, where intense light blasts against impenetrable darkness, evoking the aggressive, nocturnal aesthetic of rave culture.\n}\nYOUR PHOTO:\n<!--\n{$@}\n-->\n\n\n>>> 90s Casual Photo // Disposable Camera\nYOUR CONTEXT\nYou are documenting the raw, unpolished simplicity of 90s snapshots taken with a cheap, cardboard disposable camera. Your aesthetic is inherently humble, unpretentious, and nostalgic.\n\nThe lens is a simple, fixed-focus plastic element that introduces soft edge-blur and subtle chromatic aberration. Lighting is provided by a weak, direct-mounted flash that creates a harsh \"pop\" against flat backgrounds. The image displays the characteristic \"cheap\" quality of consumer film: visible, heavy grain, uneven color shifts, and a slightly murky, warm-toned emulsion that feels like it was developed at a local drugstore.\n\n{$IFPAL\nThe color palette is muted and consumer-grade: shadows are rendered in brownish $3, midtones in flat $2, and highlights in soft, sun-washed $1. |\nThe scene is defined by a distinct \"drugstore print\" look, characterized by warm, hazy transitions, slightly muddy blacks, and the charming imperfections of amateur photography.\n}\nYOUR PHOTO:\n<!--\n{$@}\n-->\n\n\n>>> 90s Casual Photo // Overexposed Summer\nYOUR CONTEXT\nYou are capturing the lazy, hazy, and heat-drenched days of 90s suburban summers. Your photographs are characterized by light-saturated frames and a dreamlike, sun-bleached atmosphere.\n\nThe images are intentionally overexposed, causing highlights to bloom and spill into the surrounding areas, effectively \"washing out\" the details in the brighter parts of the frame. The contrast is soft, and the overall color temperature leans toward a golden, high-key warmth. The texture is characterized by fine film grain dancing within the bright light, creating a shimmering, nostalgic sensation of a heatwave captured on celluloid.\n\n{$IFPAL\nThe color palette is sun-drenched and faded: shadows are rendered in soft $3, midtones in warm $2, and highlights are blown out with a brilliant, creamy $1. |\nThe scene is defined by high-key luminosity, where light overwhelms the shadows to create an airy, nostalgic aesthetic reminiscent of long, aimless summer afternoons.\n}\nYOUR PHOTO:\n<!--\n{$@}\n-->\n\n\n>>> 90s Casual Photo // Overexposed Summer (Fixed)\nYOUR CONTEXT\nYou are a street photographer documenting the mundane, heat-drenched reality of 90s suburban life. Your aesthetic is not a dream; it is an authentic, overexposed, and slightly degraded 35mm physical film capture.\n\nThe images are defined by heavy physical overexposure that causes \"halation\" around edges and intense light-bleeding, as if the film stock was pushed beyond its latitude. The optics used are consumer-grade vintage lenses with characteristic lens flare, chromatic aberration at the frame corners, and a slight lack of sharpness in the periphery. The grain is not \"shimmering\"; it is coarse, high-ISO film grain that clutters the shadows. The composition feels candid and accidental, avoiding any digital symmetry or \"perfect\" CG lighting. The light is harsh and oppressive, causing the heatwave to manifest as raw, physical artifacts on the film surface rather than a digital glow.\n\n{$IFPAL\nThe color palette is sun-drenched and faded: shadows are rendered in deep, noisy $3, midtones in warm $2, and highlights are blown out into raw, clipping $1. |\nThe scene is defined by high-key luminosity, where the light physically overwhelms the film emulsion, creating a gritty, lo-fi aesthetic reminiscent of a discarded roll of film left in a hot car.\n}\nYOUR PHOTO:\n<!--\n{$@}\n-->\n\n>>> 90s Casual Photo // Light Leak Overflow\nYOUR CONTEXT\nYou are an experimental photographer using vintage, poorly-sealed film bodies that allow rogue light to compromise the film frame. Your aesthetic celebrates the unpredictable beauty of physical failure.\n\nThe image is permeated by vibrant, organic light leaks that appear as streaks or washes of amber, magenta, or red across the frame. These leaks act as luminous overlays, softening the image and creating a surreal, ethereal atmosphere. The underlying shot remains sharp, but the light interference adds a thick, chemical texture to the frame, blending the subject with the raw, chaotic energy of the film development process.\n\n{$IFPAL\nThe color palette is infused with chemical warmth: shadows are rendered in $3, midtones in $2, and the light leaks are highlighted by a radiant, saturated $1. |\nThe scene is defined by a beautiful, chaotic interaction between light and film, featuring swirling, warm-toned light leaks that wash over the composition in a dreamlike, lo-fi display.\n}\nYOUR PHOTO:\n<!--\n{$@}\n-->\n\n\n>>> 90s Casual Photo // Harsh Fluorescent Tint\nYOUR CONTEXT\nYou are documenting the mundane, industrial aesthetic of 90s public spaces, malls, and offices. Your work captures the stark, unflattering, and distinctly \"off-putting\" quality of artificial fluorescent lighting.\n{$**@@ The visual style is provocative and erotic. If women appear, they are always voluptuous and pose provocatively, with sexual innuendo. If men appear, they are muscular and brimming with testosterone. }\n\nThe lighting is flat and top-down, casting sickly, greenish-tinted shadows that add a sense of unease and clinical realism to the image. The image lacks the warmth of traditional film, instead favoring a cold, sterile, and slightly repulsive color shift. The texture is grainy, reflecting the difficulty of shooting in low, flickering light, and the overall mood is one of detached, everyday alienation characteristic of the mid-90s urban landscape.\n\n{$IFPAL\nThe color palette is cold and synthetic: shadows are rendered in '$4', midtones in '$3' and '$2', and highlights are cast in '$1'. |\nThe scene is defined by a harsh, green-cyan color cast and flat, shadow-filled lighting that evokes the soulless, utilitarian atmosphere of fluorescent-lit 90s interiors.\n}\nYOUR PHOTO:\n<!--\n{$@}\n-->\n\n"
+            ],
+            "widgets_values_named": {
+              "value": "\n\n>>> 90s Underground Flash\nYOUR CONTEXT\nYou are an experimental analog photographer capturing the raw, kinetic energy of the 1990s underground subculture. Your aesthetic is defined by low-fidelity, grainy analog film and a visceral, \"in-the-moment\" chaos. \nThe image is captured through an extreme wide-angle lens, creating aggressive perspective distortion where foreground elements loom over the viewer while the background recedes sharply. The composition is defined by the harsh, unflattering intensity of a direct camera flash, producing high-contrast illumination, slight motion blur, and unpredictable light leaks. The edges of the frame exhibit characteristic wide-angle warping that pulls the environment inward, reinforcing a sense of claustrophobic intensity and instant capture.\n{$**@@ The visual style is provocative and erotic. If women appear, they are always voluptuous and pose provocatively, with sexual innuendo. If men appear, they are muscular and brimming with testosterone. }\n{$IFPAL\nThe color palette reflects the gritty nature of 90s push-processed film: shadows are $4, midtones in $3 and $2, and highlights are $1, creating a raw and volatile tonal balance. |\nThe scene is defined by a chaotic, de-saturated aesthetic with warm, blown-out highlights and dense, crushing shadows, evoking the authentic, lo-fi grit of 35mm film stock pushed to its limits.\n}\nYOUR PHOTO:\n<!--\n{$@}\n-->\n\n\n>>> 90s Casual Photo // Standard Snapshot\nYOUR CONTEXT\nYou are an analog photographer focusing on the intimate, nostalgic reality of 1990s lifestyle photography. Your work captures the authentic texture of daily life, emphasizing raw, unfiltered emotions and candid humanity.\n\nThe image is rendered with the nostalgic charm of consumer-grade 35mm film stock, characterized by visible, organic grain and a slightly soft, naturalistic detail. The lighting relies on a direct on-camera flash that illuminates the scene with a flat, honest brilliance, creating sharp shadows directly behind the subjects that ground them in their environment. The composition is balanced and direct, favoring natural eye-level framing that prioritizes the interaction within the scene, resulting in an image that feels like a rescued memory from a shoebox of old prints.\n\n{$IFPAL\nThe color palette captures the classic warmth of vintage film prints: shadows are rendered in deep, natural $3, midtones in subtle, earthy $2, and highlights are finished with a delicate $1. |\nThe scene is defined by a slight color shift toward sepia and cyan undertones, typical of aged photographic paper, delivering a warm, candid, and profoundly human aesthetic.\n}\nYOUR PHOTO:\n<!--\n{$@}\n-->\n\n\n>>> 90s Casual Photo // Depth Focused\nYOUR CONTEXT\nYou are an analog photographer specializing in the evocative, mood-driven portraits of the 90s era. Your aesthetic prioritizes the emotional connection between the subject and the lens, utilizing high-speed prime lenses to isolate the foreground.\n\nThe images feature a shallow depth of field that renders the background as a soft, dreamlike wash of light and color, allowing the subject to emerge with striking clarity from the chaotic environment. The focus is pinpoint sharp on the main subject, while the surrounding atmosphere dissolves into a gentle, creamy blur. Captured on 35mm film, the image retains a fine, tactile grain that softens the transitions between light and shadow. The direct flash provides a distinct, professional-yet-raw luminosity, creating a gentle separation between the sharp subject and the ethereal, blurred background.\n\n{$IFPAL\nThe color palette is intimate and rich: shadows are rendered in moody $3, midtones in balanced $2, and highlights glow with a soft, punchy $1. |\nThe scene is defined by a warm, nostalgic film glow, where rich contrast and soft-focus backgrounds coalesce to create a polished, yet beautifully imperfect, 90s editorial atmosphere.\n}\nYOUR PHOTO:\n<!--\n{$@}\n-->\n\n\n>>> 90s Casual Photo // Night Club Flash\nYOUR CONTEXT\nYou are an nightlife photographer from the mid-90s underground scene. Your images are defined by the high-octane energy of dark, crowded environments and the strobe-like intensity of a powerful, direct-mounted speedlight.\n\nThe lighting is characterized by \"blacked-out\" backgrounds where the ambient light falls off rapidly into deep, underexposed shadows. The flash creates sharp, punchy illumination on the subject, freezing motion with slight ghosting trails. The image features a gritty, high-contrast look with visible film grain, capturing the sweat, smoke, and electric tension of an all-night rave.\n\n{$IFPAL\nThe color palette is neon-heavy and nocturnal: shadows are rendered in deep, crushing $3, midtones in cool, electronic $2, and highlights are illuminated by a sharp, clinical $1. |\nThe scene is defined by high-contrast saturation, where intense light blasts against impenetrable darkness, evoking the aggressive, nocturnal aesthetic of rave culture.\n}\nYOUR PHOTO:\n<!--\n{$@}\n-->\n\n\n>>> 90s Casual Photo // Disposable Camera\nYOUR CONTEXT\nYou are documenting the raw, unpolished simplicity of 90s snapshots taken with a cheap, cardboard disposable camera. Your aesthetic is inherently humble, unpretentious, and nostalgic.\n\nThe lens is a simple, fixed-focus plastic element that introduces soft edge-blur and subtle chromatic aberration. Lighting is provided by a weak, direct-mounted flash that creates a harsh \"pop\" against flat backgrounds. The image displays the characteristic \"cheap\" quality of consumer film: visible, heavy grain, uneven color shifts, and a slightly murky, warm-toned emulsion that feels like it was developed at a local drugstore.\n\n{$IFPAL\nThe color palette is muted and consumer-grade: shadows are rendered in brownish $3, midtones in flat $2, and highlights in soft, sun-washed $1. |\nThe scene is defined by a distinct \"drugstore print\" look, characterized by warm, hazy transitions, slightly muddy blacks, and the charming imperfections of amateur photography.\n}\nYOUR PHOTO:\n<!--\n{$@}\n-->\n\n\n>>> 90s Casual Photo // Overexposed Summer\nYOUR CONTEXT\nYou are capturing the lazy, hazy, and heat-drenched days of 90s suburban summers. Your photographs are characterized by light-saturated frames and a dreamlike, sun-bleached atmosphere.\n\nThe images are intentionally overexposed, causing highlights to bloom and spill into the surrounding areas, effectively \"washing out\" the details in the brighter parts of the frame. The contrast is soft, and the overall color temperature leans toward a golden, high-key warmth. The texture is characterized by fine film grain dancing within the bright light, creating a shimmering, nostalgic sensation of a heatwave captured on celluloid.\n\n{$IFPAL\nThe color palette is sun-drenched and faded: shadows are rendered in soft $3, midtones in warm $2, and highlights are blown out with a brilliant, creamy $1. |\nThe scene is defined by high-key luminosity, where light overwhelms the shadows to create an airy, nostalgic aesthetic reminiscent of long, aimless summer afternoons.\n}\nYOUR PHOTO:\n<!--\n{$@}\n-->\n\n\n>>> 90s Casual Photo // Overexposed Summer (Fixed)\nYOUR CONTEXT\nYou are a street photographer documenting the mundane, heat-drenched reality of 90s suburban life. Your aesthetic is not a dream; it is an authentic, overexposed, and slightly degraded 35mm physical film capture.\n\nThe images are defined by heavy physical overexposure that causes \"halation\" around edges and intense light-bleeding, as if the film stock was pushed beyond its latitude. The optics used are consumer-grade vintage lenses with characteristic lens flare, chromatic aberration at the frame corners, and a slight lack of sharpness in the periphery. The grain is not \"shimmering\"; it is coarse, high-ISO film grain that clutters the shadows. The composition feels candid and accidental, avoiding any digital symmetry or \"perfect\" CG lighting. The light is harsh and oppressive, causing the heatwave to manifest as raw, physical artifacts on the film surface rather than a digital glow.\n\n{$IFPAL\nThe color palette is sun-drenched and faded: shadows are rendered in deep, noisy $3, midtones in warm $2, and highlights are blown out into raw, clipping $1. |\nThe scene is defined by high-key luminosity, where the light physically overwhelms the film emulsion, creating a gritty, lo-fi aesthetic reminiscent of a discarded roll of film left in a hot car.\n}\nYOUR PHOTO:\n<!--\n{$@}\n-->\n\n>>> 90s Casual Photo // Light Leak Overflow\nYOUR CONTEXT\nYou are an experimental photographer using vintage, poorly-sealed film bodies that allow rogue light to compromise the film frame. Your aesthetic celebrates the unpredictable beauty of physical failure.\n\nThe image is permeated by vibrant, organic light leaks that appear as streaks or washes of amber, magenta, or red across the frame. These leaks act as luminous overlays, softening the image and creating a surreal, ethereal atmosphere. The underlying shot remains sharp, but the light interference adds a thick, chemical texture to the frame, blending the subject with the raw, chaotic energy of the film development process.\n\n{$IFPAL\nThe color palette is infused with chemical warmth: shadows are rendered in $3, midtones in $2, and the light leaks are highlighted by a radiant, saturated $1. |\nThe scene is defined by a beautiful, chaotic interaction between light and film, featuring swirling, warm-toned light leaks that wash over the composition in a dreamlike, lo-fi display.\n}\nYOUR PHOTO:\n<!--\n{$@}\n-->\n\n\n>>> 90s Casual Photo // Harsh Fluorescent Tint\nYOUR CONTEXT\nYou are documenting the mundane, industrial aesthetic of 90s public spaces, malls, and offices. Your work captures the stark, unflattering, and distinctly \"off-putting\" quality of artificial fluorescent lighting.\n{$**@@ The visual style is provocative and erotic. If women appear, they are always voluptuous and pose provocatively, with sexual innuendo. If men appear, they are muscular and brimming with testosterone. }\n\nThe lighting is flat and top-down, casting sickly, greenish-tinted shadows that add a sense of unease and clinical realism to the image. The image lacks the warmth of traditional film, instead favoring a cold, sterile, and slightly repulsive color shift. The texture is grainy, reflecting the difficulty of shooting in low, flickering light, and the overall mood is one of detached, everyday alienation characteristic of the mid-90s urban landscape.\n\n{$IFPAL\nThe color palette is cold and synthetic: shadows are rendered in '$4', midtones in '$3' and '$2', and highlights are cast in '$1'. |\nThe scene is defined by a harsh, green-cyan color cast and flat, shadow-filled lighting that evokes the soulless, utilitarian atmosphere of fluorescent-lit 90s interiors.\n}\nYOUR PHOTO:\n<!--\n{$@}\n-->\n\n"
+            },
+            "color": "#223",
+            "bgcolor": "#335"
+          },
+          {
+            "id": 9,
+            "type": "AdvancedVAEDecoderX21 //ZImagePowerNodes",
+            "pos": [
+              1610,
+              -690
+            ],
+            "size": [
+              340,
+              140
+            ],
+            "flags": {
+              "pinned": true
+            },
+            "order": 6,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "samples",
+                "name": "samples",
+                "type": "LATENT",
+                "link": 72
+              },
+              {
+                "localized_name": "vae",
+                "name": "vae",
+                "type": "VAE",
+                "link": 51
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "IMAGE",
+                "name": "IMAGE",
+                "type": "IMAGE",
+                "links": [
+                  29
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "AdvancedVAEDecoderX21 //ZImagePowerNodes"
+            },
+            "widgets_values": [
+              true,
+              false
+            ],
+            "widgets_values_named": {
+              "allow_extended_range": true,
+              "low_vram_mode": false
+            }
+          },
+          {
+            "id": 20,
+            "type": "ImageFilter //ZImagePowerNodes",
+            "pos": [
+              1980,
+              -690
+            ],
+            "size": [
+              290,
+              430
+            ],
+            "flags": {
+              "pinned": true
+            },
+            "order": 9,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "images",
+                "name": "images",
+                "type": "IMAGE",
+                "link": 29
+              },
+              {
+                "localized_name": "effect_1_tweak",
+                "name": "effect_1_tweak",
+                "type": "FLOAT",
+                "widget": {
+                  "name": "effect_1_tweak"
+                },
+                "link": 93
+              },
+              {
+                "localized_name": "effect_2_tweak",
+                "name": "effect_2_tweak",
+                "type": "FLOAT",
+                "widget": {
+                  "name": "effect_2_tweak"
+                },
+                "link": 94
+              },
+              {
+                "localized_name": "effect_3_tweak",
+                "name": "effect_3_tweak",
+                "type": "FLOAT",
+                "widget": {
+                  "name": "effect_3_tweak"
+                },
+                "link": 95
+              },
+              {
+                "localized_name": "divider1",
+                "name": "divider1",
+                "type": "ZIPN_SEPARATOR",
+                "link": null
+              },
+              {
+                "localized_name": "divider2",
+                "name": "divider2",
+                "type": "ZIPN_SEPARATOR",
+                "link": null
+              },
+              {
+                "localized_name": "divider3",
+                "name": "divider3",
+                "type": "ZIPN_SEPARATOR",
+                "link": null
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "IMAGE",
+                "name": "IMAGE",
+                "type": "IMAGE",
+                "links": [
+                  30
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "ImageFilter //ZImagePowerNodes"
+            },
+            "widgets_values": [
+              true,
+              true,
+              "none",
+              "contrast",
+              -0.4,
+              null,
+              "color",
+              0.2,
+              null,
+              "none",
+              0
+            ],
+            "widgets_values_named": {
+              "enable_auto_contrast": true,
+              "enable_effects": true,
+              "divider1": "none",
+              "effect_1": "contrast",
+              "effect_1_tweak": -0.4,
+              "divider2": null,
+              "effect_2": "color",
+              "effect_2_tweak": 0.2,
+              "divider3": null,
+              "effect_3": "none",
+              "effect_3_tweak": 0
+            }
+          },
+          {
+            "id": 19,
+            "type": "ImageLabeler2 //ZImagePowerNodes",
+            "pos": [
+              2300,
+              -690
+            ],
+            "size": [
+              270,
+              440
+            ],
+            "flags": {
+              "pinned": true
+            },
+            "order": 8,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "image",
+                "name": "image",
+                "type": "IMAGE",
+                "link": 30
+              },
+              {
+                "localized_name": "enable_label",
+                "name": "enable_label",
+                "type": "BOOLEAN",
+                "widget": {
+                  "name": "enable_label"
+                },
+                "link": 121
+              },
+              {
+                "localized_name": "text",
+                "name": "text",
+                "type": "STRING",
+                "widget": {
+                  "name": "text"
+                },
+                "link": 120
+              },
+              {
+                "localized_name": "divider1",
+                "name": "divider1",
+                "type": "ZIPN_SEPARATOR",
+                "link": null
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "IMAGE",
+                "name": "IMAGE",
+                "type": "IMAGE",
+                "links": [
+                  32
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "ImageLabeler2 //ZImagePowerNodes"
+            },
+            "widgets_values": [
+              false,
+              null,
+              "",
+              "#003C96",
+              "#FFFFFF",
+              "roboto_slab",
+              46,
+              "none",
+              "bottom_right",
+              -1,
+              0,
+              0
+            ],
+            "widgets_values_named": {
+              "enable_label": false,
+              "divider1": null,
+              "text": "",
+              "text_color": "#003C96",
+              "background_color": "#FFFFFF",
+              "font_name": "roboto_slab",
+              "font_size": 46,
+              "font_scale": "none",
+              "label_position": "bottom_right",
+              "label_padding": -1,
+              "min_label_width": 0,
+              "min_label_height": 0
+            }
+          },
+          {
+            "id": 23,
+            "type": "Reroute",
+            "pos": [
+              410,
+              1020
+            ],
+            "size": [
+              75,
+              26
+            ],
+            "flags": {
+              "pinned": true
+            },
+            "order": 10,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "",
+                "type": "*",
+                "link": 49
+              }
+            ],
+            "outputs": [
+              {
+                "name": "",
+                "type": "VAE",
+                "links": [
+                  50
+                ]
+              }
+            ],
+            "properties": {
+              "showOutputText": false,
+              "horizontal": false
+            }
+          },
+          {
+            "id": 24,
+            "type": "Reroute",
+            "pos": [
+              1440,
+              1010
+            ],
+            "size": [
+              75,
+              26
+            ],
+            "flags": {
+              "pinned": true
+            },
+            "order": 11,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "",
+                "type": "*",
+                "link": 50
+              }
+            ],
+            "outputs": [
+              {
+                "name": "",
+                "type": "VAE",
+                "links": [
+                  51
+                ]
+              }
+            ],
+            "properties": {
+              "showOutputText": false,
+              "horizontal": false
+            }
+          },
+          {
+            "id": 27,
+            "type": "ZSamplerTurboX21 //ZImagePowerNodes",
+            "pos": [
+              1240,
+              -550
+            ],
+            "size": [
+              370,
+              720
+            ],
+            "flags": {
+              "pinned": true
+            },
+            "order": 12,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "latent_input",
+                "name": "latent_input",
+                "type": "LATENT",
+                "link": 73
+              },
+              {
+                "localized_name": "model",
+                "name": "model",
+                "type": "MODEL",
+                "link": 74
+              },
+              {
+                "localized_name": "positive",
+                "name": "positive",
+                "type": "CONDITIONING",
+                "link": 107
+              },
+              {
+                "localized_name": "positive_stg2",
+                "name": "positive_stg2",
+                "shape": 7,
+                "type": "CONDITIONING",
+                "link": 108
+              },
+              {
+                "localized_name": "positive_stg3",
+                "name": "positive_stg3",
+                "shape": 7,
+                "type": "CONDITIONING",
+                "link": 109
+              },
+              {
+                "localized_name": "seed",
+                "name": "seed",
+                "type": "INT",
+                "widget": {
+                  "name": "seed"
+                },
+                "link": 75
+              },
+              {
+                "localized_name": "steps",
+                "name": "steps",
+                "type": "INT",
+                "widget": {
+                  "name": "steps"
+                },
+                "link": 76
+              },
+              {
+                "localized_name": "initial_bias",
+                "name": "initial_bias",
+                "type": "FLOAT",
+                "widget": {
+                  "name": "initial_bias"
+                },
+                "link": 77
+              },
+              {
+                "localized_name": "turbo_creativity",
+                "name": "turbo_creativity",
+                "type": "BOOLEAN",
+                "widget": {
+                  "name": "turbo_creativity"
+                },
+                "link": 78
+              },
+              {
+                "localized_name": "detailed_refiner",
+                "name": "detailed_refiner",
+                "type": "BOOLEAN",
+                "widget": {
+                  "name": "detailed_refiner"
+                },
+                "link": 79
+              },
+              {
+                "localized_name": "divider1",
+                "name": "divider1",
+                "type": "ZIPN_SEPARATOR",
+                "link": null
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "latent_output",
+                "name": "latent_output",
+                "type": "LATENT",
+                "links": [
+                  72
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "ZSamplerTurboX21 //ZImagePowerNodes"
+            },
+            "widgets_values": [
+              1,
+              "fixed",
+              null,
+              8,
+              0,
+              "max_quality",
+              "stages12x_l",
+              true,
+              true,
+              true
+            ],
+            "widgets_values_named": {
+              "seed": 1,
+              "control_after_generate": "fixed",
+              "divider1": null,
+              "steps": 8,
+              "initial_bias": 0,
+              "latent_scaling": "max_quality",
+              "spectral_tilt": "stages12x_l",
+              "turbo_creativity": true,
+              "detailed_refiner": true,
+              "new_scheduler": true
+            }
+          },
+          {
+            "id": 37,
+            "type": "Reroute",
+            "pos": [
+              810,
+              1320
+            ],
+            "size": [
+              75,
+              26
+            ],
+            "flags": {
+              "pinned": true
+            },
+            "order": 13,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "",
+                "type": "*",
+                "link": 66
+              }
+            ],
+            "outputs": [
+              {
+                "name": "",
+                "type": "CLIP",
+                "links": [
+                  105,
+                  106
+                ]
+              }
+            ],
+            "properties": {
+              "showOutputText": false,
+              "horizontal": false
+            }
+          },
+          {
+            "id": 47,
+            "type": "StyleStringInjector2 //ZImagePowerNodes",
+            "pos": [
+              830,
+              -1030
+            ],
+            "size": [
+              270,
+              120
+            ],
+            "flags": {
+              "pinned": true
+            },
+            "order": 1,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "string",
+                "name": "string",
+                "type": "STRING",
+                "link": null
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "STRING",
+                "name": "STRING",
+                "type": "STRING",
+                "links": null
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "StyleStringInjector2 //ZImagePowerNodes"
+            },
+            "widgets_values": [
+              "\"Phone Photo\"",
+              null
+            ],
+            "widgets_values_named": {
+              "style": "\"Phone Photo\"",
+              "gallery": null
+            }
+          },
+          {
+            "id": 54,
+            "type": "StylePromptEncoderX22Advanced //ZImagePowerNodes",
+            "pos": [
+              890,
+              260
+            ],
+            "size": [
+              430,
+              270
+            ],
+            "flags": {
+              "pinned": true
+            },
+            "order": 14,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "clip",
+                "name": "clip",
+                "type": "CLIP",
+                "link": 105
+              },
+              {
+                "localized_name": "user_styles",
+                "name": "user_styles",
+                "shape": 7,
+                "type": "STRING",
+                "link": null
+              },
+              {
+                "localized_name": "user_palettes",
+                "name": "user_palettes",
+                "shape": 7,
+                "type": "STRING",
+                "link": null
+              },
+              {
+                "localized_name": "style",
+                "name": "style",
+                "type": "ZIPN_STYLE",
+                "widget": {
+                  "name": "style"
+                },
+                "link": 110
+              },
+              {
+                "localized_name": "prompt",
+                "name": "prompt",
+                "type": "STRING",
+                "widget": {
+                  "name": "prompt"
+                },
+                "link": 116
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "CONDITIONING",
+                "name": "CONDITIONING",
+                "type": "CONDITIONING",
+                "links": [
+                  107
+                ]
+              },
+              {
+                "localized_name": "PROMPT",
+                "name": "PROMPT",
+                "type": "STRING",
+                "links": null
+              },
+              {
+                "localized_name": "style_name",
+                "name": "style_name",
+                "type": "STRING",
+                "links": null
+              },
+              {
+                "localized_name": "palette_name",
+                "name": "palette_name",
+                "type": "STRING",
+                "links": null
+              },
+              {
+                "localized_name": "original_prompt",
+                "name": "original_prompt",
+                "type": "STRING",
+                "links": null
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "StylePromptEncoderX22Advanced //ZImagePowerNodes"
+            },
+            "widgets_values": [
+              "",
+              "",
+              ""
+            ],
+            "widgets_values_named": {
+              "style": "",
+              "palette": "",
+              "prompt": ""
+            }
+          },
+          {
+            "id": 61,
+            "type": "StylePromptEncoderX22Advanced //ZImagePowerNodes",
+            "pos": [
+              900,
+              570
+            ],
+            "size": [
+              430,
+              270
+            ],
+            "flags": {
+              "pinned": true
+            },
+            "order": 15,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "clip",
+                "name": "clip",
+                "type": "CLIP",
+                "link": 106
+              },
+              {
+                "localized_name": "user_styles",
+                "name": "user_styles",
+                "shape": 7,
+                "type": "STRING",
+                "link": null
+              },
+              {
+                "localized_name": "user_palettes",
+                "name": "user_palettes",
+                "shape": 7,
+                "type": "STRING",
+                "link": null
+              },
+              {
+                "localized_name": "style",
+                "name": "style",
+                "type": "ZIPN_STYLE",
+                "widget": {
+                  "name": "style"
+                },
+                "link": 111
+              },
+              {
+                "localized_name": "palette",
+                "name": "palette",
+                "type": "ZIPN_PALETTE",
+                "widget": {
+                  "name": "palette"
+                },
+                "link": 115
+              },
+              {
+                "localized_name": "prompt",
+                "name": "prompt",
+                "type": "STRING",
+                "widget": {
+                  "name": "prompt"
+                },
+                "link": 117
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "CONDITIONING",
+                "name": "CONDITIONING",
+                "type": "CONDITIONING",
+                "links": [
+                  108,
+                  109
+                ]
+              },
+              {
+                "localized_name": "PROMPT",
+                "name": "PROMPT",
+                "type": "STRING",
+                "links": null
+              },
+              {
+                "localized_name": "style_name",
+                "name": "style_name",
+                "type": "STRING",
+                "links": [
+                  120
+                ]
+              },
+              {
+                "localized_name": "palette_name",
+                "name": "palette_name",
+                "type": "STRING",
+                "links": null
+              },
+              {
+                "localized_name": "original_prompt",
+                "name": "original_prompt",
+                "type": "STRING",
+                "links": null
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "StylePromptEncoderX22Advanced //ZImagePowerNodes"
+            },
+            "widgets_values": [
+              "",
+              "",
+              ""
+            ],
+            "widgets_values_named": {
+              "style": "",
+              "palette": "",
+              "prompt": ""
+            }
+          }
+        ],
+        "groups": [
+          {
+            "id": 1,
+            "title": "CHECKPOINTS",
+            "bounding": [
+              -650,
+              -130,
+              610,
+              650
+            ],
+            "color": "#3f789e",
+            "flags": {}
+          }
+        ],
+        "links": [
+          {
+            "id": 23,
+            "origin_id": 2,
+            "origin_slot": 0,
+            "target_id": 18,
+            "target_slot": 0,
+            "type": "MODEL"
+          },
+          {
+            "id": 29,
+            "origin_id": 9,
+            "origin_slot": 0,
+            "target_id": 20,
+            "target_slot": 0,
+            "type": "IMAGE"
+          },
+          {
+            "id": 30,
+            "origin_id": 20,
+            "origin_slot": 0,
+            "target_id": 19,
+            "target_slot": 0,
+            "type": "IMAGE"
+          },
+          {
+            "id": 32,
+            "origin_id": 19,
+            "origin_slot": 0,
+            "target_id": -20,
+            "target_slot": 0,
+            "type": "IMAGE"
+          },
+          {
+            "id": 35,
+            "origin_id": -10,
+            "origin_slot": 12,
+            "target_id": 7,
+            "target_slot": 0,
+            "type": "BOOLEAN"
+          },
+          {
+            "id": 36,
+            "origin_id": -10,
+            "origin_slot": 13,
+            "target_id": 7,
+            "target_slot": 1,
+            "type": "COMBO"
+          },
+          {
+            "id": 49,
+            "origin_id": 3,
+            "origin_slot": 0,
+            "target_id": 23,
+            "target_slot": 0,
+            "type": "VAE"
+          },
+          {
+            "id": 50,
+            "origin_id": 23,
+            "origin_slot": 0,
+            "target_id": 24,
+            "target_slot": 0,
+            "type": "VAE"
+          },
+          {
+            "id": 51,
+            "origin_id": 24,
+            "origin_slot": 0,
+            "target_id": 9,
+            "target_slot": 1,
+            "type": "VAE"
+          },
+          {
+            "id": 52,
+            "origin_id": -10,
+            "origin_slot": 15,
+            "target_id": 2,
+            "target_slot": 0,
+            "type": "COMBO"
+          },
+          {
+            "id": 53,
+            "origin_id": -10,
+            "origin_slot": 16,
+            "target_id": 1,
+            "target_slot": 0,
+            "type": "COMBO"
+          },
+          {
+            "id": 54,
+            "origin_id": -10,
+            "origin_slot": 17,
+            "target_id": 3,
+            "target_slot": 0,
+            "type": "COMBO"
+          },
+          {
+            "id": 55,
+            "origin_id": -10,
+            "origin_slot": 14,
+            "target_id": 18,
+            "target_slot": 1,
+            "type": "BOOLEAN"
+          },
+          {
+            "id": 66,
+            "origin_id": 1,
+            "origin_slot": 0,
+            "target_id": 37,
+            "target_slot": 0,
+            "type": "CLIP"
+          },
+          {
+            "id": 72,
+            "origin_id": 27,
+            "origin_slot": 0,
+            "target_id": 9,
+            "target_slot": 0,
+            "type": "LATENT"
+          },
+          {
+            "id": 73,
+            "origin_id": 7,
+            "origin_slot": 0,
+            "target_id": 27,
+            "target_slot": 0,
+            "type": "LATENT"
+          },
+          {
+            "id": 74,
+            "origin_id": 18,
+            "origin_slot": 0,
+            "target_id": 27,
+            "target_slot": 1,
+            "type": "MODEL"
+          },
+          {
+            "id": 75,
+            "origin_id": -10,
+            "origin_slot": 0,
+            "target_id": 27,
+            "target_slot": 5,
+            "type": "INT"
+          },
+          {
+            "id": 76,
+            "origin_id": -10,
+            "origin_slot": 5,
+            "target_id": 27,
+            "target_slot": 6,
+            "type": "INT"
+          },
+          {
+            "id": 77,
+            "origin_id": -10,
+            "origin_slot": 6,
+            "target_id": 27,
+            "target_slot": 7,
+            "type": "FLOAT"
+          },
+          {
+            "id": 78,
+            "origin_id": -10,
+            "origin_slot": 7,
+            "target_id": 27,
+            "target_slot": 8,
+            "type": "BOOLEAN"
+          },
+          {
+            "id": 79,
+            "origin_id": -10,
+            "origin_slot": 8,
+            "target_id": 27,
+            "target_slot": 9,
+            "type": "BOOLEAN"
+          },
+          {
+            "id": 93,
+            "origin_id": -10,
+            "origin_slot": 9,
+            "target_id": 20,
+            "target_slot": 1,
+            "type": "FLOAT"
+          },
+          {
+            "id": 94,
+            "origin_id": -10,
+            "origin_slot": 10,
+            "target_id": 20,
+            "target_slot": 2,
+            "type": "FLOAT"
+          },
+          {
+            "id": 95,
+            "origin_id": -10,
+            "origin_slot": 11,
+            "target_id": 20,
+            "target_slot": 3,
+            "type": "FLOAT"
+          },
+          {
+            "id": 105,
+            "origin_id": 37,
+            "origin_slot": 0,
+            "target_id": 54,
+            "target_slot": 0,
+            "type": "CLIP"
+          },
+          {
+            "id": 106,
+            "origin_id": 37,
+            "origin_slot": 0,
+            "target_id": 61,
+            "target_slot": 0,
+            "type": "CLIP"
+          },
+          {
+            "id": 107,
+            "origin_id": 54,
+            "origin_slot": 0,
+            "target_id": 27,
+            "target_slot": 2,
+            "type": "CONDITIONING"
+          },
+          {
+            "id": 108,
+            "origin_id": 61,
+            "origin_slot": 0,
+            "target_id": 27,
+            "target_slot": 3,
+            "type": "CONDITIONING"
+          },
+          {
+            "id": 109,
+            "origin_id": 61,
+            "origin_slot": 0,
+            "target_id": 27,
+            "target_slot": 4,
+            "type": "CONDITIONING"
+          },
+          {
+            "id": 110,
+            "origin_id": -10,
+            "origin_slot": 2,
+            "target_id": 54,
+            "target_slot": 3,
+            "type": "ZIPN_STYLE"
+          },
+          {
+            "id": 111,
+            "origin_id": -10,
+            "origin_slot": 1,
+            "target_id": 61,
+            "target_slot": 3,
+            "type": "ZIPN_STYLE"
+          },
+          {
+            "id": 115,
+            "origin_id": -10,
+            "origin_slot": 3,
+            "target_id": 61,
+            "target_slot": 4,
+            "type": "ZIPN_PALETTE"
+          },
+          {
+            "id": 116,
+            "origin_id": -10,
+            "origin_slot": 4,
+            "target_id": 54,
+            "target_slot": 4,
+            "type": "STRING"
+          },
+          {
+            "id": 117,
+            "origin_id": -10,
+            "origin_slot": 4,
+            "target_id": 61,
+            "target_slot": 5,
+            "type": "STRING"
+          },
+          {
+            "id": 120,
+            "origin_id": 61,
+            "origin_slot": 2,
+            "target_id": 19,
+            "target_slot": 2,
+            "type": "STRING"
+          },
+          {
+            "id": 121,
+            "origin_id": -10,
+            "origin_slot": 3,
+            "target_id": 19,
+            "target_slot": 1,
+            "type": "BOOLEAN"
+          }
+        ],
+        "extra": {}
+      }
+    ]
+  },
+  "config": {},
+  "extra": {
+    "frontendVersion": "1.49.6",
+    "favoritedWidgets": {
+      "favorites": []
+    },
+    "ds": {
+      "scale": 0.7733970990625024,
+      "offset": [
+        -439.7941659867445,
+        52.956732121828594
+      ]
+    }
+  },
+  "version": 0.4
+}
