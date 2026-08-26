@@ -1,7 +1,7 @@
 {
   "id": "dd42e644-1606-4bb4-b2df-ffae9ed4c8a9",
   "revision": 0,
-  "last_node_id": 62,
+  "last_node_id": 64,
   "last_link_id": 121,
   "nodes": [
     {
@@ -18,7 +18,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 3,
+      "order": 4,
       "mode": 0,
       "inputs": [
         {
@@ -54,7 +54,7 @@
       "flags": {
         "pinned": true
       },
-      "order": 2,
+      "order": 3,
       "mode": 0,
       "inputs": [
         {
@@ -170,18 +170,18 @@
         "previewExposures": []
       },
       "widgets_values": [
-        7,
+        10,
         "",
         "",
         false,
-        "A young woman with short, curly black hair, positioned centrally in the foreground and viewed in three-quarters profile from behind, turning her head slightly toward the right. She has fair skin, light-colored eyes, and light pink lips, with a soft reddish tint on her cheeks. She wears a cream-colored, short-sleeved dress with a v-neckline and gathered, puffy sleeves, cinched at the waist. Her left arm hangs down by her side, with her hand visible near the bottom edge of the frame. \n\nThe background consists of a vast, flat grassy field stretching to a distant horizon line under a clear blue sky dominated by a massive, billowing white cumulus cloud formation directly behind the figure. The lighting illuminates the scene from the upper left, casting subtle shadows on the right side of the young woman's face and body, and on the lower portions of the cloud formations, which show light grey and muted pink undertones. A few sparse blades of grass and small wildflowers are visible in the immediate foreground at the bottom corners.",
+        "A young female with blonde hair, braided over her right shoulder, sits on a warm brown wooden windowsill. She wears a wide-brimmed olive green felt hat, a long-sleeved forest green dress with a white collar, cream-colored ribbed leg warmers, and dark brown leather lace-up boots. She holds an open book in both hands, with the text \"BOOK\" clearly visible on the left page. Her right elbow rests on the windowsill, and her chin is supported by her right hand. She has light freckles scattered across her nose and cheeks. Beside her is a dark-framed multi-paned window covered in clear raindrops, looking out onto a blurred, bright exterior. The interior wall behind her is composed of vertical brown wooden planks.",
         8,
         0,
         true,
         true,
-        -0.5,
         0.30000000000000004,
-        -0.1,
+        0.10000000000000003,
+        -0.20000000000000004,
         false,
         "3:2  (photo)",
         true,
@@ -190,18 +190,18 @@
         "Z-Image_half_natural_vae.safetensors"
       ],
       "widgets_values_named": {
-        "seed": 7,
+        "seed": 10,
         "style_1": "",
         "style": "",
         "enable_label": false,
-        "prompt": "A young woman with short, curly black hair, positioned centrally in the foreground and viewed in three-quarters profile from behind, turning her head slightly toward the right. She has fair skin, light-colored eyes, and light pink lips, with a soft reddish tint on her cheeks. She wears a cream-colored, short-sleeved dress with a v-neckline and gathered, puffy sleeves, cinched at the waist. Her left arm hangs down by her side, with her hand visible near the bottom edge of the frame. \n\nThe background consists of a vast, flat grassy field stretching to a distant horizon line under a clear blue sky dominated by a massive, billowing white cumulus cloud formation directly behind the figure. The lighting illuminates the scene from the upper left, casting subtle shadows on the right side of the young woman's face and body, and on the lower portions of the cloud formations, which show light grey and muted pink undertones. A few sparse blades of grass and small wildflowers are visible in the immediate foreground at the bottom corners.",
+        "prompt": "A young female with blonde hair, braided over her right shoulder, sits on a warm brown wooden windowsill. She wears a wide-brimmed olive green felt hat, a long-sleeved forest green dress with a white collar, cream-colored ribbed leg warmers, and dark brown leather lace-up boots. She holds an open book in both hands, with the text \"BOOK\" clearly visible on the left page. Her right elbow rests on the windowsill, and her chin is supported by her right hand. She has light freckles scattered across her nose and cheeks. Beside her is a dark-framed multi-paned window covered in clear raindrops, looking out onto a blurred, bright exterior. The interior wall behind her is composed of vertical brown wooden planks.",
         "steps": 8,
         "initial_bias": 0,
         "turbo_creativity": true,
         "detailed_refiner": true,
-        "effect_1_tweak": -0.5,
-        "effect_2_tweak": 0.30000000000000004,
-        "effect_3_tweak": -0.1,
+        "effect_1_tweak": 0.30000000000000004,
+        "effect_2_tweak": 0.10000000000000003,
+        "effect_3_tweak": -0.20000000000000004,
         "orientation": false,
         "ratio": "3:2  (photo)",
         "comfy_kitchen_attention": true,
@@ -241,10 +241,10 @@
         "Node name for S&R": "StyleLibraryV10 //ZImagePowerNodes"
       },
       "widgets_values": [
-        "Low Quality Photo"
+        "Dramatic Viewpoint"
       ],
       "widgets_values_named": {
-        "style": "Low Quality Photo"
+        "style": "Dramatic Viewpoint"
       }
     },
     {
@@ -278,11 +278,40 @@
         "Node name for S&R": "StyleLibraryV10 //ZImagePowerNodes"
       },
       "widgets_values": [
-        "Dark Comic Illustration"
+        "Family Album Photo"
       ],
       "widgets_values_named": {
-        "style": "Dark Comic Illustration"
+        "style": "Family Album Photo"
       }
+    },
+    {
+      "id": 63,
+      "type": "MarkdownNote",
+      "pos": [
+        -180,
+        100
+      ],
+      "size": [
+        720,
+        940
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Model link",
+      "properties": {},
+      "widgets_values": [
+        "## Model Links\n\n**diffusion_models**\n\n- __[z_image_turbo_int8_convrot_bf16emixed.safetensors](https://huggingface.co/martin-rizzo/Z-Image-Turbo-INT8-ConvRot-ComfyUI/resolve/main/z_image_turbo_int8_convrot_bf16emixed.safetensors)__ [6.17 GB]\n\n**text_encoders**\n\n- __[qwen3-4b_int8_convrot_fp16emixed.safetensors](https://huggingface.co/martin-rizzo/Qwen3-4B-INT8-ConvRot-ComfyUI/resolve/main/qwen3-4b_int8_convrot_fp16emixed.safetensors)__ [4.42 GB]\n\n**vae**\n\n- __[Z-Image_half_natural_vae.safetensors](https://huggingface.co/easygoing0114/Z-Image_clear_vae/resolve/main/Z-Image_half_natural_vae.safetensors)__ [335 MB]\n\n\n## Model Storage Location\n\n```\n📂 ComfyUI/\n├── 📂 models/\n│   │\n│   └── 📂 diffusion_models/\n│   │   └── z_image_turbo_int8_convrot_bf16emixed.safetensors\n│   │\n│   ├── 📂 text_encoders/\n│   │   └── qwen3-4b_int8_convrot_fp16emixed.safetensors\n│   │\n│   ├── 📂 vae/\n│   │   └── Z-Image_half_natural_vae.safetensors\n```\n\n## Issues\n\n> Please ensure you update __ComfyUI__ first and have the latest version of the __Z-Image Power Nodes__ installed.\n\n## Alternative Checkpoints\n\n**diffusion_models**\n\n- __[z_image_turbo-Q5_K_S.gguf](https://huggingface.co/jayn7/Z-Image-Turbo-GGUF/resolve/main/z_image_turbo-Q5_K_S.gguf)__ [5.19 GB] : GGUF\n- __[z_image_turbo_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/diffusion_models/z_image_turbo_int8_convrot.safetensors)__ [6.20 GB] : ComfyOrg I8ConvRot\n- __[z_image_turbo_bf16.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/diffusion_models/z_image_turbo_bf16.safetensors)__ [12.3 GB] : ComfyOrg BF16\n\n**text_encoders**\n\n- __[Qwen3-4B-Q8_0.gguf](https://huggingface.co/Qwen/Qwen3-4B-GGUF/resolve/main/Qwen3-4B-Q8_0.gguf)__ [4.28 GB] : GGUF\n- __[qwen_3_4b_fp8_mixed.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b_fp8_mixed.safetensors)__ [5.63 GB] : ComfyOrg FP8\n- __[qwen_3_4b.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b.safetensors)__ [8.04 GB] : ComfyOrg BF16\n\n**vae**\n\n- __[ae.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/vae/ae.safetensors)__ [335 MB] : ComfyOrg\n- More: [Z-Image_clear_vae](https://huggingface.co/easygoing0114/Z-Image_clear_vae), [Z-Image_Anime_VAE](https://huggingface.co/Anzhc/Z-Image_Anime_VAE)\n"
+      ],
+      "widgets_values_named": {
+        "text": "## Model Links\n\n**diffusion_models**\n\n- __[z_image_turbo_int8_convrot_bf16emixed.safetensors](https://huggingface.co/martin-rizzo/Z-Image-Turbo-INT8-ConvRot-ComfyUI/resolve/main/z_image_turbo_int8_convrot_bf16emixed.safetensors)__ [6.17 GB]\n\n**text_encoders**\n\n- __[qwen3-4b_int8_convrot_fp16emixed.safetensors](https://huggingface.co/martin-rizzo/Qwen3-4B-INT8-ConvRot-ComfyUI/resolve/main/qwen3-4b_int8_convrot_fp16emixed.safetensors)__ [4.42 GB]\n\n**vae**\n\n- __[Z-Image_half_natural_vae.safetensors](https://huggingface.co/easygoing0114/Z-Image_clear_vae/resolve/main/Z-Image_half_natural_vae.safetensors)__ [335 MB]\n\n\n## Model Storage Location\n\n```\n📂 ComfyUI/\n├── 📂 models/\n│   │\n│   └── 📂 diffusion_models/\n│   │   └── z_image_turbo_int8_convrot_bf16emixed.safetensors\n│   │\n│   ├── 📂 text_encoders/\n│   │   └── qwen3-4b_int8_convrot_fp16emixed.safetensors\n│   │\n│   ├── 📂 vae/\n│   │   └── Z-Image_half_natural_vae.safetensors\n```\n\n## Issues\n\n> Please ensure you update __ComfyUI__ first and have the latest version of the __Z-Image Power Nodes__ installed.\n\n## Alternative Checkpoints\n\n**diffusion_models**\n\n- __[z_image_turbo-Q5_K_S.gguf](https://huggingface.co/jayn7/Z-Image-Turbo-GGUF/resolve/main/z_image_turbo-Q5_K_S.gguf)__ [5.19 GB] : GGUF\n- __[z_image_turbo_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/diffusion_models/z_image_turbo_int8_convrot.safetensors)__ [6.20 GB] : ComfyOrg I8ConvRot\n- __[z_image_turbo_bf16.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/diffusion_models/z_image_turbo_bf16.safetensors)__ [12.3 GB] : ComfyOrg BF16\n\n**text_encoders**\n\n- __[Qwen3-4B-Q8_0.gguf](https://huggingface.co/Qwen/Qwen3-4B-GGUF/resolve/main/Qwen3-4B-Q8_0.gguf)__ [4.28 GB] : GGUF\n- __[qwen_3_4b_fp8_mixed.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b_fp8_mixed.safetensors)__ [5.63 GB] : ComfyOrg FP8\n- __[qwen_3_4b.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b.safetensors)__ [8.04 GB] : ComfyOrg BF16\n\n**vae**\n\n- __[ae.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/vae/ae.safetensors)__ [335 MB] : ComfyOrg\n- More: [Z-Image_clear_vae](https://huggingface.co/easygoing0114/Z-Image_clear_vae), [Z-Image_Anime_VAE](https://huggingface.co/Anzhc/Z-Image_Anime_VAE)\n"
+      },
+      "color": "#222",
+      "bgcolor": "#000"
     }
   ],
   "links": [
@@ -319,7 +348,7 @@
         "version": 1,
         "state": {
           "lastGroupId": 1,
-          "lastNodeId": 62,
+          "lastNodeId": 64,
           "lastLinkId": 121,
           "lastRerouteId": 0
         },
@@ -1038,26 +1067,26 @@
               true,
               true,
               "none",
-              "contrast",
+              "contrast_low",
               -0.4,
               null,
               "color",
               0.2,
               null,
-              "none",
+              "color_twist",
               0
             ],
             "widgets_values_named": {
               "enable_auto_contrast": true,
               "enable_effects": true,
               "divider1": "none",
-              "effect_1": "contrast",
+              "effect_1": "contrast_low",
               "effect_1_tweak": -0.4,
               "divider2": null,
               "effect_2": "color",
               "effect_2_tweak": 0.2,
               "divider3": null,
-              "effect_3": "none",
+              "effect_3": "color_twist",
               "effect_3_tweak": 0
             }
           },
@@ -1990,10 +2019,10 @@
       "favorites": []
     },
     "ds": {
-      "scale": 0.7733970990625024,
+      "scale": 0.5810646875000028,
       "offset": [
-        -439.7941659867445,
-        52.956732121828594
+        309.6420257648912,
+        110.4749888783342
       ]
     }
   },
