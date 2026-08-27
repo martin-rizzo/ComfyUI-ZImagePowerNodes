@@ -235,6 +235,7 @@ class Style(io.ComfyTypeIO):
                      *,
                      user_input  : str,
                      style_marker: str       | None = None,
+                     include_none: bool      | None = None,
                      options     : list[str] | None = None,
                      display_name: str       | None = None,
                      optional    : bool             = False,
@@ -260,6 +261,7 @@ class Style(io.ComfyTypeIO):
                              )
             self.user_input             = user_input
             self.style_marker           = style_marker
+            self.include_none           = include_none
             self.options                = options
             self.multiselect            = False
             self.control_after_generate = control_after_generate
@@ -268,6 +270,7 @@ class Style(io.ComfyTypeIO):
             return super().as_dict() | _prune_dict({
                 "user_input"            : self.user_input,
                 "item_marker"           : self.style_marker,
+                "include_none"          : self.include_none,
                 "options"               : self.options,
                 "multiselect"           : self.multiselect,
                 "control_after_generate": self.control_after_generate,
@@ -302,6 +305,7 @@ class Palette:
                      *,
                      user_input    : str,
                      palette_marker: str      | None = None,
+                     include_none  : bool     | None = None,
                      options       : list[str]| None = None,
                      display_name  : str      | None = None,
                      optional      : bool            = False,
@@ -327,6 +331,7 @@ class Palette:
                              )
             self.user_input             = user_input
             self.palette_marker         = palette_marker
+            self.include_none           = include_none
             self.options                = options
             self.multiselect            = False
             self.control_after_generate = control_after_generate
@@ -335,6 +340,7 @@ class Palette:
             return super().as_dict() | _prune_dict({
                 "user_input"            : self.user_input,
                 "item_marker"           : self.palette_marker,
+                "include_none"          : self.include_none,
                 "options"               : self.options,
                 "multiselect"           : self.multiselect,
                 "control_after_generate": self.control_after_generate,

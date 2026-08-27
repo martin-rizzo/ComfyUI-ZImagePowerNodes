@@ -160,9 +160,10 @@ function _addUserInputComboBox(node, name, data, _app) {
     const _type  = data[0];
     const kwargs = data[1] || {};
     const widgetConfig = {
-        user_input : 'user_input',
-        item_marker: '>>>',
-        values     : [],
+        user_input  : 'user_input',
+        item_marker : '>>>',
+        include_none: false,
+        values      : [],
         ...kwargs
     };
     // create the `COMBO` widget and attach the controller to it
@@ -170,6 +171,7 @@ function _addUserInputComboBox(node, name, data, _app) {
     widget.zipnController = new UserInputComboController(widget, node,
                                                          widgetConfig.user_input,
                                                          widgetConfig.options,
+                                                         widgetConfig.include_none ? "none" : "",
                                                          widgetConfig.item_marker);
     return { widget: widget };
 }

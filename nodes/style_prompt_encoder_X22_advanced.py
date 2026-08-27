@@ -60,11 +60,11 @@ class StylePromptEncoderX22Advanced(io.ComfyNode):
                                          "prompt will be inserted.",
                                 ),
                 zi.Style.Input  ("style",
-                                 user_input="user_styles", style_marker=">>>",
+                                 user_input="user_styles", style_marker=">>>", include_none=True,
                                  tooltip="The visual style to be applied to the input prompt. "
                                 ),
                 zi.Palette.Input("palette",
-                                 user_input="user_palettes", palette_marker=">>>",
+                                 user_input="user_palettes", palette_marker=">>>", include_none=True,
                                  tooltip="The visual style to be applied to the input prompt. "
                                 ),
                 io.String.Input ("prompt",
@@ -86,30 +86,29 @@ class StylePromptEncoderX22Advanced(io.ComfyNode):
     @classmethod
     def execute(cls,
                 clip,
-                prompt                   : str,
-                style                    : str | Style      | None = None,
-                palette                  : str | Palette    | None = None,
-                string_with_user_styles  : str | StyleSet   | None = None,
-                string_with_user_palettes: str | PaletteSet | None = None,
-                **kwargs
+                prompt       : str,
+                style        : str | Style      | None = None,
+                palette      : str | Palette    | None = None,
+                user_styles  : str | StyleSet   | None = None,
+                user_palettes: str | PaletteSet | None = None,
                 ) -> io.NodeOutput:
 
-        # resolve `style_set` based on the data type of custom_styles
-        if   isinstance(string_with_user_styles, StyleSet): style_set = string_with_user_styles
-        elif isinstance(string_with_user_styles, str):      style_set = StyleSet.from_string(string_with_user_styles)
-        else:                                     style_set = StyleSet()
-
-        # resolve `palette_set` based on the data type of custom_palettes
-        if   isinstance(string_with_user_palettes, PaletteSet): palette_set = string_with_user_palettes
-        elif isinstance(string_with_user_palettes, str):        palette_set = PaletteSet.from_string(string_with_user_palettes)
-        else:                                         palette_set = PaletteSet()
-
-        # ??
+        # if style is a name (instead of a Style object),
+        # resolve it from the provided user styles
         if isinstance(style, str):
+            # resolve the `StyleSet` based on the type of user_styles
+            if   isinstance(user_styles, StyleSet): style_set = user_styles
+            elif isinstance(user_styles, str):      style_set = StyleSet.from_string(user_styles)
+            else:                                   style_set = StyleSet()
             style = style_set.get(style)
 
-        # ??
+        # if palette is a name (instead of a Palette object),
+        # resolve it from the provided user palettes
         if isinstance(palette, str):
+            # resolve the `PaletteSet` based on the type of user_palettes
+            if   isinstance(user_palettes, PaletteSet): palette_set = user_palettes
+            elif isinstance(user_palettes, str):        palette_set = PaletteSet.from_string(user_palettes)
+            else:                                       palette_set = PaletteSet()
             palette = palette_set.get(palette)
 
         # apply the style template to the prompt

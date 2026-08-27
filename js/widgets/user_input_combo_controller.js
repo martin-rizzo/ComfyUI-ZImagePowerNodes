@@ -23,16 +23,18 @@ class UserInputComboController {
     /**
      * Creates an instance of this controller.
      *
-     * @param {Object}        widget          - The combo widget to be controlled.
-     * @param {ComfyNode}     node            - The ComfyUI node instance where the widget is attached.
-     * @param {string}        userInput       - The name of the node input from where to read the user-created items.
-     * @param {Array<string>} defaultItems    - A list of item names to display when the node input is not connected.
-     * @param {string}        [itemTag=">>>"] - The custom tag used to capture item names from the text input.
+     * @param {Object}        widget               - The combo widget to be controlled.
+     * @param {ComfyNode}     node                 - The ComfyUI node instance where the widget is attached.
+     * @param {string}        userInput            - The name of the node input from where to read the user-created items.
+     * @param {Array<string>} defaultItems         - A list of item names to display when the node input is not connected.
+     * @param {string}        [forcedFirstItem=""] - The name of the item that must always appear first in the list.
+     * @param {string}        [itemTag=">>>"]      - The custom tag used to capture item names from the text input.
      */
-    constructor(widget, node, userInput, defaultItems, itemTag = ">>>") {
+    constructor(widget, node, userInput, defaultItems, forcedFirstItem = "", itemTag = ">>>") {
         this.node                    = node;
         this.widget                  = widget;
         this.userInput               = userInput;
+        this.forcedFirstItem         = forcedFirstItem.trim();
         this.comboBoxOptions         = [];
         this.defaultOptions          = [];
         this.defaultLowercaseOptions = new Set();
@@ -115,6 +117,11 @@ class UserInputComboController {
 
         if( !optionArray ) {
             throw new Error("Invalid input type, expected string or array of strings.");
+        }
+
+        // include any forced option at the beginning of the list
+        if( this.forcedFirstItem !== '' ) {
+            optionArray.unshift(this.forcedFirstItem);
         }
 
         // update options (removing whitespace and filtering out empty options)
