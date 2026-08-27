@@ -8,16 +8,14 @@
       "id": 22,
       "type": "SaveImage //ZImagePowerNodes",
       "pos": [
-        1670,
+        1690,
         130
       ],
       "size": [
-        590,
-        820
+        700,
+        840
       ],
-      "flags": {
-        "pinned": true
-      },
+      "flags": {},
       "order": 5,
       "mode": 0,
       "inputs": [
@@ -44,12 +42,12 @@
       "id": 21,
       "type": "22148af9-ea62-4d0e-8039-cfdf1081fa66",
       "pos": [
-        1040,
+        1030,
         130
       ],
       "size": [
-        600,
-        1010
+        640,
+        1250
       ],
       "flags": {},
       "order": 4,
@@ -137,7 +135,7 @@
           "link": null
         },
         {
-          "label": "zimage_checkpoint",
+          "label": "zimage_turbo_ckpt",
           "name": "checkpoint",
           "type": "COMBO",
           "widget": {
@@ -146,7 +144,7 @@
           "link": null
         },
         {
-          "label": "qwen3_checkpoint",
+          "label": "qwen3_4b_ckpt",
           "name": "checkpoint_1",
           "type": "COMBO",
           "widget": {
@@ -243,7 +241,7 @@
           ]
         }
       ],
-      "title": "⚗️🔬| substyle",
+      "title": "⚗️🔬| Substyle",
       "properties": {
         "Node name for S&R": "StyleLibraryV10 //ZImagePowerNodes"
       },
@@ -300,7 +298,7 @@
       ],
       "size": [
         640,
-        1500
+        1600
       ],
       "flags": {
         "collapsed": false
@@ -309,13 +307,13 @@
       "mode": 0,
       "inputs": [],
       "outputs": [],
-      "title": "Model link",
+      "title": "Requirements",
       "properties": {},
       "widgets_values": [
-        "## Model Links\n\n**diffusion_models**\n\n- __[z_image_turbo_int8_convrot_bf16emixed.safetensors](https://huggingface.co/martin-rizzo/Z-Image-Turbo-INT8-ConvRot-ComfyUI/resolve/main/z_image_turbo_int8_convrot_bf16emixed.safetensors)__ [6.17 GB]\n\n**text_encoders**\n\n- __[qwen3-4b_int8_convrot_fp16emixed.safetensors](https://huggingface.co/martin-rizzo/Qwen3-4B-INT8-ConvRot-ComfyUI/resolve/main/qwen3-4b_int8_convrot_fp16emixed.safetensors)__ [4.42 GB]\n\n**vae**\n\n- __[Z-Image_half_natural_vae.safetensors](https://huggingface.co/easygoing0114/Z-Image_clear_vae/resolve/main/Z-Image_half_natural_vae.safetensors)__ [335 MB]\n\n\n## Model Storage Location\n\n```\n📂 ComfyUI/\n├── 📂 models/\n│   │\n│   └── 📂 diffusion_models/\n│   │   └── z_image_turbo_int8_convrot_bf16emixed.safetensors\n│   │\n│   ├── 📂 text_encoders/\n│   │   └── qwen3-4b_int8_convrot_fp16emixed.safetensors\n│   │\n│   ├── 📂 vae/\n│   │   └── Z-Image_half_natural_vae.safetensors\n```\n\n## Issues\n\n> Please ensure you update __ComfyUI__ first and have the latest version of the __Z-Image Power Nodes__ installed.\n\n## Alternative Checkpoints\n\n**diffusion_models**\n\n- __[z_image_turbo-Q5_K_S.gguf](https://huggingface.co/jayn7/Z-Image-Turbo-GGUF/resolve/main/z_image_turbo-Q5_K_S.gguf)__ [5.19 GB] : GGUF\n- __[z_image_turbo_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/diffusion_models/z_image_turbo_int8_convrot.safetensors)__ [6.20 GB] : ComfyOrg I8ConvRot\n- __[z_image_turbo_bf16.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/diffusion_models/z_image_turbo_bf16.safetensors)__ [12.3 GB] : ComfyOrg BF16\n\n**text_encoders**\n\n- __[Qwen3-4B-Q8_0.gguf](https://huggingface.co/Qwen/Qwen3-4B-GGUF/resolve/main/Qwen3-4B-Q8_0.gguf)__ [4.28 GB] : GGUF\n- __[qwen_3_4b_fp8_mixed.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b_fp8_mixed.safetensors)__ [5.63 GB] : ComfyOrg FP8\n- __[qwen_3_4b.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b.safetensors)__ [8.04 GB] : ComfyOrg BF16\n\n**vae**\n\n- __[ae.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/vae/ae.safetensors)__ [335 MB] : ComfyOrg\n- More: [Z-Image_clear_vae](https://huggingface.co/easygoing0114/Z-Image_clear_vae), [Z-Image_Anime_VAE](https://huggingface.co/Anzhc/Z-Image_Anime_VAE)\n"
+        "## Software Requirements\n\n* __[ComfyUI](https://github.com/Comfy-Org/ComfyUI)__ v0.27 or higher\n* __[Z-Image Power Nodes](https://github.com/martin-rizzo/ComfyUI-ZImagePowerNodes)__ v2.1 or higher\n* __[ComfyUI-GGUF](https://github.com/city96/ComfyUI-GGUF)__ (only if you intend to use GGUF checkpoints)\n\n## Model Requirements\n\n**diffusion_models**\n\n- __[z_image_turbo_int8_convrot_bf16emixed.safetensors](https://huggingface.co/martin-rizzo/Z-Image-Turbo-INT8-ConvRot-ComfyUI/resolve/main/z_image_turbo_int8_convrot_bf16emixed.safetensors)__ [6.17 GB]\n\n**text_encoders**\n\n- __[qwen3-4b_int8_convrot_fp16emixed.safetensors](https://huggingface.co/martin-rizzo/Qwen3-4B-INT8-ConvRot-ComfyUI/resolve/main/qwen3-4b_int8_convrot_fp16emixed.safetensors)__ [4.42 GB]\n\n**vae**\n\n- __[Z-Image_half_natural_vae.safetensors](https://huggingface.co/easygoing0114/Z-Image_clear_vae/resolve/main/Z-Image_half_natural_vae.safetensors)__ [335 MB]\n\n\n## Model Storage Location\n\n```\n📂 ComfyUI/\n├── 📂 models/\n│   │\n│   └── 📂 diffusion_models/\n│   │   └── z_image_turbo_int8_convrot_bf16emixed.safetensors\n│   │\n│   ├── 📂 text_encoders/\n│   │   └── qwen3-4b_int8_convrot_fp16emixed.safetensors\n│   │\n│   ├── 📂 vae/\n│   │   └── Z-Image_half_natural_vae.safetensors\n```\n\nPlease ensure you update ComfyUI first and have the latest version of the Z-Image Power Nodes installed.\n\n## Alternative Checkpoints\n\n> The following checkpoints are provided as alternatives in case you experience issues.  \n> Due to the wide variety of GPUs, VRAM capacities, and ComfyUI versions, one of these may work better for your system.\n\n**diffusion_models**\n\n- __[z_image_turbo-Q5_K_S.gguf](https://huggingface.co/jayn7/Z-Image-Turbo-GGUF/resolve/main/z_image_turbo-Q5_K_S.gguf)__ [5.19 GB] : GGUF\n- __[z_image_turbo_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/diffusion_models/z_image_turbo_int8_convrot.safetensors)__ [6.20 GB] : ComfyOrg I8ConvRot\n- __[z_image_turbo_bf16.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/diffusion_models/z_image_turbo_bf16.safetensors)__ [12.3 GB] : ComfyOrg BF16\n\n**text_encoders**\n\n- __[Qwen3-4B-Q8_0.gguf](https://huggingface.co/Qwen/Qwen3-4B-GGUF/resolve/main/Qwen3-4B-Q8_0.gguf)__ [4.28 GB] : GGUF\n- __[qwen_3_4b_fp8_mixed.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b_fp8_mixed.safetensors)__ [5.63 GB] : ComfyOrg FP8\n- __[qwen_3_4b.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b.safetensors)__ [8.04 GB] : ComfyOrg BF16\n\n**vae**\n\n- __[ae.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/vae/ae.safetensors)__ [335 MB] : ComfyOrg\n- More: [Z-Image_clear_vae](https://huggingface.co/easygoing0114/Z-Image_clear_vae), [Z-Image_Anime_VAE](https://huggingface.co/Anzhc/Z-Image_Anime_VAE)\n\n"
       ],
       "widgets_values_named": {
-        "text": "## Model Links\n\n**diffusion_models**\n\n- __[z_image_turbo_int8_convrot_bf16emixed.safetensors](https://huggingface.co/martin-rizzo/Z-Image-Turbo-INT8-ConvRot-ComfyUI/resolve/main/z_image_turbo_int8_convrot_bf16emixed.safetensors)__ [6.17 GB]\n\n**text_encoders**\n\n- __[qwen3-4b_int8_convrot_fp16emixed.safetensors](https://huggingface.co/martin-rizzo/Qwen3-4B-INT8-ConvRot-ComfyUI/resolve/main/qwen3-4b_int8_convrot_fp16emixed.safetensors)__ [4.42 GB]\n\n**vae**\n\n- __[Z-Image_half_natural_vae.safetensors](https://huggingface.co/easygoing0114/Z-Image_clear_vae/resolve/main/Z-Image_half_natural_vae.safetensors)__ [335 MB]\n\n\n## Model Storage Location\n\n```\n📂 ComfyUI/\n├── 📂 models/\n│   │\n│   └── 📂 diffusion_models/\n│   │   └── z_image_turbo_int8_convrot_bf16emixed.safetensors\n│   │\n│   ├── 📂 text_encoders/\n│   │   └── qwen3-4b_int8_convrot_fp16emixed.safetensors\n│   │\n│   ├── 📂 vae/\n│   │   └── Z-Image_half_natural_vae.safetensors\n```\n\n## Issues\n\n> Please ensure you update __ComfyUI__ first and have the latest version of the __Z-Image Power Nodes__ installed.\n\n## Alternative Checkpoints\n\n**diffusion_models**\n\n- __[z_image_turbo-Q5_K_S.gguf](https://huggingface.co/jayn7/Z-Image-Turbo-GGUF/resolve/main/z_image_turbo-Q5_K_S.gguf)__ [5.19 GB] : GGUF\n- __[z_image_turbo_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/diffusion_models/z_image_turbo_int8_convrot.safetensors)__ [6.20 GB] : ComfyOrg I8ConvRot\n- __[z_image_turbo_bf16.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/diffusion_models/z_image_turbo_bf16.safetensors)__ [12.3 GB] : ComfyOrg BF16\n\n**text_encoders**\n\n- __[Qwen3-4B-Q8_0.gguf](https://huggingface.co/Qwen/Qwen3-4B-GGUF/resolve/main/Qwen3-4B-Q8_0.gguf)__ [4.28 GB] : GGUF\n- __[qwen_3_4b_fp8_mixed.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b_fp8_mixed.safetensors)__ [5.63 GB] : ComfyOrg FP8\n- __[qwen_3_4b.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b.safetensors)__ [8.04 GB] : ComfyOrg BF16\n\n**vae**\n\n- __[ae.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/vae/ae.safetensors)__ [335 MB] : ComfyOrg\n- More: [Z-Image_clear_vae](https://huggingface.co/easygoing0114/Z-Image_clear_vae), [Z-Image_Anime_VAE](https://huggingface.co/Anzhc/Z-Image_Anime_VAE)\n"
+        "text": "## Software Requirements\n\n* __[ComfyUI](https://github.com/Comfy-Org/ComfyUI)__ v0.27 or higher\n* __[Z-Image Power Nodes](https://github.com/martin-rizzo/ComfyUI-ZImagePowerNodes)__ v2.1 or higher\n* __[ComfyUI-GGUF](https://github.com/city96/ComfyUI-GGUF)__ (only if you intend to use GGUF checkpoints)\n\n## Model Requirements\n\n**diffusion_models**\n\n- __[z_image_turbo_int8_convrot_bf16emixed.safetensors](https://huggingface.co/martin-rizzo/Z-Image-Turbo-INT8-ConvRot-ComfyUI/resolve/main/z_image_turbo_int8_convrot_bf16emixed.safetensors)__ [6.17 GB]\n\n**text_encoders**\n\n- __[qwen3-4b_int8_convrot_fp16emixed.safetensors](https://huggingface.co/martin-rizzo/Qwen3-4B-INT8-ConvRot-ComfyUI/resolve/main/qwen3-4b_int8_convrot_fp16emixed.safetensors)__ [4.42 GB]\n\n**vae**\n\n- __[Z-Image_half_natural_vae.safetensors](https://huggingface.co/easygoing0114/Z-Image_clear_vae/resolve/main/Z-Image_half_natural_vae.safetensors)__ [335 MB]\n\n\n## Model Storage Location\n\n```\n📂 ComfyUI/\n├── 📂 models/\n│   │\n│   └── 📂 diffusion_models/\n│   │   └── z_image_turbo_int8_convrot_bf16emixed.safetensors\n│   │\n│   ├── 📂 text_encoders/\n│   │   └── qwen3-4b_int8_convrot_fp16emixed.safetensors\n│   │\n│   ├── 📂 vae/\n│   │   └── Z-Image_half_natural_vae.safetensors\n```\n\nPlease ensure you update ComfyUI first and have the latest version of the Z-Image Power Nodes installed.\n\n## Alternative Checkpoints\n\n> The following checkpoints are provided as alternatives in case you experience issues.  \n> Due to the wide variety of GPUs, VRAM capacities, and ComfyUI versions, one of these may work better for your system.\n\n**diffusion_models**\n\n- __[z_image_turbo-Q5_K_S.gguf](https://huggingface.co/jayn7/Z-Image-Turbo-GGUF/resolve/main/z_image_turbo-Q5_K_S.gguf)__ [5.19 GB] : GGUF\n- __[z_image_turbo_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/diffusion_models/z_image_turbo_int8_convrot.safetensors)__ [6.20 GB] : ComfyOrg I8ConvRot\n- __[z_image_turbo_bf16.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/diffusion_models/z_image_turbo_bf16.safetensors)__ [12.3 GB] : ComfyOrg BF16\n\n**text_encoders**\n\n- __[Qwen3-4B-Q8_0.gguf](https://huggingface.co/Qwen/Qwen3-4B-GGUF/resolve/main/Qwen3-4B-Q8_0.gguf)__ [4.28 GB] : GGUF\n- __[qwen_3_4b_fp8_mixed.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b_fp8_mixed.safetensors)__ [5.63 GB] : ComfyOrg FP8\n- __[qwen_3_4b.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b.safetensors)__ [8.04 GB] : ComfyOrg BF16\n\n**vae**\n\n- __[ae.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/vae/ae.safetensors)__ [335 MB] : ComfyOrg\n- More: [Z-Image_clear_vae](https://huggingface.co/easygoing0114/Z-Image_clear_vae), [Z-Image_Anime_VAE](https://huggingface.co/Anzhc/Z-Image_Anime_VAE)\n\n"
       },
       "color": "#222",
       "bgcolor": "#000"
@@ -328,20 +326,21 @@
         120
       ],
       "size": [
-        680,
-        1500
+        690,
+        1600
       ],
       "flags": {},
       "order": 3,
       "mode": 0,
       "inputs": [],
       "outputs": [],
+      "title": "README",
       "properties": {},
       "widgets_values": [
-        "## Double Trouble\n\nThis workflow lets you generate images using two styles. The main style sets the final look, while the substyle adds a subtle touch to make the composition more original and varied.\n\n## Parameters\n\n__seed__\n* The initial number for random generation. Each unique seed produces a different image.\n* Results in significantly more dramatic variations when __\"turbo_creativity\"__ is turned on.\n\n__main_style__\n* The visual style that defines the overall look of your final image.\n\n__substyle__\n* A secondary visual style that adds subtle variety and originality to the final result.\n\n__imprint_style_label__\n* Prints the name of the selected style directly onto the image.\n* It is recommended to leave this disabled by default.\n\n__prompt__\n* The text description of what you want to see, including subjects, actions, and settings.\n* Avoid style keywords such as photo, comic, or blur, as the selected styles handle all visual effects automatically.\n\n__steps__\n* The number of iterations performed during the denoising process.\n* The optimal setting is 8 steps. Increase this value only if you require better quality or need to fix minor hallucinations caused by __\"turbo_creativity\"__, keeping in mind that higher step counts result in longer render times.\n\n__initial_bias__\n* Adjusts the starting noise deviation to correct color issues, brightness, or even weird hallucinations.\n* 0.0 serves as the optimal setting and is generally best left unchanged due to its unpredictable effects.\n\n__turbo_creativity__\n* Shakes up the generation process to produce unique, original compositions and avoid generic AI aesthetics.\n* It is prone to generating hallucinations and duplicate elements, especially in high-contrast images.\n* Disable this feature if you require highly precise and complex images.\n* Enable this feature when exploring creative compositions with substantial variations between different seeds.\n* Working with __turbo_creativity__ involves testing multiple seeds until you find the ideal one.\n* Some minor defects and small hallucinations can be corrected by tweaking __\"steps\"__ and __\"initial_bias\"__.\n* Note that seed numbers that are multiples of 3 cause __turbo_creativity__ to hallucinate more frequently, as the sampler internally skips one correction step to maximize image variation.\n\n__detailed_sampling__\n* Applies a different sampling method during the final steps to add finer details, although it may increase the generation time.\n\n__contrast__\n* Controls how smooth or intense the brightness transitions appear in the final image.\n* 0.0 serves as the neutral baseline.\n\n__color__\n* Adjusts the color saturation of the image.\n* 0.0 serves as the neutral baseline.\n\n__hue__\n* Modifies the color tint, primarily used to calibrate skin tones.\n* 0.0 serves as the neutral baseline.\n\n__orientation__\n* Sets the orientation of the final image, where vertical creates a portrait format and horizontal creates a landscape format.\n\n__aspect_ratio__\n* Determines the proportional relationship between the width and height of the final image.\n\n__ck_attention__\n* Enables Comfy-Kitchen attention to reduce generation time. This takes effect only in newer versions of ComfyUI that support this optimization.\n\n__zimage_checkpoint__\n* The checkpoint file used for the Z-Image Turbo diffusion model.\n\n__qwen3_checkpoint__\n* The checkpoint file used as text encoder, which must be based on the Qwen3-4b model.\n\n__vae__\n* The checkpoint file used for the variational autoencoder.\n"
+        "## Z-Image Turbo Double Trouble Workflow\n\nThis workflow lets you generate images using two styles. The main style sets the final look, while the substyle adds a subtle touch to make the composition more original and varied.\n\n## Parameters\n\n__seed__\n* The initial number for random generation. Each unique seed produces a different image.\n* Results in significantly more dramatic variations when __\"turbo_creativity\"__ is turned on.\n\n__main_style__\n* The visual style that defines the overall look of your final image.\n\n__substyle__\n* A secondary visual style that adds subtle variety and originality to the final result.\n\n__imprint_style_label__\n* Prints the name of the selected style directly onto the image.\n* It is recommended to leave this disabled by default.\n\n__prompt__\n* The text description of what you want to see, including subjects, actions, and settings.\n* Avoid style keywords such as photo, comic, or blur, as the selected styles handle all visual effects automatically.\n\n__steps__\n* The number of iterations performed during the denoising process.\n* The optimal setting is 8 steps. Increase this value only if you require better quality or need to fix minor hallucinations caused by __\"turbo_creativity\"__, keeping in mind that higher step counts result in longer render times.\n\n__initial_bias__\n* Adjusts the starting noise deviation to correct color issues, brightness, or even weird hallucinations.\n* 0.0 serves as the optimal setting and is generally best left unchanged due to its unpredictable effects.\n\n__turbo_creativity__\n* Shakes up the generation process to produce unique, original compositions and avoid generic AI aesthetics.\n* It is prone to generating hallucinations and duplicate elements, especially in high-contrast images.\n* Disable this feature if you require highly precise and complex images.\n* Enable this feature when exploring creative compositions with substantial variations between different seeds.\n* Working with __turbo_creativity__ involves testing multiple seeds until you find the ideal one.\n* Some minor defects and small hallucinations can be corrected by tweaking __\"steps\"__ and __\"initial_bias\"__.\n* Note that seed numbers that are multiples of 3 cause __turbo_creativity__ to hallucinate more frequently, as the sampler internally skips one correction step to maximize image variation.\n\n__detailed_sampling__\n* Applies a different sampling method during the final steps to add finer details, although it may increase the generation time.\n\n__contrast__\n* Controls how smooth or intense the brightness transitions appear in the final image.\n* 0.0 serves as the neutral baseline.\n\n__color__\n* Adjusts the color saturation of the image.\n* 0.0 serves as the neutral baseline.\n\n__hue__\n* Modifies the color tint, primarily used to calibrate skin tones.\n* 0.0 serves as the neutral baseline.\n\n__orientation__\n* Sets the orientation of the final image, where vertical creates a portrait format and horizontal creates a landscape format.\n\n__aspect_ratio__\n* Determines the proportional relationship between the width and height of the final image.\n\n__ck_attention__\n* Enables Comfy-Kitchen attention to reduce generation time. This takes effect only in newer versions of ComfyUI that support this optimization.\n\n__zimage_turbo_ckpt__\n* The checkpoint file used for the Z-Image Turbo diffusion model.\n\n__qwen3_4b_ckpt__\n* The checkpoint file used as text encoder, which must be based on the Qwen3-4b model.\n\n__vae__\n* The checkpoint file used for the variational autoencoder.\n\n## Created by Martin Rizzo\n* GitHub : https://github.com/martin-rizzo\n* CivitAI: https://civitai.com/user/Photographer\n* Reddit : https://www.reddit.com/user/FotografoVirtual\n\n\n"
       ],
       "widgets_values_named": {
-        "text": "## Double Trouble\n\nThis workflow lets you generate images using two styles. The main style sets the final look, while the substyle adds a subtle touch to make the composition more original and varied.\n\n## Parameters\n\n__seed__\n* The initial number for random generation. Each unique seed produces a different image.\n* Results in significantly more dramatic variations when __\"turbo_creativity\"__ is turned on.\n\n__main_style__\n* The visual style that defines the overall look of your final image.\n\n__substyle__\n* A secondary visual style that adds subtle variety and originality to the final result.\n\n__imprint_style_label__\n* Prints the name of the selected style directly onto the image.\n* It is recommended to leave this disabled by default.\n\n__prompt__\n* The text description of what you want to see, including subjects, actions, and settings.\n* Avoid style keywords such as photo, comic, or blur, as the selected styles handle all visual effects automatically.\n\n__steps__\n* The number of iterations performed during the denoising process.\n* The optimal setting is 8 steps. Increase this value only if you require better quality or need to fix minor hallucinations caused by __\"turbo_creativity\"__, keeping in mind that higher step counts result in longer render times.\n\n__initial_bias__\n* Adjusts the starting noise deviation to correct color issues, brightness, or even weird hallucinations.\n* 0.0 serves as the optimal setting and is generally best left unchanged due to its unpredictable effects.\n\n__turbo_creativity__\n* Shakes up the generation process to produce unique, original compositions and avoid generic AI aesthetics.\n* It is prone to generating hallucinations and duplicate elements, especially in high-contrast images.\n* Disable this feature if you require highly precise and complex images.\n* Enable this feature when exploring creative compositions with substantial variations between different seeds.\n* Working with __turbo_creativity__ involves testing multiple seeds until you find the ideal one.\n* Some minor defects and small hallucinations can be corrected by tweaking __\"steps\"__ and __\"initial_bias\"__.\n* Note that seed numbers that are multiples of 3 cause __turbo_creativity__ to hallucinate more frequently, as the sampler internally skips one correction step to maximize image variation.\n\n__detailed_sampling__\n* Applies a different sampling method during the final steps to add finer details, although it may increase the generation time.\n\n__contrast__\n* Controls how smooth or intense the brightness transitions appear in the final image.\n* 0.0 serves as the neutral baseline.\n\n__color__\n* Adjusts the color saturation of the image.\n* 0.0 serves as the neutral baseline.\n\n__hue__\n* Modifies the color tint, primarily used to calibrate skin tones.\n* 0.0 serves as the neutral baseline.\n\n__orientation__\n* Sets the orientation of the final image, where vertical creates a portrait format and horizontal creates a landscape format.\n\n__aspect_ratio__\n* Determines the proportional relationship between the width and height of the final image.\n\n__ck_attention__\n* Enables Comfy-Kitchen attention to reduce generation time. This takes effect only in newer versions of ComfyUI that support this optimization.\n\n__zimage_checkpoint__\n* The checkpoint file used for the Z-Image Turbo diffusion model.\n\n__qwen3_checkpoint__\n* The checkpoint file used as text encoder, which must be based on the Qwen3-4b model.\n\n__vae__\n* The checkpoint file used for the variational autoencoder.\n"
+        "text": "## Z-Image Turbo Double Trouble Workflow\n\nThis workflow lets you generate images using two styles. The main style sets the final look, while the substyle adds a subtle touch to make the composition more original and varied.\n\n## Parameters\n\n__seed__\n* The initial number for random generation. Each unique seed produces a different image.\n* Results in significantly more dramatic variations when __\"turbo_creativity\"__ is turned on.\n\n__main_style__\n* The visual style that defines the overall look of your final image.\n\n__substyle__\n* A secondary visual style that adds subtle variety and originality to the final result.\n\n__imprint_style_label__\n* Prints the name of the selected style directly onto the image.\n* It is recommended to leave this disabled by default.\n\n__prompt__\n* The text description of what you want to see, including subjects, actions, and settings.\n* Avoid style keywords such as photo, comic, or blur, as the selected styles handle all visual effects automatically.\n\n__steps__\n* The number of iterations performed during the denoising process.\n* The optimal setting is 8 steps. Increase this value only if you require better quality or need to fix minor hallucinations caused by __\"turbo_creativity\"__, keeping in mind that higher step counts result in longer render times.\n\n__initial_bias__\n* Adjusts the starting noise deviation to correct color issues, brightness, or even weird hallucinations.\n* 0.0 serves as the optimal setting and is generally best left unchanged due to its unpredictable effects.\n\n__turbo_creativity__\n* Shakes up the generation process to produce unique, original compositions and avoid generic AI aesthetics.\n* It is prone to generating hallucinations and duplicate elements, especially in high-contrast images.\n* Disable this feature if you require highly precise and complex images.\n* Enable this feature when exploring creative compositions with substantial variations between different seeds.\n* Working with __turbo_creativity__ involves testing multiple seeds until you find the ideal one.\n* Some minor defects and small hallucinations can be corrected by tweaking __\"steps\"__ and __\"initial_bias\"__.\n* Note that seed numbers that are multiples of 3 cause __turbo_creativity__ to hallucinate more frequently, as the sampler internally skips one correction step to maximize image variation.\n\n__detailed_sampling__\n* Applies a different sampling method during the final steps to add finer details, although it may increase the generation time.\n\n__contrast__\n* Controls how smooth or intense the brightness transitions appear in the final image.\n* 0.0 serves as the neutral baseline.\n\n__color__\n* Adjusts the color saturation of the image.\n* 0.0 serves as the neutral baseline.\n\n__hue__\n* Modifies the color tint, primarily used to calibrate skin tones.\n* 0.0 serves as the neutral baseline.\n\n__orientation__\n* Sets the orientation of the final image, where vertical creates a portrait format and horizontal creates a landscape format.\n\n__aspect_ratio__\n* Determines the proportional relationship between the width and height of the final image.\n\n__ck_attention__\n* Enables Comfy-Kitchen attention to reduce generation time. This takes effect only in newer versions of ComfyUI that support this optimization.\n\n__zimage_turbo_ckpt__\n* The checkpoint file used for the Z-Image Turbo diffusion model.\n\n__qwen3_4b_ckpt__\n* The checkpoint file used as text encoder, which must be based on the Qwen3-4b model.\n\n__vae__\n* The checkpoint file used for the variational autoencoder.\n\n## Created by Martin Rizzo\n* GitHub : https://github.com/martin-rizzo\n* CivitAI: https://civitai.com/user/Photographer\n* Reddit : https://www.reddit.com/user/FotografoVirtual\n\n\n"
       },
       "color": "#222",
       "bgcolor": "#000"
@@ -387,13 +386,13 @@
         },
         "revision": 0,
         "config": {},
-        "name": "Double Trouble",
+        "name": "Z-Image Turbo - Double Trouble",
         "inputNode": {
           "id": -10,
           "bounding": [
             -960,
             -410,
-            157.46484375,
+            155.068359375,
             408
           ]
         },
@@ -415,7 +414,7 @@
               75
             ],
             "pos": [
-              -826.53515625,
+              -828.931640625,
               -386
             ]
           },
@@ -428,7 +427,7 @@
             ],
             "label": "main_style",
             "pos": [
-              -826.53515625,
+              -828.931640625,
               -366
             ]
           },
@@ -441,7 +440,7 @@
             ],
             "label": "substyle",
             "pos": [
-              -826.53515625,
+              -828.931640625,
               -346
             ]
           },
@@ -454,7 +453,7 @@
             ],
             "label": "imprint_style_label",
             "pos": [
-              -826.53515625,
+              -828.931640625,
               -326
             ]
           },
@@ -467,7 +466,7 @@
               117
             ],
             "pos": [
-              -826.53515625,
+              -828.931640625,
               -306
             ]
           },
@@ -479,7 +478,7 @@
               76
             ],
             "pos": [
-              -826.53515625,
+              -828.931640625,
               -286
             ]
           },
@@ -491,7 +490,7 @@
               77
             ],
             "pos": [
-              -826.53515625,
+              -828.931640625,
               -266
             ]
           },
@@ -503,7 +502,7 @@
               78
             ],
             "pos": [
-              -826.53515625,
+              -828.931640625,
               -246
             ]
           },
@@ -516,7 +515,7 @@
             ],
             "label": "detailed_sampling",
             "pos": [
-              -826.53515625,
+              -828.931640625,
               -226
             ]
           },
@@ -529,7 +528,7 @@
             ],
             "label": "contrast",
             "pos": [
-              -826.53515625,
+              -828.931640625,
               -206
             ]
           },
@@ -542,7 +541,7 @@
             ],
             "label": "color",
             "pos": [
-              -826.53515625,
+              -828.931640625,
               -186
             ]
           },
@@ -555,7 +554,7 @@
             ],
             "label": "hue",
             "pos": [
-              -826.53515625,
+              -828.931640625,
               -166
             ]
           },
@@ -567,7 +566,7 @@
               35
             ],
             "pos": [
-              -826.53515625,
+              -828.931640625,
               -146
             ]
           },
@@ -580,7 +579,7 @@
             ],
             "label": "aspect_ratio",
             "pos": [
-              -826.53515625,
+              -828.931640625,
               -126
             ]
           },
@@ -593,7 +592,7 @@
             ],
             "label": "ck_attention",
             "pos": [
-              -826.53515625,
+              -828.931640625,
               -106
             ]
           },
@@ -604,9 +603,9 @@
             "linkIds": [
               52
             ],
-            "label": "zimage_checkpoint",
+            "label": "zimage_turbo_ckpt",
             "pos": [
-              -826.53515625,
+              -828.931640625,
               -86
             ]
           },
@@ -617,9 +616,9 @@
             "linkIds": [
               53
             ],
-            "label": "qwen3_checkpoint",
+            "label": "qwen3_4b_ckpt",
             "pos": [
-              -826.53515625,
+              -828.931640625,
               -66
             ]
           },
@@ -632,7 +631,7 @@
             ],
             "label": "vae",
             "pos": [
-              -826.53515625,
+              -828.931640625,
               -46
             ]
           }
@@ -657,7 +656,7 @@
             "id": 3,
             "type": "VAELoader",
             "pos": [
-              -560,
+              -550,
               660
             ],
             "size": [
@@ -705,7 +704,7 @@
             "id": 2,
             "type": "LoadZImageModel //ZImagePowerNodes",
             "pos": [
-              -560,
+              -550,
               230
             ],
             "size": [
@@ -755,7 +754,7 @@
             "id": 1,
             "type": "LoadQwen34bModel //ZImagePowerNodes",
             "pos": [
-              -560,
+              -550,
               440
             ],
             "size": [
@@ -1942,10 +1941,10 @@
       "favorites": []
     },
     "ds": {
-      "scale": 0.43656250000000374,
+      "scale": 0.39687500000000336,
       "offset": [
-        977.0959562019357,
-        155.28696143216882
+        963.7276373623725,
+        149.6282567288809
       ]
     }
   },
