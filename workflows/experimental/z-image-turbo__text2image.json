@@ -166,17 +166,17 @@
         "previewExposures": []
       },
       "widgets_values": [
-        10,
+        1,
         "",
         false,
-        "A young female with blonde hair, braided over her right shoulder, sits on a warm brown wooden windowsill. She wears a wide-brimmed olive green felt hat, a long-sleeved forest green dress with a white collar, cream-colored ribbed leg warmers, and dark brown leather lace-up boots. She holds an open book in both hands, with the text \"BOOK\" clearly visible on the left page. Her right elbow rests on the windowsill, and her chin is supported by her right hand. She has light freckles scattered across her nose and cheeks. Beside her is a dark-framed multi-paned window covered in clear raindrops, looking out onto a blurred, bright exterior. The interior wall behind her is composed of vertical brown wooden planks.",
+        "The interior of a bar features an architecture of rounded, modular forms. A bar extends horizontally along the frame, displaying a strip of acrylic. To the left, an elegant black xenomorph, her biomechanical form glowing in a dim light, sits on a bar stool. She wears a tight crimson corset and a leather skirt, holding a tall glass in one hand, raised in a toast as she looks to the right. Its head is elongated and angular, yet it has a sweet smile and a seductive look. To the right, a man in his mid-thirties stands at the bar, holding a tall glass. He turns his head to look directly at the camera, a playful, knowing smile spreading across his face. The glass contains a drink with small floating spheres that reflect the light. He wears a form-fitting uniform with a short, high collar and a single vertical stripe on the jacket. His brown hair is neatly styled with a clean, mid-century part. Behind the bar, in the center of the image, an imposing, octopus-like alien bartender twitches his tentacles, wearing smart black trousers, his octopus eyes glareing in displeasure. Behind the bartender, a mirrored wall reflects rows of liquor bottles with geometric labels. Above the bar floats a neon sign made of curved glass tubes that reads 'COSMIC LOUNGE' in tall, rounded letters, emitting light with a soft, glowing halo. An illuminated menu board reads 'SIGNATURE DRINKS' with three items: 'ORBITAL HIGHBALL,' 'NEBULA SOUR,' and 'ROCKET MARTINI,' each displayed on glowing horizontal bars. To the right, a cylindrical column features a vertical neon panel that reads 'OPEN 24 HOURS' in condensed letters within a translucent strip. To the left, a curved booth sits beneath a domed ceiling light. An illuminated sign reading 'GALAXY BAR SERVICE' encircles the inner rim of the dome in capitals and dominates the left side of the frame. Soft lighting reflects off the glass and acrylic surfaces, highlighting the structural design.",
         8,
         0,
+        false,
         true,
-        true,
-        0.30000000000000004,
-        0.10000000000000003,
-        -0.20000000000000004,
+        2.7755575615628914e-17,
+        2.7755575615628914e-17,
+        -2.7755575615628914e-17,
         false,
         "3:2  (photo)",
         true,
@@ -185,17 +185,17 @@
         "Z-Image_half_natural_vae.safetensors"
       ],
       "widgets_values_named": {
-        "seed": 10,
+        "seed": 1,
         "style": "",
         "enable_label": false,
-        "prompt": "A young female with blonde hair, braided over her right shoulder, sits on a warm brown wooden windowsill. She wears a wide-brimmed olive green felt hat, a long-sleeved forest green dress with a white collar, cream-colored ribbed leg warmers, and dark brown leather lace-up boots. She holds an open book in both hands, with the text \"BOOK\" clearly visible on the left page. Her right elbow rests on the windowsill, and her chin is supported by her right hand. She has light freckles scattered across her nose and cheeks. Beside her is a dark-framed multi-paned window covered in clear raindrops, looking out onto a blurred, bright exterior. The interior wall behind her is composed of vertical brown wooden planks.",
+        "prompt": "The interior of a bar features an architecture of rounded, modular forms. A bar extends horizontally along the frame, displaying a strip of acrylic. To the left, an elegant black xenomorph, her biomechanical form glowing in a dim light, sits on a bar stool. She wears a tight crimson corset and a leather skirt, holding a tall glass in one hand, raised in a toast as she looks to the right. Its head is elongated and angular, yet it has a sweet smile and a seductive look. To the right, a man in his mid-thirties stands at the bar, holding a tall glass. He turns his head to look directly at the camera, a playful, knowing smile spreading across his face. The glass contains a drink with small floating spheres that reflect the light. He wears a form-fitting uniform with a short, high collar and a single vertical stripe on the jacket. His brown hair is neatly styled with a clean, mid-century part. Behind the bar, in the center of the image, an imposing, octopus-like alien bartender twitches his tentacles, wearing smart black trousers, his octopus eyes glareing in displeasure. Behind the bartender, a mirrored wall reflects rows of liquor bottles with geometric labels. Above the bar floats a neon sign made of curved glass tubes that reads 'COSMIC LOUNGE' in tall, rounded letters, emitting light with a soft, glowing halo. An illuminated menu board reads 'SIGNATURE DRINKS' with three items: 'ORBITAL HIGHBALL,' 'NEBULA SOUR,' and 'ROCKET MARTINI,' each displayed on glowing horizontal bars. To the right, a cylindrical column features a vertical neon panel that reads 'OPEN 24 HOURS' in condensed letters within a translucent strip. To the left, a curved booth sits beneath a domed ceiling light. An illuminated sign reading 'GALAXY BAR SERVICE' encircles the inner rim of the dome in capitals and dominates the left side of the frame. Soft lighting reflects off the glass and acrylic surfaces, highlighting the structural design.",
         "steps": 8,
         "initial_bias": 0,
-        "turbo_creativity": true,
+        "turbo_creativity": false,
         "detailed_refiner": true,
-        "effect_1_tweak": 0.30000000000000004,
-        "effect_2_tweak": 0.10000000000000003,
-        "effect_3_tweak": -0.20000000000000004,
+        "effect_1_tweak": 2.7755575615628914e-17,
+        "effect_2_tweak": 2.7755575615628914e-17,
+        "effect_3_tweak": -2.7755575615628914e-17,
         "orientation": false,
         "ratio": "3:2  (photo)",
         "comfy_kitchen_attention": true,
@@ -235,10 +235,10 @@
         "Node name for S&R": "StyleLibraryV10 //ZImagePowerNodes"
       },
       "widgets_values": [
-        "Dramatic Viewpoint"
+        "Family Album Photo"
       ],
       "widgets_values_named": {
-        "style": "Dramatic Viewpoint"
+        "style": "Family Album Photo"
       }
     },
     {

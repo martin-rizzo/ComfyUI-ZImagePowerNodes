@@ -175,18 +175,18 @@
         "previewExposures": []
       },
       "widgets_values": [
-        10,
+        1,
         "",
         "",
         false,
-        "A young female with blonde hair, braided over her right shoulder, sits on a warm brown wooden windowsill. She wears a wide-brimmed olive green felt hat, a long-sleeved forest green dress with a white collar, cream-colored ribbed leg warmers, and dark brown leather lace-up boots. She holds an open book in both hands, with the text \"BOOK\" clearly visible on the left page. Her right elbow rests on the windowsill, and her chin is supported by her right hand. She has light freckles scattered across her nose and cheeks. Beside her is a dark-framed multi-paned window covered in clear raindrops, looking out onto a blurred, bright exterior. The interior wall behind her is composed of vertical brown wooden planks.",
+        "A young woman with long, dark hair and bangs is partially submerged in murky, turquoise water, wearing a pink lace bralette and a matching pink skirt or dress that is also submerged. Her skin is wet and glistening, and she is looking directly at the viewer with wide eyes. Behind her, towering over her in the background, is a large, dark, furry monster with glowing red eyes. The monster has sharp ears, a snout, and visible teeth, and its silhouette is partially obscured by the dim, atmospheric lighting and mist. The overall scene is dark and appears to be set in an indoor, possibly cave-like or ruinous environment, with hints of dark structures in the background.",
         8,
         0,
+        false,
         true,
-        true,
-        0.30000000000000004,
-        0.10000000000000003,
-        -0.20000000000000004,
+        2.7755575615628914e-17,
+        2.7755575615628914e-17,
+        -2.7755575615628914e-17,
         false,
         "3:2  (photo)",
         true,
@@ -195,18 +195,18 @@
         "Z-Image_half_natural_vae.safetensors"
       ],
       "widgets_values_named": {
-        "seed": 10,
+        "seed": 1,
         "style_1": "",
         "style": "",
         "enable_label": false,
-        "prompt": "A young female with blonde hair, braided over her right shoulder, sits on a warm brown wooden windowsill. She wears a wide-brimmed olive green felt hat, a long-sleeved forest green dress with a white collar, cream-colored ribbed leg warmers, and dark brown leather lace-up boots. She holds an open book in both hands, with the text \"BOOK\" clearly visible on the left page. Her right elbow rests on the windowsill, and her chin is supported by her right hand. She has light freckles scattered across her nose and cheeks. Beside her is a dark-framed multi-paned window covered in clear raindrops, looking out onto a blurred, bright exterior. The interior wall behind her is composed of vertical brown wooden planks.",
+        "prompt": "A young woman with long, dark hair and bangs is partially submerged in murky, turquoise water, wearing a pink lace bralette and a matching pink skirt or dress that is also submerged. Her skin is wet and glistening, and she is looking directly at the viewer with wide eyes. Behind her, towering over her in the background, is a large, dark, furry monster with glowing red eyes. The monster has sharp ears, a snout, and visible teeth, and its silhouette is partially obscured by the dim, atmospheric lighting and mist. The overall scene is dark and appears to be set in an indoor, possibly cave-like or ruinous environment, with hints of dark structures in the background.",
         "steps": 8,
         "initial_bias": 0,
-        "turbo_creativity": true,
+        "turbo_creativity": false,
         "detailed_refiner": true,
-        "effect_1_tweak": 0.30000000000000004,
-        "effect_2_tweak": 0.10000000000000003,
-        "effect_3_tweak": -0.20000000000000004,
+        "effect_1_tweak": 2.7755575615628914e-17,
+        "effect_2_tweak": 2.7755575615628914e-17,
+        "effect_3_tweak": -2.7755575615628914e-17,
         "orientation": false,
         "ratio": "3:2  (photo)",
         "comfy_kitchen_attention": true,
@@ -246,10 +246,10 @@
         "Node name for S&R": "StyleLibraryV10 //ZImagePowerNodes"
       },
       "widgets_values": [
-        "Dramatic Viewpoint"
+        "Teal and Orange Photo"
       ],
       "widgets_values_named": {
-        "style": "Dramatic Viewpoint"
+        "style": "Teal and Orange Photo"
       }
     },
     {
@@ -283,10 +283,10 @@
         "Node name for S&R": "StyleLibraryV10 //ZImagePowerNodes"
       },
       "widgets_values": [
-        "Family Album Photo"
+        "Dark Comic Illustration"
       ],
       "widgets_values_named": {
-        "style": "Family Album Photo"
+        "style": "Dark Comic Illustration"
       }
     },
     {
