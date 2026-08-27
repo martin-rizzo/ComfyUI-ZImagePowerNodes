@@ -1,0 +1,1635 @@
+{
+  "id": "f43c663d-192b-469a-9383-cc19a266d416",
+  "revision": 0,
+  "last_node_id": 65,
+  "last_link_id": 124,
+  "nodes": [
+    {
+      "id": 22,
+      "type": "SaveImage //ZImagePowerNodes",
+      "pos": [
+        1700,
+        130
+      ],
+      "size": [
+        650,
+        850
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 42
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "SaveImage //ZImagePowerNodes"
+      },
+      "widgets_values": [
+        "ZIT/%date:yyyy_MM_dd%/ZIT",
+        true
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "ZIT/%date:yyyy_MM_dd%/ZIT",
+        "civitai_compatible_metadata": true
+      }
+    },
+    {
+      "id": 21,
+      "type": "22148af9-ea62-4d0e-8039-cfdf1081fa66",
+      "pos": [
+        1040,
+        130
+      ],
+      "size": [
+        640,
+        1210
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "style",
+          "name": "style",
+          "type": "ZIPN_STYLE",
+          "widget": {
+            "name": "style"
+          },
+          "link": 118
+        },
+        {
+          "label": "imprint_style_label",
+          "name": "enable_label",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "enable_label"
+          },
+          "link": null
+        },
+        {
+          "label": "detailed_sampling",
+          "name": "detailed_refiner",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "detailed_refiner"
+          },
+          "link": null
+        },
+        {
+          "label": "contrast",
+          "name": "effect_1_tweak",
+          "type": "FLOAT",
+          "widget": {
+            "name": "effect_1_tweak"
+          },
+          "link": null
+        },
+        {
+          "label": "color",
+          "name": "effect_2_tweak",
+          "type": "FLOAT",
+          "widget": {
+            "name": "effect_2_tweak"
+          },
+          "link": null
+        },
+        {
+          "label": "hue",
+          "name": "effect_3_tweak",
+          "type": "FLOAT",
+          "widget": {
+            "name": "effect_3_tweak"
+          },
+          "link": null
+        },
+        {
+          "label": "aspect_ratio",
+          "name": "ratio",
+          "type": "COMBO",
+          "widget": {
+            "name": "ratio"
+          },
+          "link": null
+        },
+        {
+          "label": "ck_attention",
+          "name": "comfy_kitchen_attention",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "comfy_kitchen_attention"
+          },
+          "link": null
+        },
+        {
+          "label": "zimage_turbo_ckpt",
+          "name": "checkpoint",
+          "type": "COMBO",
+          "widget": {
+            "name": "checkpoint"
+          },
+          "link": null
+        },
+        {
+          "label": "qwen3_4b_ckpt",
+          "name": "checkpoint_1",
+          "type": "COMBO",
+          "widget": {
+            "name": "checkpoint_1"
+          },
+          "link": null
+        },
+        {
+          "label": "vae",
+          "name": "vae_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "vae_name"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            42
+          ]
+        }
+      ],
+      "properties": {
+        "previewExposures": []
+      },
+      "widgets_values": [
+        10,
+        "",
+        false,
+        "A young female with blonde hair, braided over her right shoulder, sits on a warm brown wooden windowsill. She wears a wide-brimmed olive green felt hat, a long-sleeved forest green dress with a white collar, cream-colored ribbed leg warmers, and dark brown leather lace-up boots. She holds an open book in both hands, with the text \"BOOK\" clearly visible on the left page. Her right elbow rests on the windowsill, and her chin is supported by her right hand. She has light freckles scattered across her nose and cheeks. Beside her is a dark-framed multi-paned window covered in clear raindrops, looking out onto a blurred, bright exterior. The interior wall behind her is composed of vertical brown wooden planks.",
+        8,
+        0,
+        true,
+        true,
+        0.30000000000000004,
+        0.10000000000000003,
+        -0.20000000000000004,
+        false,
+        "3:2  (photo)",
+        true,
+        "z_image_turbo_int8_convrot_bf16emixed.safetensors",
+        "qwen3-4b_int8_convrot_fp16emixed.safetensors",
+        "Z-Image_half_natural_vae.safetensors"
+      ],
+      "widgets_values_named": {
+        "seed": 10,
+        "style": "",
+        "enable_label": false,
+        "prompt": "A young female with blonde hair, braided over her right shoulder, sits on a warm brown wooden windowsill. She wears a wide-brimmed olive green felt hat, a long-sleeved forest green dress with a white collar, cream-colored ribbed leg warmers, and dark brown leather lace-up boots. She holds an open book in both hands, with the text \"BOOK\" clearly visible on the left page. Her right elbow rests on the windowsill, and her chin is supported by her right hand. She has light freckles scattered across her nose and cheeks. Beside her is a dark-framed multi-paned window covered in clear raindrops, looking out onto a blurred, bright exterior. The interior wall behind her is composed of vertical brown wooden planks.",
+        "steps": 8,
+        "initial_bias": 0,
+        "turbo_creativity": true,
+        "detailed_refiner": true,
+        "effect_1_tweak": 0.30000000000000004,
+        "effect_2_tweak": 0.10000000000000003,
+        "effect_3_tweak": -0.20000000000000004,
+        "orientation": false,
+        "ratio": "3:2  (photo)",
+        "comfy_kitchen_attention": true,
+        "checkpoint": "z_image_turbo_int8_convrot_bf16emixed.safetensors",
+        "checkpoint_1": "qwen3-4b_int8_convrot_fp16emixed.safetensors",
+        "vae_name": "Z-Image_half_natural_vae.safetensors"
+      }
+    },
+    {
+      "id": 57,
+      "type": "StyleLibraryV10 //ZImagePowerNodes",
+      "pos": [
+        620,
+        140
+      ],
+      "size": [
+        400,
+        110
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STYLE",
+          "type": "ZIPN_STYLE",
+          "links": [
+            118
+          ]
+        }
+      ],
+      "title": "⚗️🔬| Style",
+      "properties": {
+        "Node name for S&R": "StyleLibraryV10 //ZImagePowerNodes"
+      },
+      "widgets_values": [
+        "Dramatic Viewpoint"
+      ],
+      "widgets_values_named": {
+        "style": "Dramatic Viewpoint"
+      }
+    },
+    {
+      "id": 63,
+      "type": "MarkdownNote",
+      "pos": [
+        -780,
+        120
+      ],
+      "size": [
+        640,
+        1600
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Requirements",
+      "properties": {},
+      "widgets_values": [
+        "## Software Requirements\n\n* __[ComfyUI](https://github.com/Comfy-Org/ComfyUI)__ v0.27 or higher\n* __[Z-Image Power Nodes](https://github.com/martin-rizzo/ComfyUI-ZImagePowerNodes)__ v2.1 or higher\n* __[ComfyUI-GGUF](https://github.com/city96/ComfyUI-GGUF)__ (only if you intend to use GGUF checkpoints)\n\n## Model Requirements\n\n**diffusion_models**\n\n- __[z_image_turbo_int8_convrot_bf16emixed.safetensors](https://huggingface.co/martin-rizzo/Z-Image-Turbo-INT8-ConvRot-ComfyUI/resolve/main/z_image_turbo_int8_convrot_bf16emixed.safetensors)__ [6.17 GB]\n\n**text_encoders**\n\n- __[qwen3-4b_int8_convrot_fp16emixed.safetensors](https://huggingface.co/martin-rizzo/Qwen3-4B-INT8-ConvRot-ComfyUI/resolve/main/qwen3-4b_int8_convrot_fp16emixed.safetensors)__ [4.42 GB]\n\n**vae**\n\n- __[Z-Image_half_natural_vae.safetensors](https://huggingface.co/easygoing0114/Z-Image_clear_vae/resolve/main/Z-Image_half_natural_vae.safetensors)__ [335 MB]\n\n\n## Model Storage Location\n\n```\n📂 ComfyUI/\n├── 📂 models/\n│   │\n│   └── 📂 diffusion_models/\n│   │   └── z_image_turbo_int8_convrot_bf16emixed.safetensors\n│   │\n│   ├── 📂 text_encoders/\n│   │   └── qwen3-4b_int8_convrot_fp16emixed.safetensors\n│   │\n│   ├── 📂 vae/\n│   │   └── Z-Image_half_natural_vae.safetensors\n```\n\nPlease ensure you update ComfyUI first and have the latest version of the Z-Image Power Nodes installed.\n\n## Alternative Checkpoints\n\n> The following checkpoints are provided as alternatives in case you experience issues.  \n> Due to the wide variety of GPUs, VRAM capacities, and ComfyUI versions, one of these may work better for your system.\n\n**diffusion_models**\n\n- __[z_image_turbo-Q5_K_S.gguf](https://huggingface.co/jayn7/Z-Image-Turbo-GGUF/resolve/main/z_image_turbo-Q5_K_S.gguf)__ [5.19 GB] : GGUF\n- __[z_image_turbo_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/diffusion_models/z_image_turbo_int8_convrot.safetensors)__ [6.20 GB] : ComfyOrg I8ConvRot\n- __[z_image_turbo_bf16.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/diffusion_models/z_image_turbo_bf16.safetensors)__ [12.3 GB] : ComfyOrg BF16\n\n**text_encoders**\n\n- __[Qwen3-4B-Q8_0.gguf](https://huggingface.co/Qwen/Qwen3-4B-GGUF/resolve/main/Qwen3-4B-Q8_0.gguf)__ [4.28 GB] : GGUF\n- __[qwen_3_4b_fp8_mixed.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b_fp8_mixed.safetensors)__ [5.63 GB] : ComfyOrg FP8\n- __[qwen_3_4b.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b.safetensors)__ [8.04 GB] : ComfyOrg BF16\n\n**vae**\n\n- __[ae.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/vae/ae.safetensors)__ [335 MB] : ComfyOrg\n- More: [Z-Image_clear_vae](https://huggingface.co/easygoing0114/Z-Image_clear_vae), [Z-Image_Anime_VAE](https://huggingface.co/Anzhc/Z-Image_Anime_VAE)\n\n"
+      ],
+      "widgets_values_named": {
+        "text": "## Software Requirements\n\n* __[ComfyUI](https://github.com/Comfy-Org/ComfyUI)__ v0.27 or higher\n* __[Z-Image Power Nodes](https://github.com/martin-rizzo/ComfyUI-ZImagePowerNodes)__ v2.1 or higher\n* __[ComfyUI-GGUF](https://github.com/city96/ComfyUI-GGUF)__ (only if you intend to use GGUF checkpoints)\n\n## Model Requirements\n\n**diffusion_models**\n\n- __[z_image_turbo_int8_convrot_bf16emixed.safetensors](https://huggingface.co/martin-rizzo/Z-Image-Turbo-INT8-ConvRot-ComfyUI/resolve/main/z_image_turbo_int8_convrot_bf16emixed.safetensors)__ [6.17 GB]\n\n**text_encoders**\n\n- __[qwen3-4b_int8_convrot_fp16emixed.safetensors](https://huggingface.co/martin-rizzo/Qwen3-4B-INT8-ConvRot-ComfyUI/resolve/main/qwen3-4b_int8_convrot_fp16emixed.safetensors)__ [4.42 GB]\n\n**vae**\n\n- __[Z-Image_half_natural_vae.safetensors](https://huggingface.co/easygoing0114/Z-Image_clear_vae/resolve/main/Z-Image_half_natural_vae.safetensors)__ [335 MB]\n\n\n## Model Storage Location\n\n```\n📂 ComfyUI/\n├── 📂 models/\n│   │\n│   └── 📂 diffusion_models/\n│   │   └── z_image_turbo_int8_convrot_bf16emixed.safetensors\n│   │\n│   ├── 📂 text_encoders/\n│   │   └── qwen3-4b_int8_convrot_fp16emixed.safetensors\n│   │\n│   ├── 📂 vae/\n│   │   └── Z-Image_half_natural_vae.safetensors\n```\n\nPlease ensure you update ComfyUI first and have the latest version of the Z-Image Power Nodes installed.\n\n## Alternative Checkpoints\n\n> The following checkpoints are provided as alternatives in case you experience issues.  \n> Due to the wide variety of GPUs, VRAM capacities, and ComfyUI versions, one of these may work better for your system.\n\n**diffusion_models**\n\n- __[z_image_turbo-Q5_K_S.gguf](https://huggingface.co/jayn7/Z-Image-Turbo-GGUF/resolve/main/z_image_turbo-Q5_K_S.gguf)__ [5.19 GB] : GGUF\n- __[z_image_turbo_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/diffusion_models/z_image_turbo_int8_convrot.safetensors)__ [6.20 GB] : ComfyOrg I8ConvRot\n- __[z_image_turbo_bf16.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/diffusion_models/z_image_turbo_bf16.safetensors)__ [12.3 GB] : ComfyOrg BF16\n\n**text_encoders**\n\n- __[Qwen3-4B-Q8_0.gguf](https://huggingface.co/Qwen/Qwen3-4B-GGUF/resolve/main/Qwen3-4B-Q8_0.gguf)__ [4.28 GB] : GGUF\n- __[qwen_3_4b_fp8_mixed.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b_fp8_mixed.safetensors)__ [5.63 GB] : ComfyOrg FP8\n- __[qwen_3_4b.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b.safetensors)__ [8.04 GB] : ComfyOrg BF16\n\n**vae**\n\n- __[ae.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/vae/ae.safetensors)__ [335 MB] : ComfyOrg\n- More: [Z-Image_clear_vae](https://huggingface.co/easygoing0114/Z-Image_clear_vae), [Z-Image_Anime_VAE](https://huggingface.co/Anzhc/Z-Image_Anime_VAE)\n\n"
+      },
+      "color": "#222",
+      "bgcolor": "#000"
+    },
+    {
+      "id": 65,
+      "type": "MarkdownNote",
+      "pos": [
+        -120,
+        120
+      ],
+      "size": [
+        690,
+        1600
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "README",
+      "properties": {},
+      "widgets_values": [
+        "## Z-Image Turbo Text2Image\n\nThis is an experimental workflow for generating images based on a visual style and a prompt.\n\n## Parameters\n\n__seed__\n* The initial number for random generation. Each unique seed produces a different image.\n* Results in significantly more dramatic variations when __\"turbo_creativity\"__ is turned on.\n\n__style__\n* The visual style that defines the overall look of your final image.\n\n__imprint_style_label__\n* Prints the name of the selected style directly onto the image.\n* It is recommended to leave this disabled by default.\n\n__prompt__\n* The text description of what you want to see, including subjects, actions, and settings.\n* Avoid style keywords such as photo, comic, or blur, as the selected styles handle all visual effects automatically.\n\n__steps__\n* The number of iterations performed during the denoising process.\n* The optimal setting is 8 steps. Increase this value only if you require better quality or need to fix minor hallucinations caused by __\"turbo_creativity\"__, keeping in mind that higher step counts result in longer render times.\n\n__initial_bias__\n* Adjusts the starting noise deviation to correct color issues, brightness, or even weird hallucinations.\n* 0.0 serves as the optimal setting and is generally best left unchanged due to its unpredictable effects.\n\n__turbo_creativity__\n* Shakes up the generation process to produce unique, original compositions and avoid generic AI aesthetics.\n* It is prone to generating hallucinations and duplicate elements, especially in high-contrast images.\n* Disable this feature if you require highly precise and complex images.\n* Enable this feature when exploring creative compositions with substantial variations between different seeds.\n* Working with __turbo_creativity__ involves testing multiple seeds until you find the ideal one.\n* Some minor defects and small hallucinations can be corrected by tweaking __\"steps\"__ and __\"initial_bias\"__.\n* Note that seed numbers that are multiples of 3 cause __turbo_creativity__ to hallucinate more frequently, as the sampler internally skips one correction step to maximize image variation.\n\n__detailed_sampling__\n* Applies a different sampling method during the final steps to add finer details, although it may increase the generation time.\n\n__contrast__\n* Controls how smooth or intense the brightness transitions appear in the final image.\n* 0.0 serves as the neutral baseline.\n\n__color__\n* Adjusts the color saturation of the image.\n* 0.0 serves as the neutral baseline.\n\n__hue__\n* Modifies the color tint, primarily used to calibrate skin tones.\n* 0.0 serves as the neutral baseline.\n\n__orientation__\n* Sets the orientation of the final image, where vertical creates a portrait format and horizontal creates a landscape format.\n\n__aspect_ratio__\n* Determines the proportional relationship between the width and height of the final image.\n\n__ck_attention__\n* Enables Comfy-Kitchen attention to reduce generation time. This takes effect only in newer versions of ComfyUI that support this optimization.\n\n__zimage_turbo_ckpt__\n* The checkpoint file used for the Z-Image Turbo diffusion model.\n\n__qwen3_4b_ckpt__\n* The checkpoint file used as text encoder, which must be based on the Qwen3-4b model.\n\n__vae__\n* The checkpoint file used for the variational autoencoder.\n\n## Created by Martin Rizzo\n* GitHub : https://github.com/martin-rizzo\n* CivitAI: https://civitai.com/user/Photographer\n* Reddit : https://www.reddit.com/user/FotografoVirtual\n\n"
+      ],
+      "widgets_values_named": {
+        "text": "## Z-Image Turbo Text2Image\n\nThis is an experimental workflow for generating images based on a visual style and a prompt.\n\n## Parameters\n\n__seed__\n* The initial number for random generation. Each unique seed produces a different image.\n* Results in significantly more dramatic variations when __\"turbo_creativity\"__ is turned on.\n\n__style__\n* The visual style that defines the overall look of your final image.\n\n__imprint_style_label__\n* Prints the name of the selected style directly onto the image.\n* It is recommended to leave this disabled by default.\n\n__prompt__\n* The text description of what you want to see, including subjects, actions, and settings.\n* Avoid style keywords such as photo, comic, or blur, as the selected styles handle all visual effects automatically.\n\n__steps__\n* The number of iterations performed during the denoising process.\n* The optimal setting is 8 steps. Increase this value only if you require better quality or need to fix minor hallucinations caused by __\"turbo_creativity\"__, keeping in mind that higher step counts result in longer render times.\n\n__initial_bias__\n* Adjusts the starting noise deviation to correct color issues, brightness, or even weird hallucinations.\n* 0.0 serves as the optimal setting and is generally best left unchanged due to its unpredictable effects.\n\n__turbo_creativity__\n* Shakes up the generation process to produce unique, original compositions and avoid generic AI aesthetics.\n* It is prone to generating hallucinations and duplicate elements, especially in high-contrast images.\n* Disable this feature if you require highly precise and complex images.\n* Enable this feature when exploring creative compositions with substantial variations between different seeds.\n* Working with __turbo_creativity__ involves testing multiple seeds until you find the ideal one.\n* Some minor defects and small hallucinations can be corrected by tweaking __\"steps\"__ and __\"initial_bias\"__.\n* Note that seed numbers that are multiples of 3 cause __turbo_creativity__ to hallucinate more frequently, as the sampler internally skips one correction step to maximize image variation.\n\n__detailed_sampling__\n* Applies a different sampling method during the final steps to add finer details, although it may increase the generation time.\n\n__contrast__\n* Controls how smooth or intense the brightness transitions appear in the final image.\n* 0.0 serves as the neutral baseline.\n\n__color__\n* Adjusts the color saturation of the image.\n* 0.0 serves as the neutral baseline.\n\n__hue__\n* Modifies the color tint, primarily used to calibrate skin tones.\n* 0.0 serves as the neutral baseline.\n\n__orientation__\n* Sets the orientation of the final image, where vertical creates a portrait format and horizontal creates a landscape format.\n\n__aspect_ratio__\n* Determines the proportional relationship between the width and height of the final image.\n\n__ck_attention__\n* Enables Comfy-Kitchen attention to reduce generation time. This takes effect only in newer versions of ComfyUI that support this optimization.\n\n__zimage_turbo_ckpt__\n* The checkpoint file used for the Z-Image Turbo diffusion model.\n\n__qwen3_4b_ckpt__\n* The checkpoint file used as text encoder, which must be based on the Qwen3-4b model.\n\n__vae__\n* The checkpoint file used for the variational autoencoder.\n\n## Created by Martin Rizzo\n* GitHub : https://github.com/martin-rizzo\n* CivitAI: https://civitai.com/user/Photographer\n* Reddit : https://www.reddit.com/user/FotografoVirtual\n\n"
+      },
+      "color": "#222",
+      "bgcolor": "#000"
+    }
+  ],
+  "links": [
+    [
+      42,
+      21,
+      0,
+      22,
+      0,
+      "IMAGE"
+    ],
+    [
+      118,
+      57,
+      0,
+      21,
+      0,
+      "ZIPN_STYLE"
+    ]
+  ],
+  "groups": [],
+  "definitions": {
+    "subgraphs": [
+      {
+        "id": "22148af9-ea62-4d0e-8039-cfdf1081fa66",
+        "version": 1,
+        "state": {
+          "lastGroupId": 1,
+          "lastNodeId": 65,
+          "lastLinkId": 124,
+          "lastRerouteId": 0
+        },
+        "revision": 0,
+        "config": {},
+        "name": "Z-Image Turbo - Text2Image",
+        "inputNode": {
+          "id": -10,
+          "bounding": [
+            -960,
+            -410,
+            155.068359375,
+            388
+          ]
+        },
+        "outputNode": {
+          "id": -20,
+          "bounding": [
+            2829.945557421921,
+            -203.72314324655804,
+            128,
+            68
+          ]
+        },
+        "inputs": [
+          {
+            "id": "2e3f0467-e31d-4999-bc34-da31fd673795",
+            "name": "seed",
+            "type": "INT",
+            "linkIds": [
+              75
+            ],
+            "pos": [
+              -828.931640625,
+              -386
+            ]
+          },
+          {
+            "id": "98479283-f00c-45d2-8cc9-1f02a0780afe",
+            "name": "style",
+            "type": "ZIPN_STYLE",
+            "linkIds": [
+              110
+            ],
+            "label": "style",
+            "pos": [
+              -828.931640625,
+              -366
+            ]
+          },
+          {
+            "id": "29a97490-26df-4cdc-81b0-ed1bcd2bdd6d",
+            "name": "enable_label",
+            "type": "BOOLEAN",
+            "linkIds": [
+              121
+            ],
+            "label": "imprint_style_label",
+            "pos": [
+              -828.931640625,
+              -346
+            ]
+          },
+          {
+            "id": "7e88976f-e6a4-466c-a838-e6243a49b5b5",
+            "name": "prompt",
+            "type": "STRING",
+            "linkIds": [
+              116
+            ],
+            "pos": [
+              -828.931640625,
+              -326
+            ]
+          },
+          {
+            "id": "f47693ec-f922-4dc6-8713-a62ef39de5ae",
+            "name": "steps",
+            "type": "INT",
+            "linkIds": [
+              76
+            ],
+            "pos": [
+              -828.931640625,
+              -306
+            ]
+          },
+          {
+            "id": "d4a2dc6a-3a2e-41ad-981a-ec6700ba9454",
+            "name": "initial_bias",
+            "type": "FLOAT",
+            "linkIds": [
+              77
+            ],
+            "pos": [
+              -828.931640625,
+              -286
+            ]
+          },
+          {
+            "id": "7ba12079-2614-488b-a2b3-9936027c75bb",
+            "name": "turbo_creativity",
+            "type": "BOOLEAN",
+            "linkIds": [
+              78
+            ],
+            "pos": [
+              -828.931640625,
+              -266
+            ]
+          },
+          {
+            "id": "7dd7e4f9-3082-42bd-9c48-96450dbf93d9",
+            "name": "detailed_refiner",
+            "type": "BOOLEAN",
+            "linkIds": [
+              79
+            ],
+            "label": "detailed_sampling",
+            "pos": [
+              -828.931640625,
+              -246
+            ]
+          },
+          {
+            "id": "109278ce-fa24-469c-bfd5-acd98ec17683",
+            "name": "effect_1_tweak",
+            "type": "FLOAT",
+            "linkIds": [
+              93
+            ],
+            "label": "contrast",
+            "pos": [
+              -828.931640625,
+              -226
+            ]
+          },
+          {
+            "id": "4ead56e6-369c-42c7-8b54-b9bf657d7207",
+            "name": "effect_2_tweak",
+            "type": "FLOAT",
+            "linkIds": [
+              94
+            ],
+            "label": "color",
+            "pos": [
+              -828.931640625,
+              -206
+            ]
+          },
+          {
+            "id": "85ccebb2-3021-44b6-881d-e2f03c1cd197",
+            "name": "effect_3_tweak",
+            "type": "FLOAT",
+            "linkIds": [
+              95
+            ],
+            "label": "hue",
+            "pos": [
+              -828.931640625,
+              -186
+            ]
+          },
+          {
+            "id": "8901aaf5-f44e-416a-95f9-a5420112e193",
+            "name": "orientation",
+            "type": "BOOLEAN",
+            "linkIds": [
+              35
+            ],
+            "pos": [
+              -828.931640625,
+              -166
+            ]
+          },
+          {
+            "id": "2793642f-54fe-433f-ba90-f0e79ba8bef7",
+            "name": "ratio",
+            "type": "COMBO",
+            "linkIds": [
+              36
+            ],
+            "label": "aspect_ratio",
+            "pos": [
+              -828.931640625,
+              -146
+            ]
+          },
+          {
+            "id": "fd3ae504-f166-4e17-9f2c-845fdfdb07b4",
+            "name": "comfy_kitchen_attention",
+            "type": "BOOLEAN",
+            "linkIds": [
+              55
+            ],
+            "label": "ck_attention",
+            "pos": [
+              -828.931640625,
+              -126
+            ]
+          },
+          {
+            "id": "148981e4-ea4e-4526-aff8-773450ac8143",
+            "name": "checkpoint",
+            "type": "COMBO",
+            "linkIds": [
+              52
+            ],
+            "label": "zimage_turbo_ckpt",
+            "pos": [
+              -828.931640625,
+              -106
+            ]
+          },
+          {
+            "id": "cec509df-e0d7-40d6-a975-7427a1f8fbb9",
+            "name": "checkpoint_1",
+            "type": "COMBO",
+            "linkIds": [
+              53
+            ],
+            "label": "qwen3_4b_ckpt",
+            "pos": [
+              -828.931640625,
+              -86
+            ]
+          },
+          {
+            "id": "083459e9-572f-4135-aa01-b48b548a6a94",
+            "name": "vae_name",
+            "type": "COMBO",
+            "linkIds": [
+              54
+            ],
+            "label": "vae",
+            "pos": [
+              -828.931640625,
+              -66
+            ]
+          }
+        ],
+        "outputs": [
+          {
+            "id": "4b7bdb53-c06d-4b66-92a4-d88313bf52d2",
+            "name": "IMAGE",
+            "type": "IMAGE",
+            "linkIds": [
+              32
+            ],
+            "pos": [
+              2853.945557421921,
+              -179.72314324655804
+            ]
+          }
+        ],
+        "widgets": [],
+        "nodes": [
+          {
+            "id": 3,
+            "type": "VAELoader",
+            "pos": [
+              -560,
+              580
+            ],
+            "size": [
+              590,
+              140
+            ],
+            "flags": {},
+            "order": 2,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "vae_name",
+                "name": "vae_name",
+                "type": "COMBO",
+                "widget": {
+                  "name": "vae_name"
+                },
+                "link": 54
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "VAE",
+                "name": "VAE",
+                "type": "VAE",
+                "links": [
+                  124
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "VAELoader"
+            },
+            "widgets_values": [
+              "Z-Image_half_natural_vae.safetensors"
+            ],
+            "widgets_values_named": {
+              "vae_name": "Z-Image_half_natural_vae.safetensors"
+            },
+            "color": "#322",
+            "bgcolor": "#533",
+            "shape": 1
+          },
+          {
+            "id": 2,
+            "type": "LoadZImageModel //ZImagePowerNodes",
+            "pos": [
+              -560,
+              150
+            ],
+            "size": [
+              590,
+              160
+            ],
+            "flags": {},
+            "order": 1,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "checkpoint",
+                "name": "checkpoint",
+                "type": "COMBO",
+                "widget": {
+                  "name": "checkpoint"
+                },
+                "link": 52
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "MODEL",
+                "name": "MODEL",
+                "type": "MODEL",
+                "links": [
+                  23
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "LoadZImageModel //ZImagePowerNodes"
+            },
+            "widgets_values": [
+              "z_image_turbo_int8_convrot_bf16emixed.safetensors",
+              false
+            ],
+            "widgets_values_named": {
+              "checkpoint": "z_image_turbo_int8_convrot_bf16emixed.safetensors",
+              "file_filter": false
+            },
+            "color": "#322",
+            "bgcolor": "#533",
+            "shape": 1
+          },
+          {
+            "id": 1,
+            "type": "LoadQwen34bModel //ZImagePowerNodes",
+            "pos": [
+              -560,
+              360
+            ],
+            "size": [
+              590,
+              170
+            ],
+            "flags": {},
+            "order": 0,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "checkpoint",
+                "name": "checkpoint",
+                "type": "COMBO",
+                "widget": {
+                  "name": "checkpoint"
+                },
+                "link": 53
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "CLIP",
+                "name": "CLIP",
+                "type": "CLIP",
+                "links": [
+                  123
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "LoadQwen34bModel //ZImagePowerNodes"
+            },
+            "widgets_values": [
+              "qwen3-4b_int8_convrot_fp16emixed.safetensors",
+              false,
+              true
+            ],
+            "widgets_values_named": {
+              "checkpoint": "qwen3-4b_int8_convrot_fp16emixed.safetensors",
+              "file_filter": false,
+              "run_on_gpu": true
+            },
+            "color": "#322",
+            "bgcolor": "#533",
+            "shape": 1
+          },
+          {
+            "id": 18,
+            "type": "ComfyKitchenAttentionEnabler //ZImagePowerNodes",
+            "pos": [
+              100,
+              80
+            ],
+            "size": [
+              300,
+              100
+            ],
+            "flags": {},
+            "order": 5,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "model",
+                "name": "model",
+                "type": "MODEL",
+                "link": 23
+              },
+              {
+                "localized_name": "comfy_kitchen_attention",
+                "name": "comfy_kitchen_attention",
+                "type": "BOOLEAN",
+                "widget": {
+                  "name": "comfy_kitchen_attention"
+                },
+                "link": 55
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "MODEL",
+                "name": "MODEL",
+                "type": "MODEL",
+                "links": [
+                  74
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "ComfyKitchenAttentionEnabler //ZImagePowerNodes"
+            },
+            "widgets_values": [
+              true
+            ],
+            "widgets_values_named": {
+              "comfy_kitchen_attention": true
+            }
+          },
+          {
+            "id": 7,
+            "type": "EmptyZImageLatentImage //ZImagePowerNodes",
+            "pos": [
+              220,
+              -630
+            ],
+            "size": [
+              340,
+              200
+            ],
+            "flags": {},
+            "order": 3,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "orientation",
+                "name": "orientation",
+                "type": "BOOLEAN",
+                "widget": {
+                  "name": "orientation"
+                },
+                "link": 35
+              },
+              {
+                "localized_name": "ratio",
+                "name": "ratio",
+                "type": "COMBO",
+                "widget": {
+                  "name": "ratio"
+                },
+                "link": 36
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "LATENT",
+                "name": "LATENT",
+                "type": "LATENT",
+                "links": [
+                  73
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "EmptyZImageLatentImage //ZImagePowerNodes"
+            },
+            "widgets_values": [
+              false,
+              "3:2  (photo)",
+              "medium (recommended)",
+              1
+            ],
+            "widgets_values_named": {
+              "orientation": false,
+              "ratio": "3:2  (photo)",
+              "size": "medium (recommended)",
+              "batch_size": 1
+            }
+          },
+          {
+            "id": 9,
+            "type": "AdvancedVAEDecoderX21 //ZImagePowerNodes",
+            "pos": [
+              1750,
+              -190
+            ],
+            "size": [
+              340,
+              140
+            ],
+            "flags": {},
+            "order": 4,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "samples",
+                "name": "samples",
+                "type": "LATENT",
+                "link": 72
+              },
+              {
+                "localized_name": "vae",
+                "name": "vae",
+                "type": "VAE",
+                "link": 51
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "IMAGE",
+                "name": "IMAGE",
+                "type": "IMAGE",
+                "links": [
+                  29
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "AdvancedVAEDecoderX21 //ZImagePowerNodes"
+            },
+            "widgets_values": [
+              true,
+              false
+            ],
+            "widgets_values_named": {
+              "allow_extended_range": true,
+              "low_vram_mode": false
+            }
+          },
+          {
+            "id": 20,
+            "type": "ImageFilter //ZImagePowerNodes",
+            "pos": [
+              2120,
+              -190
+            ],
+            "size": [
+              290,
+              430
+            ],
+            "flags": {},
+            "order": 7,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "images",
+                "name": "images",
+                "type": "IMAGE",
+                "link": 29
+              },
+              {
+                "localized_name": "effect_1_tweak",
+                "name": "effect_1_tweak",
+                "type": "FLOAT",
+                "widget": {
+                  "name": "effect_1_tweak"
+                },
+                "link": 93
+              },
+              {
+                "localized_name": "effect_2_tweak",
+                "name": "effect_2_tweak",
+                "type": "FLOAT",
+                "widget": {
+                  "name": "effect_2_tweak"
+                },
+                "link": 94
+              },
+              {
+                "localized_name": "effect_3_tweak",
+                "name": "effect_3_tweak",
+                "type": "FLOAT",
+                "widget": {
+                  "name": "effect_3_tweak"
+                },
+                "link": 95
+              },
+              {
+                "localized_name": "divider1",
+                "name": "divider1",
+                "type": "ZIPN_SEPARATOR",
+                "link": null
+              },
+              {
+                "localized_name": "divider2",
+                "name": "divider2",
+                "type": "ZIPN_SEPARATOR",
+                "link": null
+              },
+              {
+                "localized_name": "divider3",
+                "name": "divider3",
+                "type": "ZIPN_SEPARATOR",
+                "link": null
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "IMAGE",
+                "name": "IMAGE",
+                "type": "IMAGE",
+                "links": [
+                  30
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "ImageFilter //ZImagePowerNodes"
+            },
+            "widgets_values": [
+              true,
+              true,
+              "none",
+              "contrast_low",
+              -0.4,
+              null,
+              "color",
+              0.2,
+              null,
+              "color_twist",
+              0
+            ],
+            "widgets_values_named": {
+              "enable_auto_contrast": true,
+              "enable_effects": true,
+              "divider1": "none",
+              "effect_1": "contrast_low",
+              "effect_1_tweak": -0.4,
+              "divider2": null,
+              "effect_2": "color",
+              "effect_2_tweak": 0.2,
+              "divider3": null,
+              "effect_3": "color_twist",
+              "effect_3_tweak": 0
+            }
+          },
+          {
+            "id": 19,
+            "type": "ImageLabeler2 //ZImagePowerNodes",
+            "pos": [
+              2440,
+              -190
+            ],
+            "size": [
+              270,
+              440
+            ],
+            "flags": {},
+            "order": 6,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "image",
+                "name": "image",
+                "type": "IMAGE",
+                "link": 30
+              },
+              {
+                "localized_name": "enable_label",
+                "name": "enable_label",
+                "type": "BOOLEAN",
+                "widget": {
+                  "name": "enable_label"
+                },
+                "link": 121
+              },
+              {
+                "localized_name": "text",
+                "name": "text",
+                "type": "STRING",
+                "widget": {
+                  "name": "text"
+                },
+                "link": 122
+              },
+              {
+                "localized_name": "divider1",
+                "name": "divider1",
+                "type": "ZIPN_SEPARATOR",
+                "link": null
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "IMAGE",
+                "name": "IMAGE",
+                "type": "IMAGE",
+                "links": [
+                  32
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "ImageLabeler2 //ZImagePowerNodes"
+            },
+            "widgets_values": [
+              false,
+              null,
+              "",
+              "#003C96",
+              "#FFFFFF",
+              "roboto_slab",
+              46,
+              "none",
+              "bottom_right",
+              -1,
+              0,
+              0
+            ],
+            "widgets_values_named": {
+              "enable_label": false,
+              "divider1": null,
+              "text": "",
+              "text_color": "#003C96",
+              "background_color": "#FFFFFF",
+              "font_name": "roboto_slab",
+              "font_size": 46,
+              "font_scale": "none",
+              "label_position": "bottom_right",
+              "label_padding": -1,
+              "min_label_width": 0,
+              "min_label_height": 0
+            }
+          },
+          {
+            "id": 24,
+            "type": "Reroute",
+            "pos": [
+              1450,
+              600
+            ],
+            "size": [
+              75,
+              26
+            ],
+            "flags": {},
+            "order": 8,
+            "mode": 0,
+            "inputs": [
+              {
+                "name": "",
+                "type": "*",
+                "link": 124
+              }
+            ],
+            "outputs": [
+              {
+                "name": "",
+                "type": "VAE",
+                "links": [
+                  51
+                ]
+              }
+            ],
+            "properties": {
+              "showOutputText": false,
+              "horizontal": false
+            }
+          },
+          {
+            "id": 27,
+            "type": "ZSamplerTurboX21 //ZImagePowerNodes",
+            "pos": [
+              1210,
+              -530
+            ],
+            "size": [
+              370,
+              720
+            ],
+            "flags": {},
+            "order": 9,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "latent_input",
+                "name": "latent_input",
+                "type": "LATENT",
+                "link": 73
+              },
+              {
+                "localized_name": "model",
+                "name": "model",
+                "type": "MODEL",
+                "link": 74
+              },
+              {
+                "localized_name": "positive",
+                "name": "positive",
+                "type": "CONDITIONING",
+                "link": 107
+              },
+              {
+                "localized_name": "positive_stg2",
+                "name": "positive_stg2",
+                "shape": 7,
+                "type": "CONDITIONING",
+                "link": null
+              },
+              {
+                "localized_name": "positive_stg3",
+                "name": "positive_stg3",
+                "shape": 7,
+                "type": "CONDITIONING",
+                "link": null
+              },
+              {
+                "localized_name": "seed",
+                "name": "seed",
+                "type": "INT",
+                "widget": {
+                  "name": "seed"
+                },
+                "link": 75
+              },
+              {
+                "localized_name": "steps",
+                "name": "steps",
+                "type": "INT",
+                "widget": {
+                  "name": "steps"
+                },
+                "link": 76
+              },
+              {
+                "localized_name": "initial_bias",
+                "name": "initial_bias",
+                "type": "FLOAT",
+                "widget": {
+                  "name": "initial_bias"
+                },
+                "link": 77
+              },
+              {
+                "localized_name": "turbo_creativity",
+                "name": "turbo_creativity",
+                "type": "BOOLEAN",
+                "widget": {
+                  "name": "turbo_creativity"
+                },
+                "link": 78
+              },
+              {
+                "localized_name": "detailed_refiner",
+                "name": "detailed_refiner",
+                "type": "BOOLEAN",
+                "widget": {
+                  "name": "detailed_refiner"
+                },
+                "link": 79
+              },
+              {
+                "localized_name": "divider1",
+                "name": "divider1",
+                "type": "ZIPN_SEPARATOR",
+                "link": null
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "latent_output",
+                "name": "latent_output",
+                "type": "LATENT",
+                "links": [
+                  72
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "ZSamplerTurboX21 //ZImagePowerNodes"
+            },
+            "widgets_values": [
+              1,
+              "fixed",
+              null,
+              8,
+              0,
+              "max_quality",
+              "stages12x_l",
+              true,
+              true,
+              true
+            ],
+            "widgets_values_named": {
+              "seed": 1,
+              "control_after_generate": "fixed",
+              "divider1": null,
+              "steps": 8,
+              "initial_bias": 0,
+              "latent_scaling": "max_quality",
+              "spectral_tilt": "stages12x_l",
+              "turbo_creativity": true,
+              "detailed_refiner": true,
+              "new_scheduler": true
+            }
+          },
+          {
+            "id": 54,
+            "type": "StylePromptEncoderX22Advanced //ZImagePowerNodes",
+            "pos": [
+              630,
+              290
+            ],
+            "size": [
+              430,
+              270
+            ],
+            "flags": {},
+            "order": 10,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "clip",
+                "name": "clip",
+                "type": "CLIP",
+                "link": 123
+              },
+              {
+                "localized_name": "user_styles",
+                "name": "user_styles",
+                "shape": 7,
+                "type": "STRING",
+                "link": null
+              },
+              {
+                "localized_name": "user_palettes",
+                "name": "user_palettes",
+                "shape": 7,
+                "type": "STRING",
+                "link": null
+              },
+              {
+                "localized_name": "style",
+                "name": "style",
+                "type": "ZIPN_STYLE",
+                "widget": {
+                  "name": "style"
+                },
+                "link": 110
+              },
+              {
+                "localized_name": "prompt",
+                "name": "prompt",
+                "type": "STRING",
+                "widget": {
+                  "name": "prompt"
+                },
+                "link": 116
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "CONDITIONING",
+                "name": "CONDITIONING",
+                "type": "CONDITIONING",
+                "links": [
+                  107
+                ]
+              },
+              {
+                "localized_name": "PROMPT",
+                "name": "PROMPT",
+                "type": "STRING",
+                "links": null
+              },
+              {
+                "localized_name": "style_name",
+                "name": "style_name",
+                "type": "STRING",
+                "links": [
+                  122
+                ]
+              },
+              {
+                "localized_name": "palette_name",
+                "name": "palette_name",
+                "type": "STRING",
+                "links": null
+              },
+              {
+                "localized_name": "original_prompt",
+                "name": "original_prompt",
+                "type": "STRING",
+                "links": null
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "StylePromptEncoderX22Advanced //ZImagePowerNodes"
+            },
+            "widgets_values": [
+              "",
+              "",
+              ""
+            ],
+            "widgets_values_named": {
+              "style": "",
+              "palette": "",
+              "prompt": ""
+            }
+          }
+        ],
+        "groups": [
+          {
+            "id": 1,
+            "title": "CHECKPOINTS",
+            "bounding": [
+              -570,
+              80,
+              610,
+              650
+            ],
+            "color": "#3f789e",
+            "flags": {}
+          }
+        ],
+        "links": [
+          {
+            "id": 23,
+            "origin_id": 2,
+            "origin_slot": 0,
+            "target_id": 18,
+            "target_slot": 0,
+            "type": "MODEL"
+          },
+          {
+            "id": 29,
+            "origin_id": 9,
+            "origin_slot": 0,
+            "target_id": 20,
+            "target_slot": 0,
+            "type": "IMAGE"
+          },
+          {
+            "id": 30,
+            "origin_id": 20,
+            "origin_slot": 0,
+            "target_id": 19,
+            "target_slot": 0,
+            "type": "IMAGE"
+          },
+          {
+            "id": 32,
+            "origin_id": 19,
+            "origin_slot": 0,
+            "target_id": -20,
+            "target_slot": 0,
+            "type": "IMAGE"
+          },
+          {
+            "id": 35,
+            "origin_id": -10,
+            "origin_slot": 11,
+            "target_id": 7,
+            "target_slot": 0,
+            "type": "BOOLEAN"
+          },
+          {
+            "id": 36,
+            "origin_id": -10,
+            "origin_slot": 12,
+            "target_id": 7,
+            "target_slot": 1,
+            "type": "COMBO"
+          },
+          {
+            "id": 51,
+            "origin_id": 24,
+            "origin_slot": 0,
+            "target_id": 9,
+            "target_slot": 1,
+            "type": "VAE"
+          },
+          {
+            "id": 52,
+            "origin_id": -10,
+            "origin_slot": 14,
+            "target_id": 2,
+            "target_slot": 0,
+            "type": "COMBO"
+          },
+          {
+            "id": 53,
+            "origin_id": -10,
+            "origin_slot": 15,
+            "target_id": 1,
+            "target_slot": 0,
+            "type": "COMBO"
+          },
+          {
+            "id": 54,
+            "origin_id": -10,
+            "origin_slot": 16,
+            "target_id": 3,
+            "target_slot": 0,
+            "type": "COMBO"
+          },
+          {
+            "id": 55,
+            "origin_id": -10,
+            "origin_slot": 13,
+            "target_id": 18,
+            "target_slot": 1,
+            "type": "BOOLEAN"
+          },
+          {
+            "id": 72,
+            "origin_id": 27,
+            "origin_slot": 0,
+            "target_id": 9,
+            "target_slot": 0,
+            "type": "LATENT"
+          },
+          {
+            "id": 73,
+            "origin_id": 7,
+            "origin_slot": 0,
+            "target_id": 27,
+            "target_slot": 0,
+            "type": "LATENT"
+          },
+          {
+            "id": 74,
+            "origin_id": 18,
+            "origin_slot": 0,
+            "target_id": 27,
+            "target_slot": 1,
+            "type": "MODEL"
+          },
+          {
+            "id": 75,
+            "origin_id": -10,
+            "origin_slot": 0,
+            "target_id": 27,
+            "target_slot": 5,
+            "type": "INT"
+          },
+          {
+            "id": 76,
+            "origin_id": -10,
+            "origin_slot": 4,
+            "target_id": 27,
+            "target_slot": 6,
+            "type": "INT"
+          },
+          {
+            "id": 77,
+            "origin_id": -10,
+            "origin_slot": 5,
+            "target_id": 27,
+            "target_slot": 7,
+            "type": "FLOAT"
+          },
+          {
+            "id": 78,
+            "origin_id": -10,
+            "origin_slot": 6,
+            "target_id": 27,
+            "target_slot": 8,
+            "type": "BOOLEAN"
+          },
+          {
+            "id": 79,
+            "origin_id": -10,
+            "origin_slot": 7,
+            "target_id": 27,
+            "target_slot": 9,
+            "type": "BOOLEAN"
+          },
+          {
+            "id": 93,
+            "origin_id": -10,
+            "origin_slot": 8,
+            "target_id": 20,
+            "target_slot": 1,
+            "type": "FLOAT"
+          },
+          {
+            "id": 94,
+            "origin_id": -10,
+            "origin_slot": 9,
+            "target_id": 20,
+            "target_slot": 2,
+            "type": "FLOAT"
+          },
+          {
+            "id": 95,
+            "origin_id": -10,
+            "origin_slot": 10,
+            "target_id": 20,
+            "target_slot": 3,
+            "type": "FLOAT"
+          },
+          {
+            "id": 107,
+            "origin_id": 54,
+            "origin_slot": 0,
+            "target_id": 27,
+            "target_slot": 2,
+            "type": "CONDITIONING"
+          },
+          {
+            "id": 110,
+            "origin_id": -10,
+            "origin_slot": 1,
+            "target_id": 54,
+            "target_slot": 3,
+            "type": "ZIPN_STYLE"
+          },
+          {
+            "id": 116,
+            "origin_id": -10,
+            "origin_slot": 3,
+            "target_id": 54,
+            "target_slot": 4,
+            "type": "STRING"
+          },
+          {
+            "id": 121,
+            "origin_id": -10,
+            "origin_slot": 2,
+            "target_id": 19,
+            "target_slot": 1,
+            "type": "BOOLEAN"
+          },
+          {
+            "id": 122,
+            "origin_id": 54,
+            "origin_slot": 2,
+            "target_id": 19,
+            "target_slot": 2,
+            "type": "STRING"
+          },
+          {
+            "id": 123,
+            "origin_id": 1,
+            "origin_slot": 0,
+            "target_id": 54,
+            "target_slot": 0,
+            "type": "CLIP"
+          },
+          {
+            "id": 124,
+            "origin_id": 3,
+            "origin_slot": 0,
+            "target_id": 24,
+            "target_slot": 0,
+            "type": "VAE"
+          }
+        ],
+        "extra": {}
+      }
+    ]
+  },
+  "config": {},
+  "extra": {
+    "frontendVersion": "1.49.6",
+    "favoritedWidgets": {
+      "favorites": []
+    },
+    "ds": {
+      "scale": 0.39687500000000336,
+      "offset": [
+        976.0690366053931,
+        153.32932399586767
+      ]
+    }
+  },
+  "version": 0.4
+}
