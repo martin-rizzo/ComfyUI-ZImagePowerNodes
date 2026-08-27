@@ -51,9 +51,7 @@
         600,
         1010
       ],
-      "flags": {
-        "pinned": true
-      },
+      "flags": {},
       "order": 4,
       "mode": 0,
       "inputs": [
@@ -393,8 +391,8 @@
         "inputNode": {
           "id": -10,
           "bounding": [
-            -1050,
-            930,
+            -960,
+            -410,
             157.46484375,
             408
           ]
@@ -402,8 +400,8 @@
         "outputNode": {
           "id": -20,
           "bounding": [
-            3200,
-            951,
+            2829.945557421921,
+            -203.72314324655804,
             128,
             68
           ]
@@ -417,8 +415,8 @@
               75
             ],
             "pos": [
-              -916.53515625,
-              954
+              -826.53515625,
+              -386
             ]
           },
           {
@@ -430,8 +428,8 @@
             ],
             "label": "main_style",
             "pos": [
-              -916.53515625,
-              974
+              -826.53515625,
+              -366
             ]
           },
           {
@@ -443,8 +441,8 @@
             ],
             "label": "substyle",
             "pos": [
-              -916.53515625,
-              994
+              -826.53515625,
+              -346
             ]
           },
           {
@@ -456,8 +454,8 @@
             ],
             "label": "imprint_style_label",
             "pos": [
-              -916.53515625,
-              1014
+              -826.53515625,
+              -326
             ]
           },
           {
@@ -469,8 +467,8 @@
               117
             ],
             "pos": [
-              -916.53515625,
-              1034
+              -826.53515625,
+              -306
             ]
           },
           {
@@ -481,8 +479,8 @@
               76
             ],
             "pos": [
-              -916.53515625,
-              1054
+              -826.53515625,
+              -286
             ]
           },
           {
@@ -493,8 +491,8 @@
               77
             ],
             "pos": [
-              -916.53515625,
-              1074
+              -826.53515625,
+              -266
             ]
           },
           {
@@ -505,8 +503,8 @@
               78
             ],
             "pos": [
-              -916.53515625,
-              1094
+              -826.53515625,
+              -246
             ]
           },
           {
@@ -518,8 +516,8 @@
             ],
             "label": "detailed_sampling",
             "pos": [
-              -916.53515625,
-              1114
+              -826.53515625,
+              -226
             ]
           },
           {
@@ -531,8 +529,8 @@
             ],
             "label": "contrast",
             "pos": [
-              -916.53515625,
-              1134
+              -826.53515625,
+              -206
             ]
           },
           {
@@ -544,8 +542,8 @@
             ],
             "label": "color",
             "pos": [
-              -916.53515625,
-              1154
+              -826.53515625,
+              -186
             ]
           },
           {
@@ -557,8 +555,8 @@
             ],
             "label": "hue",
             "pos": [
-              -916.53515625,
-              1174
+              -826.53515625,
+              -166
             ]
           },
           {
@@ -569,8 +567,8 @@
               35
             ],
             "pos": [
-              -916.53515625,
-              1194
+              -826.53515625,
+              -146
             ]
           },
           {
@@ -582,8 +580,8 @@
             ],
             "label": "aspect_ratio",
             "pos": [
-              -916.53515625,
-              1214
+              -826.53515625,
+              -126
             ]
           },
           {
@@ -595,8 +593,8 @@
             ],
             "label": "ck_attention",
             "pos": [
-              -916.53515625,
-              1234
+              -826.53515625,
+              -106
             ]
           },
           {
@@ -608,8 +606,8 @@
             ],
             "label": "zimage_checkpoint",
             "pos": [
-              -916.53515625,
-              1254
+              -826.53515625,
+              -86
             ]
           },
           {
@@ -621,8 +619,8 @@
             ],
             "label": "qwen3_checkpoint",
             "pos": [
-              -916.53515625,
-              1274
+              -826.53515625,
+              -66
             ]
           },
           {
@@ -634,8 +632,8 @@
             ],
             "label": "vae",
             "pos": [
-              -916.53515625,
-              1294
+              -826.53515625,
+              -46
             ]
           }
         ],
@@ -648,8 +646,8 @@
               32
             ],
             "pos": [
-              3224,
-              975
+              2853.945557421921,
+              -179.72314324655804
             ]
           }
         ],
@@ -659,17 +657,15 @@
             "id": 3,
             "type": "VAELoader",
             "pos": [
-              -640,
-              370
+              -560,
+              660
             ],
             "size": [
               590,
               140
             ],
-            "flags": {
-              "pinned": true
-            },
-            "order": 4,
+            "flags": {},
+            "order": 2,
             "mode": 0,
             "inputs": [
               {
@@ -709,17 +705,15 @@
             "id": 2,
             "type": "LoadZImageModel //ZImagePowerNodes",
             "pos": [
-              -640,
-              -60
+              -560,
+              230
             ],
             "size": [
               590,
               160
             ],
-            "flags": {
-              "pinned": true
-            },
-            "order": 3,
+            "flags": {},
+            "order": 1,
             "mode": 0,
             "inputs": [
               {
@@ -761,17 +755,15 @@
             "id": 1,
             "type": "LoadQwen34bModel //ZImagePowerNodes",
             "pos": [
-              -640,
-              150
+              -560,
+              440
             ],
             "size": [
               590,
               170
             ],
-            "flags": {
-              "pinned": true
-            },
-            "order": 2,
+            "flags": {},
+            "order": 0,
             "mode": 0,
             "inputs": [
               {
@@ -815,17 +807,15 @@
             "id": 18,
             "type": "ComfyKitchenAttentionEnabler //ZImagePowerNodes",
             "pos": [
-              -10,
+              110,
               230
             ],
             "size": [
               300,
               100
             ],
-            "flags": {
-              "pinned": true
-            },
-            "order": 7,
+            "flags": {},
+            "order": 5,
             "mode": 0,
             "inputs": [
               {
@@ -868,17 +858,15 @@
             "id": 7,
             "type": "EmptyZImageLatentImage //ZImagePowerNodes",
             "pos": [
-              -10,
-              -750
+              220,
+              -630
             ],
             "size": [
               340,
               200
             ],
-            "flags": {
-              "pinned": true
-            },
-            "order": 5,
+            "flags": {},
+            "order": 3,
             "mode": 0,
             "inputs": [
               {
@@ -927,59 +915,18 @@
             }
           },
           {
-            "id": 5,
-            "type": "PrimitiveStringMultiline",
-            "pos": [
-              -750,
-              570
-            ],
-            "size": [
-              850,
-              1510
-            ],
-            "flags": {
-              "collapsed": false,
-              "pinned": true
-            },
-            "order": 0,
-            "mode": 0,
-            "inputs": [],
-            "outputs": [
-              {
-                "localized_name": "STRING",
-                "name": "STRING",
-                "type": "STRING",
-                "links": []
-              }
-            ],
-            "title": "Input Text - Custom Styles",
-            "properties": {
-              "Node name for S&R": "PrimitiveStringMultiline"
-            },
-            "widgets_values": [
-              "\n\n>>> 90s Underground Flash\nYOUR CONTEXT\nYou are an experimental analog photographer capturing the raw, kinetic energy of the 1990s underground subculture. Your aesthetic is defined by low-fidelity, grainy analog film and a visceral, \"in-the-moment\" chaos. \nThe image is captured through an extreme wide-angle lens, creating aggressive perspective distortion where foreground elements loom over the viewer while the background recedes sharply. The composition is defined by the harsh, unflattering intensity of a direct camera flash, producing high-contrast illumination, slight motion blur, and unpredictable light leaks. The edges of the frame exhibit characteristic wide-angle warping that pulls the environment inward, reinforcing a sense of claustrophobic intensity and instant capture.\n{$**@@ The visual style is provocative and erotic. If women appear, they are always voluptuous and pose provocatively, with sexual innuendo. If men appear, they are muscular and brimming with testosterone. }\n{$IFPAL\nThe color palette reflects the gritty nature of 90s push-processed film: shadows are $4, midtones in $3 and $2, and highlights are $1, creating a raw and volatile tonal balance. |\nThe scene is defined by a chaotic, de-saturated aesthetic with warm, blown-out highlights and dense, crushing shadows, evoking the authentic, lo-fi grit of 35mm film stock pushed to its limits.\n}\nYOUR PHOTO:\n<!--\n{$@}\n-->\n\n\n>>> 90s Casual Photo // Standard Snapshot\nYOUR CONTEXT\nYou are an analog photographer focusing on the intimate, nostalgic reality of 1990s lifestyle photography. Your work captures the authentic texture of daily life, emphasizing raw, unfiltered emotions and candid humanity.\n\nThe image is rendered with the nostalgic charm of consumer-grade 35mm film stock, characterized by visible, organic grain and a slightly soft, naturalistic detail. The lighting relies on a direct on-camera flash that illuminates the scene with a flat, honest brilliance, creating sharp shadows directly behind the subjects that ground them in their environment. The composition is balanced and direct, favoring natural eye-level framing that prioritizes the interaction within the scene, resulting in an image that feels like a rescued memory from a shoebox of old prints.\n\n{$IFPAL\nThe color palette captures the classic warmth of vintage film prints: shadows are rendered in deep, natural $3, midtones in subtle, earthy $2, and highlights are finished with a delicate $1. |\nThe scene is defined by a slight color shift toward sepia and cyan undertones, typical of aged photographic paper, delivering a warm, candid, and profoundly human aesthetic.\n}\nYOUR PHOTO:\n<!--\n{$@}\n-->\n\n\n>>> 90s Casual Photo // Depth Focused\nYOUR CONTEXT\nYou are an analog photographer specializing in the evocative, mood-driven portraits of the 90s era. Your aesthetic prioritizes the emotional connection between the subject and the lens, utilizing high-speed prime lenses to isolate the foreground.\n\nThe images feature a shallow depth of field that renders the background as a soft, dreamlike wash of light and color, allowing the subject to emerge with striking clarity from the chaotic environment. The focus is pinpoint sharp on the main subject, while the surrounding atmosphere dissolves into a gentle, creamy blur. Captured on 35mm film, the image retains a fine, tactile grain that softens the transitions between light and shadow. The direct flash provides a distinct, professional-yet-raw luminosity, creating a gentle separation between the sharp subject and the ethereal, blurred background.\n\n{$IFPAL\nThe color palette is intimate and rich: shadows are rendered in moody $3, midtones in balanced $2, and highlights glow with a soft, punchy $1. |\nThe scene is defined by a warm, nostalgic film glow, where rich contrast and soft-focus backgrounds coalesce to create a polished, yet beautifully imperfect, 90s editorial atmosphere.\n}\nYOUR PHOTO:\n<!--\n{$@}\n-->\n\n\n>>> 90s Casual Photo // Night Club Flash\nYOUR CONTEXT\nYou are an nightlife photographer from the mid-90s underground scene. Your images are defined by the high-octane energy of dark, crowded environments and the strobe-like intensity of a powerful, direct-mounted speedlight.\n\nThe lighting is characterized by \"blacked-out\" backgrounds where the ambient light falls off rapidly into deep, underexposed shadows. The flash creates sharp, punchy illumination on the subject, freezing motion with slight ghosting trails. The image features a gritty, high-contrast look with visible film grain, capturing the sweat, smoke, and electric tension of an all-night rave.\n\n{$IFPAL\nThe color palette is neon-heavy and nocturnal: shadows are rendered in deep, crushing $3, midtones in cool, electronic $2, and highlights are illuminated by a sharp, clinical $1. |\nThe scene is defined by high-contrast saturation, where intense light blasts against impenetrable darkness, evoking the aggressive, nocturnal aesthetic of rave culture.\n}\nYOUR PHOTO:\n<!--\n{$@}\n-->\n\n\n>>> 90s Casual Photo // Disposable Camera\nYOUR CONTEXT\nYou are documenting the raw, unpolished simplicity of 90s snapshots taken with a cheap, cardboard disposable camera. Your aesthetic is inherently humble, unpretentious, and nostalgic.\n\nThe lens is a simple, fixed-focus plastic element that introduces soft edge-blur and subtle chromatic aberration. Lighting is provided by a weak, direct-mounted flash that creates a harsh \"pop\" against flat backgrounds. The image displays the characteristic \"cheap\" quality of consumer film: visible, heavy grain, uneven color shifts, and a slightly murky, warm-toned emulsion that feels like it was developed at a local drugstore.\n\n{$IFPAL\nThe color palette is muted and consumer-grade: shadows are rendered in brownish $3, midtones in flat $2, and highlights in soft, sun-washed $1. |\nThe scene is defined by a distinct \"drugstore print\" look, characterized by warm, hazy transitions, slightly muddy blacks, and the charming imperfections of amateur photography.\n}\nYOUR PHOTO:\n<!--\n{$@}\n-->\n\n\n>>> 90s Casual Photo // Overexposed Summer\nYOUR CONTEXT\nYou are capturing the lazy, hazy, and heat-drenched days of 90s suburban summers. Your photographs are characterized by light-saturated frames and a dreamlike, sun-bleached atmosphere.\n\nThe images are intentionally overexposed, causing highlights to bloom and spill into the surrounding areas, effectively \"washing out\" the details in the brighter parts of the frame. The contrast is soft, and the overall color temperature leans toward a golden, high-key warmth. The texture is characterized by fine film grain dancing within the bright light, creating a shimmering, nostalgic sensation of a heatwave captured on celluloid.\n\n{$IFPAL\nThe color palette is sun-drenched and faded: shadows are rendered in soft $3, midtones in warm $2, and highlights are blown out with a brilliant, creamy $1. |\nThe scene is defined by high-key luminosity, where light overwhelms the shadows to create an airy, nostalgic aesthetic reminiscent of long, aimless summer afternoons.\n}\nYOUR PHOTO:\n<!--\n{$@}\n-->\n\n\n>>> 90s Casual Photo // Overexposed Summer (Fixed)\nYOUR CONTEXT\nYou are a street photographer documenting the mundane, heat-drenched reality of 90s suburban life. Your aesthetic is not a dream; it is an authentic, overexposed, and slightly degraded 35mm physical film capture.\n\nThe images are defined by heavy physical overexposure that causes \"halation\" around edges and intense light-bleeding, as if the film stock was pushed beyond its latitude. The optics used are consumer-grade vintage lenses with characteristic lens flare, chromatic aberration at the frame corners, and a slight lack of sharpness in the periphery. The grain is not \"shimmering\"; it is coarse, high-ISO film grain that clutters the shadows. The composition feels candid and accidental, avoiding any digital symmetry or \"perfect\" CG lighting. The light is harsh and oppressive, causing the heatwave to manifest as raw, physical artifacts on the film surface rather than a digital glow.\n\n{$IFPAL\nThe color palette is sun-drenched and faded: shadows are rendered in deep, noisy $3, midtones in warm $2, and highlights are blown out into raw, clipping $1. |\nThe scene is defined by high-key luminosity, where the light physically overwhelms the film emulsion, creating a gritty, lo-fi aesthetic reminiscent of a discarded roll of film left in a hot car.\n}\nYOUR PHOTO:\n<!--\n{$@}\n-->\n\n>>> 90s Casual Photo // Light Leak Overflow\nYOUR CONTEXT\nYou are an experimental photographer using vintage, poorly-sealed film bodies that allow rogue light to compromise the film frame. Your aesthetic celebrates the unpredictable beauty of physical failure.\n\nThe image is permeated by vibrant, organic light leaks that appear as streaks or washes of amber, magenta, or red across the frame. These leaks act as luminous overlays, softening the image and creating a surreal, ethereal atmosphere. The underlying shot remains sharp, but the light interference adds a thick, chemical texture to the frame, blending the subject with the raw, chaotic energy of the film development process.\n\n{$IFPAL\nThe color palette is infused with chemical warmth: shadows are rendered in $3, midtones in $2, and the light leaks are highlighted by a radiant, saturated $1. |\nThe scene is defined by a beautiful, chaotic interaction between light and film, featuring swirling, warm-toned light leaks that wash over the composition in a dreamlike, lo-fi display.\n}\nYOUR PHOTO:\n<!--\n{$@}\n-->\n\n\n>>> 90s Casual Photo // Harsh Fluorescent Tint\nYOUR CONTEXT\nYou are documenting the mundane, industrial aesthetic of 90s public spaces, malls, and offices. Your work captures the stark, unflattering, and distinctly \"off-putting\" quality of artificial fluorescent lighting.\n{$**@@ The visual style is provocative and erotic. If women appear, they are always voluptuous and pose provocatively, with sexual innuendo. If men appear, they are muscular and brimming with testosterone. }\n\nThe lighting is flat and top-down, casting sickly, greenish-tinted shadows that add a sense of unease and clinical realism to the image. The image lacks the warmth of traditional film, instead favoring a cold, sterile, and slightly repulsive color shift. The texture is grainy, reflecting the difficulty of shooting in low, flickering light, and the overall mood is one of detached, everyday alienation characteristic of the mid-90s urban landscape.\n\n{$IFPAL\nThe color palette is cold and synthetic: shadows are rendered in '$4', midtones in '$3' and '$2', and highlights are cast in '$1'. |\nThe scene is defined by a harsh, green-cyan color cast and flat, shadow-filled lighting that evokes the soulless, utilitarian atmosphere of fluorescent-lit 90s interiors.\n}\nYOUR PHOTO:\n<!--\n{$@}\n-->\n\n"
-            ],
-            "widgets_values_named": {
-              "value": "\n\n>>> 90s Underground Flash\nYOUR CONTEXT\nYou are an experimental analog photographer capturing the raw, kinetic energy of the 1990s underground subculture. Your aesthetic is defined by low-fidelity, grainy analog film and a visceral, \"in-the-moment\" chaos. \nThe image is captured through an extreme wide-angle lens, creating aggressive perspective distortion where foreground elements loom over the viewer while the background recedes sharply. The composition is defined by the harsh, unflattering intensity of a direct camera flash, producing high-contrast illumination, slight motion blur, and unpredictable light leaks. The edges of the frame exhibit characteristic wide-angle warping that pulls the environment inward, reinforcing a sense of claustrophobic intensity and instant capture.\n{$**@@ The visual style is provocative and erotic. If women appear, they are always voluptuous and pose provocatively, with sexual innuendo. If men appear, they are muscular and brimming with testosterone. }\n{$IFPAL\nThe color palette reflects the gritty nature of 90s push-processed film: shadows are $4, midtones in $3 and $2, and highlights are $1, creating a raw and volatile tonal balance. |\nThe scene is defined by a chaotic, de-saturated aesthetic with warm, blown-out highlights and dense, crushing shadows, evoking the authentic, lo-fi grit of 35mm film stock pushed to its limits.\n}\nYOUR PHOTO:\n<!--\n{$@}\n-->\n\n\n>>> 90s Casual Photo // Standard Snapshot\nYOUR CONTEXT\nYou are an analog photographer focusing on the intimate, nostalgic reality of 1990s lifestyle photography. Your work captures the authentic texture of daily life, emphasizing raw, unfiltered emotions and candid humanity.\n\nThe image is rendered with the nostalgic charm of consumer-grade 35mm film stock, characterized by visible, organic grain and a slightly soft, naturalistic detail. The lighting relies on a direct on-camera flash that illuminates the scene with a flat, honest brilliance, creating sharp shadows directly behind the subjects that ground them in their environment. The composition is balanced and direct, favoring natural eye-level framing that prioritizes the interaction within the scene, resulting in an image that feels like a rescued memory from a shoebox of old prints.\n\n{$IFPAL\nThe color palette captures the classic warmth of vintage film prints: shadows are rendered in deep, natural $3, midtones in subtle, earthy $2, and highlights are finished with a delicate $1. |\nThe scene is defined by a slight color shift toward sepia and cyan undertones, typical of aged photographic paper, delivering a warm, candid, and profoundly human aesthetic.\n}\nYOUR PHOTO:\n<!--\n{$@}\n-->\n\n\n>>> 90s Casual Photo // Depth Focused\nYOUR CONTEXT\nYou are an analog photographer specializing in the evocative, mood-driven portraits of the 90s era. Your aesthetic prioritizes the emotional connection between the subject and the lens, utilizing high-speed prime lenses to isolate the foreground.\n\nThe images feature a shallow depth of field that renders the background as a soft, dreamlike wash of light and color, allowing the subject to emerge with striking clarity from the chaotic environment. The focus is pinpoint sharp on the main subject, while the surrounding atmosphere dissolves into a gentle, creamy blur. Captured on 35mm film, the image retains a fine, tactile grain that softens the transitions between light and shadow. The direct flash provides a distinct, professional-yet-raw luminosity, creating a gentle separation between the sharp subject and the ethereal, blurred background.\n\n{$IFPAL\nThe color palette is intimate and rich: shadows are rendered in moody $3, midtones in balanced $2, and highlights glow with a soft, punchy $1. |\nThe scene is defined by a warm, nostalgic film glow, where rich contrast and soft-focus backgrounds coalesce to create a polished, yet beautifully imperfect, 90s editorial atmosphere.\n}\nYOUR PHOTO:\n<!--\n{$@}\n-->\n\n\n>>> 90s Casual Photo // Night Club Flash\nYOUR CONTEXT\nYou are an nightlife photographer from the mid-90s underground scene. Your images are defined by the high-octane energy of dark, crowded environments and the strobe-like intensity of a powerful, direct-mounted speedlight.\n\nThe lighting is characterized by \"blacked-out\" backgrounds where the ambient light falls off rapidly into deep, underexposed shadows. The flash creates sharp, punchy illumination on the subject, freezing motion with slight ghosting trails. The image features a gritty, high-contrast look with visible film grain, capturing the sweat, smoke, and electric tension of an all-night rave.\n\n{$IFPAL\nThe color palette is neon-heavy and nocturnal: shadows are rendered in deep, crushing $3, midtones in cool, electronic $2, and highlights are illuminated by a sharp, clinical $1. |\nThe scene is defined by high-contrast saturation, where intense light blasts against impenetrable darkness, evoking the aggressive, nocturnal aesthetic of rave culture.\n}\nYOUR PHOTO:\n<!--\n{$@}\n-->\n\n\n>>> 90s Casual Photo // Disposable Camera\nYOUR CONTEXT\nYou are documenting the raw, unpolished simplicity of 90s snapshots taken with a cheap, cardboard disposable camera. Your aesthetic is inherently humble, unpretentious, and nostalgic.\n\nThe lens is a simple, fixed-focus plastic element that introduces soft edge-blur and subtle chromatic aberration. Lighting is provided by a weak, direct-mounted flash that creates a harsh \"pop\" against flat backgrounds. The image displays the characteristic \"cheap\" quality of consumer film: visible, heavy grain, uneven color shifts, and a slightly murky, warm-toned emulsion that feels like it was developed at a local drugstore.\n\n{$IFPAL\nThe color palette is muted and consumer-grade: shadows are rendered in brownish $3, midtones in flat $2, and highlights in soft, sun-washed $1. |\nThe scene is defined by a distinct \"drugstore print\" look, characterized by warm, hazy transitions, slightly muddy blacks, and the charming imperfections of amateur photography.\n}\nYOUR PHOTO:\n<!--\n{$@}\n-->\n\n\n>>> 90s Casual Photo // Overexposed Summer\nYOUR CONTEXT\nYou are capturing the lazy, hazy, and heat-drenched days of 90s suburban summers. Your photographs are characterized by light-saturated frames and a dreamlike, sun-bleached atmosphere.\n\nThe images are intentionally overexposed, causing highlights to bloom and spill into the surrounding areas, effectively \"washing out\" the details in the brighter parts of the frame. The contrast is soft, and the overall color temperature leans toward a golden, high-key warmth. The texture is characterized by fine film grain dancing within the bright light, creating a shimmering, nostalgic sensation of a heatwave captured on celluloid.\n\n{$IFPAL\nThe color palette is sun-drenched and faded: shadows are rendered in soft $3, midtones in warm $2, and highlights are blown out with a brilliant, creamy $1. |\nThe scene is defined by high-key luminosity, where light overwhelms the shadows to create an airy, nostalgic aesthetic reminiscent of long, aimless summer afternoons.\n}\nYOUR PHOTO:\n<!--\n{$@}\n-->\n\n\n>>> 90s Casual Photo // Overexposed Summer (Fixed)\nYOUR CONTEXT\nYou are a street photographer documenting the mundane, heat-drenched reality of 90s suburban life. Your aesthetic is not a dream; it is an authentic, overexposed, and slightly degraded 35mm physical film capture.\n\nThe images are defined by heavy physical overexposure that causes \"halation\" around edges and intense light-bleeding, as if the film stock was pushed beyond its latitude. The optics used are consumer-grade vintage lenses with characteristic lens flare, chromatic aberration at the frame corners, and a slight lack of sharpness in the periphery. The grain is not \"shimmering\"; it is coarse, high-ISO film grain that clutters the shadows. The composition feels candid and accidental, avoiding any digital symmetry or \"perfect\" CG lighting. The light is harsh and oppressive, causing the heatwave to manifest as raw, physical artifacts on the film surface rather than a digital glow.\n\n{$IFPAL\nThe color palette is sun-drenched and faded: shadows are rendered in deep, noisy $3, midtones in warm $2, and highlights are blown out into raw, clipping $1. |\nThe scene is defined by high-key luminosity, where the light physically overwhelms the film emulsion, creating a gritty, lo-fi aesthetic reminiscent of a discarded roll of film left in a hot car.\n}\nYOUR PHOTO:\n<!--\n{$@}\n-->\n\n>>> 90s Casual Photo // Light Leak Overflow\nYOUR CONTEXT\nYou are an experimental photographer using vintage, poorly-sealed film bodies that allow rogue light to compromise the film frame. Your aesthetic celebrates the unpredictable beauty of physical failure.\n\nThe image is permeated by vibrant, organic light leaks that appear as streaks or washes of amber, magenta, or red across the frame. These leaks act as luminous overlays, softening the image and creating a surreal, ethereal atmosphere. The underlying shot remains sharp, but the light interference adds a thick, chemical texture to the frame, blending the subject with the raw, chaotic energy of the film development process.\n\n{$IFPAL\nThe color palette is infused with chemical warmth: shadows are rendered in $3, midtones in $2, and the light leaks are highlighted by a radiant, saturated $1. |\nThe scene is defined by a beautiful, chaotic interaction between light and film, featuring swirling, warm-toned light leaks that wash over the composition in a dreamlike, lo-fi display.\n}\nYOUR PHOTO:\n<!--\n{$@}\n-->\n\n\n>>> 90s Casual Photo // Harsh Fluorescent Tint\nYOUR CONTEXT\nYou are documenting the mundane, industrial aesthetic of 90s public spaces, malls, and offices. Your work captures the stark, unflattering, and distinctly \"off-putting\" quality of artificial fluorescent lighting.\n{$**@@ The visual style is provocative and erotic. If women appear, they are always voluptuous and pose provocatively, with sexual innuendo. If men appear, they are muscular and brimming with testosterone. }\n\nThe lighting is flat and top-down, casting sickly, greenish-tinted shadows that add a sense of unease and clinical realism to the image. The image lacks the warmth of traditional film, instead favoring a cold, sterile, and slightly repulsive color shift. The texture is grainy, reflecting the difficulty of shooting in low, flickering light, and the overall mood is one of detached, everyday alienation characteristic of the mid-90s urban landscape.\n\n{$IFPAL\nThe color palette is cold and synthetic: shadows are rendered in '$4', midtones in '$3' and '$2', and highlights are cast in '$1'. |\nThe scene is defined by a harsh, green-cyan color cast and flat, shadow-filled lighting that evokes the soulless, utilitarian atmosphere of fluorescent-lit 90s interiors.\n}\nYOUR PHOTO:\n<!--\n{$@}\n-->\n\n"
-            },
-            "color": "#223",
-            "bgcolor": "#335"
-          },
-          {
             "id": 9,
             "type": "AdvancedVAEDecoderX21 //ZImagePowerNodes",
             "pos": [
-              1610,
-              -690
+              1750,
+              -190
             ],
             "size": [
               340,
               140
             ],
-            "flags": {
-              "pinned": true
-            },
-            "order": 6,
+            "flags": {},
+            "order": 4,
             "mode": 0,
             "inputs": [
               {
@@ -1021,17 +968,15 @@
             "id": 20,
             "type": "ImageFilter //ZImagePowerNodes",
             "pos": [
-              1980,
-              -690
+              2120,
+              -190
             ],
             "size": [
               290,
               430
             ],
-            "flags": {
-              "pinned": true
-            },
-            "order": 9,
+            "flags": {},
+            "order": 7,
             "mode": 0,
             "inputs": [
               {
@@ -1130,17 +1075,15 @@
             "id": 19,
             "type": "ImageLabeler2 //ZImagePowerNodes",
             "pos": [
-              2300,
-              -690
+              2440,
+              -190
             ],
             "size": [
               270,
               440
             ],
-            "flags": {
-              "pinned": true
-            },
-            "order": 8,
+            "flags": {},
+            "order": 6,
             "mode": 0,
             "inputs": [
               {
@@ -1220,17 +1163,15 @@
             "id": 23,
             "type": "Reroute",
             "pos": [
-              410,
-              1020
+              430,
+              810
             ],
             "size": [
               75,
               26
             ],
-            "flags": {
-              "pinned": true
-            },
-            "order": 10,
+            "flags": {},
+            "order": 8,
             "mode": 0,
             "inputs": [
               {
@@ -1257,17 +1198,15 @@
             "id": 24,
             "type": "Reroute",
             "pos": [
-              1440,
-              1010
+              1460,
+              800
             ],
             "size": [
               75,
               26
             ],
-            "flags": {
-              "pinned": true
-            },
-            "order": 11,
+            "flags": {},
+            "order": 9,
             "mode": 0,
             "inputs": [
               {
@@ -1294,17 +1233,15 @@
             "id": 27,
             "type": "ZSamplerTurboX21 //ZImagePowerNodes",
             "pos": [
-              1240,
-              -550
+              1210,
+              -530
             ],
             "size": [
               370,
               720
             ],
-            "flags": {
-              "pinned": true
-            },
-            "order": 12,
+            "flags": {},
+            "order": 10,
             "mode": 0,
             "inputs": [
               {
@@ -1433,17 +1370,15 @@
             "id": 37,
             "type": "Reroute",
             "pos": [
-              810,
-              1320
+              460,
+              470
             ],
             "size": [
               75,
               26
             ],
-            "flags": {
-              "pinned": true
-            },
-            "order": 13,
+            "flags": {},
+            "order": 11,
             "mode": 0,
             "inputs": [
               {
@@ -1468,64 +1403,18 @@
             }
           },
           {
-            "id": 47,
-            "type": "StyleStringInjector2 //ZImagePowerNodes",
-            "pos": [
-              830,
-              -1030
-            ],
-            "size": [
-              270,
-              120
-            ],
-            "flags": {
-              "pinned": true
-            },
-            "order": 1,
-            "mode": 0,
-            "inputs": [
-              {
-                "localized_name": "string",
-                "name": "string",
-                "type": "STRING",
-                "link": null
-              }
-            ],
-            "outputs": [
-              {
-                "localized_name": "STRING",
-                "name": "STRING",
-                "type": "STRING",
-                "links": null
-              }
-            ],
-            "properties": {
-              "Node name for S&R": "StyleStringInjector2 //ZImagePowerNodes"
-            },
-            "widgets_values": [
-              "\"Phone Photo\"",
-              null
-            ],
-            "widgets_values_named": {
-              "style": "\"Phone Photo\"",
-              "gallery": null
-            }
-          },
-          {
             "id": 54,
             "type": "StylePromptEncoderX22Advanced //ZImagePowerNodes",
             "pos": [
-              890,
-              260
+              640,
+              180
             ],
             "size": [
               430,
               270
             ],
-            "flags": {
-              "pinned": true
-            },
-            "order": 14,
+            "flags": {},
+            "order": 12,
             "mode": 0,
             "inputs": [
               {
@@ -1619,17 +1508,15 @@
             "id": 61,
             "type": "StylePromptEncoderX22Advanced //ZImagePowerNodes",
             "pos": [
-              900,
-              570
+              640,
+              490
             ],
             "size": [
               430,
               270
             ],
-            "flags": {
-              "pinned": true
-            },
-            "order": 15,
+            "flags": {},
+            "order": 13,
             "mode": 0,
             "inputs": [
               {
@@ -1737,8 +1624,8 @@
             "id": 1,
             "title": "CHECKPOINTS",
             "bounding": [
-              -650,
-              -130,
+              -563.6245665194317,
+              161.1811780847221,
               610,
               650
             ],
