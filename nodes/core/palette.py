@@ -22,6 +22,9 @@ ColorTuple   = tuple[str, str, str, str]
 # Regex to validate basic Hex color format (e.g., #FFFFFF or #FFF)
 _HEX_PATTERN = re.compile(r"^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$")
 
+# List of palette names that should be treated as empty/null palettes
+_INVALID_PALETTE_NAMES = ( "", "none", "undefined" )
+
 
 #============================== Palette CLASS ==============================#
 
@@ -347,12 +350,43 @@ class PaletteSet:
 
     def add_palette(self, palette: Palette) -> bool:
         """Adds a Palette instance to the set."""
-        self._palettes[palette.name.lower()] = palette
+
+        # reject palettes with invalid names or with empty data
+        canonical_name = palette.name.lower().strip()
+        if canonical_name in _INVALID_PALETTE_NAMES or len(palette) == 0:
+            return False
+
+        self._palettes[canonical_name] = palette
         return True
 
-    def get(self, name: str) -> Palette | None:
-        """Retrieves a palette by name."""
-        return self._palettes.get(name.lower())
+
+
+    def get(self, palette_name: str, default: Palette | None = None) -> Palette | None:
+        """
+        Retrieves a palette by name, returning a default value if not found.
+
+        This is a safe alternative to indexing with [] that won't raise a
+        KeyError when the palette name is missing.
+
+        Args:
+            palette_name: The name of the palette to retrieve.
+            default     : Optional value to return if the palette is not found.
+        Returns:
+            The `Palette` object if found, otherwise the default value of None.
+        """
+        # reject invalid names
+        canonical_name = palette_name.lower().strip()
+        if canonical_name in _INVALID_PALETTE_NAMES:
+            return default
+
+        return self._palettes.get(canonical_name, default)
+
+
+    def __getitem__(self, palette_name: str) -> Palette:
+        """Access to a specific palette by its name."""
+        canonical_name = palette_name.lower().strip()
+        return self._palettes[canonical_name]
+
 
     def __iter__(self) -> Iterator[Palette]:
         """Allows iteration over the palettes."""

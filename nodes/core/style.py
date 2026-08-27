@@ -31,10 +31,11 @@ _COMMAND_NAME_PATTERN = re.compile(r'[a-zA-Z0-9.@*#+-]+')
 # Pattern used to extract 'cheat-codes' from template or prompts.
 _CHEATCODE_PATTERN = re.compile(r"[@*#+-]+")
 
-
 # For undefined order, we use a tuple with two very high values.
 _UNDEFINED_ORDER = (999_999, 999_999)
 
+# List of style names that should be treated as empty/null styles.
+_INVALID_STYLE_NAMES = ( "", "none", "undefined" )
 
 
 #=============================== Style CLASS ===============================#
@@ -618,8 +619,9 @@ class StyleSet:
             True if the style was added, False otherwise.
         """
         canonical_name = Style.canonicalize_name(style.name)
+
         # reject styles with invalid names or with empty templates
-        if not canonical_name or not style.template:
+        if canonical_name in _INVALID_STYLE_NAMES or not style.template:
             return False
 
         # retrieve the order assigned to the style category (defaults to 999)
@@ -664,9 +666,11 @@ class StyleSet:
             >>> result is None
             True
         """
+        # reject invalid names
         canonical_name = Style.canonicalize_name(style_name)
-        if not canonical_name:
+        if canonical_name in _INVALID_STYLE_NAMES:
             return default
+
         return self._styles_by_canonical.get(canonical_name, default)
 
 
