@@ -13,7 +13,7 @@
 **Z-Image Power Nodes** is a collection of nodes designed specifically for the [Z-Image / Z-Image Turbo model](https://github.com/Tongyi-MAI/Z-Image), they are based on some discoveries I made while developing the [Amazing Z-Image Workflow](https://github.com/martin-rizzo/AmazingZImageWorkflow).
 
 ### Version 2.1 Updates
-Starting with v2.1, the nodes are optimized for the latest features in ComfyUI, ensuring compatibility with recent updates such as **Nodes 2.0**, **Int8-ConvRot**, and **ComfyKitchen-Attention**. However, backward compatibility is maintained with older versions (minimum: Python 3.10, PyTorch 2.5, and ComfyUI v0.14.0).
+Starting with v2.1, the nodes are optimized for the latest features in ComfyUI, ensuring compatibility with recent updates such as **Nodes 2.0**, **Subgraphs**, **INT8-ConvRot**, and **ComfyKitchen-Attention**. However, backward compatibility is maintained with older versions (minimum: ComfyUI v0.14, PyTorch 2.5 and Python 3.10).
 
 Additionally, experimental nodes are included for testing new concepts or simplifying user interfaces. These nodes are subject to change or removal in future updates, use them at your own discretion.
 
@@ -163,12 +163,15 @@ The easiest way to install the nodes is through [ComfyUI-Manager](https://github
 
 
 ## Recommended Checkpoints
-I currently recommend checkpoints quantized with "CONVROT" algorithms for ComfyUI; they provide the best balance of speed, quality, and compatibility for older hardware. Although GGUF has better size-to-quality ratios, its ComfyUI support is non-native and 'problematic', as Comfy himself seems to be waging a crusade against the format. 🙃
 
-Workflows in the ['/workflows/release/' directory](/workflows/release) currently use the old formats (pre-CONVROT), but I may update them for v3.0 in the future. Below in the list, I've included links to alternative checkpoints that work well if CONVROT isn't performing optimally on your hardware or if you're using tools like [stablediffusion.cpp](https://github.com/leejet/stable-diffusion.cpp).
+I currently recommend checkpoints quantized with "ConvRot" algorithms for ComfyUI; they provide the best balance of speed, quality, and compatibility for older hardware. Although GGUF has better size-to-quality ratios, its ComfyUI support is non-native and 'problematic', as Comfy himself seems to be waging a crusade against the format. 🙃
+
+Workflows in the experimental directory (['/workflows/experimental/'](/workflows/experimental)) already use/support the recommended ConvRot checkpoint here, while older workflows released in the previous version (['/workflows/release/'](/workflows/release)) have not yet been updated but should work fine by changing the checkpoint selection.
+
+In the list, I also included links to alternative checkpoints that work well if CONVROT isn't performing optimally on your hardware or if you're using tools like [stablediffusion.cpp](https://github.com/leejet/stable-diffusion.cpp).
 
 
-### Int8-CONVROT
+### Safetensors (INT8-ConvRot)
 
  - __[z_image_turbo_int8_convrot_bf16emixed.safetensors](https://huggingface.co/martin-rizzo/Z-Image-Turbo-INT8-ConvRot-ComfyUI/blob/main/z_image_turbo_int8_convrot_bf16emixed.safetensors)__ <sub>[6.17 GB]</sub>\
    Local Directory: __`ComfyUI/models/diffusion_models/`__
@@ -178,17 +181,26 @@ Workflows in the ['/workflows/release/' directory](/workflows/release) currently
    Local Directory: __`ComfyUI/models/vae/`__
 
 
-### GGUF (Q8/Q5)
+### GGUF (Q5/Q8)
 
  - __[z_image_turbo-Q5_K_S.gguf](https://huggingface.co/jayn7/Z-Image-Turbo-GGUF/blob/main/z_image_turbo-Q5_K_S.gguf)__ <sub>[5.19 GB]</sub>\
    Local Directory: __`ComfyUI/models/diffusion_models/`__
  - __[Qwen3-4B-Q8_0.gguf](https://huggingface.co/Qwen/Qwen3-4B-GGUF/blob/main/Qwen3-4B-Q8_0.gguf)__ <sub>[4.28 GB]</sub>\
    Local Directory: __`ComfyUI/models/text_encoders/`__
- - __[ae.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/vae/ae.safetensors)__ <sub>[335 MB]</sub>\
+ - __[Z-Image_half_natural_vae.safetensors](https://huggingface.co/easygoing0114/Z-Image_clear_vae/blob/main/Z-Image_half_natural_vae.safetensors)__ <sub>[335 MB]</sub>\
+
+
+### Safetensors (FP8) [not ideal but may be useful on certain systems]
+
+ - __[z-image-turbo_fp8_scaled_e4m3fn_KJ.safetensors](https://huggingface.co/Kijai/Z-Image_comfy_fp8_scaled/blob/main/z-image-turbo_fp8_scaled_e4m3fn_KJ.safetensors)__ <sub>(6.16 GB)</sub>\
+   Local Directory: __`ComfyUI/models/diffusion_models/`__
+ - __[qwen3_4b_fp8_scaled.safetensors](https://huggingface.co/hhsebsb/qwen3-4b-fp8-scaled/blob/main/qwen3_4b_fp8_scaled.safetensors)__ <sub>(4.41 GB)</sub>\
+   Local Directory: __`ComfyUI/models/text_encoders/`__
+ - __[ae.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/vae/ae.safetensors)__ <sub>(335 MB)</sub>\
    Local Directory: __`ComfyUI/models/vae/`__
 
 
-### Safetensors (BF16)
+### Comfy-Org Original Safetensors (BF16)
 
  - __[z_image_turbo_bf16.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/diffusion_models/z_image_turbo_bf16.safetensors)__ <sub>(12.3 GB)</sub>\
    Local Directory: __`ComfyUI/models/diffusion_models/`__
@@ -198,14 +210,15 @@ Workflows in the ['/workflows/release/' directory](/workflows/release) currently
    Local Directory: __`ComfyUI/models/vae/`__
 
 
-### Safetensors (FP8) [NOT RECOMMENDED, use only as a last resort]
+### Comfy-Org Original Safetensors (INT8-ConvRot / FP8)
 
- - __[z-image-turbo_fp8_scaled_e4m3fn_KJ.safetensors](https://huggingface.co/Kijai/Z-Image_comfy_fp8_scaled/blob/main/z-image-turbo_fp8_scaled_e4m3fn_KJ.safetensors)__ <sub>(6.16 GB)</sub>\
+ - __[z_image_turbo_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/diffusion_models/z_image_turbo_int8_convrot.safetensors)__ <sub>(6.20 GB)</sub>\
    Local Directory: __`ComfyUI/models/diffusion_models/`__
- - __[qwen3_4b_fp8_scaled.safetensors](https://huggingface.co/hhsebsb/qwen3-4b-fp8-scaled/blob/main/qwen3_4b_fp8_scaled.safetensors)__ <sub>(4.41 GB)</sub>\
+ - __[qwen_3_4b_fp8_mixed.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/text_encoders/qwen_3_4b_fp8_mixed.safetensors)__ <sub>(5.63 GB)</sub>\
    Local Directory: __`ComfyUI/models/text_encoders/`__
  - __[ae.safetensors](https://huggingface.co/Comfy-Org/z_image_turbo/blob/main/split_files/vae/ae.safetensors)__ <sub>(335 MB)</sub>\
    Local Directory: __`ComfyUI/models/vae/`__
+
 
 **Note:** If you’re considering using FP8 checkpoints (other than the ones recommended here), test them carefully. Most FP8 models I’ve tried suffer from naive truncation, which severely reduces precision by omitting techniques like scaling and mixing in higher-precision data types.
 
