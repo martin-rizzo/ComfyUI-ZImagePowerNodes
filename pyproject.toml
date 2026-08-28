@@ -1,7 +1,7 @@
 [project]
 name = "z-image-power-nodes"
 description = "A set of ComfyUI nodes designed specifically for the Z-Image / Z-Image-Turbo models. Pushing the best image generation model to its limits!"
-version = "2.0.0"
+version = "2.1.0"
 license = { file = "LICENSE" }
 classifiers = [
     "Operating System :: OS Independent",
@@ -15,4 +15,4 @@ Documentation = "https://martin-rizzo.github.io/ComfyUI-ZImagePowerNodes"
 PublisherId = "martin-rizzo"
 DisplayName = "Z-Image Power Nodes"
 Icon = "https://raw.githubusercontent.com/martin-rizzo/ComfyUI-ZImagePowerNodes/master/icon2.jpg"
-requires-comfyui = ">=0.8.0"
+requires-comfyui = ">=0.14.0"
