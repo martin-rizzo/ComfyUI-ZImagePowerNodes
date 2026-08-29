@@ -1,7 +1,7 @@
 [project]
 name = "z-image-power-nodes"
 description = "A set of ComfyUI nodes designed specifically for the Z-Image / Z-Image-Turbo models. Pushing the best image generation model to its limits!"
-version = "2.1.0"
+version = "2.1.1"
 license = { file = "LICENSE" }
 classifiers = [
     "Operating System :: OS Independent",
