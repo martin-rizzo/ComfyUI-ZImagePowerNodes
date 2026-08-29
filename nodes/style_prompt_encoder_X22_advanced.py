@@ -92,6 +92,7 @@ class StylePromptEncoderX22Advanced(io.ComfyNode):
                 user_styles  : str | StyleSet   | None = None,
                 user_palettes: str | PaletteSet | None = None,
                 ) -> io.NodeOutput:
+        original_prompt = prompt
 
         # if style is a name (instead of a Style object),
         # resolve it from the provided user styles
@@ -116,8 +117,11 @@ class StylePromptEncoderX22Advanced(io.ComfyNode):
             prompt = style.apply_to_prompt(prompt, palette=palette)
 
         # encode the prompt using the provided text encoder (clip)
-        tokens = clip.tokenize(prompt)
-        return io.NodeOutput( clip.encode_from_tokens_scheduled(tokens), prompt, style, palette, prompt )
+        prompt_tokens = clip.tokenize(prompt)
+        conditioning  = clip.encode_from_tokens_scheduled(prompt_tokens)
+        style_name    = str(style.name)   if isinstance(style  , Style)   else ""
+        palette_name  = str(palette.name) if isinstance(palette, Palette) else ""
+        return io.NodeOutput( conditioning, prompt, style_name, palette_name, original_prompt )
 
 
     #__ VALIDATION ________________________________________
