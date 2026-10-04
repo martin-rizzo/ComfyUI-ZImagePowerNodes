@@ -77,6 +77,7 @@ def adjust_hsv_components(images                  : torch.Tensor,
                           saturation_target       : float = -1.0,
                           brightness_stretch      : float =  0.0,
                           brightness_scurve_factor: float =  0.0,
+                          brightness_scurve_pivot : float =  0.0,
                           brightness_target       : float = -1.0,
 
                           input_color_space       : str   = "rgb",
@@ -170,11 +171,37 @@ def adjust_hsv_components(images                  : torch.Tensor,
         # use `brightness_stretch` to calibrate (0.0 = original, 1.0 = fully stretched)
         v = torch.lerp(v, v_stretched, brightness_stretch)
 
-    # apply s-curve adjustment to value (contrast)
+    # apply S-curve adjustment (gamma-like) to component 'v'
     if brightness_scurve_factor > 0.0 and brightness_scurve_factor != 1.0:
-        v.sub_(0.5).mul_(2.0)
-        v = torch.sign(v) * torch.pow(torch.abs(v), 1.0 / brightness_scurve_factor)
-        v.div_(2.0).add_(0.5)
+
+        # older version (without `brightness_scurve_pivot`):
+        if brightness_scurve_pivot <= 0.0:
+            v.sub_(0.5).mul_(2.0)
+            v = torch.sign(v) * torch.pow(torch.abs(v), 1.0 / brightness_scurve_factor)
+            v.div_(2.0).add_(0.5)
+
+        # the new formula with `pivot` point
+        # (the pivot is the inflexion point of the S-curve)
+        else:
+            pivot       = float(brightness_scurve_pivot)
+            pivot_slope = float(brightness_scurve_factor)
+            curvature   = 8.00
+
+            # clamp parameters to safe ranges to avoid division by zero
+            x0 = max(1e-6, min(1.0 - 1e-6, pivot))
+            m  = pivot_slope
+            k  = curvature
+
+            # left branch (v <= x0): t = (x0 - v) / x0
+            t = (x0 - v) / x0
+            v_left = x0 - x0 * (m * t + (1.0 - m) * torch.pow(torch.clamp(t, min=0.0), k))
+
+            # right branch (v > x0): u = (v - x0) / (1.0 - x0)
+            u = (v - x0) / (1.0 - x0)
+            v_right = x0 + (1.0 - x0) * (m * u + (1.0 - m) * torch.pow(torch.clamp(u, min=0.0), k))
+
+            # blend left and right branches according to pivot threshold
+            v = torch.where(v <= x0, v_left, v_right)
 
     # normalize brightness to target mean
     if brightness_target >= 0.0:

@@ -23,17 +23,20 @@ from comfy_api.latest    import io
 from .                   import widgets as zi
 from .core.helpers_image import adjust_hsv_components, stretch_histogram, apply_dithering, convert_to_rgb
 class Effect(Enum):
-    """Enum representing available image processing filter effects.
-    Attributes:
+    """
+    Available image processing filter effects.
+    Members:
         NONE            : Represents no effect applied.
         BLACK_AND_WHITE : Grayscale effect.
-        COLOR           : Color level effect
-        COLOR_POP       :
+        COLOR           : Linear color level adjustment.
+        COLOR_POP       : Color intensity effect.
         COLOR_TWIST     : Hue component twist effect.
-        CONTRAST        : Brightness curve change effect.
-        INTENSITY_1     : Low color intensity effect.
-        INTENSITY_2     : High color intensity effect.
-        SATURATION_NOISE:
+        CONTRAST        : Brightness curve change.
+        CONTRAST_LOW    : Brightness curve change (calibrated for z-image).
+        ZGAMMA          : Gamma-like correction effect (calibrated for z-image).
+        INTENSITY_1     : ~~ Low color intensity effect.
+        INTENSITY_2     : ~~ High color intensity effect.
+        SATURATION_NOISE: ~~
     """
     NONE             = "none"
     BLACK_AND_WHITE  = "bw"
@@ -42,6 +45,7 @@ class Effect(Enum):
     COLOR_TWIST      = "color_twist"
     CONTRAST         = "contrast"
     CONTRAST_LOW     = "contrast_low"
+    ZGAMMA           = "zgamma"
    #INTENSITY_1      = "intensity_1"
    #INTENSITY_2      = "intensity_2"
    #SATURATION_NOISE = "saturation_noise"
@@ -220,6 +224,15 @@ class ImageFilter(io.ComfyNode):
         elif effect == Effect.CONTRAST_LOW:
             images = adjust_hsv_components(images,
                                            brightness_scurve_factor = 1+(0.66*value - 0.264),
+                                           input_color_space = color_space)
+            return images, 'hsv'
+
+        elif effect == Effect.ZGAMMA:
+            if value<0:
+                value = value/2
+            images = adjust_hsv_components(images,
+                                           brightness_scurve_factor = 1+(1.1*value - 0.33),
+                                           brightness_scurve_pivot  = 0.25,
                                            input_color_space = color_space)
             return images, 'hsv'
 
