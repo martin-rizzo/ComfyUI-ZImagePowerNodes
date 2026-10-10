@@ -45,12 +45,39 @@ class _CustomFormatter(logging.Formatter):
 
 logger: logging.Logger = logging.getLogger()
 
+def _coerce_log_level(log_level):
+    """Normalize a log level that may arrive in ComfyUI's newer `--verbose` format.
+
+    ComfyUI changed `--verbose` to `action=VerboseAction, nargs='*', default=[]`,
+    so `args.verbose` is now a list of (LEVEL, file) tuples instead of a plain
+    level string. Passing that list straight to Logger.setLevel() raises
+    TypeError. Older ComfyUI still passes a string, so both are accepted here.
+    """
+    if isinstance(log_level, (int, str)) and log_level != "":
+        return log_level
+
+    if isinstance(log_level, (list, tuple)):
+        # ComfyUI's own helper picks the most verbose console level, else 'INFO'
+        try:
+            from comfy.cli_args import get_console_log_level
+            return get_console_log_level(log_level)
+        except Exception:
+            levels = [entry[0] if isinstance(entry, (list, tuple)) else entry
+                      for entry in log_level]
+            for level in levels:
+                if isinstance(level, (int, str)):
+                    return level
+
+    return "INFO"
+
+
 def setup_logger(name      : str,
                  emoji     : str,
                  log_level : str  = "INFO",
                  use_stdout: bool = False
                  ):
     global logger
+    log_level = _coerce_log_level(log_level)
     if logger is not None:
         logger.warning("Logger already set up. Skipping setup_logger().")
 
