@@ -24,7 +24,7 @@ import os
 import sys
 import logging
 import requests
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field # pyright: ignore[reportMissingImports]
 
 
 logger = logging.getLogger(__name__)
