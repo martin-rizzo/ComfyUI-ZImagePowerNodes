@@ -229,6 +229,9 @@ class ZImagePowerNodesExtension(ComfyExtension):
         #--[ utils ]-----------------------------
         subcategory = "utils"
 
+        from .nodes.image_filter_stack_lab import ImageFilterStackLAB
+        _register_node( ImageFilterStackLAB, nodes, subcategory )
+
         from .nodes.image_filter import ImageFilter
         _register_node( ImageFilter, nodes, subcategory )
 

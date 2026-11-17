@@ -52,7 +52,7 @@ class Effect(Enum):
 
 
 class ImageFilter(io.ComfyNode):
-    xTITLE         = "Image Filter"
+    xTITLE         = "Image Filter Stack [HSV]"
     xDESCRIPTION   = (
         "Provides a set of image processing effects for post-generation color "
         "correction and tone adjustment. Supports up to three simultaneous "
