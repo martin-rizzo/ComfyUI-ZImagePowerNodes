@@ -20,8 +20,8 @@ from math                import pi
 from typing              import Any
 from functools           import cache
 from comfy_api.latest    import io
-from .                   import widgets as zi
-from .core.helpers_image import adjust_hsv_components, stretch_histogram, apply_dithering, convert_to_rgb
+from ..                   import widgets as zi
+from ..core.helpers_image import adjust_hsv_components, stretch_histogram, apply_dithering, convert_to_rgb
 class Effect(Enum):
     """
     Available image processing filter effects.
@@ -52,7 +52,7 @@ class Effect(Enum):
 
 
 class ImageFilter(io.ComfyNode):
-    xTITLE         = "Image Filter Stack [HSV]"
+    xTITLE         = "Image Filter Stack [OLD HSV]"
     xDESCRIPTION   = (
         "Provides a set of image processing effects for post-generation color "
         "correction and tone adjustment. Supports up to three simultaneous "

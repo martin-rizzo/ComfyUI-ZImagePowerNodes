@@ -200,6 +200,9 @@ class ZImagePowerNodesExtension(ComfyExtension):
         from .nodes.deprecated_nodes.custom_style_prompt_encoder_X21 import CustomStylePromptEncoderX21
         _register_node( CustomStylePromptEncoderX21, nodes, subcategory )
 
+        from .nodes.deprecated_nodes.image_filter import ImageFilter
+        _register_node( ImageFilter, nodes, subcategory )
+
 
         #--[ __experimental ]--------------------
         subcategory = "__experimental"
@@ -231,9 +234,6 @@ class ZImagePowerNodesExtension(ComfyExtension):
 
         from .nodes.image_filter_stack_lab import ImageFilterStackLAB
         _register_node( ImageFilterStackLAB, nodes, subcategory )
-
-        from .nodes.image_filter import ImageFilter
-        _register_node( ImageFilter, nodes, subcategory )
 
         from .nodes.image_labeler_2 import ImageLabeler2
         _register_node( ImageLabeler2, nodes, subcategory )

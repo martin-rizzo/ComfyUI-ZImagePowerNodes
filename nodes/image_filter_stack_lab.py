@@ -22,32 +22,59 @@ import math
 from torch import Tensor
 from torchvision.transforms.v2.functional import gaussian_blur
 from enum                import Enum
-from typing              import TypeAlias, TypeGuard
+from typing              import TypeAlias, NamedTuple
 from comfy_api.latest    import io
 from .                   import widgets as zi
 from functools           import cache
 ColorChannels: TypeAlias = tuple[Tensor, Tensor, Tensor]
+
 
 class Filter(Enum):
     """
     Enum representing available image processing filter effects.
 
     Members:
-        NONE          : No filter effect is applied.
-        COLOR         : Linear color level adjustment (saturation).
-        COLOR_SHIFT   : Linear hue shift adjustment.
-        COLOR_TWIST   : Hue shift that varies with pixel lightness.
-        Z_GAMMA       : Gamma-like correction effect, calibrated for Z-Image models.
-        CHROMA_BLUR   : Gaussian blur applied exclusively to chrominance components.
-        FILM_RESPONSE : Brightness curve adjustment based on the initial slope at x=0.
+        NONE            : No filter effect is applied.
+        COLOR           : Linear color level adjustment (saturation).
+        COLOR_SHIFT     : Linear hue shift adjustment.
+        COLOR_TWIST     : Hue shift that varies with pixel lightness.
+        CHROMA_BLUR     : Gaussian blur applied exclusively to chrominance components.
+        CONTRAST_Z      : Contrast-like correction, calibrated for Z-Image models.
+        BRIGHTNESS_CURVE: Brightness curve adjustment based on the initial slope at x=0.
     """
-    NONE          = "none"
-    COLOR         = "color"
-    COLOR_SHIFT   = "color_shift"
-    COLOR_TWIST   = "color_twist"
-    Z_GAMMA       = "z_gamma"
-    CHROMA_BLUR   = "chroma_blur"
-    FILM_RESPONSE = "film_response"
+    NONE             = "none"
+    COLOR            = "color"
+    COLOR_SHIFT      = "color_shift"
+    COLOR_TWIST      = "color_twist"
+    CHROMA_BLUR      = "chroma_blur"
+    CONTRAST_Z       = "contrast_z"
+    BRIGHTNESS_CURVE = "brightness_curve"
+
+
+class FilterRange(NamedTuple):
+    """
+    Defines the valid range and default value for a filter parameter.
+
+    Attributes:
+        min_val: The minimum allowed value for the filter.
+        default: The baseline value for the filter.
+        max_val: The maximum allowed value for the filter.
+    """
+    min_val: float
+    default: float
+    max_val: float
+
+
+FILTER_RANGES: dict[Filter, FilterRange] = {
+    Filter.COLOR:            FilterRange(0.20, 1.00, 2.10),
+    Filter.COLOR_SHIFT:      FilterRange(-15,     0,   15),
+    Filter.COLOR_TWIST:      FilterRange(-90,     0,   90),
+    Filter.CHROMA_BLUR:      FilterRange(  5,     0,    5),
+    Filter.BRIGHTNESS_CURVE: FilterRange(0.50, 1.00, 2.20),
+    Filter.CONTRAST_Z:       FilterRange(0.30, 0.66, 1.10),
+}
+"""Mapping of filter enums to their (min_val, default, max_val) value ranges."""
+
 
 
 
@@ -246,21 +273,10 @@ class ImageFilterStackLAB(io.ComfyNode):
             return channels, color_space
 
 
-        elif filter == Filter.Z_GAMMA:
-
-            NEG_LIMIT, NEUTRAL, POS_LIMIT = _get_triplet("z_gamma", settings, default=(0.395, 0.67, 1.22))
-            scurve_factor = _bipolar_lerp(value, NEG_LIMIT, NEUTRAL, POS_LIMIT)
-            channels = _lab_adjust_lightness(channels,
-                            lightness_scurve_factor = scurve_factor,
-                            lightness_scurve_pivot  = 0.25,
-                            input_color_space       = color_space)
-            return channels, 'lab'
-
-
         elif filter == Filter.COLOR:
 
-            NEG_LIMIT, NEUTRAL, POS_LIMIT = _get_triplet("color", settings, default=(0.625, 1.25, 1.875))
-            saturation_factor= _bipolar_lerp(value, NEG_LIMIT, NEUTRAL, POS_LIMIT)
+            range = _get_filter_range("color", settings, default=FILTER_RANGES[filter])
+            saturation_factor = _bipolar_lerp(value, range.min_val, range.default, range.max_val)
             channels = _lab_adjust_chrominance(channels,
                             saturation_factor = saturation_factor,
                             input_color_space = color_space)
@@ -269,8 +285,8 @@ class ImageFilterStackLAB(io.ComfyNode):
 
         elif filter == Filter.COLOR_SHIFT:
 
-            NEG_LIMIT, NEUTRAL, POS_LIMIT = _get_triplet("color_shift", settings, default=(-15, 0, 15))
-            hue_shift_degrees = _bipolar_lerp(value, NEG_LIMIT, NEUTRAL, POS_LIMIT)
+            range = _get_filter_range("color_shift", settings, default=FILTER_RANGES[filter])
+            hue_shift_degrees = _bipolar_lerp(value, range.min_val, range.default, range.max_val)
             channels = _lab_adjust_chrominance(channels,
                             hue_shift_degrees = hue_shift_degrees,
                             input_color_space = color_space)
@@ -279,8 +295,8 @@ class ImageFilterStackLAB(io.ComfyNode):
 
         elif filter == Filter.COLOR_TWIST:
 
-            NEG_LIMIT, NEUTRAL, POS_LIMIT = _get_triplet("color_twist", settings, default=(-60, 0, 60))
-            hue_twist_degrees = _bipolar_lerp(value, NEG_LIMIT, NEUTRAL, POS_LIMIT)
+            range = _get_filter_range("color_twist", settings, default=FILTER_RANGES[filter])
+            hue_twist_degrees = _bipolar_lerp(value, range.min_val, range.default, range.max_val)
             channels = _lab_adjust_chrominance(channels,
                             hue_twist_degrees = hue_twist_degrees,
                             input_color_space = color_space)
@@ -289,21 +305,34 @@ class ImageFilterStackLAB(io.ComfyNode):
 
         elif filter == Filter.CHROMA_BLUR:
 
-            NEG_LIMIT, NEUTRAL, POS_LIMIT = _get_triplet("chroma_blur", settings, default=(3.0, 0.0, 3.0))
-            chroma_blur = _bipolar_lerp(value, NEG_LIMIT, NEUTRAL, POS_LIMIT)
+            range = _get_filter_range("chroma_blur", settings, default=FILTER_RANGES[filter])
+            chroma_blur   = _bipolar_lerp(value, range.min_val, range.default, range.max_val)
             channels = _lab_adjust_chrominance(channels,
                             chroma_blur       = chroma_blur,
                             input_color_space = color_space)
             return channels, 'lab'
 
-        elif filter == Filter.FILM_RESPONSE:
 
-            NEG_LIMIT, NEUTRAL, POS_LIMIT = _get_triplet("film_response", settings, default=(0.8, 1.0, 1.2))
-            lightness_initial_slope = _bipolar_lerp(value, NEG_LIMIT, NEUTRAL, POS_LIMIT)
+        elif filter == Filter.CONTRAST_Z:
+
+            range = _get_filter_range("contrast_z", settings, default=FILTER_RANGES[filter])
+            scurve_factor = _bipolar_lerp(value, range.min_val, range.default, range.max_val)
+            channels = _lab_adjust_lightness(channels,
+                            lightness_scurve_factor = scurve_factor,
+                            lightness_scurve_pivot  = 0.25,
+                            input_color_space       = color_space)
+            return channels, 'lab'
+
+
+        elif filter == Filter.BRIGHTNESS_CURVE:
+
+            range = _get_filter_range("brightness_curve", settings, default=FILTER_RANGES[filter])
+            lightness_initial_slope = _bipolar_lerp(value, range.min_val, range.default, range.max_val)
             channels = _lab_adjust_lightness(channels,
                             lightness_initial_slope = lightness_initial_slope,
                             input_color_space       = color_space)
             return channels, 'lab'
+
 
         raise ValueError(f'Invalid effect: {filter.value}')
 
@@ -622,26 +651,26 @@ def _bipolar_lerp(factor: float, negative: float, neutral: float, positive: floa
     return neutral + factor * slope
 
 
-def _get_triplet(varname : str,
-                 settings: dict[str, str] | None,
-                 /,*,
-                 default : tuple[float, float, float] = (-1.0, 0.0, 1.0),
-                 ) -> tuple[float, float, float]:
+def _get_filter_range(varname : str,
+                      settings: dict[str, str] | None,
+                      /,*,
+                      default : FilterRange = FilterRange(-1.0, 0.0, 1.0),
+                      ) -> FilterRange:
     """
-    Retrieves a triplet of float values from the settings dictionary for a given variable name.
+    Retrieves a FilterRange from the settings dictionary for a given variable name.
 
     The function attempts to parse a comma-separated string (e.g., "-1.0,0.0,1.0")
     from the settings dictionary. If the string is valid and contains exactly three
-    numbers, it returns them as a tuple. Otherwise, it falls back to the provided
-    default values.
+    numbers, it returns them as a FilterRange. Otherwise, it falls back to the provided
+    default value.
 
     Args:
         varname  : The key to look up in the settings dictionary.
         settings : A dictionary of string key-value pairs, or None.
-        default  : The fallback triplet to return if parsing fails or the key is missing.
+        default  : The fallback FilterRange to return if parsing fails or the key is missing.
 
     Returns:
-        A tuple of three floats representing the parsed values, or the default triplet.
+        A FilterRange representing the parsed values, or the default FilterRange.
     """
     raw_value = settings.get(varname) if isinstance(settings,dict) else None
 
@@ -663,4 +692,4 @@ def _get_triplet(varname : str,
     if any(not math.isfinite(val) for val in parsed):
         return default
 
-    return parsed  # type: ignore[return-value]
+    return FilterRange(*parsed)
