@@ -30,17 +30,38 @@
 
 /*============================= DIALOG HEADER =============================*/
 
-.p-dialog-header h1 {
+.zipn-dialog-mask {
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.global-dialog {
+  background: var(--background, #171718);
+  color: var(--foreground, #fff);
+  border: 1px solid var(--border, #494a50);
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+}
+
+.global-dialog .p-dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border, #494a50);
+}
+
+.global-dialog .p-dialog-header h1 {
   font-size     : 1.5rem;
   margin-top    : 0px;
   padding-bottom: 4px;
   display       : inline-block;
   border-bottom : 3px solid var(--base-foreground);
-  border-bottom : 3px solid color-mix(in srgb,  var(--base-foreground) 33%, var(--p-dialog-background));
+  border-bottom : 3px solid color-mix(in srgb,  var(--base-foreground) 33%, var(--background, #171718));
 }
 
-.p-dialog-header button {
-  color        : var(--p-dialog-color);
+.global-dialog .p-dialog-header button {
+  color        : var(--foreground, #fff);
   background   : var(--secondary-background);
   padding: 10px;
   border: none ;
@@ -49,7 +70,7 @@
   cursor       : pointer;
 }
 
-.p-dialog-header button:hover {
+.global-dialog .p-dialog-header button:hover {
   background-color: var(--secondary-background-hover);
 }
 
@@ -73,8 +94,8 @@
     font-size            : 1rem;
     font-family          : inherit;
     font-feature-settings: inherit;
-    color         : var(--p-inputtext-color);
-    background    : var(--p-inputtext-background);
+    color         : var(--foreground, #fff);
+    background    : var(--input, #313235);
     padding-block : 0.5rem;
     padding-inline: 0.75rem;
     border        : 2px solid;
@@ -174,14 +195,14 @@
 }
 
 .zipn-grid-card.initial {
-  background-color: var(--p-button-primary-background);
-  background-color: color-mix(in srgb,  var(--p-button-primary-background) 33%, var(--p-dialog-background));
+  background-color: var(--primary, #0b8ce9);
+  background-color: color-mix(in srgb,  var(--primary, #0b8ce9) 33%, var(--background, #171718));
 }
 
 .zipn-grid-card.active {
-  color           : var(--p-dialog-color);
+  color           : var(--foreground, #fff);
   border-color    : var(--primary-background);
-  background-color: color-mix(in srgb,  var(--primary-background) 50%, var(--p-dialog-background));
+  background-color: color-mix(in srgb,  var(--primary-background) 50%, var(--background, #171718));
 }
 
 .zipn-grid-card .zipn-thumb {
@@ -227,7 +248,7 @@
   align-items     : center;
   gap             : 0.75rem;
   padding         : 0.2rem 0.4rem;
-  background-color: var(--p-dialog-background);
+  background-color: var(--background, #171718);
   cursor          : pointer;
   color           : var(--color-muted); /* var(--p-dialog-color); */
 }
@@ -237,7 +258,7 @@
 }
 
 .zipn-list-card.active {
-  color           : var(--p-dialog-color);
+  color           : var(--foreground, #fff);
   border-radius   : 8px;
   background-color: color-mix(in srgb, var(--primary-background) 66%, var(--interface-menu-component-surface-selected));
 }

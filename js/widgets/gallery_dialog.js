@@ -1110,7 +1110,7 @@ function _ensureCSSLoaded() {
  */
 function _makeCustomDialog(titleElClass, iconHolderClass, dialogContent, onCancel) {
 
-    const dialogOutsideArea = html("div.p-dialog-mask.p-overlay-mask.p-overlay-mask-enter", {
+    const dialogOutsideArea = html("div.p-dialog-mask.p-overlay-mask.p-overlay-mask-enter.zipn-dialog-mask", {
         parent: document.body,
         style : {
             position      : "fixed",
@@ -1121,8 +1121,11 @@ function _makeCustomDialog(titleElClass, iconHolderClass, dialogContent, onCance
             display       : "flex",
             justifyContent: "center",
             alignItems    : "center",
+            // Frontend 1.59 sets pointer-events:none on body while a dialog is
+            // open, and the settings overlay is z-index 1700. Stay above that
+            // overlay and below toasts (9999).
             pointerEvents : "auto",
-            zIndex        : "1000"
+            zIndex        : "1900"
         },
         onclick: (e) => {
             // execute 'onCancel` when click outside of the dialog
