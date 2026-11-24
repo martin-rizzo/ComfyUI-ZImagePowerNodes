@@ -16,17 +16,22 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
    - Single Tensor                     : "L" uses the standard range of [0, 100].
 
 """
-import kornia
-import torch
+import time
 import math
-from torch import Tensor
+import torch
+import kornia
+import comfy.model_management
 from torchvision.transforms.v2.functional import gaussian_blur
-from enum                import Enum
-from typing              import TypeAlias, NamedTuple
-from comfy_api.latest    import io
-from .                   import widgets as zi
-from functools           import cache
+from torch             import Tensor
+from enum              import Enum
+from typing            import TypeAlias, NamedTuple
+from comfy_api.latest  import io
+from .                 import widgets as zi
+from functools         import cache
 ColorChannels: TypeAlias = tuple[Tensor, Tensor, Tensor]
+
+MEASURE_TIME: bool = False
+"""Flag to enable/disable timing measurements with console output."""
 
 
 class Filter(Enum):
@@ -204,6 +209,7 @@ class ImageFilterStackLAB(io.ComfyNode):
                 filter5             : str,
                 filter5_tweak       : float,
                 settings            : dict[str,str] | str | None = None,
+                use_vae_device      : bool                       = True,
                 divider=None, spacer1=None, spacer2=None, spacer3=None, spacer4=None, spacer5=None
                 ):
         # round float values to 1 decimal place
@@ -212,7 +218,9 @@ class ImageFilterStackLAB(io.ComfyNode):
         filter3_tweak = round(filter3_tweak, 1)
         filter4_tweak = round(filter4_tweak, 1)
         filter5_tweak = round(filter5_tweak, 1)
-        color_space = 'rgb'
+        input_device = image.device
+        color_device = comfy.model_management.vae_device() if use_vae_device else input_device
+        color_space  = 'rgb'
 
         # if settings were provided as a string,
         # convert them to a dictionary of string key-value pairs
@@ -226,15 +234,21 @@ class ImageFilterStackLAB(io.ComfyNode):
                     key, value = line.split("=", 1)
                     d[key.strip()] = value.strip()
             settings = d
- 
+
+
+        total_time = _measure_time()
 
         # convert images to shape [B, C, H, W] compatible with torchvision & kornia.
         # additionally, we clone it to allow free 'in-place' modifications without altering the original.
-        image = image.permute(0, 3, 1, 2).clone(memory_format=torch.contiguous_format)
+        input_convert_time = _measure_time()
+        image = image.permute(0, 3, 1, 2).clone(memory_format=torch.contiguous_format).to(color_device)
+        _measure_time(input_convert_time, "input conversion")
 
         # restrict values to [0,1] via contrast adjustment or direct clamping
+        auto_contrast_time = _measure_time()
         if enable_auto_contrast:  image = _stretch_contrast(image)
         else:                     image.clamp_(0.0, 1.0)
+        _measure_time(auto_contrast_time, "auto contrast")
 
         # apply filters, which may modify the color space of the images
         channels : ColorChannels | Tensor = image
@@ -247,13 +261,15 @@ class ImageFilterStackLAB(io.ComfyNode):
 
         # convert back to a single tensor in RGB color space.
         # and return to [B, H, W, C] shape, which is compatible with ComfyUI.
+        output_convert_time = _measure_time()
         image = _as_rgb_tensor(channels, input_color_space = color_space, denormalize_lab = True)
         image = image.permute(0, 2, 3, 1).contiguous()
+        _measure_time(output_convert_time, "output conversion")
 
-        # restrict values to [0,1] via contrast adjustment or direct clamping
-        if enable_auto_contrast:  image = _stretch_contrast(image)
-        else:                     image.clamp_(0.0, 1.0)
+        # restrict values to [0,1]
+        image = image.clamp_(0.0, 1.0).to(input_device)
 
+        _measure_time(total_time, "TOTAL")
         return (image, )
 
 
@@ -269,8 +285,11 @@ class ImageFilterStackLAB(io.ComfyNode):
         if isinstance(filter,str):
             filter = Filter(filter)
 
+        result      = (channels, color_space)
+        filter_time = _measure_time()
+
         if filter == Filter.NONE:
-            return channels, color_space
+            pass
 
 
         elif filter == Filter.COLOR:
@@ -280,7 +299,7 @@ class ImageFilterStackLAB(io.ComfyNode):
             channels = _lab_adjust_chrominance(channels,
                             saturation_factor = saturation_factor,
                             input_color_space = color_space)
-            return channels, 'lab'
+            result = (channels, 'lab')
 
 
         elif filter == Filter.COLOR_SHIFT:
@@ -290,7 +309,7 @@ class ImageFilterStackLAB(io.ComfyNode):
             channels = _lab_adjust_chrominance(channels,
                             hue_shift_degrees = hue_shift_degrees,
                             input_color_space = color_space)
-            return channels, 'lab'
+            result = (channels, 'lab')
 
 
         elif filter == Filter.COLOR_TWIST:
@@ -300,7 +319,7 @@ class ImageFilterStackLAB(io.ComfyNode):
             channels = _lab_adjust_chrominance(channels,
                             hue_twist_degrees = hue_twist_degrees,
                             input_color_space = color_space)
-            return channels, 'lab'
+            result = (channels, 'lab')
 
 
         elif filter == Filter.CHROMA_BLUR:
@@ -310,18 +329,18 @@ class ImageFilterStackLAB(io.ComfyNode):
             channels = _lab_adjust_chrominance(channels,
                             chroma_blur       = chroma_blur,
                             input_color_space = color_space)
-            return channels, 'lab'
+            result = (channels, 'lab')
 
 
         elif filter == Filter.CONTRAST_Z:
 
             range = _get_filter_range("contrast_z", settings, default=FILTER_RANGES[filter])
-            scurve_factor = _bipolar_lerp(value, range.min_val, range.default, range.max_val)
+            scurve_slope = _bipolar_lerp(value, range.min_val, range.default, range.max_val)
             channels = _lab_adjust_lightness(channels,
-                            lightness_scurve_factor = scurve_factor,
-                            lightness_scurve_pivot  = 0.25,
-                            input_color_space       = color_space)
-            return channels, 'lab'
+                            lightness_scurve_slope = scurve_slope,
+                            lightness_scurve_pivot = 0.25,
+                            input_color_space      = color_space)
+            result = (channels, 'lab')
 
 
         elif filter == Filter.BRIGHTNESS_CURVE:
@@ -329,12 +348,16 @@ class ImageFilterStackLAB(io.ComfyNode):
             range = _get_filter_range("brightness_curve", settings, default=FILTER_RANGES[filter])
             lightness_initial_slope = _bipolar_lerp(value, range.min_val, range.default, range.max_val)
             channels = _lab_adjust_lightness(channels,
-                            lightness_initial_slope = lightness_initial_slope,
-                            input_color_space       = color_space)
-            return channels, 'lab'
+                            lightness_x0_slope = lightness_initial_slope,
+                            input_color_space  = color_space)
+            result = (channels, 'lab')
 
+        else:
+            raise ValueError(f'Invalid effect: {filter.value}')
 
-        raise ValueError(f'Invalid effect: {filter.value}')
+        _measure_time(filter_time, filter.name)
+        return result
+
 
 
     @staticmethod
@@ -437,40 +460,44 @@ def _as_rgb_tensor(channels: Tensor | ColorChannels,
 
 #============================ IMAGE ADJUSTMENTS ============================#
 
-def _stretch_contrast(images: Tensor,
+def _stretch_contrast(image: Tensor,
                       *,
                       q_lower: float = 0.001,
-                      q_upper: float = 0.999
+                      q_upper: float = 0.999,
                       ) -> Tensor:
     """
     Expands the dynamic range of a batch of images by stretching the histogram.
 
+    This function calculates the lower and upper quantiles of the pixel values
+    and linearly scales the image data to the [0.0, 1.0] range. Operations are
+    performed in-place for memory efficiency, so the input tensor may be modified
+    directly.
+
     Args:
-        images : The input tensor with shape [B, C, H, W]
-                    with values normalized in the range [0.0, 1.0].
-        q_lower: The lower quantile to ignore (e.g., 0.001 for bottom 0.1%).
-        q_upper: The upper quantile to ignore (e.g., 0.999 for top 0.1%).
+        image:   The input tensor with shape [B, C, H, W] containing pixel values
+                 normalized in the range [0.0, 1.0]. Note that this tensor is
+                 modified in-place for memory efficiency.
+        q_lower: The lower quantile threshold (e.g., 0.001 for the bottom 0.1% of values).
+        q_upper: The upper quantile threshold (e.g., 0.999 for the top 0.1% of values).
 
     Returns:
-        A tensor containing the batch of images with the dynamic range expanded.
+        A tensor with the same shape as the input, containing the contrast-stretched pixel values.
     """
-    b, c, h, w = images.shape
+    b = image.shape[0]
+    if b == 0:
+        return image
 
-    # flatten H, W, C dimensions per batch image -> [B, C*H*W]
-    flattened = images.reshape(b, -1)
-
-    # calculate quantiles for each image independently;
-    # torch.quantile returns the value at which a specific percentage of data falls;
-    # dim=1 ensures independent calculation per image; reshape to [B,1,1,1] allows broadcasting
-    low_vals  = torch.quantile(flattened, q_lower, dim=1, keepdim=True).view(b, 1, 1, 1)
-    high_vals = torch.quantile(flattened, q_upper, dim=1, keepdim=True).view(b, 1, 1, 1)
+    # calculates both quantiles in a single call -> shape [2, B]
+    q = torch.tensor([q_lower, q_upper], device=image.device, dtype=image.dtype)
+    quantiles = torch.quantile(image.reshape(b, -1), q, dim=1)
+    low_vals  = quantiles[0].view(b, 1, 1, 1)
+    high_vals = quantiles[1].view(b, 1, 1, 1)
 
     # calculate the range of values for each image and stretch it to [0,1]
-    dynamic_range = (high_vals - low_vals).clamp(min=1e-7)
-    images = (images - low_vals) / dynamic_range
-
-    # clamp as outliers outside the quantiles will exceed the [0,1] range
-    return torch.clamp(images, 0.0, 1.0)
+    # (in-place operations to save memory and bandwidth)
+    inv_range = (high_vals - low_vals).clamp(min=1e-7).reciprocal_()
+    image.sub_(low_vals).mul_(inv_range).clamp_(0.0, 1.0)
+    return image
 
 
 def _lab_adjust_chrominance(image: Tensor | ColorChannels,
@@ -502,6 +529,7 @@ def _lab_adjust_chrominance(image: Tensor | ColorChannels,
         A tuple of three tensors (L, a, b) representing the adjusted chrominance components.
         Following the convention of this module, the returned Lab tuple always has L normalized to [0,1].
     """
+    #print("##>>> image device:", image[0].device.type if isinstance(image,tuple) else image.device.type)
 
     # ensure Lab components for internal processing; 'L' is normalized to [0,1]
     L, a, b = _as_lab_channels(image, input_color_space=input_color_space, normalize_lab=True)
@@ -561,9 +589,9 @@ def _lab_adjust_chrominance(image: Tensor | ColorChannels,
 def _lab_adjust_lightness(image: Tensor | ColorChannels,
                           *,
                           lightness_stretch      : float =  0.0,
-                          lightness_scurve_factor: float =  0.0,
-                          lightness_scurve_pivot : float =  0.0,
-                          lightness_initial_slope: float =  1.0,
+                          lightness_scurve_slope : float =  0.0,
+                          lightness_scurve_pivot : float =  0.5,
+                          lightness_x0_slope     : float =  1.0,
                           lightness_target       : float = -1.0,
                           input_color_space      : str   = "rgb",
                           ) -> ColorChannels:
@@ -578,9 +606,9 @@ def _lab_adjust_lightness(image: Tensor | ColorChannels,
     Args:
         image                   : The input image channels, either as a single tensor or a tuple of three tensors.
         lightness_stretch       : Blend factor for histogram stretching. 0.0 disables stretching.
-        lightness_scurve_factor : Non-linear power factor for S-curve mapping. 0.0 disables S-curve.
-        lightness_scurve_pivot  : Pivot point (0.0 to 1.0) around which the S-curve bends. 0.0 uses default pivot.
-        lightness_initial_slope : Linear scaling factor for the initial slope of the lightness curve. 1.0 means no change.
+        lightness_scurve_slope  : Controls the steepness of the S-curve mapping around the pivot point.
+        lightness_scurve_pivot  : Pivot point (0.0 to 1.0) around which the S-curve bends.
+        lightness_x0_slope      : Controls the initial slope of the lightness curve at x=0.
         lightness_target        : Target mean lightness value. Negative values disable target adjustment.
         input_color_space       : The color space of the input channels. Defaults to "rgb".
 
@@ -588,6 +616,7 @@ def _lab_adjust_lightness(image: Tensor | ColorChannels,
         A tuple of three tensors (L, a, b) representing the adjusted lightness components.
         Following the convention of this module, the returned Lab tuple always has L normalized to [0,1].
     """
+    #print("##>>> image device:", image[0].device.type if isinstance(image,tuple) else image.device.type)
 
     # ensure Lab components for internal processing; 'L' is normalized to [0,1]
     L, a, b = _as_lab_channels(image, input_color_space=input_color_space, normalize_lab=True)
@@ -596,33 +625,52 @@ def _lab_adjust_lightness(image: Tensor | ColorChannels,
         L_stretched = _stretch_contrast(L, q_lower=0.001, q_upper=0.999)
         L = torch.lerp(L, L_stretched, lightness_stretch)
 
-    if lightness_scurve_factor > 0.0 and lightness_scurve_factor != 1.0:
-        if lightness_scurve_pivot <= 0.0:
+
+    if lightness_scurve_slope > 0.0 and lightness_scurve_slope != 1.0:
+        pivot         = float(lightness_scurve_pivot)
+        pivot_slope   = float(lightness_scurve_slope)
+        curvature_pow = 8.0
+
+        if pivot == 0.5:
+            # applies a symmetric S-curve to luminance L (pivot = 0.5)
+            #   - normalize to [-1, 1] :  x = 2 * (L - 0.5)
+            #   - blend power & linear :  y = sgn(x) * lerp(|x|^curvature_pow, |x|, pivot_slope)
+            #   - denormalize to [0, 1]:  L_out = 0.5 * y + 0.5
             L.sub_(0.5).mul_(2.0)
-            L = torch.sign(L) * torch.pow(torch.abs(L), 1.0 / lightness_scurve_factor)
-            L.div_(2.0).add_(0.5)
+            midtone_deviation = L.abs()
+            L = torch.lerp(midtone_deviation.pow(curvature_pow), midtone_deviation, pivot_slope).copysign_(L).mul_(0.5).add_(0.5)
+
         else:
-            pivot       = float(lightness_scurve_pivot)
-            pivot_slope = float(lightness_scurve_factor)
-            curvature   = 8.00
+            # applies a piecewise S-curve to luminance L (with any pivot)
+            #   x0 = pivot
+            #   s  = pivot_slope
+            #   p  = curvature_pow
+            #   - left branch  (L <= x0): t = max(0, (x0 - L) / x0)        ->  L_left  = x0 * (1 - lerp(t^p, t, s))
+            #   - right branch (L >  x0): u = max(0, (L - x0) / (1 - x0))  ->  L_right = x0 + (1 - x0) * lerp(u^p, u, s)
+            #   - combine branches      : L_out = L_left if L <= x0 else L_right   (p = curvature_pow, s = pivot_slope)
 
-            x0 = max(1e-6, min(1.0 - 1e-6, pivot))
-            m  = pivot_slope
-            k  = curvature
+            x0             = max(1e-6, min(1.0 - 1e-6, pivot))
+            inv_x0         = 1.0 / x0
+            inv_1_minus_x0 = 1.0 / (1.0 - x0)
 
-            t = (x0 - L) / x0
-            L_left = x0 - x0 * (m * t + (1.0 - m) * torch.pow(torch.clamp(t, min=0.0), k))
+            # left branch: values <= x0
+            t    = ((x0 - L) * inv_x0).clamp_(min=0.0)
+            left = torch.lerp(t.pow(curvature_pow), t, pivot_slope).mul_(-x0).add_(x0)
+            del t
 
-            u = (L - x0) / (1.0 - x0)
-            L_right = x0 + (1.0 - x0) * (m * u + (1.0 - m) * torch.pow(torch.clamp(u, min=0.0), k))
+            # right branch: values > x0
+            u     = ((L - x0) * inv_1_minus_x0).clamp_(min=0.0)
+            right = torch.lerp(u.pow(curvature_pow), u, pivot_slope).mul_(1.0 - x0).add_(x0)
+            del u
 
-            L = torch.where(L <= x0, L_left, L_right)
+            L = torch.where(L <= x0, left, right)
 
-    if lightness_initial_slope != 1.0:
+
+    if lightness_x0_slope != 1.0:
         # apply schlick's rational curve to the normalized L component in [0, 1];
         # compresses highlights if p > 1.0 (or shadows if p < 1.0)
         # y = (p * x) / (1 + (p - 1) * x)
-        L = (lightness_initial_slope * L) / (1.0 + (lightness_initial_slope - 1.0) * L)
+        L = (lightness_x0_slope * L) / (1.0 + (lightness_x0_slope - 1.0) * L)
 
     if lightness_target >= 0.0:
         L_mean = torch.mean(L, dim=(2, 3), keepdim=True)
@@ -693,3 +741,39 @@ def _get_filter_range(varname : str,
         return default
 
     return FilterRange(*parsed)
+
+
+def _measure_time(mtime         : float | None = None,
+                  operation_name: str   | None = None
+                  ) -> float | None:
+    """
+    Measures and prints the elapsed time for a specific operation.
+
+    When called without arguments, it records the current time and returns it.
+    When called with a previously returned time, it calculates the elapsed time
+    and prints it to the console.
+
+    Args:
+        mtime:          The timestamp to measure from.
+        operation_name: An optional label to append to the printed time output.
+
+    Returns:
+        The current timestamp if `mtime` is not specified;
+        Use the returned timestamp for subsequent calls to measure elapsed time.
+
+    Example:
+        >>> optime = _measure_time()
+        >>> # ... some operation ...
+        >>> _measure_time(optime, "My Operation")
+        ##>>> Time:   12.34 ms | My Operation
+    """
+    if not MEASURE_TIME:
+        return None
+
+    if mtime is None:
+        return time.perf_counter()
+
+    elapsed_ms = (time.perf_counter() - mtime) * 1000
+    label      = f" | {operation_name}" if operation_name else ""
+    print(f"##>>> Time: {elapsed_ms:>8.2f} ms{label}")
+    return None
